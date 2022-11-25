@@ -1701,22 +1701,20 @@ CREATE TABLE `npc` (
 -- ----------------------------
 -- Records of npc
 -- ----------------------------
+INSERT INTO `npc` VALUES ('15', 'Môn phái quản lý viên', 'M', 'Thành Viêm Dương thành Thành chủ, Tuyết Cầm', 'Martialartist.php', '');
+INSERT INTO `npc` VALUES ('16', 'Dược lão [Thương nhân]', 'M', 'Tới tới tới  tiện nghi', 'store.php', '');
+INSERT INTO `npc` VALUES ('17', 'Chính quy tiên y', 'M', 'Chính quy tiên y', 'Treatment_Level1.php', '');
+INSERT INTO `npc` VALUES ('18', 'Phù lục đại sư', 'M', 'Kỹ năng đại sư, phụ trách hối đoái kỹ năng', 'SkillExchange.php', '');
+INSERT INTO `npc` VALUES ('19', 'Tụ tiên thành chủ [Phù lục]', 'M', 'Tụ Tiên thành Thành chủ', 'EquipmentExchange.php', '');
+INSERT INTO `npc` VALUES ('20', 'Vân du tiên y [Trị liệu]', 'M', 'Dạo chơi tiên y, tựa hồ đang cái nào đều có thể trông thấy hắn', 'treatment.php', '');
+
+
 INSERT INTO `npc` VALUES ('11', 'Thôn trường', 'M', 'Trưởng thôn', '', '13,25,24,28');
 INSERT INTO `npc` VALUES ('13', 'Vương lão ngũ', 'M', 'Ai... Một người thời gian, thật thật là khó.', '', '24');
 INSERT INTO `npc` VALUES ('14', 'Hách bỉnh', 'M', 'Ai, cả ngày đứng ở chỗ này thật sự là nhàm chán.', '', '28');
-INSERT INTO `npc` VALUES ('15', 'Chu phú quý [Thương nhân]', 'M', 'Tới tới tới  tiện nghi', 'store.php', '');
-INSERT INTO `npc` VALUES ('16', 'Tụ tiên thành chủ [Phù lục]', 'M', 'Tụ Tiên thành Thành chủ', 'EquipmentExchange.php', '');
-INSERT INTO `npc` VALUES ('18', 'Vương đại mụ', 'F', 'Vương đại mụ', '', '24,29');
-INSERT INTO `npc` VALUES ('17', 'Vân du tiên y [Trị liệu]', 'M', 'Dạo chơi tiên y, tựa hồ đang cái nào đều có thể trông thấy hắn', 'treatment.php', '');
-INSERT INTO `npc` VALUES ('19', 'Phù lục đại sư', 'M', 'Kỹ năng đại sư, phụ trách hối đoái kỹ năng', 'SkillExchange.php', '');
-INSERT INTO `npc` VALUES ('20', 'Tiểu man', 'F', 'Tiểu Man thật là sợ. . .', '', '20');
-INSERT INTO `npc` VALUES ('21', 'Man tộc trường lão', 'M', 'Man tộc trưởng già', '', '19');
-INSERT INTO `npc` VALUES ('22', 'Man tộc liệp thủ', 'M', 'Già, cạn bất động', '', '21');
-INSERT INTO `npc` VALUES ('23', 'Đoái hoán đại sử', 'M', 'Hối đoái đại sứ', '', '27');
-INSERT INTO `npc` VALUES ('24', 'Chính quy tiên y', 'M', 'Chính quy tiên y', 'Treatment_Level1.php', '');
+
 INSERT INTO `npc` VALUES ('25', 'Thành chủ tuyết cầm', 'F', 'So dạo chơi càng lành nghề', '', '');
-INSERT INTO `npc` VALUES ('26', 'Môn phái quản lý viên', 'M', 'Thành Viêm Dương thành Thành chủ, Tuyết Cầm', 'Martialartist.php', '');
-INSERT INTO `npc` VALUES ('12', '[Nhục điếm] Hứa thị', 'F', 'Nổi tiếng chua ngoa nhất vùng, nhưng không đâu có thịt ngon bằng ả.', '', '');
+INSERT INTO `npc` VALUES ('12', '[Nhục điếm] Hứa thị', 'F', 'Nổi tiếng chua ngoa nhất vùng, nhưng không đâu có thịt ngon bằng ả.', 'Treatment_Level1.php', '');
 INSERT INTO `npc` VALUES ('27', '<span style=color:#F75000>[C.hàng Trang bị] Thiết tượng sư </span>', 'M', 'Ở đây ta có đồ quý, lại mua ngay...', '', '');
 INSERT INTO `npc` VALUES ('29', '<img src=images/xszdy.png> Hoạt động sứ giả', 'M', 'Hoạt động sứ giả, công cáo các hoạt động quan trọng', '', '');
 INSERT INTO `npc` VALUES ('28', '[Dược điếm] Hứa y sinh', 'M', 'Thuốc quý ngàn năm, bổ thận cường dương. 1 người khỏe 3 người vui', '', '');

@@ -79,7 +79,7 @@ if (isset($_POST['submit']) && $_POST['submit']) {
         </form>
     </div>
     <div class="fix">
-        <h2>2020/1/2 sửa nội dung:</h2>
+        <h2>2022/12/10 sửa nội dung:</h2>
         <p>1. Sửa lỗi người chơi khác nhau tạo võ công</p>
         <p>2. Chức năng NPC khôi phục bình thường, có thể trị liệu, mua thuốc, trao đổi kỹ năng</p>
         <p>3. Thời gian ngoại tuyến đã được điều chỉnh từ 10 phút ban đầu thành 15 phút</p>

@@ -335,7 +335,7 @@ $msghtml
 $lthtml
 </div>
 &nbsp;&nbsp;<span class="xinxi3">$clmid->midinfo</span><br/>
-<a href="?cmd=$ztcmd">T.thái</a> <a href="?cmd=$getbagcmd" >B.lô</a> <a href="?cmd=$goliaotian" >T.chuyện</a> <a href="?cmd=$getbagjncmd" >Phù lục</a>
+<a class="btn" href="?cmd=$ztcmd">T.thái</a> <a href="?cmd=$getbagcmd" >B.lô</a> <a href="?cmd=$goliaotian" >T.chuyện</a> <a href="?cmd=$getbagjncmd" >Phù lục</a>
 <br/>
 <a href="?cmd=$phcmd" >X.hạng</a> <a href="?cmd=$xiuliancmd" >T.luyện</a> <a href="?cmd=$fangshi" >Chợ</a> <a href="?cmd=$clubcmd" >M.phái</a>
 <br/>

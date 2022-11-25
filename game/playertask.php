@@ -24,19 +24,19 @@ HTML;
     }
     if ($rwlx == 1 && $playertask[$n]['rwzt'] != 3) {
         $taskType = <<<HTML
-            <div class="flex items-center"><span class="mr-2">[Phổ thông]</span>
+            <div class="!flex items-center"><span class="mr-2">[Phổ thông]</span>
 HTML;
     }
 
     switch ($playertask[$n]['rwzt']) {
         case 1:
             $taskhtml .= $taskType . <<<HTML
-            <a class="flex items-center" href="?cmd=$mytaskinfo"><img class="mr-1" src="images/wen.gif"/> $rwname</a></div>
+            <a class="!flex items-center" href="?cmd=$mytaskinfo"><img class="mr-1" src="images/wen.gif"/> $rwname</a></div>
 HTML;
             break;
         case 2:
             $taskhtml .= $taskType . <<<HTML
-            <a class="flex items-center" href="?cmd=$mytaskinfo"><img class="mr-1" src="images/tan.gif"/> $rwname</a></div>
+            <a class="!flex items-center" href="?cmd=$mytaskinfo"><img class="mr-1" src="images/tan.gif"/> $rwname</a></div>
 HTML;
             break;
         case 3:

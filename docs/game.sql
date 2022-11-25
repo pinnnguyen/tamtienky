@@ -1352,18 +1352,18 @@ INSERT INTO `mid` VALUES ('Môn phái quản lý chỗ', '273', '', '26', '2021-
 DROP TABLE IF EXISTS `midguaiwu`;
 CREATE TABLE `midguaiwu` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `gname` text NOT NULL,
-  `ghp` text NOT NULL,
-  `ggj` text NOT NULL,
-  `gfy` text NOT NULL,
-  `glv` text NOT NULL,
-  `mid` int(11) NOT NULL,
-  `gyid` int(11) NOT NULL,
-  `gexp` text NOT NULL,
-  `sid` text NOT NULL,
-  `gmaxhp` varchar(255) NOT NULL,
-  `gbj` int(11) NOT NULL,
-  `gxx` int(11) NOT NULL,
+  `gname` text NULL,
+  `ghp` text NULL,
+  `ggj` text NULL,
+  `gfy` text NULL,
+  `glv` text NULL,
+  `mid` int(11) NULL default '0',
+  `gyid` int(11) NULL,
+  `gexp` text NULL,
+  `sid` text NULL,
+  `gmaxhp` varchar(255) NULL,
+  `gbj` int(11) NULL,
+  `gxx` int(11) NULL default '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2335287 DEFAULT CHARSET=utf8;
 

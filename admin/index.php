@@ -1,5 +1,5 @@
 <?php 
-error_reporting( E_ALL&~E_NOTICE );
+//error_reporting( E_ALL&~E_NOTICE );
 header("content-type:text/html;charset=utf-8"); //设置编码
 ini_set( 'display_errors', 'off' );//屏蔽错误和警告提示
 date_default_timezone_set('PRC');//设置中国时区

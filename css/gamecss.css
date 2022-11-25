@@ -1,53 +1,70 @@
-#ltmsg2{
+#ltmsg2 {
     float: left;
     resize: none;
 }
 
-#btn{
-    display:inline-block;
+#btn {
+    display: inline-block;
     background: #fff;
-    color:#ff7a01;
-	border:1px solid #ff7a01;
+    color: #ff7a01;
+    border: 1px solid #ff7a01;
     text-align: center;
     width: 57px;
     font-size: 0.8em;
     line-height: 26px;
-    height:26px;border-radius: 5px;
+    height: 26px;
+    border-radius: 5px;
     max-width: 98%;
 }
-#mainfont{
-    font-size: 10px;width: 500px;text-align: left;margin-top: 15px;font-family: "楷体",sans-serif ;}
-.zbys{
+
+#mainfont {
+    font-size: 10px;
+    width: 500px;
+    text-align: left;
+    margin-top: 15px;
+    font-family: "楷体", sans-serif;
+}
+
+.zbys {
     color: #9f008c;
 }
-.zbys a:link,.zbys a:visited{
+
+.zbys a:link, .zbys a:visited {
     color: #9f008c;
 }
-.djys{
+
+.djys {
     color: #2a409f;
 }
-.djys a:link,.djys a:visited{
+
+.djys a:link, .djys a:visited {
     color: #2a409f;
 }
-.djys a:hover{
+
+.djys a:hover {
     color: #2a409f;
     background-color: #81799f;
 }
-.hpys{
+
+.hpys {
     color: #9f182a;
 }
-.ypys{
+
+.ypys {
     color: #9f7211;
 }
-.ypys a:link,.ypys a:visited{
+
+.ypys a:link, .ypys a:visited {
     color: #9f7211;
 }
+
 body {
     padding: 20px;
     margin: 0px;
     font-size: 16px;
     background-color: #e3e3e3;
-    line-height:22px;
+    line-height: 22px;
+    overflow: hidden;
 }
 
 a:link {
@@ -55,18 +72,19 @@ a:link {
     display: inline-block;
     margin: 4px 3px 2px 4px;
 }
-ul
-{
+
+ul {
     position: absolute;
-    list-style-type:none;
-    margin:0;
+    list-style-type: none;
+    margin: 0;
     margin-left: 160px;;
     margin-top: -110px;;
-    float:right;
+    float: right;
 
 }
-a{
-	
+
+a {
+
     color: #0093E8;
     padding: 1px 10px;
     border: 1px solid #e3e3e3;
@@ -74,59 +92,121 @@ a{
     text-decoration: none;
     margin-right: 3px;
 }
+
 a:visited {
     color: #0093E8;
 }
 
-a:hover,a:active,a:focus {
+a:hover, a:active, a:focus {
     color: #FFFFFF;
     background: #0093e8;
 }
 
 /*new样式*/
 /*footer样式*/
-.footer{width: 400px;margin: 10px auto;background: #fff;padding: 20px;text-align: center;border-radius: 10px;}
+.footer {
+    width: 400px;
+    margin: 10px auto;
+    background: #fff;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+}
 
 /*main样式*/
-.main{width: 400px;
+.main {
+    width: auto;
     margin: 0 auto;
     background: #fff;
     padding: 20px;
-    border-radius: 10px;}
-.xinxi{font-size:14px;color:#666;}
-.xinxi2{font-size:16px;color:#9f182a;}
-.xinxi3{font-size:16px;color:#006600;}
-.main button{background: #fff;border: 1px solid #e3e3e3;border-radius: 3px;padding: 1px 10px;color:#0093E8;font-size:16px;}
+    border-radius: 10px;
+}
+
+.xinxi {
+    font-size: 14px;
+    color: #666;
+}
+
+.xinxi2 {
+    font-size: 16px;
+    color: #9f182a;
+}
+
+.xinxi3 {
+    font-size: 16px;
+    color: #006600;
+}
+
+.main button {
+    background: #fff;
+    border: 1px solid #e3e3e3;
+    border-radius: 3px;
+    padding: 1px 10px;
+    color: #0093E8;
+    font-size: 16px;
+}
+
 /*注册登录样式*/
-.login{width: 400px;
-    margin: 10px auto;
-    text-align: center;}
-.gamesubmit{width: 400px;
+.login {
+    width: 400px;
     margin: 10px auto;
     text-align: center;
-	color: #0093E8;
-	width:30%;
-	height:25px;}
+}
 
-.btn-login{display:inline-block;
+.gamesubmit {
+    width: 400px;
+    margin: 10px auto;
+    text-align: center;
+    color: #0093E8;
+    width: 30%;
+    height: 25px;
+}
+
+.btn-login {
+    display: inline-block;
     background: #ff7a01;
-    color:#fff;
+    color: #fff;
     text-align: center;
     width: 75px;
     font-size: 0.8em;
-    line-height: 30px;border-radius: 5px;
-    height:30px;
-    max-width: 98%;border:none;}
-.input{padding:10px;margin-top:15px;}
+    line-height: 30px;
+    border-radius: 5px;
+    height: 30px;
+    max-width: 98%;
+    border: none;
+}
+
+.input {
+    padding: 10px;
+    margin-top: 15px;
+}
+
 /*登录页修复内容*/
-.fix{font-size:12px;color:#666;padding-left:15px;}
-.fix h2{font-size:14px;color:red;}
-.fix p{line-height:18px;margin:0;}
-.fix button{background: #ff7a01;
-    color:#fff;
+.fix {
+    font-size: 12px;
+    color: #666;
+    padding-left: 15px;
+}
+
+.fix h2 {
+    font-size: 14px;
+    color: red;
+}
+
+.fix p {
+    line-height: 18px;
+    margin: 0;
+}
+
+.fix button {
+    background: #ff7a01;
+    color: #fff;
     text-align: center;
     width: 40%;
     font-size: 0.8em;
-    line-height: 30px;border-radius: 5px;
-    height:30px;
-    max-width: 98%;border:none;;}
+    line-height: 30px;
+    border-radius: 5px;
+    height: 30px;
+    max-width: 98%;
+    border: none;;
+}

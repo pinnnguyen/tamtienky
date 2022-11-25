@@ -1,8 +1,8 @@
 <?php
 $sqlname='root';
-$sqlpass='xjyxi.com';
+$sqlpass='root';
 $dbhost='localhost';
-$dbname='odoo';
+$dbname='game';
 $dsn="mysql:host=$dbhost;dbname=$dbname;";
 $dblj = new PDO($dsn,$sqlname,$sqlpass,array(PDO::ATTR_PERSISTENT=>true));
 $dblj->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

@@ -2,7 +2,7 @@
 $gonowmid = $encode->encode("cmd=gomid&newmid=$player->nowmid&sid=$sid");
 
 if (isset($id)) {
-    $sql = 'SELECT * FROM bugcollect where id ='.$id;//bug详情获取
+    $sql = 'SELECT * FROM bugcollect where id =' . $id;//bug详情获取
     $ltcxjg = $dblj->query($sql);
     $lthtml = '';
     if ($ltcxjg) {

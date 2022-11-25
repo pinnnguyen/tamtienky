@@ -692,8 +692,6 @@ function getplayeryaopinall($sid, $dblj)
 function addyaopin($sid, $ypid, $ypsum, $dblj)
 {
     $yaopin = getplayeryaopin($ypid, $sid, $dblj);
-    var_dump($yaopin);
-    die();
     if ($yaopin) {
         $sql = "update playeryaopin set ypsum = ypsum + $ypsum WHERE ypid=$ypid AND sid='$sid'";
         $dblj->exec($sql);

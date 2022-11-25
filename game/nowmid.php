@@ -1,45 +1,45 @@
 <?php
 
-$player = player\getplayer($sid,$dblj);//获取玩家信息
+$player = player\getplayer($sid, $dblj);//获取玩家信息
 $lastmid = $player->nowmid;
 
-if (isset($newmid)){
-    if ($player->nowmid!=$newmid){
-        $clmid = player\getmid($newmid,$dblj); //获取即将走的地图信息
+if (isset($newmid)) {
+    if ($player->nowmid != $newmid) {
+        $clmid = player\getmid($newmid, $dblj); //获取即将走的地图信息
         $ucmd = $encode->encode("cmd=getplayerinfo&uid=$uid&sid=$player->sid");
         //$playerinfo .="<a href='?cmd=$ucmd'>$player->uname</a>"." Hướng $clmid->mname đi đến";
-        $playerinfo = $player->uname." Hướng $clmid->mname đi đến";//当前位置更新最后一条行走记录
-        if ($playerinfo != $clmid->playerinfo){ //更新自己走过的记录
+        $playerinfo = $player->uname . " Hướng $clmid->mname đi đến";//当前位置更新最后一条行走记录
+        if ($playerinfo != $clmid->playerinfo) { //更新自己走过的记录
             $sql = "update mid set playerinfo='$playerinfo' WHERE mid='$lastmid'";
             $dblj->exec($sql);
         }
-        if ($player->uhp<=0){
-            $retmid = \player\getmid($player->nowmid,$dblj);
-            $retqy = \player\getqy($retmid->mqy,$dblj);
+        if ($player->uhp <= 0) {
+            $retmid = \player\getmid($player->nowmid, $dblj);
+            $retqy = \player\getqy($retmid->mqy, $dblj);
             $gonowmid = $encode->encode("cmd=gomid&newmid=$retqy->mid&sid=$sid");
-            if ($newmid != $retqy->mid){
-                exit("Bạn đã bị thương nặng, xin vui lòng điều trị <br/>".'<a href="?cmd='.$gonowmid.'">Trở lại trò chơi</a>');
+            if ($newmid != $retqy->mid) {
+                exit("Bạn đã bị thương nặng, xin vui lòng điều trị <br/>" . '<a href="?cmd=' . $gonowmid . '">Trở lại trò chơi</a>');
             }
 
         }
-        \player\changeplayersx('nowmid',$newmid,$sid,$dblj);
-        $player = player\getplayer($sid,$dblj);//获取玩家信息
+        \player\changeplayersx('nowmid', $newmid, $sid, $dblj);
+        $player = player\getplayer($sid, $dblj);//获取玩家信息
     }
 
 }
 
-if ($player->nowmid=='' || $player->nowmid==0){//判断角色是否出现在非法地图
+if ($player->nowmid == '' || $player->nowmid == 0) {//判断角色是否出现在非法地图
     $gameconfig = \player\getgameconfig($dblj);
     $sql = "update game1 set nowmid='$gameconfig->firstmid' WHERE sid='$sid'";
     $dblj->exec($sql);
-    $player->nowmid=$gameconfig->firstmid;
+    $player->nowmid = $gameconfig->firstmid;
 }
-$clmid = player\getmid($player->nowmid,$dblj); //获取地图信息
-if ($clmid->playerinfo != ''){
-    $clmid->playerinfo .='<br/>';
+$clmid = player\getmid($player->nowmid, $dblj); //获取地图信息
+if ($clmid->playerinfo != '') {
+    $clmid->playerinfo .= '<br/>';
 }
 $pvphtml = "[Vùng an toàn]";
-if ($clmid->ispvp){
+if ($clmid->ispvp) {
     $pvphtml = "[PVP]";
 }
 
@@ -58,48 +58,48 @@ $upmidlj = $encode->encode("cmd=gomid&newmid=$clmid->upmid&sid=$sid");//上地�
 $downmidlj = $encode->encode("cmd=gomid&newmid=$clmid->downmid&sid=$sid");
 $leftmidlj = $encode->encode("cmd=gomid&newmid=$clmid->leftmid&sid=$sid");
 $rightmidlj = $encode->encode("cmd=gomid&newmid=$clmid->rightmid&sid=$sid");
-$upmid = player\getmid($clmid->upmid,$dblj);
-$downmid = player\getmid($clmid->downmid,$dblj);
-$leftmid = player\getmid($clmid->leftmid,$dblj);
-$rightmid = player\getmid($clmid->rightmid,$dblj);
+$upmid = player\getmid($clmid->upmid, $dblj);
+$downmid = player\getmid($clmid->downmid, $dblj);
+$leftmid = player\getmid($clmid->leftmid, $dblj);
+$rightmid = player\getmid($clmid->rightmid, $dblj);
 
 $pvbcmd = $encode->encode("cmd=boss&sid=$sid&idboss=1");
 
-$lukouhtml ='';
+$lukouhtml = '';
 $bosshtml = '';
-if ($clmid->midinfo == ''){
+if ($clmid->midinfo == '') {
     $clmid->midinfo = $clmid->mname;
 }
 
 
-if ($clmid->midboss != 0){
+if ($clmid->midboss != 0) {
     // echo "bosssssssssss: $clmid->midboss";
-    $idboss=$clmid->midboss;
-    $boss = \player\getboss($idboss,$dblj);
+    $idboss = $clmid->midboss;
+    $boss = \player\getboss($idboss, $dblj);
     $bossinfo = $encode->encode("cmd=boss&bossid=$boss->bossid&sid=$sid");
     $bosshtml = <<<HTML
     BOSS:<a href="?cmd=$bossinfo">$boss->bossname $boss->bossid</a><br/>
 HTML;
 }
-if ($upmid->mname!=''){
+if ($upmid->mname != '') {
     $lukouhtml .= <<<HTML
     Hướng Bắc:<a href="?cmd=$upmidlj">$upmid->mname ↑</a><br/>
 HTML;
 }
 
-if ($leftmid->mname!=''){
+if ($leftmid->mname != '') {
     $lukouhtml .= <<<HTML
     Hướng Tây:<a href="?cmd=$leftmidlj">$leftmid->mname ←</a><br/>
 HTML;
 }
 
-if ($rightmid->mname!=''){
+if ($rightmid->mname != '') {
     $lukouhtml .= <<<HTML
     Hướng Đông:<a href="?cmd=$rightmidlj">$rightmid->mname →</a><br/>
 HTML;
 }
 
-if ($downmid->mname!=''){
+if ($downmid->mname != '') {
     $lukouhtml .= <<<HTML
     Hướng Nam:<a href="?cmd=$downmidlj">$downmid->mname ↓</a><br/>
 HTML;
@@ -109,19 +109,19 @@ $sql = "select * from midguaiwu where mid='$player->nowmid' AND sid = ''";//获�
 $cxjg = $dblj->query($sql);
 $cxallguaiwu = $cxjg->rowCount();
 $nowdate = date('Y-m-d H:i:s');
-$second=floor((strtotime($nowdate)-strtotime($clmid->mgtime))%86400);//获取刷新间隔
-if ($second > $clmid->ms  && $cxallguaiwu== 0 && $clmid->mgid!=''){//刷新怪物
+$second = floor((strtotime($nowdate) - strtotime($clmid->mgtime)) % 86400);//获取刷新间隔
+if ($second > $clmid->ms && $cxallguaiwu == 0 && $clmid->mgid != '') {//刷新怪物
 
     $sql = "update mid set mgtime='$nowdate' WHERE mid='$player->nowmid'";
     $dblj->exec($sql);
-    $retgw = explode(",",$clmid->mgid);
-    foreach ($retgw as $itemgw){
-        $gwinfo = explode("|",$itemgw);
-        $guaiwu = \player\getyguaiwu($gwinfo[0],$dblj);
+    $retgw = explode(",", $clmid->mgid);
+    foreach ($retgw as $itemgw) {
+        $gwinfo = explode("|", $itemgw);
+        $guaiwu = \player\getyguaiwu($gwinfo[0], $dblj);
         $guaiwu->gyid = $gwinfo[0];
-        $sjexp = mt_rand(6,8) + 0.5;
-        $guaiwu->gexp = round($guaiwu->glv * $sjexp,0);
-        for ($n=0;$n<$gwinfo[1];$n++){
+        $sjexp = mt_rand(6, 8) + 0.5;
+        $guaiwu->gexp = round($guaiwu->glv * $sjexp, 0);
+        for ($n = 0; $n < $gwinfo[1]; $n++) {
             $sql = "insert into midguaiwu(mid,gname,glv,ghp,ggj,gfy,gbj,gxx,gexp,gyid,gmaxhp) 
                     values('$player->nowmid',
                     '$guaiwu->gname',
@@ -145,39 +145,39 @@ $cxallguaiwu = $cxjg->fetchAll(PDO::FETCH_ASSOC);
 
 
 $gwhtml = '';
-for ($i = 0;$i<count($cxallguaiwu);$i++){
-    $gwcmd = $encode->encode("cmd=getginfo&gid=".$cxallguaiwu[$i]['id']."&gyid=".$cxallguaiwu[$i]['gyid']."&sid=$sid&nowmid=$player->nowmid");
-    $gwhtml .="<a href='?cmd=$gwcmd'>".$cxallguaiwu[$i]['gname']."</a> ";
+for ($i = 0; $i < count($cxallguaiwu); $i++) {
+    $gwcmd = $encode->encode("cmd=getginfo&gid=" . $cxallguaiwu[$i]['id'] . "&gyid=" . $cxallguaiwu[$i]['gyid'] . "&sid=$sid&nowmid=$player->nowmid");
+    $gwhtml .= "<a href='?cmd=$gwcmd'>" . $cxallguaiwu[$i]['gname'] . "</a> ";
 }
 
 $sql = "select * from game1 where nowmid='$player->nowmid' AND sfzx = 1";//获取当前地图玩家
 $cxjg = $dblj->query($sql);
 $playerhtml = '';
-if ($cxjg){
+if ($cxjg) {
     $cxallplayer = $cxjg->fetchAll(PDO::FETCH_ASSOC);
     $nowdate = date('Y-m-d H:i:s');
-    for ($i = 0;$i<count($cxallplayer);$i++){
-        if ($cxallplayer[$i]['uname']!=""){
+    for ($i = 0; $i < count($cxallplayer); $i++) {
+        if ($cxallplayer[$i]['uname'] != "") {
             $cxtime = $cxallplayer[$i]['endtime'];
             $cxuid = $cxallplayer[$i]['uid'];
             $cxsid = $cxallplayer[$i]['sid'];
             $cxuname = $cxallplayer[$i]['uname'];
             $cxuname = $cxallplayer[$i]['uname'];
-            $second=floor((strtotime($nowdate)-strtotime($cxtime))%86400);//获取刷新间隔
-            if ($second > 300){
+            $second = floor((strtotime($nowdate) - strtotime($cxtime)) % 86400);//获取刷新间隔
+            if ($second > 300) {
                 $sql = "update game1 set sfzx=0 WHERE sid='$cxsid'";
                 $dblj->exec($sql);
-            }else{
-                $clubp = \player\getclubplayer_once($cxsid,$dblj);
-                if ($clubp){
-                    $club = \player\getclub($clubp->clubid,$dblj);
-                    $club->clubname ="[$club->clubname]";
-                }else{
+            } else {
+                $clubp = \player\getclubplayer_once($cxsid, $dblj);
+                if ($clubp) {
+                    $club = \player\getclub($clubp->clubid, $dblj);
+                    $club->clubname = "[$club->clubname]";
+                } else {
                     $club = new \player\club();
-                    $club->clubname ="";
+                    $club->clubname = "";
                 }
                 $playercmd = $encode->encode("cmd=getplayerinfo&uid=$cxuid&sid=$sid");
-                $playerhtml .="<a href='?cmd=$playercmd'>{$club->clubname}$cxuname</a>";
+                $playerhtml .= "<a href='?cmd=$playercmd'>{$club->clubname}$cxuname</a>";
             }
 
         }
@@ -185,16 +185,16 @@ if ($cxjg){
 }
 
 
-$npchtml='';
-$task = \player\getplayerrenwu($sid,$dblj);//玩家任务数组
+$npchtml = '';
+$task = \player\getplayerrenwu($sid, $dblj);//玩家任务数组
 
 $sql = "select * from playerrenwu WHERE sid='$sid' AND rwlx = 2";
 $cxjg = $dblj->query($sql);
 $mrrw = $cxjg->fetchAll(PDO::FETCH_ASSOC);
-for ($n=0;$n<count($mrrw);$n++){
-    if ($mrrw[$n]['data']!=date('d') ){
+for ($n = 0; $n < count($mrrw); $n++) {
+    if ($mrrw[$n]['data'] != date('d')) {
         $rwid = $mrrw[$n]['rwid'];
-        $sql="delete from playerrenwu WHERE rwid=$rwid AND sid='$sid'";
+        $sql = "delete from playerrenwu WHERE rwid=$rwid AND sid='$sid'";
         $dblj->exec($sql);
     }
 }
@@ -204,72 +204,72 @@ $cxjg = $dblj->query($sql);
 $wtjrw = $cxjg->fetchAll(PDO::FETCH_ASSOC);
 $taskcount = count($wtjrw);
 
-if ($clmid->mnpc !=""){
+if ($clmid->mnpc != "") {
     $sql = "select * from npc where id in ($clmid->mnpc)";//获取npc
     $cxjg = $dblj->query($sql);
     $cxnpcall = $cxjg->fetchAll(PDO::FETCH_ASSOC);
 
-    for ($i=0;$i < count($cxnpcall);$i++){
+    for ($i = 0; $i < count($cxnpcall); $i++) {
         $nname = $cxnpcall[$i]['nname'];
         $nid = $cxnpcall[$i]['id'];
         $taskid = $cxnpcall[$i]['taskid'];
-        $taskarr = explode(',',$taskid);
+        $taskarr = explode(',', $taskid);
         $yrw = false;
-        if ($taskid!=''){
-            for ($l=0;$l<count($taskarr);$l++){
-                $nowrw = \player\gettask($taskarr[$l],$dblj);
-                $rwret = \player\getplayerrenwuonce($sid,$taskarr[$l],$dblj);
+        if ($taskid != '') {
+            for ($l = 0; $l < count($taskarr); $l++) {
+                $nowrw = \player\gettask($taskarr[$l], $dblj);
+                $rwret = \player\getplayerrenwuonce($sid, $taskarr[$l], $dblj);
                 $lastrwid = $nowrw->lastrwid;
 
-                if ($nowrw->rwlx == 1 || $nowrw->rwlx == 2){
-                    if (!$rwret){
-                        if ($nowrw->rwzl != 3){
-                            $npchtml .='<img src="images/wen.gif" />';
-                        }elseif($nowrw->rwyq == $nid){
-                            $npchtml .='<img src="images/wen.gif" />';
-                        }else{
+                if ($nowrw->rwlx == 1 || $nowrw->rwlx == 2) {
+                    if (!$rwret) {
+                        if ($nowrw->rwzl != 3) {
+                            $npchtml .= '<img src="images/wen.gif" />';
+                        } elseif ($nowrw->rwyq == $nid) {
+                            $npchtml .= '<img src="images/wen.gif" />';
+                        } else {
                             continue;
                         }
-                    }elseif ($rwret->rwzt==2){
-                        if ($nowrw->rwzl != 3){
-                            $npchtml .='<img src="images/tan.gif" />';
-                        }elseif ($nowrw->rwcount == $nid){
-                            $npchtml .='<img src="images/tan.gif" />';
-                        }else{
+                    } elseif ($rwret->rwzt == 2) {
+                        if ($nowrw->rwzl != 3) {
+                            $npchtml .= '<img src="images/tan.gif" />';
+                        } elseif ($nowrw->rwcount == $nid) {
+                            $npchtml .= '<img src="images/tan.gif" />';
+                        } else {
                             continue;
                         }
 
                     }
                 }
-                if ($nowrw->rwlx == 3){
-                    if ($rwret){
-                        if ($rwret->rwzt==2){
-                            if ($nowrw->rwzl != 3){
-                                $npchtml .='<img src="images/tan.gif" />';
-                            }elseif ($nowrw->rwcount == $nid){
-                                $npchtml .='<img src="images/tan.gif" />';
-                            }else{
+                if ($nowrw->rwlx == 3) {
+                    if ($rwret) {
+                        if ($rwret->rwzt == 2) {
+                            if ($nowrw->rwzl != 3) {
+                                $npchtml .= '<img src="images/tan.gif" />';
+                            } elseif ($nowrw->rwcount == $nid) {
+                                $npchtml .= '<img src="images/tan.gif" />';
+                            } else {
                                 continue;
                             }
                         }
-                    }else{
-                        if ($lastrwid<=0 ){
-                            if ($nowrw->rwzl != 3){
-                                $npchtml .='<img src="images/wen.gif" />';
-                            }elseif ($nowrw->rwyq == $nid){
-                                $npchtml .='<img src="images/wen.gif" />';
-                            }else{
+                    } else {
+                        if ($lastrwid <= 0) {
+                            if ($nowrw->rwzl != 3) {
+                                $npchtml .= '<img src="images/wen.gif" />';
+                            } elseif ($nowrw->rwyq == $nid) {
+                                $npchtml .= '<img src="images/wen.gif" />';
+                            } else {
                                 continue;
                             }
-                        }else{
-                            $rwret = \player\getplayerrenwuonce($sid,$lastrwid,$dblj);
-                            if ($rwret){
-                                if ($rwret->rwzt==3){
-                                    if ($nowrw->rwzl != 3){
-                                        $npchtml .='<img src="images/wen.gif" />';
-                                    }elseif ($nowrw->rwyq == $nid){
-                                        $npchtml .='<img src="images/wen.gif" />';
-                                    }else{
+                        } else {
+                            $rwret = \player\getplayerrenwuonce($sid, $lastrwid, $dblj);
+                            if ($rwret) {
+                                if ($rwret->rwzt == 3) {
+                                    if ($nowrw->rwzl != 3) {
+                                        $npchtml .= '<img src="images/wen.gif" />';
+                                    } elseif ($nowrw->rwyq == $nid) {
+                                        $npchtml .= '<img src="images/wen.gif" />';
+                                    } else {
                                         continue;
                                     }
                                 }
@@ -280,7 +280,7 @@ if ($clmid->mnpc !=""){
             }
         }
         $npccmd = $encode->encode("cmd=npc&nid=$nid&sid=$player->sid");
-        $npchtml.=<<<HTML
+        $npchtml .= <<<HTML
         <a href="?cmd=$npccmd">$nname</a><br/>
 HTML;
     }
@@ -289,18 +289,18 @@ HTML;
 
 $sql = 'SELECT * FROM ggliaotian ORDER BY id DESC LIMIT 2';//聊天列表获取
 $ltcxjg = $dblj->query($sql);
-$lthtml='';
-if ($ltcxjg){
+$lthtml = '';
+if ($ltcxjg) {
     $ret = $ltcxjg->fetchAll(PDO::FETCH_ASSOC);
-    for ($i=0;$i < count($ret);$i++){
-        $uname = $ret[count($ret) - $i-1]['name'];
-        $umsg = $ret[count($ret) - $i-1]['msg'];
-        $uid = $ret[count($ret) - $i-1]['uid'];
+    for ($i = 0; $i < count($ret); $i++) {
+        $uname = $ret[count($ret) - $i - 1]['name'];
+        $umsg = $ret[count($ret) - $i - 1]['msg'];
+        $uid = $ret[count($ret) - $i - 1]['uid'];
         $ucmd = $encode->encode("cmd=getplayerinfo&uid=$uid&sid=$player->sid");
-        if ($uid){
-            $lthtml .="[Công cộng]<a href='?cmd=$ucmd''>$uname</a>:<span class='xinxi'>$umsg</span> <br/>";
-        }else{
-            $lthtml .="[Công cộng]<div class='hpys' style='display: inline'>$uname:</div><span class='xinxi'>$umsg</span><br/>";
+        if ($uid) {
+            $lthtml .= "[Công cộng]<a href='?cmd=$ucmd''>$uname</a>:<span class='xinxi'>$umsg</span> <br/>";
+        } else {
+            $lthtml .= "[Công cộng]<div class='hpys' style='display: inline'>$uname:</div><span class='xinxi'>$umsg</span><br/>";
         }
 
     }

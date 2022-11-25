@@ -1,5 +1,5 @@
 <?php
-//error_reporting(0);
+error_reporting(0);
 require_once 'class/player.php';
 require_once 'class/encode.php';
 include 'pdo.php';
@@ -17,7 +17,7 @@ $npc = new \player\npc();
 
 $ym = 'game/nowmid.php';
 $Dcmd = $_SERVER['QUERY_STRING'];
-$pvpts ='';
+$pvpts = '';
 $tpts = '';
 session_start();
 //$allow_sep = "220";
@@ -45,33 +45,34 @@ session_start();
 //}
 
 parse_str($Dcmd);
-if (isset($cmd)){
+//var_dump($Dcmd);
+if (isset($cmd)) {
     if ($cmd == 'cjplayer') {
         $Dcmd = $encode->encode($Dcmd);
         header("refresh:1;url=?cmd=$Dcmd");
         exit();
     }
-    if ($cmd == 'djinfo'){
+    if ($cmd == 'djinfo') {
         $Dcmd = $encode->encode($Dcmd);
         header("refresh:1;url=?cmd=$Dcmd");
         exit();
     }
-    if ($cmd == 'zbinfo'){
+    if ($cmd == 'zbinfo') {
         $Dcmd = $encode->encode($Dcmd);
         header("refresh:1;url=?cmd=$Dcmd");
         exit();
     }
-    if ($cmd == 'npc'){
+    if ($cmd == 'npc') {
         $Dcmd = $encode->encode($Dcmd);
         header("refresh:1;url=?cmd=$Dcmd");
         exit();
     }
-    if ($cmd == 'duihuan'){
+    if ($cmd == 'duihuan') {
         $Dcmd = $encode->encode($Dcmd);
         header("refresh:1;url=?cmd=$Dcmd");
         exit();
     }
-    if ($cmd == 'sendliaotian'){
+    if ($cmd == 'sendliaotian') {
         $Dcmd = $encode->encode($Dcmd);
         //$ym = 'game/liaotian.php';
         //header("refresh:1;url=?cmd=$Dcmd");
@@ -80,12 +81,12 @@ if (isset($cmd)){
     $Dcmd = $encode->decode($cmd);
 //    var_dump($Dcmd);
     parse_str($Dcmd);
-    switch ($cmd){
+    switch ($cmd) {
         case 'cj':
             $ym = 'game/cj.php';
             break;
         case 'login';
-            $player = \player\getplayer($sid,$dblj);
+            $player = \player\getplayer($sid, $dblj);
             $gonowmid = $encode->encode("cmd=gomid&newmid=$player->nowmid&sid=$sid");
             $nowdate = date('Y-m-d H:i:s');
             $sql = "update game1 set endtime='$nowdate',sfzx=1 WHERE sid='$sid'";
@@ -97,52 +98,51 @@ if (isset($cmd)){
             $ym = 'game/zhuangtai.php';
             break;
         case 'cjplayer':
-            if (isset($token) && isset($username) && isset($sex)){
+            if (isset($token) && isset($username) && isset($sex)) {
                 $username = htmlspecialchars($username);
-                $sql = "SELECT * FROM game1 where uname = '".$username."'";//昵称查询
+                $sql = "SELECT * FROM game1 where uname = '" . $username . "'";//昵称查询
                 $ltcxjg = $dblj->query($sql);
                 if ($ltcxjg) {
                     $ret = $ltcxjg->fetchAll(PDO::FETCH_ASSOC);
-                    if(count($ret)>0){
+                    if (count($ret) > 0) {
                         echo "Biệt hiệu này đã được sử dụng!";
                         $ym = 'game/cj.php';
                         break;
                     }
                 }
 
-                if (strlen($username) < 6 || strlen($username) > 12){
+                if (strlen($username) < 6 || strlen($username) > 12) {
                     echo "Tên người dùng không được quá ngắn hoặc quá dài";
                     $ym = 'game/cj.php';
                     break;
                 }
 
-                $sid = md5($username.$token.'229');
+                $sid = md5($username . $token . '229');
 
-                $sql="select * from game1 where token='$token'";
+                $sql = "select * from game1 where token='$token'";
                 $cxjg = $dblj->query($sql);
 
-                $cxjg->bindColumn('sid',$player->sid);
+                $cxjg->bindColumn('sid', $player->sid);
                 $ret = $cxjg->fetch(PDO::FETCH_ASSOC);
                 $nowdate = date('Y-m-d H:i:s');
 
                 if ($player->sid == '') {
                     $gameconfig = \player\getgameconfig($dblj);
-                    var_dump($gameconfig);
                     $firstmid = $gameconfig->firstmid;
 
                     $query = "insert into game1(token, sid, uname, ulv, uyxb, uczb, uexp, uhp, umaxhp, ugj, ufy, uwx, usex, vip, nowmid, endtime, sfzx) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                     $stmt = $dblj->prepare($query);
-                    $test = $stmt->execute([$token, $sid, $username,'1', '2000', '100', '0', '35', '35', '12', '5', '0', $sex, '0', $firstmid, $nowdate, 1]);
+                    $stmt->execute([$token, $sid, $username, '1', '2000', '100', '0', '35', '35', '12', '5', '0', $sex, '0', $firstmid, $nowdate, 1]) or die(print_r($dblj->errorInfo()));;
 
                     $gonowmid = $encode->encode("cmd=gomid&newmid=$gameconfig->firstmid&sid=$sid");
 
                     echo '<meta charset="utf-8" content="width=device-width,user-scalable=no" name="viewport">';
-                    echo $username." Hoan nghênh đi vào Tầm Tiên kỷ";
+                    echo $username . " Hoan nghênh đi vào Tầm Tiên kỷ";
 
                     $sql2 = "insert into ggliaotian(name,msg,uid) values(?,?,?)";
                     $stmt2 = $dblj->prepare($sql2);
 
-                    $stmt2->execute(array('Thông báo hệ thống'," vạn người không được một người chơi {$username} Bước lên Tiên đồ",'0'));
+                    $stmt2->execute(array('Thông báo hệ thống', " vạn người không được một người chơi {$username} Bước lên Tiên đồ", '0'));
                     header("refresh:1;url=?cmd=$gonowmid");
                 }
                 exit();
@@ -167,21 +167,21 @@ if (isset($cmd)){
             $ym = 'game/boss.php';
             break;
         case 'sendliaotian':
-            if (isset($ltlx) && isset($ltmsg) && mb_strlen($ltmsg)>=2){
-                switch ($ltlx){
+            if (isset($ltlx) && isset($ltmsg) && mb_strlen($ltmsg) >= 2) {
+                switch ($ltlx) {
                     case 'all':
-                        $player = player\getplayer($sid,$dblj);
-                        if ($player->uname!=''){
+                        $player = player\getplayer($sid, $dblj);
+                        if ($player->uname != '') {
                             $ltmsg = htmlspecialchars($ltmsg);
                             $sql = "insert into ggliaotian(name,msg,uid) values(?,?,?)";
                             $stmt = $dblj->prepare($sql);
-                            $exeres = $stmt->execute(array($player->uname,$ltmsg,$player->uid));
+                            $exeres = $stmt->execute(array($player->uname, $ltmsg, $player->uid));
                         }
                         $ym = 'game/liaotian.php';
                         break;
                     case "im":
-                        $player = player\getplayer($sid,$dblj);
-                        if ($player->uname!=''){
+                        $player = player\getplayer($sid, $dblj);
+                        if ($player->uname != '') {
                             $ltmsg = htmlspecialchars($ltmsg);
                             $sql = "insert into imliaotian(name,msg,uid,imuid) values('$player->uname','$ltmsg',$player->uid,{$imuid})";
 
@@ -190,19 +190,18 @@ if (isset($cmd)){
                         $ym = 'game/liaotian.php';
                         break;
                 }
-            }
-            elseif (isset($ltlx) && isset($ltmsg) && mb_strlen($ltmsg)<2){
-                echo ('Gửi thất bại! Vui lòng đảm bảo rằng nội dung của cuộc trò chuyện có nhiều hơn 2 chữ số');
+            } elseif (isset($ltlx) && isset($ltmsg) && mb_strlen($ltmsg) < 2) {
+                echo('Gửi thất bại! Vui lòng đảm bảo rằng nội dung của cuộc trò chuyện có nhiều hơn 2 chữ số');
             }
             break;
         case 'liaotian':
-            $ym ='game/liaotian.php';
+            $ym = 'game/liaotian.php';
             break;
         case 'getplayerinfo':
-            $ym ='game/otherzhuangtai.php';
+            $ym = 'game/otherzhuangtai.php';
             break;
         case 'getbuginfo':
-            $ym ='game/buginfo.php';
+            $ym = 'game/buginfo.php';
             break;
         case 'zbinfo':
             $ym = 'game/zbinfo.php';
@@ -304,52 +303,52 @@ if (isset($cmd)){
             $ym = "game/im.php";
             break;
     }
-    if (!isset($sid) || $sid=='' ){
+    if (!isset($sid) || $sid == '') {
 
-        if ($cmd!='cj' && $cmd!=='cjplayer'){
+        if ($cmd != 'cj' && $cmd !== 'cjplayer') {
             header("refresh:1;url=index.php");
             exit();
         }
     } else {
-        if ($cmd != 'pve' && $cmd!='pvegj'){
+        if ($cmd != 'pve' && $cmd != 'pvegj') {
             $sql = "delete from midguaiwu where sid='$sid'";//删除地图该玩家已经被攻击怪物
             $dblj->exec($sql);
         }
 
-        $player = \player\getplayer($sid,$dblj);
-        if ($player->ispvp!=0){
-            $pvper = \player\getplayer1($player->ispvp,$dblj);
+        $player = \player\getplayer($sid, $dblj);
+        if ($player->ispvp != 0) {
+            $pvper = \player\getplayer1($player->ispvp, $dblj);
             $pvpcmd = $encode->encode("cmd=pvp&uid=$pvper->uid&sid=$sid");
             $pvpcmd = "<a href='?cmd=$pvpcmd'> đánh lại </a>";
             $pvpts = "$pvper->uname Đang tấn công bạn: $pvpcmd<br/>";
         }
 
-        if (\player\istupo($sid,$dblj) !=0 && $player->uexp >= $player->umaxexp){
+        if (\player\istupo($sid, $dblj) != 0 && $player->uexp >= $player->umaxexp) {
             $tupocmd = $encode->encode("cmd=tupo&sid=$sid");
             $tupocmd = "<a href='?cmd=$tupocmd'>Đột phá</a>";
-            $tpts =  "Bạn cần đột phá, nếu không sẽ không thể tích lũy được kinh nghiệm:$tupocmd<br/>";
+            $tpts = "Bạn cần đột phá, nếu không sẽ không thể tích lũy được kinh nghiệm:$tupocmd<br/>";
         }
 
         $nowdate = date('Y-m-d H:i:s');
-        $second=floor((strtotime($nowdate)-strtotime($player->endtime))%86400);//获取刷新间隔
+        $second = floor((strtotime($nowdate) - strtotime($player->endtime)) % 86400);//获取刷新间隔
 
-        if ($second>=900){
+        if ($second >= 900) {
             echo '<meta charset="utf-8" content="width=device-width,user-scalable=no" name="viewport">';
-            echo $player->uname."Thời gian ngoại tuyến quá lâu, vui lòng đăng nhập lại-";
+            echo $player->uname . "Thời gian ngoại tuyến quá lâu, vui lòng đăng nhập lại-";
             header("refresh:1;url=index.php");
             exit();
-        }else{
+        } else {
             $sql = "update game1 set endtime='$nowdate',sfzx=1 WHERE sid='$sid'";
             $dblj->exec($sql);
         }
     }
-}else{
+} else {
     header("refresh:1;url=index.php");
     exit();
 }
 ?>
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" content="width=device-width,user-scalable=no" name="viewport">
@@ -359,34 +358,34 @@ if (isset($cmd)){
 </head>
 <body>
 <div class="main">
-<?php
-
-    if (!$ym==''){
+    <?php
+    if (!$ym == '') {
         echo $tpts;
-        if ($ym!="game/pvp.php"){
+        if ($ym != "game/pvp.php") {
             echo $pvpts;
         }
 
         include "$ym";
-    }?>
+    } ?>
 </div>
 </body>
 <div class="footer">
-<footer>
-    <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
-	<script>
-	function changetime(){
-	var ary = Array("Chủ Nhật","Thứ Hai","Thứ Ba","Thứ Tư","Thứ Năm","Thứ Sáu","Thứ bảy");
-	var Timehtml = document.getElementById('CurrentTime');
-	var date = new Date();
-	Timehtml.innerHTML = ''+date.toLocaleString()+' '+ary[date.getDay()];
-	}
-	window.onload = function(){
-	changetime();
-	setInterval(changetime,1000);
-	}
-	</script>
-	<div id="CurrentTime"><?php echo date('Y-m-d H:i:s') ?></div>
-</footer><!-------中-国-源-码-网-w-w-w.-z-g-y-m-w-.-c-o-m---------->
+    <footer>
+        <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+        <script>
+            function changetime() {
+                var ary = Array("Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ bảy");
+                var Timehtml = document.getElementById('CurrentTime');
+                var date = new Date();
+                Timehtml.innerHTML = '' + date.toLocaleString() + ' ' + ary[date.getDay()];
+            }
+
+            window.onload = function () {
+                changetime();
+                setInterval(changetime, 1000);
+            }
+        </script>
+        <div id="CurrentTime"><?php echo date('Y-m-d H:i:s') ?></div>
+    </footer><!-------中-国-源-码-网-w-w-w.-z-g-y-m-w-.-c-o-m---------->
 </div>
 </html>

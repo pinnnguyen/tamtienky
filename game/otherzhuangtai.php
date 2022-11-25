@@ -1,34 +1,34 @@
 <?php
-$player = player\getplayer($sid,$dblj);
-$player1 = player\getplayer1($uid,$dblj);
-$immenu='';
+$player = player\getplayer($sid, $dblj);
+$player1 = player\getplayer1($uid, $dblj);
+$immenu = '';
 
 $gonowmid = $encode->encode("cmd=gomid&newmid=$player->nowmid&sid=$sid");
 $pkcmd = $encode->encode("cmd=pvp&uid=$uid&sid=$sid");
-$clubplayer = \player\getclubplayer_once($player1->sid,$dblj);
-if (isset($canshu)){
-    if ($canshu == "addim"){
-        \player\addim($uid,$sid,$dblj);
+$clubplayer = \player\getclubplayer_once($player1->sid, $dblj);
+if (isset($canshu)) {
+    if ($canshu == "addim") {
+        \player\addim($uid, $sid, $dblj);
     }
 }
 
-if ($clubplayer){
-    $club = \player\getclub($clubplayer->clubid,$dblj);
+if ($clubplayer) {
+    $club = \player\getclub($clubplayer->clubid, $dblj);
     $clubcmd = $encode->encode("cmd=club&clubid=$club->clubid&sid=$sid");
-    $clubname ="<a href='?cmd=$clubcmd'>$club->clubname</a>";
-}else{
+    $clubname = "<a href='?cmd=$clubcmd'>$club->clubname</a>";
+} else {
     $clubname = "Không môn không phái";
 }
-if ($player->sid != $player1->sid){
+if ($player->sid != $player1->sid) {
     $immenu = "<br/><a href='?cmd=$pkcmd'>Tấn công</a><br/>";
-    $ret = \player\isim($uid,$sid,$dblj);
-    if (!$ret){
-        $addim=  $encode->encode("cmd=getplayerinfo&canshu=addim&uid=$uid&sid=$sid");
-        $immenu.="<a href='?cmd=$addim'>Thêm bạn</a><br/>";
-    }else{
-        $chat=  $encode->encode("cmd=getplayerinfo&canshu=addim&uid=$uid&sid=$sid");
-        $deim=  $encode->encode("cmd=im&canshu=deim&uid=$uid&sid=$sid");
-        $immenu.=<<<HTML
+    $ret = \player\isim($uid, $sid, $dblj);
+    if (!$ret) {
+        $addim = $encode->encode("cmd=getplayerinfo&canshu=addim&uid=$uid&sid=$sid");
+        $immenu .= "<a href='?cmd=$addim'>Thêm bạn</a><br/>";
+    } else {
+        $chat = $encode->encode("cmd=getplayerinfo&canshu=addim&uid=$uid&sid=$sid");
+        $deim = $encode->encode("cmd=im&canshu=deim&uid=$uid&sid=$sid");
+        $immenu .= <<<HTML
         </a><a href='?cmd=$deim'>Xóa bạn bè</a>
 <form id="sendmsg">
 <input type="text" name="ltmsg" id="ltmsg">
@@ -69,57 +69,57 @@ $tool4 = '';
 $tool5 = '';
 $tool6 = '';
 
-if ($player1->tool1!=0){
-    $zhuangbei = player\getzb($player1->tool1,$dblj);
+if ($player1->tool1 != 0) {
+    $zhuangbei = player\getzb($player1->tool1, $dblj);
     $qhs = '';
-    if ($zhuangbei->qianghua>0){
-        $qhs = '+'.$zhuangbei->qianghua;
+    if ($zhuangbei->qianghua > 0) {
+        $qhs = '+' . $zhuangbei->qianghua;
     }
     $zbcmd = $encode->encode("cmd=chakanzb&zbnowid=$player1->tool1&uid=$player1->uid&sid=$sid");
     $tool1 = "Vũ khí:<a href='?cmd=$zbcmd'>{$zhuangbei->zbname}{$qhs}</a><br/>";
 
 }
-if ($player1->tool2!=0){
-    $zhuangbei = player\getzb($player1->tool2,$dblj);
+if ($player1->tool2 != 0) {
+    $zhuangbei = player\getzb($player1->tool2, $dblj);
     $qhs = '';
-    if ($zhuangbei->qianghua>0){
-        $qhs = '+'.$zhuangbei->qianghua;
+    if ($zhuangbei->qianghua > 0) {
+        $qhs = '+' . $zhuangbei->qianghua;
     }
     $zbcmd = $encode->encode("cmd=chakanzb&zbnowid=$player1->tool2&uid=$player1->uid&sid=$sid");
     $tool2 = "Trang sức:<a href='?cmd=$zbcmd'>{$zhuangbei->zbname}{$qhs}</a><br/>";
 }
-if ($player1->tool3!=0){
-    $zhuangbei = player\getzb($player1->tool3,$dblj);
+if ($player1->tool3 != 0) {
+    $zhuangbei = player\getzb($player1->tool3, $dblj);
     $qhs = '';
-    if ($zhuangbei->qianghua>0){
-        $qhs = '+'.$zhuangbei->qianghua;
+    if ($zhuangbei->qianghua > 0) {
+        $qhs = '+' . $zhuangbei->qianghua;
     }
     $zbcmd = $encode->encode("cmd=chakanzb&zbnowid=$player1->tool3&uid=$player1->uid&sid=$sid");
     $tool3 = "Quần áo:<a href='?cmd=$zbcmd'>{$zhuangbei->zbname}{$qhs}</a><br/>";
 }
-if ($player1->tool4!=0){
-    $zhuangbei = player\getzb($player1->tool4,$dblj);
+if ($player1->tool4 != 0) {
+    $zhuangbei = player\getzb($player1->tool4, $dblj);
     $qhs = '';
-    if ($zhuangbei->qianghua>0){
-        $qhs = '+'.$zhuangbei->qianghua;
+    if ($zhuangbei->qianghua > 0) {
+        $qhs = '+' . $zhuangbei->qianghua;
     }
     $zbcmd = $encode->encode("cmd=chakanzb&zbnowid=$player1->tool4&uid=$player1->uid&sid=$sid");
     $tool4 = "Đai lưng:<a href='?cmd=$zbcmd'>{$zhuangbei->zbname}{$qhs}</a><br/>";
 }
-if ($player1->tool5!=0){
-    $zhuangbei = player\getzb($player1->tool5,$dblj);
+if ($player1->tool5 != 0) {
+    $zhuangbei = player\getzb($player1->tool5, $dblj);
     $qhs = '';
-    if ($zhuangbei->qianghua>0){
-        $qhs = '+'.$zhuangbei->qianghua;
+    if ($zhuangbei->qianghua > 0) {
+        $qhs = '+' . $zhuangbei->qianghua;
     }
     $zbcmd = $encode->encode("cmd=chakanzb&zbnowid=$player1->tool5&uid=$player1->uid&sid=$sid");
     $tool5 = "Trang sức:<a href='?cmd=$zbcmd'>{$zhuangbei->zbname}{$qhs}</a><br/>";;
 }
-if ($player1->tool6!=0){
-    $zhuangbei = player\getzb($player1->tool6,$dblj);
+if ($player1->tool6 != 0) {
+    $zhuangbei = player\getzb($player1->tool6, $dblj);
     $qhs = '';
-    if ($zhuangbei->qianghua>0){
-        $qhs = '+'.$zhuangbei->qianghua;
+    if ($zhuangbei->qianghua > 0) {
+        $qhs = '+' . $zhuangbei->qianghua;
     }
     $zbcmd = $encode->encode("cmd=chakanzb&zbnowid=$player1->tool6&uid=$player1->uid&sid=$sid");
     $tool6 = "Giày:<a href='?cmd=$zbcmd'>{$zhuangbei->zbname}{$qhs}</a><br/>";;
@@ -156,4 +156,4 @@ echo $html;
  * User: Administrator
  * Date: 2016/6/14
  * Time: 18:10
- */?>
+ */ ?>

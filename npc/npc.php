@@ -116,9 +116,9 @@ if ($npc->muban != ''){
 }
 
 $npchtml =<<<HTML
-        Nick name:$npc->nname<br/>
-        Giới tính:$npc->nsex<br/>
-        Tin tức:$npc->ninfo<br/>
+        Npc: $npc->nname<br/>
+        Giới tính: $npc->nsex<br/>
+        Tin tức: $npc->ninfo<br/>
         $taskhtml
         $gnhtml<br/>
         <a href="?cmd=$gonowmid">Trở về</a>

@@ -42,7 +42,7 @@ if (isset($_POST['submit']) && $_POST['submit']) {
 </head>
 <body>
 <div class="main">
-    <img src="images/11.jpg" width="300" height="200">
+    <img src="images/11.jpg" width="300" height="200" style="width: 100%">
     <div id="mainfont">
         <p>Thiên hạ phong vân xuất ngã bối, nhất nhập giang hồ tuế nguyệt thôi</p>
         <p>Hoàng đồ phách nghiệp đàm tiếu trung, bất thắng nhân sinh nhất tràng túy</p>

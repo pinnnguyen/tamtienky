@@ -1,11 +1,11 @@
 <?php
 
-$player = player\getplayer($sid, $dblj);//获取玩家信息
+$player = player\getplayer($sid, $dblj);//Nhận thông tin người chơi
 $lastmid = $player->nowmid;
 
 if (isset($newmid)) {
     if ($player->nowmid != $newmid) {
-        $clmid = player\getmid($newmid, $dblj); //获取即将走的地图信息
+        $clmid = player\getmid($newmid, $dblj); //Nhận thông tin bản đồ sắp tới
         $ucmd = $encode->encode("cmd=getplayerinfo&uid=$uid&sid=$player->sid");
         //$playerinfo .="<a href='?cmd=$ucmd'>$player->uname</a>"." Hướng $clmid->mname đi đến";
         $playerinfo = $player->uname . " Hướng $clmid->mname đi đến";//当前位置更新最后一条行走记录
@@ -28,13 +28,14 @@ if (isset($newmid)) {
 
 }
 
-if ($player->nowmid == '' || $player->nowmid == 0) {//判断角色是否出现在非法地图
+if ($player->nowmid == '' || $player->nowmid == 0) {//Xác định xem một ký tự có xuất hiện trên bản đồ bất hợp pháp không
     $gameconfig = \player\getgameconfig($dblj);
     $sql = "update game1 set nowmid='$gameconfig->firstmid' WHERE sid='$sid'";
     $dblj->exec($sql);
     $player->nowmid = $gameconfig->firstmid;
 }
-$clmid = player\getmid($player->nowmid, $dblj); //获取地图信息
+
+$clmid = player\getmid($player->nowmid, $dblj); //Nhận thông tin bản đồ
 if ($clmid->playerinfo != '') {
     $clmid->playerinfo .= '<br/>';
 }

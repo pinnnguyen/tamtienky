@@ -352,11 +352,32 @@ if (isset($cmd)) {
 <html lang="en">
 <head>
     <meta charset="utf-8" content="width=device-width,user-scalable=no" name="viewport">
-    <title>寻仙纪</title>
+    <title>Đấu phá thương khung</title>
     <link rel="stylesheet" href="css/gamecss.css">
     <link rel="icon" href="images/logo.ico" type="image/x-icon">
+
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
+<!--<div class="footer">-->
+<!--    <header>-->
+<!--        <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>-->
+<!--        <script>-->
+<!--            function changetime() {-->
+<!--                var ary = Array("Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ bảy");-->
+<!--                var Timehtml = document.getElementById('CurrentTime');-->
+<!--                var date = new Date();-->
+<!--                Timehtml.innerHTML = '' + date.toLocaleString() + ' ' + ary[date.getDay()];-->
+<!--            }-->
+<!---->
+<!--            window.onload = function () {-->
+<!--                changetime();-->
+<!--                setInterval(changetime, 1000);-->
+<!--            }-->
+<!--        </script>-->
+<!--        <div id="CurrentTime">--><?php //echo date('Y-m-d H:i:s') ?><!--</div>-->
+<!--    </header><!-------中-国-源-码-网-w-w-w.-z-g-y-m-w-.-c-o-m---------->
+<!--</div>-->
 <div class="main">
     <?php
     if (!$ym == '') {
@@ -369,23 +390,4 @@ if (isset($cmd)) {
     } ?>
 </div>
 </body>
-<div class="footer">
-    <footer>
-        <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
-        <script>
-            function changetime() {
-                var ary = Array("Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ bảy");
-                var Timehtml = document.getElementById('CurrentTime');
-                var date = new Date();
-                Timehtml.innerHTML = '' + date.toLocaleString() + ' ' + ary[date.getDay()];
-            }
-
-            window.onload = function () {
-                changetime();
-                setInterval(changetime, 1000);
-            }
-        </script>
-        <div id="CurrentTime"><?php echo date('Y-m-d H:i:s') ?></div>
-    </footer><!-------中-国-源-码-网-w-w-w.-z-g-y-m-w-.-c-o-m---------->
-</div>
 </html>

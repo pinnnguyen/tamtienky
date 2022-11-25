@@ -102,7 +102,6 @@ a:hover, a:active, a:focus {
 /*new样式*/
 /*footer样式*/
 .footer {
-    width: 400px;
     margin: 10px auto;
     background: #fff;
     padding: 20px;
@@ -112,7 +111,6 @@ a:hover, a:active, a:focus {
 
 /*main样式*/
 .main {
-    max-width: 400px;
     margin: 0 auto;
     background: #fff;
     padding: 20px;
@@ -145,13 +143,11 @@ a:hover, a:active, a:focus {
 
 /*注册登录样式*/
 .login {
-    width: 400px;
     margin: 10px auto;
     text-align: center;
 }
 
 .gamesubmit {
-    width: 400px;
     margin: 10px auto;
     text-align: center;
     color: #0093E8;

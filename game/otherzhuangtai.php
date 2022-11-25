@@ -126,7 +126,7 @@ if ($player1->tool6 != 0) {
 }
 
 $html = <<<HTML
-==Tầm Tiên kỷ trạng thái==<br/>
+==Đấu phá thương khung trạng thái==<br/>
 Nickname:$player1->uname<br/>
 Môn phái:$clubname<br/>
 Cảnh giới:$player1->jingjie$player1->cengci<br/>

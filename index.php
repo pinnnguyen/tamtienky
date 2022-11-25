@@ -52,7 +52,7 @@ if (isset($_POST['submit']) && $_POST['submit']) {
 <html lang="en">
 <head>
     <meta charset="utf-8" content="width=device-width,user-scalable=no" name="viewport"/>
-    <title>Tầm Tiên kỷ</title>
+    <title>Đấu phá thương khung</title>
     <link rel="stylesheet" href="css/gamecss.css">
 </head>
 <body>

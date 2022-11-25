@@ -137,7 +137,7 @@ if (isset($cmd)) {
                     $gonowmid = $encode->encode("cmd=gomid&newmid=$gameconfig->firstmid&sid=$sid");
 
                     echo '<meta charset="utf-8" content="width=device-width,user-scalable=no" name="viewport">';
-                    echo $username . " Hoan nghênh đi vào Tầm Tiên kỷ";
+                    echo $username . " Hoan nghênh đi vào Đấu phá thương khung";
 
                     $sql2 = "insert into ggliaotian(name,msg,uid) values(?,?,?)";
                     $stmt2 = $dblj->prepare($sql2);

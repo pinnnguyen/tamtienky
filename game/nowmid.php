@@ -320,11 +320,11 @@ $msghtml = <<<HTML
 HTML;
 
 $nowhtml = <<<HTML
-Bản đồ hiện tại:$clmid->mname$pvphtml<a href="?cmd=$mytask">Nhiệm vụ($taskcount)</a><a href="?cmd=$gonowmid">Làm mới</a> <br/>
+Bản đồ hiện tại: $clmid->mname$pvphtml <a href="?cmd=$mytask">Nhiệm vụ($taskcount)</a><a href="?cmd=$gonowmid">Làm mới</a> <br/>
 $npchtml
 $bosshtml
-Ngươi thấy:$gwhtml<br/>
-Mời chọn giao lộ:<br/>
+Ngươi thấy: $gwhtml<br/>
+Mời chọn giao lộ: <br/>
 $lukouhtml
 $clmid->mname Người chơi: $playerhtml<br/>
 【<a href="?cmd=$mapcmd">K.tra bản đồ</a>】<br/>

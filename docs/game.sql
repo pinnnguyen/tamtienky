@@ -2823,15 +2823,15 @@ CREATE TABLE `playerrenwu` (
   `rwexp` varchar(255) NOT NULL,
   `rwyxb` varchar(255) NOT NULL,
   `sid` text NOT NULL,
-  `rwzt` int(11) NOT NULL,
-  `rwid` int(11) NOT NULL,
-  `rwyq` int(11) NOT NULL,
-  `rwcount` int(11) NOT NULL,
-  `rwnowcount` int(11) NOT NULL,
-  `rwlx` int(11) NOT NULL,
-  `rwyp` text NOT NULL,
-  `data` int(11) NOT NULL,
-  `rwjineng` varchar(255) NOT NULL
+  `rwzt` int(11) NULL DEFAULT '0',
+  `rwid` int(11) NULL DEFAULT '0',
+  `rwyq` int(11) NULL DEFAULT '0',
+  `rwcount` int(11) NULL DEFAULT '0',
+  `rwnowcount` int(11) NULL DEFAULT '0',
+  `rwlx` int(11) NULL DEFAULT '0',
+  `rwyp` text NULL,
+  `data` int(11) NULL DEFAULT '0',
+  `rwjineng` varchar(255) NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------

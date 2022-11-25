@@ -187,7 +187,7 @@ if ($cxjg) {
 
 
 $npchtml = '';
-$task = \player\getplayerrenwu($sid, $dblj);//玩家任务数组
+$task = \player\getplayerrenwu($sid, $dblj);//mảng nhiệm vụ của người chơi
 
 $sql = "select * from playerrenwu WHERE sid='$sid' AND rwlx = 2";
 $cxjg = $dblj->query($sql);
@@ -288,7 +288,7 @@ HTML;
 }
 
 
-$sql = 'SELECT * FROM ggliaotian ORDER BY id DESC LIMIT 2';//聊天列表获取
+$sql = 'SELECT * FROM ggliaotian ORDER BY id DESC LIMIT 2';//mua lại danh sách trò chuyện
 $ltcxjg = $dblj->query($sql);
 $lthtml = '';
 if ($ltcxjg) {

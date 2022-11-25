@@ -1,9 +1,9 @@
 <?php
-$task = \player\gettask($rwid,$dblj);
-$player = \player\getplayer($sid,$dblj);
-$ptask = \player\getplayerrenwuonce($sid,$rwid,$dblj);
-$rwdjarr = explode(',',$task->rwdj);
-$rwyparr = explode(',',$task->rwyp);
+$task = \player\gettask($rwid, $dblj);
+$player = \player\getplayer($sid, $dblj);
+$ptask = \player\getplayerrenwuonce($sid, $rwid, $dblj);
+$rwdjarr = explode(',', $task->rwdj);
+$rwyparr = explode(',', $task->rwyp);
 $rwjlhtml = 'Nhiệm vụ ban thưởng:<br/>';
 $jldjidarr = array();
 $jldjslarr = array();
@@ -16,106 +16,109 @@ $jieshourw = $encode->encode("cmd=task&nid=$nid&canshu=jieshou&rwid=$rwid&sid=$s
 $tijiaorw = $encode->encode("cmd=task&nid=$nid&canshu=tijiao&rwid=$rwid&sid=$sid");
 $rwhtml = '';
 $tishi = '';
-if ($ptask){
-    if ($ptask->rwzt == 3){
+if ($ptask) {
+    if ($ptask->rwzt == 3) {
         echo "<a href=\"?cmd=$gonowmid\">Trở về trò chơi</a>";
         exit();
     }
 }
 
-if ($task->rwdj!=''){
-    for ($i=0;$i<count($rwdjarr);$i++){
-        $djarr = explode('|',$rwdjarr[$i]);
+if ($task->rwdj != '') {
+    for ($i = 0; $i < count($rwdjarr); $i++) {
+        $djarr = explode('|', $rwdjarr[$i]);
         $djid = $djarr[0];
         $djcount = $djarr[1];
-        array_push($jldjidarr,$djid);
-        array_push($jldjslarr,$djcount);
-        $rwdj = \player\getdaoju($djid,$dblj);
+        array_push($jldjidarr, $djid);
+        array_push($jldjslarr, $djcount);
+        $rwdj = \player\getdaoju($djid, $dblj);
         $djinfo = $encode->encode("cmd=djinfo&djid=$rwdj->djid&sid=$sid");
-        $rwjlhtml .="<div class='djys'><a href='?cmd=$djinfo'>$rwdj->djname</a>x$djcount</div>";
+        $rwjlhtml .= "<div class='djys'><a href='?cmd=$djinfo'>$rwdj->djname</a>x$djcount</div>";
     }
 }
 
-if ($task->rwyp!=''){
-    for ($i=0;$i<count($rwyparr);$i++){
-        $yparr = explode('|',$rwyparr[$i]);
+if ($task->rwyp != '') {
+    for ($i = 0; $i < count($rwyparr); $i++) {
+        $yparr = explode('|', $rwyparr[$i]);
         $ypid = $yparr[0];
         $ypcount = $yparr[1];
-        array_push($jlypidarr,$ypid);
-        array_push($jlypslarr,$ypcount);
-        $rwyp = \player\getyaopinonce($ypid,$dblj);
+        array_push($jlypidarr, $ypid);
+        array_push($jlypslarr, $ypcount);
+        $rwyp = \player\getyaopinonce($ypid, $dblj);
         $ypcmd = $encode->encode("cmd=ypinfo&ypid=$ypid&sid=$sid");
         $rwjlhtml .= "<div class='ypys'><a href='?cmd=$ypcmd'>$rwyp->ypname</a>x$ypcount</div>";
     }
 }
 
-if ($task->rwzb!=''){
+if ($task->rwzb != '') {
     $sql = "select * from zhuangbei where zbid IN ($task->rwzb)";
     $cxjg = $dblj->query($sql);
     $ret = $cxjg->fetchAll(PDO::FETCH_ASSOC);
-    for ($i=0;$i<count($ret);$i++){
+    for ($i = 0; $i < count($ret); $i++) {
         $zbid = $ret[$i]['zbid'];
         $zbname = $ret[$i]['zbname'];
-        array_push($jlzbslarr,$zbid);
-        $zbkzb = \player\getzbkzb($zbid,$dblj);
+        array_push($jlzbslarr, $zbid);
+        $zbkzb = \player\getzbkzb($zbid, $dblj);
         $zbcmd = $encode->encode("cmd=zbinfo_sys&zbid=$zbkzb->zbid&sid=$sid");
-        $rwjlhtml.="<div class='zbys'><a href='?cmd=$zbcmd'>$zbname</a></div>";
+        $rwjlhtml .= "<div class='zbys'><a href='?cmd=$zbcmd'>$zbname</a></div>";
     }
 }
-if ($task->rwexp!=''){
-    $rwjlhtml.="Kinh nghiệm:$task->rwexp<br/>";
+if ($task->rwexp != '') {
+    $rwjlhtml .= "Kinh nghiệm:$task->rwexp<br/>";
 }
-if ($task->rwyxb!=''){
-    $rwjlhtml.="Linh thạch:$task->rwyxb<br/>";
+if ($task->rwyxb != '') {
+    $rwjlhtml .= "Linh thạch:$task->rwyxb<br/>";
 }
 
 
-if (isset($canshu)){
-    switch ($canshu){
+if (isset($canshu)) {
+    switch ($canshu) {
+        #Chấp nhận
         case 'jieshou':
-            if ($ptask){
+            if ($ptask) {
                 $tishi = 'Xin đừng nên lặp lại xác nhận nhiệm vụ';
                 break;
             }
             $day = 0;
-            if ($task->rwlx==2){
+            if ($task->rwlx == 2) {
                 $day = date('d');
             }
             $sql = "insert into playerrenwu(rwname,rwzl,rwdj,rwzb,rwexp,rwyxb,sid,rwzt,rwid,rwyq,rwcount,rwlx,`data`) VALUES ('$task->rwname','$task->rwzl','$task->rwdj','$task->rwzb','$task->rwexp','$task->rwyxb','$sid','1','$rwid','$task->rwyq','$task->rwcount','$task->rwlx',$day)";
             $ret = $dblj->exec($sql);
             $tishi = 'Tiếp nhận thành công';
-            if ($task->rwzl==1){
-                $daoju = \player\getplayerdaoju($sid,$task->rwyq,$dblj);
-                if ($daoju){
-                    if ($daoju->djsum>0){
-                        \player\changerwyq($rwid,$daoju->djsum,$sid,$dblj);
+            if ($task->rwzl == 1) {
+                $daoju = \player\getplayerdaoju($sid, $task->rwyq, $dblj);
+                if ($daoju) {
+                    if ($daoju->djsum > 0) {
+                        \player\changerwyq($rwid, $daoju->djsum, $sid, $dblj);
                     }
                 }
             }
-            if ($task->rwzl==3){
+            if ($task->rwzl == 3) {
                 $sql = "update `playerrenwu` set rwzt = 2 WHERE rwid = $rwid and sid ='$sid'";
                 $dblj->exec($sql);
             }
             break;
         case 'tijiao':
-            if ($ptask->rwid==$rwid && $ptask->rwzt == 2){
-                if ($ptask->rwnowcount>= $ptask->rwcount || $ptask->rwzl == 3){
+            #Gửi đi
+            if ($ptask->rwid == $rwid && $ptask->rwzt == 2) {
+                if ($ptask->rwnowcount >= $ptask->rwcount || $ptask->rwzl == 3) {
                     $sql = "update playerrenwu set rwzt=3,rwnowcount=0 WHERE sid='$sid' AND rwid = $rwid";
                     $dblj->exec($sql);
-                    \player\changeexp($sid,$dblj,$task->rwexp);
-                    \player\changeyxb(1,$task->rwyxb,$sid,$dblj);
-                    if ($ptask->rwzl==1){
-                        \player\deledjsum($ptask->rwyq,$ptask->rwcount,$sid,$dblj);
+                    \player\changeexp($sid, $dblj, $task->rwexp);
+                    \player\changeyxb(1, $task->rwyxb, $sid, $dblj);
+                    if ($ptask->rwzl == 1) {
+                        \player\deledjsum($ptask->rwyq, $ptask->rwcount, $sid, $dblj);
                     }
-                    for ($i=0;$i<count($jldjidarr);$i++){
-                        \player\adddj($sid,$jldjidarr[$i],$jldjslarr[$i],$dblj);
+                    for ($i = 0; $i < count($jldjidarr); $i++) {
+                        \player\adddj($sid, $jldjidarr[$i], $jldjslarr[$i], $dblj);
                     }
-                    for ($i=0;$i<count($jlypidarr);$i++){
-                        \player\addyaopin($sid,$jlypidarr[$i],$jlypslarr[$i],$dblj);
+                    for ($i = 0; $i < count($jlypidarr); $i++) {
+                        \player\addyaopin($sid, $jlypidarr[$i], $jlypslarr[$i], $dblj);
                     }
-                    foreach ($jlzbslarr as $jlzbid){
-                        \player\addzb($sid,$jlzbid,$dblj);
+                    foreach ($jlzbslarr as $jlzbid) {
+                        \player\addzb($sid, $jlzbid, $dblj);
                     }
+
                     echo "Nhiệm vụ hoàn thành, thu hoạch được：<br/>$rwjlhtml<a href=\"?cmd=$gonowmid\">Trở về trò chơi</a>";
                     exit();
                 }
@@ -126,35 +129,36 @@ if (isset($canshu)){
     }
 }
 
-switch ($task->rwzl){
-    case 1://收集
-        $rwyq = \player\getdaoju($task->rwyq,$dblj);
-        $rwhtml ="Thu thập $task->rwcount$rwyq->djname";
+switch ($task->rwzl) {
+    case 1://sưu tầm
+        $rwyq = \player\getdaoju($task->rwyq, $dblj);
+        $rwhtml = "Thu thập $task->rwcount$rwyq->djname";
         break;
-    case 2://打怪
+    case 2://Đại Quái
         $gwmid = new \player\clmid();
-        $rwyq = \player\getyguaiwu($task->rwyq,$dblj);
-        $rwhtml ="Đánh giết $task->rwcount$rwyq->gname";
+        $rwyq = \player\getyguaiwu($task->rwyq, $dblj);
+        $rwhtml = "Đánh giết $task->rwcount$rwyq->gname";
         break;
-    case 3://对话
-        $tjnpc = \player\getnpc($task->rwcount,$dblj);
-        $rwhtml ="Đi tìm $tjnpc->nname";
+    case 3://hội thoại
+        $tjnpc = \player\getnpc($task->rwcount, $dblj);
+        $rwhtml = "Đi tìm $tjnpc->nname";
         break;
 }
-$ptask = \player\getplayerrenwuonce($sid,$rwid,$dblj);
-$rwzthtml='';
-    if ($ptask){
-        if($ptask->rwzl != 3){
-            $rwzthtml = "Tiến độ: $ptask->rwnowcount/$ptask->rwcount<br/>";
-            $rwzthtml.= '<a href="?cmd='.$tijiaorw.'"> Trả ra</a>';
-        }elseif($ptask->rwcount == $nid){
-            $rwzthtml.= '<a href="?cmd='.$tijiaorw.'">  Trả ra</a>';
-        }
-    }else{
-        $rwzthtml = <<<HTML
+$ptask = \player\getplayerrenwuonce($sid, $rwid, $dblj);
+$rwzthtml = '';
+
+if ($ptask) {
+    if ($ptask->rwzl != 3) {
+        $rwzthtml = "Tiến độ: $ptask->rwnowcount/$ptask->rwcount<br/>";
+        $rwzthtml .= '<a href="?cmd=' . $tijiaorw . '"> Trả ra</a>';
+    } elseif ($ptask->rwcount == $nid) {
+        $rwzthtml .= '<a href="?cmd=' . $tijiaorw . '">  Trả ra</a>';
+    }
+} else {
+    $rwzthtml = <<<HTML
         <a href="?cmd=$jieshourw">Tiếp nhận</a>
 HTML;
-    }
+}
 
 $taskhtml = <<<HTML
 【$task->rwname 】:<br/>
@@ -167,4 +171,3 @@ $rwzthtml<br/>
 
 HTML;
 echo $taskhtml;
-?>

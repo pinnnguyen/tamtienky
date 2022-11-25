@@ -9,13 +9,13 @@ $html = <<<HTML
         <p><label>Nam:<input type="radio" name="sex" value="1" checked></label>
             <label>Nữ<input type="radio" name="sex" value="2"></label>
         </p>
-        <input type="submit" class="gamesubmit" value="Tạo">
+        <button type="submit" value="Tạo">Tạo</button>
     </form>
 
 HTML;
 echo $html;
 
-?>
+
 
 
 

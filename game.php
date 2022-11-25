@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+//error_reporting(0);
 require_once 'class/player.php';
 require_once 'class/encode.php';
 include 'pdo.php';
@@ -375,26 +375,7 @@ if (isset($cmd)) {
     </script>
 </head>
 <body>
-<!--<div class="footer">-->
-<!--    <header>-->
-<!--        <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>-->
-<!--        <script>-->
-<!--            function changetime() {-->
-<!--                var ary = Array("Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ bảy");-->
-<!--                var Timehtml = document.getElementById('CurrentTime');-->
-<!--                var date = new Date();-->
-<!--                Timehtml.innerHTML = '' + date.toLocaleString() + ' ' + ary[date.getDay()];-->
-<!--            }-->
-<!---->
-<!--            window.onload = function () {-->
-<!--                changetime();-->
-<!--                setInterval(changetime, 1000);-->
-<!--            }-->
-<!--        </script>-->
-<!--        <div id="CurrentTime">--><?php //echo date('Y-m-d H:i:s') ?><!--</div>-->
-<!--    </header><!-------中-国-源-码-网-w-w-w.-z-g-y-m-w-.-c-o-m---------->
-<!--</div>-->
-<div class="main">
+<div class="main max-w-[400px]">
     <?php
     if (!$ym == '') {
         echo $tpts;

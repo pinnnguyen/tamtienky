@@ -1,11 +1,11 @@
 <?php
 
-$player = player\getplayer($sid, $dblj);//Nhận thông tin người chơi
+$player = \player\getplayer($sid, $dblj);//Nhận thông tin người chơi
 $lastmid = $player->nowmid;
 
 if (isset($newmid)) {
     if ($player->nowmid != $newmid) {
-        $clmid = player\getmid($newmid, $dblj); //Nhận thông tin bản đồ sắp tới
+        $clmid = \player\getmid($newmid, $dblj); //Nhận thông tin bản đồ sắp tới
         $ucmd = $encode->encode("cmd=getplayerinfo&uid=$uid&sid=$player->sid");
         //$playerinfo .="<a href='?cmd=$ucmd'>$player->uname</a>"." Hướng $clmid->mname đi đến";
         $playerinfo = $player->uname . " Hướng $clmid->mname đi đến";//当前位置更新最后一条行走记录
@@ -35,7 +35,7 @@ if ($player->nowmid == '' || $player->nowmid == 0) {//Xác định xem một ký
     $player->nowmid = $gameconfig->firstmid;
 }
 
-$clmid = player\getmid($player->nowmid, $dblj); //Nhận thông tin bản đồ
+$clmid = player\getmid($player->nowmid, $dblj); // Nhận thông tin bản đồ
 if ($clmid->playerinfo != '') {
     $clmid->playerinfo .= '<br/>';
 }
@@ -106,13 +106,13 @@ if ($downmid->mname != '') {
 HTML;
 }
 
-$sql = "select * from midguaiwu where mid='$player->nowmid' AND sid = ''";//获取当前地图怪物
+$sql = "select * from midguaiwu where mid='$player->nowmid' AND sid = ''";//Nhận quái vật bản đồ hiện tại
 $cxjg = $dblj->query($sql);
 $cxallguaiwu = $cxjg->rowCount();
 $nowdate = date('Y-m-d H:i:s');
-$second = floor((strtotime($nowdate) - strtotime($clmid->mgtime)) % 86400);//获取刷新间隔
-if ($second > $clmid->ms && $cxallguaiwu == 0 && $clmid->mgid != '') {//刷新怪物
+$second = floor((strtotime($nowdate) - strtotime($clmid->mgtime)) % 86400);//Nhận khoảng thời gian làm mới
 
+if ($second > $clmid->ms && $cxallguaiwu == 0 && $clmid->mgid != '') {// làm mới quái vật
     $sql = "update mid set mgtime='$nowdate' WHERE mid='$player->nowmid'";
     $dblj->exec($sql);
     $retgw = explode(",", $clmid->mgid);
@@ -140,10 +140,9 @@ if ($second > $clmid->ms && $cxallguaiwu == 0 && $clmid->mgid != '') {//刷新�
 
     }
 }
-$sql = "select * from midguaiwu where mid='$player->nowmid' AND sid = ''";//获取当前地图怪物
+$sql = "select * from midguaiwu where mid='$player->nowmid' AND sid = ''";//Nhận quái vật bản đồ hiện tại
 $cxjg = $dblj->query($sql);
 $cxallguaiwu = $cxjg->fetchAll(PDO::FETCH_ASSOC);
-
 
 $gwhtml = '';
 for ($i = 0; $i < count($cxallguaiwu); $i++) {
@@ -151,7 +150,7 @@ for ($i = 0; $i < count($cxallguaiwu); $i++) {
     $gwhtml .= "<a href='?cmd=$gwcmd'>" . $cxallguaiwu[$i]['gname'] . "</a> ";
 }
 
-$sql = "select * from game1 where nowmid='$player->nowmid' AND sfzx = 1";//获取当前地图玩家
+$sql = "select * from game1 where nowmid='$player->nowmid' AND sfzx = 1";//Tải trình phát bản đồ hiện tại
 $cxjg = $dblj->query($sql);
 $playerhtml = '';
 if ($cxjg) {

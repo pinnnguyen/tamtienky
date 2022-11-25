@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+//error_reporting(0);
 require_once 'class/player.php';
 require_once 'class/encode.php';
 include 'pdo.php';
@@ -137,7 +137,7 @@ if (isset($cmd)) {
                     $gonowmid = $encode->encode("cmd=gomid&newmid=$gameconfig->firstmid&sid=$sid");
 
                     echo '<meta charset="utf-8" content="width=device-width,user-scalable=no" name="viewport">';
-                    echo $username . " Hoan nghênh đi vào Đấu phá thương khung";
+                    echo $username . " Hoan nghênh đi vào phá";
 
                     $sql2 = "insert into ggliaotian(name,msg,uid) values(?,?,?)";
                     $stmt2 = $dblj->prepare($sql2);
@@ -352,7 +352,7 @@ if (isset($cmd)) {
 <html lang="en">
 <head>
     <meta charset="utf-8" content="width=device-width,user-scalable=no" name="viewport">
-    <title>Đấu phá thương khung</title>
+    <title>Võ luyện đỉnh phong</title>
     <link rel="stylesheet" href="css/gamecss.css">
     <link rel="icon" href="images/logo.ico" type="image/x-icon">
 

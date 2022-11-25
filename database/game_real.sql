@@ -121,6 +121,31 @@ INSERT INTO `clubplayer` VALUES ('8', '132a2ae60d254a56c7264893f03a6a25', '531',
 INSERT INTO `clubplayer` VALUES ('9', 'df1905b2799580cd3861d79686bacbad', '480', '1');
 
 -- ----------------------------
+-- Table structure for daoju
+-- ----------------------------
+DROP TABLE IF EXISTS `daoju`;
+CREATE TABLE `daoju` (
+  `djname` varchar(255) NOT NULL,
+  `djzl` varchar(255) NOT NULL,
+  `djinfo` varchar(255) NOT NULL,
+  `djid` int(11) NOT NULL AUTO_INCREMENT,
+  `djyxb` int(11) NOT NULL,
+  PRIMARY KEY (`djid`)
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of daoju
+-- ----------------------------
+INSERT INTO `daoju` VALUES ('Cường hóa thạch', '2', 'Cường hóa trang bị dùng đạo cụ', '1', '10');
+INSERT INTO `daoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '', 'Hối đoái phù lục dùng', '6', '1');
+INSERT INTO `daoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '', 'Hối đoái phù lục', '7', '1');
+INSERT INTO `daoju` VALUES ('Ngạnh sí phong mật', '', 'Cứng rắn cánh phong mật ong', '8', '1');
+INSERT INTO `daoju` VALUES ('Phù lục tàn hiệt-sơ cấp man', '', 'Phù lục Tàn Hiệt - sơ cấp rất', '9', '1');
+INSERT INTO `daoju` VALUES ('Phù lục tàn hiệt-trung cấp linh', '', 'Phù lục Tàn Hiệt - trung cấp linh', '10', '5');
+INSERT INTO `daoju` VALUES ('Sơ cấp ma linh', '', 'Sơ cấp Ma Linh', '11', '10');
+INSERT INTO `daoju` VALUES ('[thần khí] yêu vương kiếm toái phiến', '', '[Thần khí] Yêu Vương kiếm mảnh vỡ', '12', '100');
+
+-- ----------------------------
 -- Table structure for duihuan
 -- ----------------------------
 DROP TABLE IF EXISTS `duihuan`;
@@ -307,29 +332,29 @@ CREATE TABLE `game1` (
   `ugj` int(11) NOT NULL DEFAULT '12',
   `ufy` int(11) NOT NULL DEFAULT '5',
   `usex` int(11) NOT NULL DEFAULT '1',
-  `endtime` datetime,
+  `endtime` datetime NOT NULL,
   `nowmid` int(11) NOT NULL DEFAULT '225',
   `uwx` int(11) NOT NULL DEFAULT '0',
-  `nowguaiwu` int(11) NOT NULL DEFAULT '0',
-  `tool1` int(11) NOT NULL DEFAULT '0',
-  `tool2` int(11) NOT NULL DEFAULT '0',
-  `tool3` int(11) NOT NULL DEFAULT '0',
-  `tool4` int(11) NOT NULL DEFAULT '0',
-  `tool5` int(11) NOT NULL DEFAULT '0',
-  `tool6` int(11) NOT NULL DEFAULT '0',
+  `nowguaiwu` int(11) NOT NULL,
+  `tool1` int(11) NOT NULL,
+  `tool2` int(11) NOT NULL,
+  `tool3` int(11) NOT NULL,
+  `tool4` int(11) NOT NULL,
+  `tool5` int(11) NOT NULL,
+  `tool6` int(11) NOT NULL,
   `ubj` int(11) NOT NULL DEFAULT '0',
   `uxx` int(11) NOT NULL DEFAULT '0',
   `sfzx` int(11) NOT NULL DEFAULT '0',
-  `qandaotime` datetime,
-  `xiuliantime` datetime,
+  `qandaotime` datetime NOT NULL,
+  `xiuliantime` datetime NOT NULL,
   `sfxl` int(11) NOT NULL DEFAULT '0',
-  `yp1` int(11) NOT NULL DEFAULT '0',
-  `yp2` int(11) NOT NULL DEFAULT '0',
-  `yp3` int(11) NOT NULL DEFAULT '0',
-  `cw` int(11) NOT NULL DEFAULT '0',
-  `jn1` int(11) NOT NULL DEFAULT '0',
-  `jn2` int(11) NOT NULL DEFAULT '0',
-  `jn3` int(11) NOT NULL DEFAULT '0',
+  `yp1` int(11) NOT NULL,
+  `yp2` int(11) NOT NULL,
+  `yp3` int(11) NOT NULL,
+  `cw` int(11) NOT NULL,
+  `jn1` int(11) NOT NULL,
+  `jn2` int(11) NOT NULL,
+  `jn3` int(11) NOT NULL,
   `ispvp` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`uid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=729 DEFAULT CHARSET=gb2312;
@@ -393,6 +418,7 @@ INSERT INTO `game1` VALUES ('476', 'deef530148bcb297a74d0509125b844f', 'a95515df
 INSERT INTO `game1` VALUES ('477', 'e83893c48ddfe5e084b2bdea428aa07f', '8d18ab1ddb4833daa7cd457e7f23d90f', 'HENDDD', '8', '1954', '94', '455', '0', '348', '257', '39', '32', '1', '2021-12-10 21:50:06', '236', '14', '0', '75866', '75933', '75926', '75946', '75944', '0', '0', '0', '0', '2021-12-12 00:00:00', '2021-12-10 21:49:00', '1', '6', '0', '0', '0', '4', '4', '0', '0');
 INSERT INTO `game1` VALUES ('478', '483047f1250b4db899cb9a4770efe1e2', '8210cf73089b0ec35b3236024f9e56da', 'Hunter', '6', '1109', '0', '1877', '0', '302', '197', '33', '26', '1', '2021-12-10 00:55:24', '239', '10', '0', '75973', '75998', '76018', '0', '0', '0', '0', '0', '0', '2021-12-12 00:00:00', '2021-12-10 00:40:19', '1', '0', '0', '0', '3628', '0', '0', '0', '0');
 INSERT INTO `game1` VALUES ('479', '91322e4d4529a1c0db2580a4d5e07ff1', 'dfdc5bfbd11402aef4b6473b6bc89061', 'Andyism', '18', '11128', '79', '14555', '0', '117', '606', '104', '95', '1', '2021-12-11 00:23:17', '225', '34', '0', '75916', '76526', '76793', '76519', '76552', '76568', '0', '0', '0', '2021-12-12 00:00:00', '2021-12-10 17:02:06', '1', '9', '7', '6', '0', '4', '6', '5', '0');
+INSERT INTO `game1` VALUES ('480', 'df1905b2799580cd3861d79686bacbad', '075711e8f3d11562f336e48c6402d3e5', 'Gáo Dừa', '25', '84222', '100', '6258', '0', '715', '879', '167', '145', '2', '2021-12-10 21:55:43', '255', '48', '0', '76541', '76730', '76749', '76655', '0', '76713', '0', '0', '0', '2021-12-12 00:00:00', '2021-12-10 11:02:15', '1', '6', '6', '9', '0', '0', '0', '0', '0');
 INSERT INTO `game1` VALUES ('481', 'c0787a8c7d117e9a540222e8c1b744af', '610124431605be94012355faf0b9b65c', 'ĐếTôn', '7', '1092', '0', '759', '0', '330', '224', '36', '30', '1', '2021-12-10 01:07:03', '270', '12', '0', '75981', '75997', '76012', '76032', '76028', '76035', '0', '0', '0', '2021-12-12 00:00:00', '2021-12-10 01:04:14', '1', '0', '0', '0', '3626', '0', '0', '0', '0');
 INSERT INTO `game1` VALUES ('482', 'af42b2cae4da9755645b5c35c66d86cc', '6057c59b88a77d65b1c429b6a7e66178', 'NikeSho', '1', '2000', '100', '0', '0', '35', '35', '12', '5', '1', '2021-12-10 00:03:35', '225', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '2021-12-12 00:00:00', '2021-12-12 00:00:00', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `game1` VALUES ('483', '03dfdc311544c846194a3992ccf6d53c', 'b90c810ceb381fe64860ec96d6dfe6dc', 'Coca170', '1', '2000', '100', '0', '0', '35', '35', '12', '5', '2', '2021-12-10 00:05:34', '226', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '2021-12-12 00:00:00', '2021-12-12 00:00:00', '0', '0', '0', '0', '0', '0', '0', '0', '0');
@@ -404,6 +430,7 @@ INSERT INTO `game1` VALUES ('488', '1f014c041b1cb42cb1a75f9449e99998', 'eed78c87
 INSERT INTO `game1` VALUES ('489', 'b647075c0aab822e3c4bb0a686fe297c', '051256ad0c3e0f16370d6a7274249d9e', 'Lý Bạch', '1', '2000', '100', '0', '0', '35', '35', '12', '5', '1', '2021-12-10 01:41:19', '269', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '2021-12-12 00:00:00', '2021-12-12 00:00:00', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `game1` VALUES ('490', 'bd267f0b4e0b7f95c25dd9aae10964bf', 'f83792ba10ab38531474e765eaadefc1', 'Tiskka', '1', '2002', '100', '18', '0', '30', '35', '12', '5', '1', '2021-12-10 01:54:06', '270', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '2021-12-12 00:00:00', '2021-12-12 00:00:00', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `game1` VALUES ('491', 'bb5bd10a3bf01a4b2b96413f9d68022d', '62923be0a940a0b636d2439737210df7', 'ChimTuH', '1', '2000', '100', '0', '0', '35', '35', '12', '5', '1', '2021-12-10 02:46:06', '225', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '2021-12-12 00:00:00', '2021-12-12 00:00:00', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `game1` VALUES ('492', '3204b1df760fd73acf5332398961f416', 'fd9c0fae8000597df1ba5384267b1651', 'Shinsoo', '30', '10429', '20090', '13522', '0', '1331', '1136', '227', '199', '1', '2021-12-11 19:52:40', '267', '60', '0', '76143', '77034', '76660', '76780', '76104', '76492', '0', '0', '1', '2021-12-12 00:00:00', '2021-12-10 15:46:38', '0', '9', '9', '9', '0', '4', '7', '6', '0');
 INSERT INTO `game1` VALUES ('493', '17101f9d4b65bad5d190afab2f99117b', '75ca42f4f76aaca7d6a40b82160cca61', 'Ngoctha', '1', '2002', '100', '15', '0', '30', '35', '12', '5', '1', '2021-12-10 14:49:15', '228', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '2021-12-12 00:00:00', '2021-12-12 00:00:00', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `game1` VALUES ('494', '754ae44f81dc019f17c06a41aa2ea715', '5f97e79517a4950fffdac042bf3b4ba7', 'Hianhem', '2', '2484', '100', '453', '0', '54', '65', '15', '8', '1', '2021-12-10 07:13:17', '232', '2', '0', '76120', '0', '76122', '0', '0', '0', '0', '0', '0', '2021-12-12 00:00:00', '2021-12-12 00:00:00', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `game1` VALUES ('495', 'c00cf69101e98928d88eeb05bd11c73f', '7f8291cb43f3cd76dbd6042d827abd7d', 'Longkak', '1', '2000', '100', '0', '0', '35', '35', '12', '5', '1', '2021-12-10 06:47:35', '225', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '2021-12-12 00:00:00', '2021-12-12 00:00:00', '0', '0', '0', '0', '0', '0', '0', '0', '0');
@@ -441,6 +468,8 @@ INSERT INTO `game1` VALUES ('526', 'f365c41cca1867794c0d56a0d2964f52', '732cc42e
 INSERT INTO `game1` VALUES ('527', 'c7fe80a512d34bc53240cf6127fc5be2', '5085bea0e82b52704d245041aa3f2000', 'Tiến', '1', '2001', '100', '9', '0', '-3', '35', '12', '5', '1', '2021-12-10 13:14:58', '228', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '2021-12-12 00:00:00', '2021-12-12 00:00:00', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `game1` VALUES ('528', 'b0937c2a2e0292043bf9afbc25cc43d7', '7a62e8a4442dd37f2012693526fe410b', 'ngocljn', '11', '895', '85', '2093', '0', '-23', '351', '55', '47', '2', '2021-12-11 18:15:32', '247', '20', '0', '76982', '76597', '76604', '76970', '0', '76607', '0', '0', '0', '2021-12-12 00:00:00', '2021-12-11 18:14:00', '1', '6', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `game1` VALUES ('529', 'cf2f747ba60ee6e02aeb6b750182d691', '42a48d548f757b6f0a0d5806cadaaa5d', 'yasuott', '2', '2003', '96', '150', '0', '75', '65', '15', '8', '1', '2021-12-11 19:37:37', '229', '2', '0', '76581', '0', '76575', '0', '0', '0', '0', '0', '0', '2021-12-12 00:00:00', '2021-12-10 13:59:31', '1', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `game1` VALUES ('530', 'a82a81044ec116f876d03885c2973ba6', 'f2c6f214927c54c70f0c9151e2c22bb5', 'mQuanGz', '26', '27972', '100', '14007', '0', '475', '933', '170', '169', '1', '2021-12-11 20:56:49', '263', '50', '0', '77208', '77219', '77140', '77148', '77138', '77202', '0', '0', '1', '2021-12-12 00:00:00', '2021-12-10 20:22:18', '1', '6', '7', '8', '0', '5', '4', '6', '0');
+INSERT INTO `game1` VALUES ('531', '132a2ae60d254a56c7264893f03a6a25', 'ce1e19a9b313dc15e0c9b9ee95c7ba2a', 'Hải Sơn', '29', '2799', '0', '16381', '0', '1136', '1090', '196', '190', '1', '2021-12-11 18:44:54', '237', '56', '0', '77212', '77133', '77207', '77161', '77134', '77131', '0', '0', '0', '2021-12-12 00:00:00', '2021-12-10 13:58:51', '1', '8', '8', '9', '3637', '5', '0', '0', '0');
 INSERT INTO `game1` VALUES ('532', '024285ca73e87438c68cf82f4d2ee7ca', '549e40bbc60ae932276c34984da7cf7a', 'Phonghz', '1', '0', '100', '0', '0', '35', '35', '12', '5', '1', '2021-12-10 13:46:14', '225', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '2021-12-12 00:00:00', '2021-12-12 00:00:00', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `game1` VALUES ('533', '67d33ee391a22e8e317f6a3b9bd43b9d', 'c9a4081250984e26e4e1a8ae16a9a2a6', 'Ahihihi', '2', '250', '100', '218', '0', '35', '65', '15', '8', '1', '2021-12-11 13:09:23', '237', '2', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '2021-12-12 00:00:00', '2021-12-12 00:00:00', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `game1` VALUES ('534', 'd70281320ec95b488021284e329cdd71', 'ef7bb847966de9435ac13a796f3e2249', 'Doraemo', '1', '7', '100', '57', '0', '30', '35', '12', '5', '1', '2021-12-10 19:44:01', '228', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '2021-12-12 00:00:00', '2021-12-12 00:00:00', '0', '0', '0', '0', '0', '0', '0', '0', '0');
@@ -1111,7 +1140,7 @@ CREATE TABLE `guaiwu` (
 ) ENGINE=MyISAM AUTO_INCREMENT=100 DEFAULT CHARSET=gb2312;
 
 -- ----------------------------
--- Records of guaiwu | monster
+-- Records of guaiwu
 -- ----------------------------
 INSERT INTO `guaiwu` VALUES ('Ngạnh sí phong', '1', '55', 'Ngạnh sí phong', 'M', '40', '5', '3', '0', '0', '23', '10', '8', '30', '6', '8');
 INSERT INTO `guaiwu` VALUES ('Sơn trư', '1', '56', 'Sơn thượng đích chư', 'M', '40', '4', '4', '0', '0', '24', '10', '1', '2', '', '0');
@@ -1238,6 +1267,14 @@ CREATE TABLE `jineng` (
   PRIMARY KEY (`jnid`)
 ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
+-- ----------------------------
+-- Records of jineng
+-- ----------------------------
+INSERT INTO `jineng` VALUES ('Tụ linh trảm', '4', '10', '0', '0', '2', '6', '5', '0');
+INSERT INTO `jineng` VALUES ('Ma tâm bạo phát', '5', '5', '0', '10', '10', '7', '8', '0');
+INSERT INTO `jineng` VALUES ('Man lực phụ thể', '6', '7', '7', '7', '7', '9', '8', '0');
+INSERT INTO `jineng` VALUES ('Nộ huyết bạo', '7', '12', '2', '20', '8', '10', '10', '0');
+INSERT INTO `jineng` VALUES ('Sơ cấp thị huyết thuật', '8', '1', '0', '0', '20', '11', '15', '0');
 
 -- ----------------------------
 -- Table structure for mid
@@ -1314,344 +1351,6 @@ INSERT INTO `mid` VALUES ('Viêm Dương thành trung tâm', '272', '', '24,25,3
 INSERT INTO `mid` VALUES ('Môn phái quản lý chỗ', '273', '', '26', '2021-12-12 00:00:00', '0', '', '0', '239', '0', '0', '0', '16', 'DạLy Hướng Tụ ở giữa tòa tiên thành đi đến', '1');
 
 -- ----------------------------
--- Table structure for midguaiwu
--- ----------------------------
-DROP TABLE IF EXISTS `midguaiwu`;
-CREATE TABLE `midguaiwu` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `gname` text NULL,
-  `ghp` text NULL,
-  `ggj` text NULL,
-  `gfy` text NULL,
-  `glv` text NULL,
-  `mid` int(11) NULL default '0',
-  `gyid` int(11) NULL,
-  `gexp` text NULL,
-  `sid` text NULL,
-  `gmaxhp` varchar(255) NULL,
-  `gbj` int(11) NULL,
-  `gxx` int(11) NULL default '0',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2335287 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of midguaiwu
--- ----------------------------
-INSERT INTO `midguaiwu` VALUES ('2280014', 'Lôi la yêu', '1474', '265', '238', '39', '266', '92', '254', '099f465c0c34dd5ef59f230a21447af4', '1960', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2330640', 'Huyết nha', '2010', '272', '244', '40', '268', '93', '340', '', '2010', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2253163', 'Sơn trư', '40', '4', '4', '1', '228', '56', '8', '0e698c7ec2d718b658fa287c45929571', '40', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2335010', 'Hà hoa hoa mị', '280', '35', '28', '9', '233', '65', '59', '', '280', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2332350', 'Bạn binh đội trường', '3510', '440', '405', '50', '270', '98', '325', '', '3510', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2335009', 'Hà hoa hoa mị', '280', '35', '28', '9', '233', '65', '59', '', '280', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2334920', 'Lão hổ', '70', '8', '6', '2', '229', '57', '15', '', '70', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2333023', 'Ma hóa chi kiếm ma', '550', '68', '56', '18', '243', '72', '135', '', '550', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2333024', 'Ma hóa chi kiếm ma', '550', '68', '56', '18', '243', '72', '135', '', '550', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2335064', 'Ma tu sĩ', '400', '49', '40', '13', '236', '69', '98', '', '400', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2335065', 'Ma tu sĩ', '400', '49', '40', '13', '236', '69', '98', '', '400', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2335071', 'Sơn trư', '40', '4', '4', '1', '228', '56', '7', '', '40', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2332430', 'Bách niên xà quái', '820', '103', '84', '27', '254', '81', '230', '', '820', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2334914', 'Sơn trư', '40', '4', '4', '1', '229', '56', '7', '', '40', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2334915', 'Sơn trư', '40', '4', '4', '1', '229', '56', '7', '', '40', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2334916', 'Lão hổ', '70', '8', '6', '2', '229', '57', '15', '', '70', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2334917', 'Lão hổ', '70', '8', '6', '2', '229', '57', '15', '', '70', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2334948', 'Long tước', '220', '27', '22', '7', '232', '63', '60', '', '220', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2302474', 'Ma hóa chi thông tí viên', '490', '61', '50', '16', '242', '70', '136', '781a121e409741ff53f5978578067146', '490', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2249197', 'Ma hóa man lang', '700', '87', '71', '23', '251', '78', '173', 'e0e644a3727f0f1671e917f7b376c66f', '700', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2313514', 'Cuồng bạo dã lang', '144', '23', '19', '6', '231', '62', '45', 'bb2a45b7652a7900e7810128a329597e', '190', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2334919', 'Lão hổ', '70', '8', '6', '2', '229', '57', '15', '', '70', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2335005', 'Cức thử', '880', '110', '90', '29', '256', '83', '247', '', '880', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2334820', 'Thị huyết dã lang', '160', '22', '16', '5', '231', '61', '33', '', '160', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2332011', 'Liệt châu ưng', '1860', '252', '226', '37', '265', '90', '278', '', '1860', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2330639', 'Huyết nha', '2010', '272', '244', '40', '268', '93', '340', '', '2010', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2330637', 'Huyết nha', '2010', '272', '244', '40', '268', '93', '340', '', '2010', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2332353', 'Bạn binh đội trường', '3510', '440', '405', '50', '270', '98', '325', '', '3510', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2333682', 'Xích lân thú', '850', '106', '87', '28', '255', '82', '182', '', '850', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2334918', 'Lão hổ', '70', '8', '6', '2', '229', '57', '15', '', '70', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2332424', 'Ma hóa chi nha nhân', '610', '76', '62', '20', '244', '74', '130', '', '610', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2333681', 'Xích lân thú', '850', '106', '87', '28', '255', '82', '182', '', '850', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2330634', 'Huyết nha', '2010', '272', '244', '40', '268', '93', '340', '', '2010', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2330635', 'Huyết nha', '2010', '272', '244', '40', '268', '93', '340', '', '2010', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2330646', 'Lôi la yêu', '1960', '265', '238', '39', '266', '92', '293', '', '1960', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2334906', 'Ma hóa sơn tiêu', '640', '80', '65', '21', '246', '75', '137', '', '640', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2335070', 'Ngạnh sí phong', '40', '5', '3', '1', '228', '55', '7', '', '40', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2334572', 'Ma đạo khống thú sư', '790', '99', '81', '26', '253', '80', '169', '', '790', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2330645', 'Lôi la yêu', '1960', '265', '238', '39', '266', '92', '293', '', '1960', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2335007', 'Cức thử', '880', '110', '90', '29', '256', '83', '247', '', '880', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2334732', 'Oán linh', '1510', '204', '183', '30', '257', '84', '255', '', '1510', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2334568', 'Ma đạo khống thú sư', '790', '99', '81', '26', '253', '80', '169', '', '790', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2334569', 'Ma đạo khống thú sư', '790', '99', '81', '26', '253', '80', '169', '', '790', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2330273', 'Huyết nha vương', '5860', '594', '558', '55', '267', '94', '468', '', '5860', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2330636', 'Huyết nha', '2010', '272', '244', '40', '268', '93', '340', '', '2010', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2332433', 'Bách niên xà quái', '820', '103', '84', '27', '254', '81', '230', '', '820', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2333453', 'Ma hóa man lang', '700', '87', '71', '23', '251', '78', '173', '', '700', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2332208', 'Kiếp sát giả', '2260', '306', '275', '45', '269', '96', '293', '', '2260', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2333671', 'Thị linh thử yêu', '1610', '218', '195', '32', '262', '86', '240', '', '1610', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2331342', 'Nham ma', '1560', '211', '189', '31', '258', '85', '202', '', '1560', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2332352', 'Bạn binh đội trường', '3510', '440', '405', '50', '270', '98', '325', '', '3510', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2332348', 'Bạn binh đội trường', '3510', '440', '405', '50', '270', '98', '325', '', '3510', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2333670', 'Thị linh thử yêu', '1610', '218', '195', '32', '262', '86', '240', '', '1610', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2331341', 'Nham ma', '1560', '211', '189', '31', '258', '85', '202', '', '1560', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2334658', 'Nhập ma man tộc chiến sĩ', '394', '80', '65', '21', '247', '76', '158', 'b0937c2a2e0292043bf9afbc25cc43d7', '640', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2330638', 'Huyết nha', '2010', '272', '244', '40', '268', '93', '340', '', '2010', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2334148', 'Ma hóa chi thông tí viên', '490', '61', '50', '16', '242', '70', '104', '', '490', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2335000', 'Lôi ưng', '310', '38', '31', '10', '235', '67', '75', '', '310', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2333680', 'Xích lân thú', '850', '106', '87', '28', '255', '82', '182', '', '850', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2332351', 'Bạn binh đội trường', '3510', '440', '405', '50', '270', '98', '325', '', '3510', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2332432', 'Bách niên xà quái', '820', '103', '84', '27', '254', '81', '230', '', '820', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2335063', 'Ma tu sĩ', '400', '49', '40', '13', '236', '69', '98', '', '400', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2334819', 'Cuồng bạo dã lang', '190', '23', '19', '6', '231', '62', '51', '', '190', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2330644', 'Lôi la yêu', '1960', '265', '238', '39', '266', '92', '293', '', '1960', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2335069', 'Ngạnh sí phong', '40', '5', '3', '1', '228', '55', '7', '', '40', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2335067', 'Ma tu sĩ', '400', '49', '40', '13', '236', '69', '98', '', '400', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2333679', 'Xích lân thú', '850', '106', '87', '28', '255', '82', '182', '', '850', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2331715', 'Ma hóa man lang', '700', '87', '71', '23', '252', '78', '150', '', '700', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2333678', 'Xích lân thú', '850', '106', '87', '28', '255', '82', '182', '', '850', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2332211', 'Kiếp sát giả', '2260', '306', '275', '45', '269', '96', '293', '', '2260', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2334150', 'Ma hóa chi linh hầu', '520', '65', '53', '17', '242', '71', '128', '', '520', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2335003', 'Cức thử', '880', '110', '90', '29', '256', '83', '247', '', '880', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2334560', 'Ma hóa chi ấu xỉ miêu nữ', '580', '72', '59', '19', '245', '73', '143', '', '580', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2332209', 'Kiếp sát giả', '2260', '306', '275', '45', '269', '96', '293', '', '2260', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2332349', 'Bạn binh đội trường', '3510', '440', '405', '50', '270', '98', '325', '', '3510', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2333455', 'Ma hóa man lang', '700', '87', '71', '23', '251', '78', '173', '', '700', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2332210', 'Kiếp sát giả', '2260', '306', '275', '45', '269', '96', '293', '', '2260', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2332428', 'Bách niên xà quái', '820', '103', '84', '27', '254', '81', '230', '', '820', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2334571', 'Ma đạo khống thú sư', '790', '99', '81', '26', '253', '80', '169', '', '790', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2334750', 'Xích luyện phúc xà yêu', '1660', '224', '201', '33', '263', '87', '215', '', '1660', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2334749', 'Xích luyện phúc xà yêu', '1660', '224', '201', '33', '263', '87', '215', '', '1660', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2333683', 'Xích lân thú', '850', '106', '87', '28', '255', '82', '182', '', '850', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2333684', 'Xích lân thú', '850', '106', '87', '28', '255', '82', '182', '', '850', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2334660', 'Nhập ma man tộc chiến sĩ', '640', '80', '65', '21', '247', '76', '158', '2f1d8f88000b56e6b5c3007d36f2c1c8', '640', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2334570', 'Ma đạo khống thú sư', '790', '99', '81', '26', '253', '80', '169', '', '790', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2334821', 'Thị huyết dã lang', '160', '22', '16', '5', '231', '61', '33', '', '160', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2333672', 'Thị linh thử yêu', '1610', '218', '195', '32', '262', '86', '240', '', '1610', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2333456', 'Ma hóa man lang', '700', '87', '71', '23', '251', '78', '173', '', '700', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2334746', 'Xích luyện phúc xà yêu', '1660', '224', '201', '33', '263', '87', '215', '', '1660', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2334947', 'Long tước', '220', '27', '22', '7', '232', '63', '60', '', '220', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2334659', 'Nhập ma man tộc chiến sĩ', '640', '80', '65', '21', '247', '76', '158', '', '640', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2330648', 'Lôi la yêu', '1960', '265', '238', '39', '266', '92', '293', '', '1960', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2335061', 'Hoa yêu', '110', '15', '7', '3', '230', '58', '26', '', '110', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2335062', 'Hoa yêu', '110', '15', '7', '3', '230', '58', '26', '', '110', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2335001', 'Lôi ưng', '310', '38', '31', '10', '235', '67', '75', '', '310', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2335006', 'Cức thử', '880', '110', '90', '29', '256', '83', '247', '', '880', '0', '0');
-INSERT INTO `midguaiwu` VALUES ('2335059', 'Hoa yêu', '110', '15', '7', '3', '230', '58', '26', '', '110', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335068', 'Ngạnh sí phong', '40', '5', '3', '1', '228', '55', '7', '', '40', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335072', 'Sơn trư', '40', '4', '4', '1', '228', '56', '7', '', '40', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335073', 'Kê', '100', '10', '0', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335074', 'Trư', '40', '4', '4', '1', '228', '56', '7', '', '110', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335075', 'Ngưu', '40', '4', '4', '1', '228', '56', '7', '', '120', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335076', 'Đinh bá miêu', '40', '4', '4', '1', '228', '56', '7', '', '150', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335077', 'Lộc', '40', '4', '4', '1', '228', '56', '7', '', '140', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335078', 'Đạo thảo nhân', '40', '4', '4', '1', '228', '56', '7', '', '160', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335079', 'Đa câu miêu', '40', '4', '4', '1', '228', '56', '7', '', '160', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335080', 'Lang', '40', '4', '4', '1', '228', '56', '7', '', '170', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335081', 'Thực nhân hoa', '40', '4', '4', '1', '228', '56', '7', '', '180', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335082', 'Độc tri chu', '40', '4', '4', '1', '228', '56', '7', '', '190', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335083', 'Tri chu oa', '40', '4', '4', '1', '228', '56', '7', '', '300', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335084', 'Đa cước trùng', '40', '4', '4', '1', '228', '56', '7', '', '300', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335085', 'Bào nhãn trùng', '40', '4', '4', '1', '228', '56', '7', '', '330', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335086', '<span style=color:blue> hồng giáp trùng </span>', '40', '4', '4', '1', '228', '56', '7', '', '1000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335087', 'Cáp mô', '40', '4', '4', '1', '228', '56', '7', '', '200', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335088', 'Trường trảo đinh bá miêu', '40', '4', '4', '1', '228', '56', '7', '', '200', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335089', 'Bán thú chiến sĩ', '40', '4', '4', '1', '228', '56', '7', '', '220', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335090', 'Bán thú nhân', '40', '4', '4', '1', '228', '56', '7', '', '220', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335091', 'Hạt tử', '40', '4', '4', '1', '228', '56', '7', '', '360', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335092', 'Khô lâu chiến sĩ', '40', '4', '4', '1', '228', '56', '7', '', '360', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335093', 'Khô lâu', '40', '4', '4', '1', '228', '56', '7', '', '360', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335094', 'Khô lâu chiến tương', '40', '4', '4', '1', '228', '56', '7', '', '360', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335095', 'Động thư', '40', '4', '4', '1', '228', '56', '7', '', '360', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335096', '<span style=color:blue> khô lâu tinh linh </span>', '40', '4', '4', '1', '228', '56', '7', '', '2000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335097', 'Cương thi', '40', '4', '4', '1', '228', '56', '7', '', '400', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335098', 'Lạn cương thi', '40', '4', '4', '1', '228', '56', '7', '', '420', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335099', 'Lão đạo cương thi', '40', '4', '4', '1', '228', '56', '7', '', '430', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335100', 'Pháp lão cương thi', '40', '4', '4', '1', '228', '56', '7', '', '440', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335101', 'Ma chú cương thi', '40', '4', '4', '1', '228', '56', '7', '', '450', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335102', '<span style=color:yellow> thi vương </span>', '40', '4', '4', '1', '228', '56', '7', '', '2000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335103', '<span style=color:red> khô lâu </span>', '40', '4', '4', '1', '228', '56', '7', '', '400', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335104', '<span style=color:green> thần thú </span>', '40', '4', '4', '1', '228', '56', '7', '', '1000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335105', 'Đa giác trùng', '40', '4', '4', '1', '228', '56', '7', '', '130', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335106', 'Liệp ưng', '40', '4', '4', '1', '228', '56', '7', '', '130', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335107', 'Khôi giáp trùng', '40', '4', '4', '1', '228', '56', '7', '', '130', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335108', 'Sa mạc tiểu trùng', '40', '4', '4', '1', '228', '56', '7', '', '130', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335109', 'Dương', '40', '4', '4', '1', '228', '56', '7', '', '130', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335110', 'Uy tư nhi tiểu trùng', '40', '4', '4', '1', '228', '56', '7', '', '130', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335111', '<span style=color:green> cự hình đa giác trùng </span>', '40', '4', '4', '1', '228', '56', '7', '', '3000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335112', 'Giác dăng', '40', '4', '4', '1', '228', '56', '7', '', '1000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335113', 'Tiết nga', '40', '4', '4', '1', '228', '56', '7', '', '1000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335114', 'Hồng dã trư', '40', '4', '4', '1', '228', '56', '7', '', '1000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335115', 'Hạt xà', '40', '4', '4', '1', '228', '56', '7', '', '1000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335116', 'Hắc dã trư', '40', '4', '4', '1', '228', '56', '7', '', '1000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335117', '<span style=color:green> bạch dã trư </span>', '40', '4', '4', '1', '228', '56', '7', '', '5000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335118', '<span style=color:purple> siêu cấp hắc dã trư </span>', '40', '4', '4', '1', '228', '56', '7', '', '10000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335119', 'Sơn động biên bức', '40', '4', '4', '1', '228', '56', '7', '', '500', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335120', 'Ám hắc chiến sĩ', '40', '4', '4', '1', '228', '56', '7', '', '500', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335121', 'Phẩn trùng', '40', '4', '4', '1', '228', '56', '7', '', '500', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335122', 'Ốc mã chiến sĩ', '40', '4', '4', '1', '228', '56', '7', '', '700', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335123', 'Hỏa diễm ốc mã', '40', '4', '4', '1', '228', '56', '7', '', '700', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335124', 'Ốc mã dũng sĩ', '40', '4', '4', '1', '228', '56', '7', '', '700', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335125', 'Ốc mã chiến tương', '40', '4', '4', '1', '228', '56', '7', '', '700', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335126', '<span style=color:green> ốc mã vệ sĩ </span>', '40', '4', '4', '1', '228', '56', '7', '', '2500', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335127', '<span style=color:red> ốc mã giáo chủ </span>', '40', '4', '4', '1', '228', '56', '7', '', '5000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335128', 'Hồng xà', '40', '4', '4', '1', '228', '56', '7', '', '130', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335129', 'Hổ xà', '40', '4', '4', '1', '228', '56', '7', '', '130', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335130', 'Tổ mã cung tiến thủ', '40', '4', '4', '1', '228', '56', '7', '', '3000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335131', 'Tổ mã điêu tượng', '40', '4', '4', '1', '228', '56', '7', '', '3000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335132', 'Tổ mã vệ sĩ', '40', '4', '4', '1', '228', '56', '7', '', '3000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335133', 'Đại lão thử', '40', '4', '4', '1', '228', '56', '7', '', '3000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335134', '<span style=color:blue> hộ pháp thiên </span>', '40', '4', '4', '1', '228', '56', '7', '', '10000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335135', '<span style=color:red> tổ mã giáo chủ </span>', '40', '4', '4', '1', '228', '56', '7', '', '15000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335136', 'Nguyệt ma tri chu', '40', '4', '4', '1', '228', '56', '7', '', '1000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335137', 'Huyễn ảnh tri chu', '40', '4', '4', '1', '228', '56', '7', '', '1000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335138', 'Hoa sắc tri chu', '40', '4', '4', '1', '228', '56', '7', '', '1000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335139', 'Hắc giác tri chu', '40', '4', '4', '1', '228', '56', '7', '', '1000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335140', '<span style=color:green> bát cước thủ lĩnh </span>', '40', '4', '4', '1', '228', '56', '7', '', '10000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335141', '<span style=color:green> nhất tinh châu huề đái giả triệu hồn sử </span>', '40', '4', '4', '1', '228', '56', '7', '', '10000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335142', 'Huyết cự nhân', '40', '4', '4', '1', '228', '56', '7', '', '4000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335143', 'Huyết kim cương', '40', '4', '4', '1', '228', '56', '7', '', '4000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335144', 'Xích huyết ma', '40', '4', '4', '1', '228', '56', '7', '', '4000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335145', 'Hôi huyết ma', '40', '4', '4', '1', '228', '56', '7', '', '4000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335146', '<span style=color:blue> hôi huyết ma </span>', '40', '4', '4', '1', '228', '56', '7', '', '20000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335147', '<span style=color:orange> xích nguyệt ác ma </span>', '40', '4', '4', '1', '228', '56', '7', '', '50000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335148', '<span style=color:green> siêu cường khô lâu </span>', '40', '4', '4', '1', '228', '56', '7', '', '2000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335149', '<span style=color:green> nhị tinh châu huề đái giả lợi trảo ma </span>', '40', '4', '4', '1', '228', '56', '7', '', '50000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335150', '<span style=color:green> tam tinh châu huề đái giả liệt hỏa kê </span>', '40', '4', '4', '1', '228', '56', '7', '', '100000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335151', '<span style=color:green> tứ tinh châu huề đái giả luyện kim ma </span>', '40', '4', '4', '1', '228', '56', '7', '', '200000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335152', '<span style=color:green> ngũ tinh châu huề đái giả luyện kim ma </span>', '40', '4', '4', '1', '228', '56', '7', '', '300000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335153', '<span style=color:green> lục tinh châu huề đái giả yêu lực sĩ </span>', '40', '4', '4', '1', '228', '56', '7', '', '400000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335154', '<span style=color:green> thất tinh châu huề đái giả liệt diễm sử </span>', '40', '4', '4', '1', '228', '56', '7', '', '500000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335155', '<span style=color:orange>【 kim thử 】</span>', '40', '4', '4', '1', '228', '56', '7', '', '10000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335156', '<span style=color:orange>【 kim ngưu 】</span>', '40', '4', '4', '1', '228', '56', '7', '', '20000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335157', '<span style=color:orange>【 kim hổ 】</span>', '40', '4', '4', '1', '228', '56', '7', '', '30000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335158', '<span style=color:orange>【 kim thỏ 】</span>', '40', '4', '4', '1', '228', '56', '7', '', '40000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335159', '<span style=color:orange>【 kim long 】</span>', '40', '4', '4', '1', '228', '56', '7', '', '50000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335160', '<span style=color:orange>【 kim xà 】</span>', '40', '4', '4', '1', '228', '56', '7', '', '60000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335161', '<span style=color:orange>【 kim mã 】</span>', '40', '4', '4', '1', '228', '56', '7', '', '70000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335162', '<span style=color:orange>【 kim dương 】</span>', '40', '4', '4', '1', '228', '56', '7', '', '80000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335163', '<span style=color:orange>【 kim hầu 】</span>', '40', '4', '4', '1', '228', '56', '7', '', '90000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335164', '<span style=color:orange>【 kim kê 】</span>', '40', '4', '4', '1', '228', '56', '7', '', '100000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335165', '<span style=color:orange>【 kim cẩu 】</span>', '40', '4', '4', '1', '228', '56', '7', '', '110000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335166', '<span style=color:orange>【 kim trư 】</span>', '40', '4', '4', '1', '228', '56', '7', '', '120000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335167', '<span style=color:red> ám chi hoàng tuyền giáo chủ </span>', '40', '4', '4', '1', '228', '56', '7', '', '50000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335168', '<span style=color:red> ám chi hồng ma giáo chủ </span>', '40', '4', '4', '1', '228', '56', '7', '', '50000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335169', '<span style=color:red> ám chi song đầu huyết ma </span>', '40', '4', '4', '1', '228', '56', '7', '', '50000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335170', '<span style=color:red> ám chi khô lâu tinh linh </span>', '40', '4', '4', '1', '228', '56', '7', '', '50000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335171', '<span style=color:red> ám chi song đầu kim cương </span>', '40', '4', '4', '1', '228', '56', '7', '', '50000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335172', '<span style=color:red> ám chi ốc mã giáo chủ </span>', '40', '4', '4', '1', '228', '56', '7', '', '50000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335173', '<span style=color:red> thỏ tử </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335174', '<span style=color:red> yến tử </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335175', '<span style=color:red> ô quy </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335176', '<span style=color:red> cẩu </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335177', '<span style=color:red> thứ vị </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335178', '<span style=color:orange> hầu tử </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335179', '<span style=color:orange> tùng thử </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335180', '<span style=color:orange> hoán hùng </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335181', '<span style=color:orange> lang </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335182', '<span style=color:yellow> anh vũ </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335183', '<span style=color:yellow> tích dịch </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335184', '<span style=color:yellow> biên bức </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335185', '<span style=color:yellow> đại đường lang </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335186', '<span style=color:yellow> ngạc ngư </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335187', '<span style=color:green> xí nga </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335188', '<span style=color:green> miêu đầu ưng </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335189', '<span style=color:green> hoan </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335190', '<span style=color:green> lão hổ </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335191', '<span style=color:green> dã trư </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335192', '<span style=color:cyan> quai xí nga </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335193', '<span style=color:cyan> tiêm nha bạo long </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335194', '<span style=color:cyan> hỏa tông thử </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335195', '<span style=color:cyan> băng tàm </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335196', '<span style=color:cyan> ưng </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335197', '<span style=color:blue> đà điểu </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335198', '<span style=color:blue> báo tử </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335199', '<span style=color:blue> bắc cực hùng </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335200', '<span style=color:blue> khổng tước </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335201', '<span style=color:blue> kiếm xỉ hổ </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335202', '<span style=color:purple> đại tinh tinh </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335203', '<span style=color:purple> huyền dực thú </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335204', '<span style=color:purple> tê ngưu </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335205', '<span style=color:purple> tuyết điêu </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335206', '<span style=color:purple> viêm hỏa tông thử </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335207', '<span style=color:purple> xi huyền dực thú </span>', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335208', 'Ma long tà nhãn', '40', '4', '4', '1', '228', '56', '7', '', '10000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335209', 'Long huyết oa', '40', '4', '4', '1', '228', '56', '7', '', '10000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335210', 'Ma long thứ oa', '40', '4', '4', '1', '228', '56', '7', '', '10000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335211', 'Ma long đao binh', '40', '4', '4', '1', '228', '56', '7', '', '20000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335212', 'Ma long phá giáp binh', '40', '4', '4', '1', '228', '56', '7', '', '20000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335213', 'Ma long xạ thủ', '40', '4', '4', '1', '228', '56', '7', '', '20000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335214', 'Ma long cự nga', '40', '4', '4', '1', '228', '56', '7', '', '20000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335215', 'Ma long lực sĩ', '40', '4', '4', '1', '228', '56', '7', '', '20000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335216', 'Ma long chiến tương', '40', '4', '4', '1', '228', '56', '7', '', '20000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335217', '<span style=color:orange> ma long giáo chủ </span>', '40', '4', '4', '1', '228', '56', '7', '', '100000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335218', 'Hội viên ma nhãn', '40', '4', '4', '1', '228', '56', '7', '', '500000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335219', 'Hội viên chi nhãn', '40', '4', '4', '1', '228', '56', '7', '', '500000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335220', 'Hội viên giác trùng', '40', '4', '4', '1', '228', '56', '7', '', '500000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335221', 'Hội viên hổ trùng', '40', '4', '4', '1', '228', '56', '7', '', '500000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335222', '<span style=color:orange> hội viên thiên châu </span>', '40', '4', '4', '1', '228', '56', '7', '', '1000000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335223', '<span style=color:orange> chân hội viên thiên châu </span>', '40', '4', '4', '1', '228', '56', '7', '', '1000000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335224', 'Đạo thảo nhân', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335225', 'Đinh bá miêu', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335226', 'Khôi giáp mã nghĩ', '40', '4', '4', '1', '228', '56', '7', '', '20000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335227', 'Mã nghĩ chiến sĩ', '40', '4', '4', '1', '228', '56', '7', '', '20000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335228', 'Mã nghĩ đạo sĩ', '40', '4', '4', '1', '228', '56', '7', '', '20000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335229', 'Bạo độc mã nghĩ', '40', '4', '4', '1', '228', '56', '7', '', '20000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335230', 'Mã nghĩ công nhân', '40', '4', '4', '1', '228', '56', '7', '', '20000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335231', '<span style=color:green> mã nghĩ tương quân </span>', '40', '4', '4', '1', '228', '56', '7', '', '20000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335232', 'Lãng tử nhân quỷ', '40', '4', '4', '1', '228', '56', '7', '', '50000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335233', 'Hủ thực nhân quỷ', '40', '4', '4', '1', '228', '56', '7', '', '50000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335234', 'Cương thi quỷ', '40', '4', '4', '1', '228', '56', '7', '', '50000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335235', '<span style=color:green> hấp huyết quỷ </span>', '40', '4', '4', '1', '228', '56', '7', '', '50000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335236', 'Ngô công', '40', '4', '4', '1', '228', '56', '7', '', '100000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335237', 'Kiềm trùng', '40', '4', '4', '1', '228', '56', '7', '', '100000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335238', 'Hắc sắc ác thư', '40', '4', '4', '1', '228', '56', '7', '', '100000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335239', '<span style=color:green> tà ác kiềm trùng </span>', '40', '4', '4', '1', '228', '56', '7', '', '100000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335240', 'Ngô công', '40', '4', '4', '1', '228', '56', '7', '', '200000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335241', 'Kiềm trùng', '40', '4', '4', '1', '228', '56', '7', '', '200000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335242', 'Hắc sắc ác thư', '40', '4', '4', '1', '228', '56', '7', '', '200000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335243', 'Khiêu khiêu phong', '40', '4', '4', '1', '228', '56', '7', '', '200000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335244', 'Hồ điệp trùng', '40', '4', '4', '1', '228', '56', '7', '', '200000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335245', '<span style=color:red> xúc long thần </span>', '40', '4', '4', '1', '228', '56', '7', '', '500000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335246', 'Cự liêm tri chu', '40', '4', '4', '1', '228', '56', '7', '', '500000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335247', 'Kim trượng tri chu', '40', '4', '4', '1', '228', '56', '7', '', '500000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335248', 'Thánh điện vệ sĩ', '40', '4', '4', '1', '228', '56', '7', '', '500000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335249', 'Cuồng nhiệt hỏa tích dịch', '40', '4', '4', '1', '228', '56', '7', '', '500000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335250', '<span style=color:green>【 lôi viêm chu vương 】</span>', '40', '4', '4', '1', '228', '56', '7', '', '1000000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335251', '10 cấp thủ thành sĩ binh', '40', '4', '4', '1', '228', '56', '7', '', '10000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335252', '20 cấp thủ thành sĩ binh', '40', '4', '4', '1', '228', '56', '7', '', '20000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335253', '30 cấp thủ thành sĩ binh', '40', '4', '4', '1', '228', '56', '7', '', '40000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335254', '40 cấp thủ thành sĩ binh', '40', '4', '4', '1', '228', '56', '7', '', '80000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335255', '50 cấp thủ thành sĩ binh', '40', '4', '4', '1', '228', '56', '7', '', '160000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335256', '60 cấp thủ thành sĩ binh', '40', '4', '4', '1', '228', '56', '7', '', '320000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335257', '70 cấp thủ thành sĩ binh', '40', '4', '4', '1', '228', '56', '7', '', '640000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335258', '80 cấp thủ thành sĩ binh', '40', '4', '4', '1', '228', '56', '7', '', '1280000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335259', '90 cấp thủ thành sĩ binh', '40', '4', '4', '1', '228', '56', '7', '', '2560000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335260', '100 cấp thủ thành sĩ binh', '40', '4', '4', '1', '228', '56', '7', '', '5000000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335261', '110 cấp thủ thành sĩ binh', '40', '4', '4', '1', '228', '56', '7', '', '10000000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335262', '120 cấp thủ thành sĩ binh', '40', '4', '4', '1', '228', '56', '7', '', '20000000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335263', 'Thành môn', '40', '4', '4', '1', '228', '56', '7', '', '1000000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335264', 'Thành môn', '40', '4', '4', '1', '228', '56', '7', '', '10000000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335265', 'Thành môn', '40', '4', '4', '1', '228', '56', '7', '', '5000000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335266', 'Thành môn', '40', '4', '4', '1', '228', '56', '7', '', '2000000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335267', 'Bí cảnh kê', '40', '4', '4', '1', '228', '56', '7', '', '100', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335268', 'Bí cảnh hạt tử', '40', '4', '4', '1', '228', '56', '7', '', '360', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335269', 'Bí cảnh giác dăng', '40', '4', '4', '1', '228', '56', '7', '', '1000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335270', 'Bí cảnh huyết cự nhân', '40', '4', '4', '1', '228', '56', '7', '', '4000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335271', 'Bí cảnh ngô công', '40', '4', '4', '1', '228', '56', '7', '', '100000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335272', 'Bí cảnh ma long tà nhãn', '40', '4', '4', '1', '228', '56', '7', '', '10000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335273', 'Bí cảnh hồ điệp trùng', '40', '4', '4', '1', '228', '56', '7', '', '200000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335274', 'Bí cảnh hỏa tích dịch', '40', '4', '4', '1', '228', '56', '7', '', '200000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335275', 'Bí cảnh sĩ binh', '40', '4', '4', '1', '228', '56', '7', '', '2560000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335276', 'Bí cảnh sơ cấp sĩ binh', '40', '4', '4', '1', '228', '56', '7', '', '5000000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335277', 'Bí cảnh trung cấp sĩ binh', '40', '4', '4', '1', '228', '56', '7', '', '10000000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335278', 'Bí cảnh cao cấp sĩ binh', '40', '4', '4', '1', '228', '56', '7', '', '20000000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335279', '<span style=color:purple>【 ngũ thải thần ngưu 】</span>', '40', '4', '4', '1', '228', '56', '7', '', '50', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335280', 'Vũ dực thí luyện thủ vệ', '40', '4', '4', '1', '228', '56', '7', '', '0', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335281', 'Vũ dực thí luyện BOSS', '40', '4', '4', '1', '228', '56', '7', '', '0', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335282', 'Thiên thê thiêu chiến giả', '40', '4', '4', '1', '228', '56', '7', '', '0', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335283', 'Quý tân bảo tương', '40', '4', '4', '1', '228', '56', '7', '', '5000000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335284', '<span style=color:green>【 quý tân bảo tương 】</span>', '40', '4', '4', '1', '228', '56', '7', '', '5000000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335285', '<span style=color:green>【 công trắc thánh thú 】</span>', '40', '4', '4', '1', '228', '56', '7', '', '150000000', '0', '0');
--- INSERT INTO `midguaiwu` VALUES ('2335286', '<span style=color:red>【 công trắc thần thú 】</span>', '40', '4', '4', '1', '228', '56', '7', '', '300000000', '0', '0');
-
--- ----------------------------
 -- Table structure for npc
 -- ----------------------------
 DROP TABLE IF EXISTS `npc`;
@@ -1668,20 +1367,22 @@ CREATE TABLE `npc` (
 -- ----------------------------
 -- Records of npc
 -- ----------------------------
-INSERT INTO `npc` VALUES ('15', 'Môn phái quản lý viên', 'M', 'Thành Viêm Dương thành Thành chủ, Tuyết Cầm', 'Martialartist.php', '');
-INSERT INTO `npc` VALUES ('16', 'Dược lão [Thương nhân]', 'M', 'Tới tới tới  tiện nghi', 'store.php', '');
-INSERT INTO `npc` VALUES ('17', 'Chính quy tiên y', 'M', 'Chính quy tiên y', 'Treatment_Level1.php', '');
-INSERT INTO `npc` VALUES ('18', 'Phù lục đại sư', 'M', 'Kỹ năng đại sư, phụ trách hối đoái kỹ năng', 'SkillExchange.php', '');
-INSERT INTO `npc` VALUES ('19', 'Tụ tiên thành chủ [Phù lục]', 'M', 'Tụ Tiên thành Thành chủ', 'EquipmentExchange.php', '');
-INSERT INTO `npc` VALUES ('20', 'Vân du tiên y [Trị liệu]', 'M', 'Dạo chơi tiên y, tựa hồ đang cái nào đều có thể trông thấy hắn', 'treatment.php', '');
-
-
 INSERT INTO `npc` VALUES ('11', 'Thôn trường', 'M', 'Trưởng thôn', '', '13,25,24,28');
 INSERT INTO `npc` VALUES ('13', 'Vương lão ngũ', 'M', 'Ai... Một người thời gian, thật thật là khó.', '', '24');
 INSERT INTO `npc` VALUES ('14', 'Hách bỉnh', 'M', 'Ai, cả ngày đứng ở chỗ này thật sự là nhàm chán.', '', '28');
-
+INSERT INTO `npc` VALUES ('15', 'Chu phú quý [Thương nhân]', 'M', 'Tới tới tới  tiện nghi', 'store.php', '');
+INSERT INTO `npc` VALUES ('16', 'Tụ tiên thành chủ [Phù lục]', 'M', 'Tụ Tiên thành Thành chủ', 'EquipmentExchange.php', '');
+INSERT INTO `npc` VALUES ('18', 'Vương đại mụ', 'F', 'Vương đại mụ', '', '24,29');
+INSERT INTO `npc` VALUES ('17', 'Vân du tiên y [Trị liệu]', 'M', 'Dạo chơi tiên y, tựa hồ đang cái nào đều có thể trông thấy hắn', 'treatment.php', '');
+INSERT INTO `npc` VALUES ('19', 'Phù lục đại sư', 'M', 'Kỹ năng đại sư, phụ trách hối đoái kỹ năng', 'SkillExchange.php', '');
+INSERT INTO `npc` VALUES ('20', 'Tiểu man', 'F', 'Tiểu Man thật là sợ. . .', '', '20');
+INSERT INTO `npc` VALUES ('21', 'Man tộc trường lão', 'M', 'Man tộc trưởng già', '', '19');
+INSERT INTO `npc` VALUES ('22', 'Man tộc liệp thủ', 'M', 'Già, cạn bất động', '', '21');
+INSERT INTO `npc` VALUES ('23', 'Đoái hoán đại sử', 'M', 'Hối đoái đại sứ', '', '27');
+INSERT INTO `npc` VALUES ('24', 'Chính quy tiên y', 'M', 'Chính quy tiên y', 'Treatment_Level1.php', '');
 INSERT INTO `npc` VALUES ('25', 'Thành chủ tuyết cầm', 'F', 'So dạo chơi càng lành nghề', '', '');
-INSERT INTO `npc` VALUES ('12', '[Nhục điếm] Hứa thị', 'F', 'Nổi tiếng chua ngoa nhất vùng, nhưng không đâu có thịt ngon bằng ả.', 'Treatment_Level1.php', '');
+INSERT INTO `npc` VALUES ('26', 'Môn phái quản lý viên', 'M', 'Thành Viêm Dương thành Thành chủ, Tuyết Cầm', 'Martialartist.php', '');
+INSERT INTO `npc` VALUES ('12', '[Nhục điếm] Hứa thị', 'F', 'Nổi tiếng chua ngoa nhất vùng, nhưng không đâu có thịt ngon bằng ả.', '', '');
 INSERT INTO `npc` VALUES ('27', '<span style=color:#F75000>[C.hàng Trang bị] Thiết tượng sư </span>', 'M', 'Ở đây ta có đồ quý, lại mua ngay...', '', '');
 INSERT INTO `npc` VALUES ('29', '<img src=images/xszdy.png> Hoạt động sứ giả', 'M', 'Hoạt động sứ giả, công cáo các hoạt động quan trọng', '', '');
 INSERT INTO `npc` VALUES ('28', '[Dược điếm] Hứa y sinh', 'M', 'Thuốc quý ngàn năm, bổ thận cường dương. 1 người khỏe 3 người vui', '', '');
@@ -2137,10 +1838,49 @@ INSERT INTO `playerchongwu` VALUES ('3590', 'Mị mị dương', '100', '100', '
 INSERT INTO `playerchongwu` VALUES ('3591', 'Khiêu khiêu thỏ', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'e14b6e0d27bea46402a112c75c170887', '10', '4', '7', '1');
 INSERT INTO `playerchongwu` VALUES ('3592', 'Suất suất hầu', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '3bfa14243cba16bb92e090b54cc5d544', '13', '5', '7', '0');
 INSERT INTO `playerchongwu` VALUES ('3593', 'Đản đản kê', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'b7f5e984a6a22f3ef2b4072f2614f43e', '20', '2', '6', '2');
-INSERT INTO `playerchongwu` VALUES ('3594', 'cừu kêu be be', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '30573415781e469779fbad52abd671c0', '14', '2', '3', '0');
+INSERT INTO `playerchongwu` VALUES ('3594', '咩咩羊', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '30573415781e469779fbad52abd671c0', '14', '2', '3', '0');
+INSERT INTO `playerchongwu` VALUES ('3595', '咩咩羊', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '30573415781e469779fbad52abd671c0', '16', '5', '7', '1');
+INSERT INTO `playerchongwu` VALUES ('3596', '跳跳兔', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '79c81b5eeefef4266fd23277190b4d04', '19', '4', '4', '0');
+INSERT INTO `playerchongwu` VALUES ('3598', '招财猪', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '876222b500a060ca6f99934a9a5a46bc', '11', '4', '3', '3');
+INSERT INTO `playerchongwu` VALUES ('3599', '乖乖狗', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '876222b500a060ca6f99934a9a5a46bc', '20', '2', '6', '3');
+INSERT INTO `playerchongwu` VALUES ('3600', '招财猪', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '876222b500a060ca6f99934a9a5a46bc', '20', '5', '7', '1');
+INSERT INTO `playerchongwu` VALUES ('3601', '乖乖狗', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0093a05e4ba35b6be322d2a7e4990bad', '17', '3', '5', '0');
+INSERT INTO `playerchongwu` VALUES ('3602', '伶俐鼠', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0093a05e4ba35b6be322d2a7e4990bad', '12', '5', '7', '1');
+INSERT INTO `playerchongwu` VALUES ('3603', '乖乖狗', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'f15a4aaba08473a5afd6a6521c76d9cf', '23', '5', '7', '0');
+INSERT INTO `playerchongwu` VALUES ('3626', '笨笨牛', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'c0787a8c7d117e9a540222e8c1b744af', '10', '3', '4', '2');
+INSERT INTO `playerchongwu` VALUES ('3620', '咩咩羊', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0d35be128035927ccc312fd5d99eb55c', '16', '2', '4', '2');
+INSERT INTO `playerchongwu` VALUES ('3627', '威威虎', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '483047f1250b4db899cb9a4770efe1e2', '21', '3', '5', '3');
+INSERT INTO `playerchongwu` VALUES ('3618', '花花蛇', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0d35be128035927ccc312fd5d99eb55c', '25', '2', '5', '2');
+INSERT INTO `playerchongwu` VALUES ('3617', '蛋蛋鸡', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0d35be128035927ccc312fd5d99eb55c', '20', '5', '3', '0');
+INSERT INTO `playerchongwu` VALUES ('3616', '花花蛇', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0d35be128035927ccc312fd5d99eb55c', '19', '3', '3', '2');
+INSERT INTO `playerchongwu` VALUES ('3621', '溜溜马', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0d35be128035927ccc312fd5d99eb55c', '17', '2', '6', '0');
+INSERT INTO `playerchongwu` VALUES ('3622', '伶俐鼠', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0d35be128035927ccc312fd5d99eb55c', '22', '4', '4', '3');
+INSERT INTO `playerchongwu` VALUES ('3629', '花花蛇', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'f039e55562a77296188f2963ca97fae1', '11', '2', '4', '1');
+INSERT INTO `playerchongwu` VALUES ('3628', '咩咩羊', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '483047f1250b4db899cb9a4770efe1e2', '12', '5', '6', '0');
+INSERT INTO `playerchongwu` VALUES ('3630', '伶俐鼠', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'f039e55562a77296188f2963ca97fae1', '17', '5', '3', '2');
+INSERT INTO `playerchongwu` VALUES ('3631', '溜溜马', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '214bde30a6e2b81a2637555e947624c4', '24', '5', '6', '1');
+INSERT INTO `playerchongwu` VALUES ('3632', '酷酷龙', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '214bde30a6e2b81a2637555e947624c4', '17', '3', '8', '0');
+INSERT INTO `playerchongwu` VALUES ('3633', '伶俐鼠', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'a01bb3a16790c034b19c3bb873f5c824', '10', '4', '6', '0');
+INSERT INTO `playerchongwu` VALUES ('3634', '伶俐鼠', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'eae57174fc4d0114b0a244a0b4d46cd1', '22', '4', '4', '0');
+INSERT INTO `playerchongwu` VALUES ('3635', '伶俐鼠', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'eae57174fc4d0114b0a244a0b4d46cd1', '15', '5', '4', '0');
+INSERT INTO `playerchongwu` VALUES ('3636', '酷酷龙', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'a6edc2472e88417ac151bf97c7231a23', '18', '3', '8', '0');
+INSERT INTO `playerchongwu` VALUES ('3637', '乖乖狗', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '132a2ae60d254a56c7264893f03a6a25', '20', '5', '7', '1');
+INSERT INTO `playerchongwu` VALUES ('3639', '咩咩羊', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'aecc6f9f63ececb58dcfe256ac7d6897', '20', '3', '4', '2');
+INSERT INTO `playerchongwu` VALUES ('3640', '笨笨牛', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '5342074c8ce889f9ce11bcd4f254355f', '10', '4', '4', '1');
+INSERT INTO `playerchongwu` VALUES ('3641', '跳跳兔', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'b640a2de9bf6e48433937295ee06bbcd', '15', '2', '4', '0');
+INSERT INTO `playerchongwu` VALUES ('3642', '蛋蛋鸡', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'b69d90fc03f0fa785b1c6ddb3b3829b8', '13', '5', '5', '1');
+INSERT INTO `playerchongwu` VALUES ('3643', '花花蛇', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '5525b042a45ea5bd62def930594c18f2', '14', '2', '3', '5');
+INSERT INTO `playerchongwu` VALUES ('3644', '招财猪', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '9467812eb836c2b70c021e8ef1d52ab1', '15', '4', '7', '1');
+INSERT INTO `playerchongwu` VALUES ('3645', '帅帅猴', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '7d1526a0dd4803a1fda914bcebd93b47', '18', '2', '8', '0');
+INSERT INTO `playerchongwu` VALUES ('3646', '蛋蛋鸡', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '7d1526a0dd4803a1fda914bcebd93b47', '16', '3', '7', '3');
+INSERT INTO `playerchongwu` VALUES ('3647', '笨笨牛', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '9dc0bb8899c5497aa2dacab00c77fd5c', '15', '3', '8', '0');
+INSERT INTO `playerchongwu` VALUES ('3648', '花花蛇', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '11ee841a987d5674196d37fef51ed9a6', '19', '4', '7', '1');
+INSERT INTO `playerchongwu` VALUES ('3649', '跳跳兔', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '11ee841a987d5674196d37fef51ed9a6', '11', '3', '4', '1');
+INSERT INTO `playerchongwu` VALUES ('3650', '伶俐鼠', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'e99904f72c48e48b4bc5ee8cf8e966d6', '20', '4', '4', '1');
+INSERT INTO `playerchongwu` VALUES ('3651', '招财猪', '100', '100', '6', '4', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'e99904f72c48e48b4bc5ee8cf8e966d6', '13', '3', '4', '1');
 
 -- ----------------------------
--- Table structure for playerdaoju | Đạo cụ
+-- Table structure for playerdaoju
 -- ----------------------------
 DROP TABLE IF EXISTS `playerdaoju`;
 CREATE TABLE `playerdaoju` (
@@ -2153,6 +1893,444 @@ CREATE TABLE `playerdaoju` (
   `djid` int(11) NOT NULL,
   UNIQUE KEY `djzl` (`djzl`)
 ) ENGINE=MyISAM AUTO_INCREMENT=887 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of playerdaoju
+-- ----------------------------
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '452', 'Ngạnh sí phong đích phong mật', '425', '42352a5bb2acc1e76e8a2fa10ba7673b', '2', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '2', 'Cường hóa trang bị dụng đích đạo cụ', '424', 'f76c11b6601d3a6ce505c616b64ed478', '15', '1');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '453', 'Ngạnh sí phong đích phong mật', '424', 'f76c11b6601d3a6ce505c616b64ed478', '4', '8');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '454', 'Đoái hoán phù lục dụng đích', '424', 'f76c11b6601d3a6ce505c616b64ed478', '0', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '455', 'Đoái hoán phù lục', '424', 'f76c11b6601d3a6ce505c616b64ed478', '8', '7');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '456', 'Ngạnh sí phong đích phong mật', '426', '0ed4ce0a982475dad32cea331e8e50d7', '5', '8');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '457', 'Đoái hoán phù lục dụng đích', '426', '0ed4ce0a982475dad32cea331e8e50d7', '100', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '458', 'Đoái hoán phù lục', '426', '0ed4ce0a982475dad32cea331e8e50d7', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '459', 'Ngạnh sí phong đích phong mật', '431', '3bfa14243cba16bb92e090b54cc5d544', '0', '8');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '460', 'Đoái hoán phù lục dụng đích', '431', '3bfa14243cba16bb92e090b54cc5d544', '98', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '461', 'Đoái hoán phù lục', '431', '3bfa14243cba16bb92e090b54cc5d544', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '462', 'Ngạnh sí phong đích phong mật', '434', 'e14b6e0d27bea46402a112c75c170887', '11', '8');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '463', 'Đoái hoán phù lục dụng đích', '434', 'e14b6e0d27bea46402a112c75c170887', '95', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '464', 'Đoái hoán phù lục', '434', 'e14b6e0d27bea46402a112c75c170887', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '467', 'Ngạnh sí phong đích phong mật', '438', 'b7f5e984a6a22f3ef2b4072f2614f43e', '2', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '472', 'Cường hóa trang bị dùng đạo cụ', '441', 'f7c38ddb495be49224c8d819f34654ec', '50', '1');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '468', 'Cứng rắn cánh phong mật ong', '440', 'f0be893286b66272230904a0a7d33168', '7', '8');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '469', 'Hối đoái phù lục dùng', '440', 'f0be893286b66272230904a0a7d33168', '100', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '470', 'Hối đoái phù lục', '440', 'f0be893286b66272230904a0a7d33168', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '471', 'Cường hóa trang bị dụng đích đạo cụ', '440', 'f0be893286b66272230904a0a7d331689', '10100', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '473', 'Cường hóa trang bị dùng đạo cụ', '440', 'f0be893286b66272230904a0a7d33168', '14', '1');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '474', 'Cứng rắn cánh phong mật ong', '442', '7aa100d4e1f9756c2c918199f7c6f8cd', '6', '8');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-trung cấp linh', '475', 'Phù lục Tàn Hiệt - trung cấp linh', '440', 'f0be893286b66272230904a0a7d33168', '50', '10');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '476', 'Cường hóa trang bị dùng đạo cụ', '450', '0d35be128035927ccc312fd5d99eb55c', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '477', 'Cường hóa trang bị dùng đạo cụ', '453', '876222b500a060ca6f99934a9a5a46bc', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '478', 'Cứng rắn cánh phong mật ong', '460', 'f15a4aaba08473a5afd6a6521c76d9cf', '2', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '479', 'Cường hóa trang bị dùng đạo cụ', '462', '7153c651e46f98c7061e956c023b4fca', '6', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '480', 'Cường hóa trang bị dùng đạo cụ', '459', 'efc744bfecbcc5b1d2443ff739987af9', '1', '1');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '481', 'Cứng rắn cánh phong mật ong', '459', 'efc744bfecbcc5b1d2443ff739987af9', '2', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '482', 'Cường hóa trang bị dùng đạo cụ', '463', '547f7c3b2c069650f414a69ef4402498', '47', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '483', 'Cường hóa trang bị dùng đạo cụ', '460', 'f15a4aaba08473a5afd6a6521c76d9cf', '8', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '484', 'Hối đoái phù lục dùng', '460', 'f15a4aaba08473a5afd6a6521c76d9cf', '100', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '485', 'Hối đoái phù lục', '460', 'f15a4aaba08473a5afd6a6521c76d9cf', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '486', 'Cứng rắn cánh phong mật ong', '462', '7153c651e46f98c7061e956c023b4fca', '6', '8');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '487', 'Cứng rắn cánh phong mật ong', '450', '0d35be128035927ccc312fd5d99eb55c', '2', '8');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '488', 'Hối đoái phù lục dùng', '450', '0d35be128035927ccc312fd5d99eb55c', '100', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '489', 'Hối đoái phù lục', '450', '0d35be128035927ccc312fd5d99eb55c', '104', '7');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '490', 'Hối đoái phù lục dùng', '462', '7153c651e46f98c7061e956c023b4fca', '100', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '491', 'Hối đoái phù lục', '462', '7153c651e46f98c7061e956c023b4fca', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '492', 'Cứng rắn cánh phong mật ong', '468', 'c1b448051cf88f6dcf535ced41e53127', '6', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '493', 'Cường hóa trang bị dùng đạo cụ', '469', 'e3ce66181b307263d31593be743bdd64', '2', '1');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '494', 'Cứng rắn cánh phong mật ong', '469', 'e3ce66181b307263d31593be743bdd64', '8', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '495', 'Cường hóa trang bị dùng đạo cụ', '468', 'c1b448051cf88f6dcf535ced41e53127', '190', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '496', 'Hối đoái phù lục dùng', '468', 'c1b448051cf88f6dcf535ced41e53127', '100', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '497', 'Hối đoái phù lục', '468', 'c1b448051cf88f6dcf535ced41e53127', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '498', 'Hối đoái phù lục dùng', '469', 'e3ce66181b307263d31593be743bdd64', '102', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '499', 'Hối đoái phù lục', '469', 'e3ce66181b307263d31593be743bdd64', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '500', 'Cường hóa trang bị dùng đạo cụ', '470', '0dee7d958d6808a52df8c485ce7657af', '2', '1');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '501', 'Cứng rắn cánh phong mật ong', '470', '0dee7d958d6808a52df8c485ce7657af', '0', '8');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '502', 'Hối đoái phù lục dùng', '459', 'efc744bfecbcc5b1d2443ff739987af9', '102', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '503', 'Hối đoái phù lục', '459', 'efc744bfecbcc5b1d2443ff739987af9', '107', '7');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '504', 'Cường hóa trang bị dùng đạo cụ', '475', 'e03886cbdd41f2973d1e16d83a1250a2', '17', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '505', 'Hối đoái phù lục dùng', '470', '0dee7d958d6808a52df8c485ce7657af', '20', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '506', 'Hối đoái phù lục', '470', '0dee7d958d6808a52df8c485ce7657af', '10', '7');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '507', 'Cứng rắn cánh phong mật ong', '476', 'deef530148bcb297a74d0509125b844f', '0', '8');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '508', 'Cứng rắn cánh phong mật ong', '475', 'e03886cbdd41f2973d1e16d83a1250a2', '11', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '509', 'Cường hóa trang bị dùng đạo cụ', '476', 'deef530148bcb297a74d0509125b844f', '10', '1');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '510', 'Cứng rắn cánh phong mật ong', '477', 'e83893c48ddfe5e084b2bdea428aa07f', '4', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '511', 'Cường hóa trang bị dùng đạo cụ', '477', 'e83893c48ddfe5e084b2bdea428aa07f', '2', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '512', 'Hối đoái phù lục dùng', '477', 'e83893c48ddfe5e084b2bdea428aa07f', '1', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '513', 'Hối đoái phù lục', '477', 'e83893c48ddfe5e084b2bdea428aa07f', '4', '7');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '514', 'Hối đoái phù lục dùng', '476', 'deef530148bcb297a74d0509125b844f', '99', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '515', 'Hối đoái phù lục', '476', 'deef530148bcb297a74d0509125b844f', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '516', 'Hối đoái phù lục dùng', '475', 'e03886cbdd41f2973d1e16d83a1250a2', '100', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '517', 'Hối đoái phù lục', '475', 'e03886cbdd41f2973d1e16d83a1250a2', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '518', 'Cứng rắn cánh phong mật ong', '478', '483047f1250b4db899cb9a4770efe1e2', '5', '8');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '519', 'Cứng rắn cánh phong mật ong', '481', 'c0787a8c7d117e9a540222e8c1b744af', '1', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '520', 'Cường hóa trang bị dùng đạo cụ', '478', '483047f1250b4db899cb9a4770efe1e2', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '521', 'Hối đoái phù lục dùng', '478', '483047f1250b4db899cb9a4770efe1e2', '100', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '522', 'Hối đoái phù lục', '478', '483047f1250b4db899cb9a4770efe1e2', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '523', 'Cường hóa trang bị dùng đạo cụ', '479', '91322e4d4529a1c0db2580a4d5e07ff1', '17', '1');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '524', 'Cứng rắn cánh phong mật ong', '480', 'df1905b2799580cd3861d79686bacbad', '7', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '525', 'Cường hóa trang bị dùng đạo cụ', '481', 'c0787a8c7d117e9a540222e8c1b744af', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp man', '526', 'Phù lục Tàn Hiệt - sơ cấp rất', '450', '0d35be128035927ccc312fd5d99eb55c', '55', '9');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '527', 'Hối đoái phù lục dùng', '481', 'c0787a8c7d117e9a540222e8c1b744af', '103', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '528', 'Hối đoái phù lục', '481', 'c0787a8c7d117e9a540222e8c1b744af', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-trung cấp linh', '529', 'Phù lục Tàn Hiệt - trung cấp linh', '450', '0d35be128035927ccc312fd5d99eb55c', '52', '10');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '530', 'Cứng rắn cánh phong mật ong', '479', '91322e4d4529a1c0db2580a4d5e07ff1', '0', '8');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '531', 'Cứng rắn cánh phong mật ong', '484', '36774f5c423b7a8bb7858bb4642e128d', '4', '8');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '532', 'Hối đoái phù lục dùng', '479', '91322e4d4529a1c0db2580a4d5e07ff1', '8', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '533', 'Hối đoái phù lục', '479', '91322e4d4529a1c0db2580a4d5e07ff1', '4', '7');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '534', 'Cứng rắn cánh phong mật ong', '486', '7837bb48be44041b2ee92d061d08653e', '6', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '535', 'Cường hóa trang bị dùng đạo cụ', '485', '80eaf5ea9d36f0a8c87d3eba1bd05055', '57', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '536', 'Cường hóa trang bị dùng đạo cụ', '486', '7837bb48be44041b2ee92d061d08653e', '63', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '537', 'Hối đoái phù lục dùng', '486', '7837bb48be44041b2ee92d061d08653e', '102', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '538', 'Hối đoái phù lục', '486', '7837bb48be44041b2ee92d061d08653e', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '539', 'Cường hóa trang bị dùng đạo cụ', '487', '11ee841a987d5674196d37fef51ed9a6', '196', '1');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '540', 'Cứng rắn cánh phong mật ong', '487', '11ee841a987d5674196d37fef51ed9a6', '8', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '541', 'Cường hóa trang bị dùng đạo cụ', '488', '1f014c041b1cb42cb1a75f9449e99998', '3', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '542', 'Hối đoái phù lục dùng', '487', '11ee841a987d5674196d37fef51ed9a6', '100', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '543', 'Hối đoái phù lục', '487', '11ee841a987d5674196d37fef51ed9a6', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '544', 'Cứng rắn cánh phong mật ong', '488', '1f014c041b1cb42cb1a75f9449e99998', '8', '8');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '545', 'Hối đoái phù lục dùng', '488', '1f014c041b1cb42cb1a75f9449e99998', '100', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '546', 'Hối đoái phù lục', '488', '1f014c041b1cb42cb1a75f9449e99998', '102', '7');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '547', 'Cứng rắn cánh phong mật ong', '463', '547f7c3b2c069650f414a69ef4402498', '16', '8');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '548', 'Hối đoái phù lục dùng', '463', '547f7c3b2c069650f414a69ef4402498', '100', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '549', 'Hối đoái phù lục', '463', '547f7c3b2c069650f414a69ef4402498', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp man', '550', 'Phù lục Tàn Hiệt - sơ cấp rất', '470', '0dee7d958d6808a52df8c485ce7657af', '50', '9');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '551', 'Cứng rắn cánh phong mật ong', '492', '3204b1df760fd73acf5332398961f416', '0', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '552', 'Cường hóa trang bị dùng đạo cụ', '492', '3204b1df760fd73acf5332398961f416', '24489', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '553', 'Hối đoái phù lục dùng', '492', '3204b1df760fd73acf5332398961f416', '3', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '554', 'Hối đoái phù lục', '492', '3204b1df760fd73acf5332398961f416', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '555', 'Cứng rắn cánh phong mật ong', '494', '754ae44f81dc019f17c06a41aa2ea715', '6', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '556', 'Cường hóa trang bị dùng đạo cụ', '494', '754ae44f81dc019f17c06a41aa2ea715', '73', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '557', 'Hối đoái phù lục dùng', '494', '754ae44f81dc019f17c06a41aa2ea715', '100', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '558', 'Hối đoái phù lục', '494', '754ae44f81dc019f17c06a41aa2ea715', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '559', 'Cường hóa trang bị dùng đạo cụ', '499', '987fa1ed57063997f01f22767178a600', '40', '1');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '560', 'Cứng rắn cánh phong mật ong', '499', '987fa1ed57063997f01f22767178a600', '6', '8');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '561', 'Hối đoái phù lục dùng', '499', '987fa1ed57063997f01f22767178a600', '102', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '562', 'Hối đoái phù lục', '499', '987fa1ed57063997f01f22767178a600', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '563', 'Cứng rắn cánh phong mật ong', '501', '7d1526a0dd4803a1fda914bcebd93b47', '6', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '564', 'Cường hóa trang bị dùng đạo cụ', '501', '7d1526a0dd4803a1fda914bcebd93b47', '178', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '565', 'Hối đoái phù lục dùng', '501', '7d1526a0dd4803a1fda914bcebd93b47', '106', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '566', 'Hối đoái phù lục', '501', '7d1526a0dd4803a1fda914bcebd93b47', '102', '7');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '567', 'Cứng rắn cánh phong mật ong', '502', 'f039e55562a77296188f2963ca97fae1', '2', '8');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '568', 'Cứng rắn cánh phong mật ong', '503', 'f0ac44856637b747beb115331972de83', '5', '8');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '569', 'Cứng rắn cánh phong mật ong', '504', '78d406e749821c6f055f787edde7fee2', '4', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '570', 'Cường hóa trang bị dùng đạo cụ', '502', 'f039e55562a77296188f2963ca97fae1', '2', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '571', 'Hối đoái phù lục dùng', '502', 'f039e55562a77296188f2963ca97fae1', '101', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '572', 'Hối đoái phù lục', '502', 'f039e55562a77296188f2963ca97fae1', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '573', 'Cường hóa trang bị dùng đạo cụ', '505', '5342074c8ce889f9ce11bcd4f254355f', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '574', 'Cường hóa trang bị dùng đạo cụ', '504', '78d406e749821c6f055f787edde7fee2', '90', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '575', 'Hối đoái phù lục dùng', '504', '78d406e749821c6f055f787edde7fee2', '100', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '576', 'Hối đoái phù lục', '504', '78d406e749821c6f055f787edde7fee2', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '577', 'Cường hóa trang bị dùng đạo cụ', '503', 'f0ac44856637b747beb115331972de83', '7', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '578', 'Hối đoái phù lục dùng', '503', 'f0ac44856637b747beb115331972de83', '100', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '579', 'Hối đoái phù lục', '503', 'f0ac44856637b747beb115331972de83', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '580', 'Cứng rắn cánh phong mật ong', '505', '5342074c8ce889f9ce11bcd4f254355f', '0', '8');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '581', 'Cứng rắn cánh phong mật ong', '506', 'a995483a30393a2c0386c786200c4c84', '7', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '582', 'Cường hóa trang bị dùng đạo cụ', '506', 'a995483a30393a2c0386c786200c4c84', '3', '1');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '583', 'Cứng rắn cánh phong mật ong', '509', 'fcdd5d501dd7b299a36d97981bbd664f', '3', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '584', 'Cường hóa trang bị dùng đạo cụ', '509', 'fcdd5d501dd7b299a36d97981bbd664f', '5', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '585', 'Hối đoái phù lục dùng', '505', '5342074c8ce889f9ce11bcd4f254355f', '1', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '586', 'Hối đoái phù lục', '505', '5342074c8ce889f9ce11bcd4f254355f', '1', '7');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '587', 'Cường hóa trang bị dùng đạo cụ', '480', 'df1905b2799580cd3861d79686bacbad', '28', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '588', 'Hối đoái phù lục dùng', '480', 'df1905b2799580cd3861d79686bacbad', '103', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '589', 'Hối đoái phù lục', '480', 'df1905b2799580cd3861d79686bacbad', '106', '7');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '590', 'Cường hóa trang bị dùng đạo cụ', '516', '6d269e625ac8a8e57a6f38d43ebbd3c6', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '591', 'Cứng rắn cánh phong mật ong', '516', '6d269e625ac8a8e57a6f38d43ebbd3c6', '5', '8');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '592', 'Hối đoái phù lục dùng', '516', '6d269e625ac8a8e57a6f38d43ebbd3c6', '0', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '593', 'Hối đoái phù lục', '516', '6d269e625ac8a8e57a6f38d43ebbd3c6', '7', '7');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '594', 'Cứng rắn cánh phong mật ong', '517', '5b5df97f24dda63106a3cfdbec0f2f37', '4', '8');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '595', 'Cứng rắn cánh phong mật ong', '518', '65f69095d290c9579a2255210d058fb1', '14', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '596', 'Cường hóa trang bị dùng đạo cụ', '518', '65f69095d290c9579a2255210d058fb1', '2', '1');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '597', 'Cứng rắn cánh phong mật ong', '519', '00bec478348b21e8e9135bb08a6787cd', '0', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '598', 'Cường hóa trang bị dùng đạo cụ', '519', '00bec478348b21e8e9135bb08a6787cd', '168', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '599', 'Hối đoái phù lục dùng', '519', '00bec478348b21e8e9135bb08a6787cd', '0', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '600', 'Hối đoái phù lục', '519', '00bec478348b21e8e9135bb08a6787cd', '0', '7');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '601', 'Cường hóa trang bị dùng đạo cụ', '517', '5b5df97f24dda63106a3cfdbec0f2f37', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '602', 'Cứng rắn cánh phong mật ong', '520', '5be0b95fe4591bf4593f16cacfb9136c', '3', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '603', 'Cường hóa trang bị dùng đạo cụ', '520', '5be0b95fe4591bf4593f16cacfb9136c', '56', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '604', 'Hối đoái phù lục dùng', '520', '5be0b95fe4591bf4593f16cacfb9136c', '104', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '605', 'Hối đoái phù lục', '520', '5be0b95fe4591bf4593f16cacfb9136c', '106', '7');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '606', 'Hối đoái phù lục dùng', '518', '65f69095d290c9579a2255210d058fb1', '101', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '607', 'Hối đoái phù lục dùng', '517', '5b5df97f24dda63106a3cfdbec0f2f37', '105', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '608', 'Hối đoái phù lục', '517', '5b5df97f24dda63106a3cfdbec0f2f37', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '609', 'Cường hóa trang bị dùng đạo cụ', '521', 'eae57174fc4d0114b0a244a0b4d46cd1', '40', '1');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '610', 'Cứng rắn cánh phong mật ong', '521', 'eae57174fc4d0114b0a244a0b4d46cd1', '3', '8');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '611', 'Hối đoái phù lục dùng', '521', 'eae57174fc4d0114b0a244a0b4d46cd1', '100', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '612', 'Hối đoái phù lục', '521', 'eae57174fc4d0114b0a244a0b4d46cd1', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '613', 'Hối đoái phù lục', '518', '65f69095d290c9579a2255210d058fb1', '103', '7');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '614', 'Cứng rắn cánh phong mật ong', '524', 'a6edc2472e88417ac151bf97c7231a23', '2', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '615', 'Cường hóa trang bị dùng đạo cụ', '524', 'a6edc2472e88417ac151bf97c7231a23', '193', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '616', 'Hối đoái phù lục dùng', '524', 'a6edc2472e88417ac151bf97c7231a23', '100', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '617', 'Hối đoái phù lục', '524', 'a6edc2472e88417ac151bf97c7231a23', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '618', 'Cường hóa trang bị dùng đạo cụ', '526', 'f365c41cca1867794c0d56a0d2964f52', '50', '1');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '619', 'Cứng rắn cánh phong mật ong', '526', 'f365c41cca1867794c0d56a0d2964f52', '2', '8');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-trung cấp linh', '620', 'Phù lục Tàn Hiệt - trung cấp linh', '492', '3204b1df760fd73acf5332398961f416', '6', '10');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '621', 'Cường hóa trang bị dùng đạo cụ', '528', 'b0937c2a2e0292043bf9afbc25cc43d7', '19', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp man', '622', 'Phù lục Tàn Hiệt - sơ cấp rất', '479', '91322e4d4529a1c0db2580a4d5e07ff1', '10', '9');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '623', 'Cứng rắn cánh phong mật ong', '530', 'a82a81044ec116f876d03885c2973ba6', '11', '8');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '624', 'Cứng rắn cánh phong mật ong', '528', 'b0937c2a2e0292043bf9afbc25cc43d7', '1', '8');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '625', 'Hối đoái phù lục dùng', '528', 'b0937c2a2e0292043bf9afbc25cc43d7', '104', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '626', 'Hối đoái phù lục', '528', 'b0937c2a2e0292043bf9afbc25cc43d7', '98', '7');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '627', 'Cứng rắn cánh phong mật ong', '531', '132a2ae60d254a56c7264893f03a6a25', '1', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '628', 'Cường hóa trang bị dùng đạo cụ', '530', 'a82a81044ec116f876d03885c2973ba6', '1212', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '629', 'Hối đoái phù lục dùng', '530', 'a82a81044ec116f876d03885c2973ba6', '88', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '630', 'Hối đoái phù lục', '530', 'a82a81044ec116f876d03885c2973ba6', '92', '7');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '631', 'Cường hóa trang bị dùng đạo cụ', '531', '132a2ae60d254a56c7264893f03a6a25', '55', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '632', 'Hối đoái phù lục dùng', '531', '132a2ae60d254a56c7264893f03a6a25', '62', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '633', 'Hối đoái phù lục', '531', '132a2ae60d254a56c7264893f03a6a25', '1', '7');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-trung cấp linh', '634', 'Phù lục Tàn Hiệt - trung cấp linh', '479', '91322e4d4529a1c0db2580a4d5e07ff1', '51', '10');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '635', 'Cứng rắn cánh phong mật ong', '535', '9dc0bb8899c5497aa2dacab00c77fd5c', '0', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '636', 'Cường hóa trang bị dùng đạo cụ', '535', '9dc0bb8899c5497aa2dacab00c77fd5c', '9', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '637', 'Hối đoái phù lục dùng', '535', '9dc0bb8899c5497aa2dacab00c77fd5c', '79', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '638', 'Hối đoái phù lục', '535', '9dc0bb8899c5497aa2dacab00c77fd5c', '16', '7');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '639', 'Cường hóa trang bị dùng đạo cụ', '537', '1ad63d508f70be6d8d83235471f1fc8b', '5', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp man', '640', 'Phù lục Tàn Hiệt - sơ cấp rất', '480', 'df1905b2799580cd3861d79686bacbad', '139', '9');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp man', '641', 'Phù lục Tàn Hiệt - sơ cấp rất', '492', '3204b1df760fd73acf5332398961f416', '6', '9');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '642', 'Cường hóa trang bị dùng đạo cụ', '538', '2f1d8f88000b56e6b5c3007d36f2c1c8', '4', '1');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '643', 'Cứng rắn cánh phong mật ong', '538', '2f1d8f88000b56e6b5c3007d36f2c1c8', '0', '8');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '644', 'Hối đoái phù lục dùng', '538', '2f1d8f88000b56e6b5c3007d36f2c1c8', '90', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '645', 'Hối đoái phù lục', '538', '2f1d8f88000b56e6b5c3007d36f2c1c8', '91', '7');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '646', 'Cường hóa trang bị dùng đạo cụ', '547', '557b7f4de2be11fd91d173d236fea6b4', '7', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-trung cấp linh', '647', 'Phù lục Tàn Hiệt - trung cấp linh', '480', 'df1905b2799580cd3861d79686bacbad', '8', '10');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp man', '648', 'Phù lục Tàn Hiệt - sơ cấp rất', '531', '132a2ae60d254a56c7264893f03a6a25', '138', '9');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '649', 'Cường hóa trang bị dùng đạo cụ', '562', 'aecc6f9f63ececb58dcfe256ac7d6897', '8', '1');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '650', 'Cứng rắn cánh phong mật ong', '562', 'aecc6f9f63ececb58dcfe256ac7d6897', '12', '8');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '651', 'Hối đoái phù lục dùng', '562', 'aecc6f9f63ececb58dcfe256ac7d6897', '100', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '652', 'Hối đoái phù lục', '562', 'aecc6f9f63ececb58dcfe256ac7d6897', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '653', 'Cứng rắn cánh phong mật ong', '563', '07c4aa8db44ac27c5047134da59caf04', '5', '8');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-trung cấp linh', '654', 'Phù lục Tàn Hiệt - trung cấp linh', '531', '132a2ae60d254a56c7264893f03a6a25', '59', '10');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '655', 'Cường hóa trang bị dùng đạo cụ', '563', '07c4aa8db44ac27c5047134da59caf04', '15', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '656', 'Hối đoái phù lục', '563', '07c4aa8db44ac27c5047134da59caf04', '101', '7');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '657', 'Cường hóa trang bị dùng đạo cụ', '564', '59c0c0ee89fc09541f4c7760cd40f2f0', '50', '1');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '658', 'Cứng rắn cánh phong mật ong', '564', '59c0c0ee89fc09541f4c7760cd40f2f0', '1', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '659', 'Cường hóa trang bị dùng đạo cụ', '566', '254884cc98a27262e70f650f6f2692bc', '55', '1');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '660', 'Cứng rắn cánh phong mật ong', '565', '6def45155adf21e7aad4a3e12759f7e6', '1', '8');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '661', 'Cứng rắn cánh phong mật ong', '566', '254884cc98a27262e70f650f6f2692bc', '2', '8');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '662', 'Cứng rắn cánh phong mật ong', '568', 'efc23151bb317b15d8b8da7a9568727d', '6', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '663', 'Cường hóa trang bị dùng đạo cụ', '568', 'efc23151bb317b15d8b8da7a9568727d', '6', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '664', 'Hối đoái phù lục dùng', '568', 'efc23151bb317b15d8b8da7a9568727d', '104', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '665', 'Hối đoái phù lục', '568', 'efc23151bb317b15d8b8da7a9568727d', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp man', '666', 'Phù lục Tàn Hiệt - sơ cấp rất', '530', 'a82a81044ec116f876d03885c2973ba6', '113', '9');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '667', 'Cứng rắn cánh phong mật ong', '569', '328e720a8f53d40808701b2cc47641c9', '8', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '668', 'Cường hóa trang bị dùng đạo cụ', '569', '328e720a8f53d40808701b2cc47641c9', '41', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '669', 'Hối đoái phù lục dùng', '569', '328e720a8f53d40808701b2cc47641c9', '100', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '670', 'Hối đoái phù lục', '569', '328e720a8f53d40808701b2cc47641c9', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '671', 'Cứng rắn cánh phong mật ong', '547', '557b7f4de2be11fd91d173d236fea6b4', '10', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '672', 'Cường hóa trang bị dùng đạo cụ', '570', 'ae5c1ace8df289cb52e1e6e6bba81084', '50', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '673', 'Hối đoái phù lục dùng', '547', '557b7f4de2be11fd91d173d236fea6b4', '7', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '674', 'Hối đoái phù lục', '547', '557b7f4de2be11fd91d173d236fea6b4', '4', '7');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-trung cấp linh', '675', 'Phù lục Tàn Hiệt - trung cấp linh', '530', 'a82a81044ec116f876d03885c2973ba6', '51', '10');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '676', 'Cường hóa trang bị dùng đạo cụ', '572', '97d54e32270c248846cd545730dff24c', '1', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '677', 'Cường hóa trang bị dùng đạo cụ', '573', 'd2270581618374bd45714ee5704931b9', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '678', 'Cường hóa trang bị dùng đạo cụ', '574', 'c39219e0f88619106fc81c6324b91549', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '679', 'Cường hóa trang bị dùng đạo cụ', '575', 'bf9939cbe76a46d23d3518233af2f5c4', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '680', 'Cường hóa trang bị dùng đạo cụ', '576', 'b640a2de9bf6e48433937295ee06bbcd', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '681', 'Cường hóa trang bị dùng đạo cụ', '577', '834f2bbe62c7ff8b8588da6721123dfb', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '682', 'Cường hóa trang bị dùng đạo cụ', '578', 'a3662eaf07dda1c197ceabba10c75e02', '50', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '683', 'Cường hóa trang bị dùng đạo cụ', '579', '6748710cbb3b0d6453f6f90c020b2f2e', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '684', 'Cường hóa trang bị dùng đạo cụ', '580', 'cad17f862127f53425dba7035d7e7c04', '1', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '685', 'Cường hóa trang bị dùng đạo cụ', '581', '12859183b2c1aa3ab363f36b377d3e2a', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp man', '686', 'Phù lục Tàn Hiệt - sơ cấp rất', '505', '5342074c8ce889f9ce11bcd4f254355f', '84', '9');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '687', 'Cường hóa trang bị dùng đạo cụ', '534', 'd70281320ec95b488021284e329cdd71', '1', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '688', 'Cường hóa trang bị dùng đạo cụ', '582', 'e7cdc591dbe160e68e7d717912eb7ac1', '1', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '689', 'Cường hóa trang bị dùng đạo cụ', '583', 'c118a42af67aeea4f07ec4b02676a533', '1', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '690', 'Cường hóa trang bị dùng đạo cụ', '584', '471555821ff06e8c401d3e6fb0f890d9', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '691', 'Cường hóa trang bị dùng đạo cụ', '585', '8941761f4845a31c23a6328e5e579202', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '692', 'Cứng rắn cánh phong mật ong', '584', '471555821ff06e8c401d3e6fb0f890d9', '0', '8');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '693', 'Hối đoái phù lục dùng', '585', '8941761f4845a31c23a6328e5e579202', '1', '6');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '694', 'Cường hóa trang bị dùng đạo cụ', '586', '465133246a843b93c24201350509133a', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '695', 'Hối đoái phù lục dùng', '584', '471555821ff06e8c401d3e6fb0f890d9', '100', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '696', 'Hối đoái phù lục', '584', '471555821ff06e8c401d3e6fb0f890d9', '104', '7');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '697', 'Cường hóa trang bị dùng đạo cụ', '587', '6d3e49a106b7d4332c562fa96aaa7b31', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '698', 'Hối đoái phù lục dùng', '563', '07c4aa8db44ac27c5047134da59caf04', '100', '6');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '699', 'Cường hóa trang bị dùng đạo cụ', '588', '95409c694fc35f303dc09eea69444dd8', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '700', 'Hối đoái phù lục', '581', '12859183b2c1aa3ab363f36b377d3e2a', '1', '7');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '701', 'Cường hóa trang bị dùng đạo cụ', '594', 'a99db0da877f1c5e3579d338f49271fe', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '702', 'Hối đoái phù lục', '594', 'a99db0da877f1c5e3579d338f49271fe', '1', '7');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '703', 'Cường hóa trang bị dùng đạo cụ', '597', '2db67eedafd57b9251452c84fd6e72dd', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '704', 'Cường hóa trang bị dùng đạo cụ', '598', '1dae7225f245dd20b9e9819ccf00bb14', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '705', 'Hối đoái phù lục', '598', '1dae7225f245dd20b9e9819ccf00bb14', '1', '7');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '706', 'Cường hóa trang bị dùng đạo cụ', '600', '6636a00499a701a8e4aee28099e899c3', '2', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '707', 'Cường hóa trang bị dùng đạo cụ', '603', 'dbd913282216b9f36dc0aacf77fb8f4d', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '708', 'Cường hóa trang bị dùng đạo cụ', '605', '9bea8bb6f86f26e1a55e2abb63f9f479', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '709', 'Cường hóa trang bị dùng đạo cụ', '607', 'abad3256447bf495020a18e2c7f72df8', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '710', 'Cường hóa trang bị dùng đạo cụ', '611', 'a5be62b4b78aa6ec7502924aa6c7ecb0', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '711', 'Hối đoái phù lục', '611', 'a5be62b4b78aa6ec7502924aa6c7ecb0', '1', '7');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '712', 'Cường hóa trang bị dùng đạo cụ', '613', '003222c0bc5a54469192d5c6dc2e96a4', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '713', 'Cường hóa trang bị dùng đạo cụ', '614', '2d3523906f45daf8b05d4ee873b2fb75', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '714', 'Cường hóa trang bị dùng đạo cụ', '616', '745b8b0c24f3b050d2e5d4f040e09755', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '715', 'Hối đoái phù lục', '616', '745b8b0c24f3b050d2e5d4f040e09755', '1', '7');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '716', 'Cường hóa trang bị dùng đạo cụ', '621', 'b7e9ee418c890496b897cfddc3827361', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '717', 'Hối đoái phù lục', '621', 'b7e9ee418c890496b897cfddc3827361', '1', '7');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '718', 'Cường hóa trang bị dùng đạo cụ', '623', 'f63078630a88b1ecee7ee913ceb19812', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '719', 'Hối đoái phù lục', '623', 'f63078630a88b1ecee7ee913ceb19812', '1', '7');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '720', 'Cường hóa trang bị dùng đạo cụ', '624', '93f526702057373149a9cfa640385eb3', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '721', 'Hối đoái phù lục', '624', '93f526702057373149a9cfa640385eb3', '1', '7');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '722', 'Cường hóa trang bị dùng đạo cụ', '626', '8ffb820f9fe09045a9e8ecdfbc712802', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '723', 'Hối đoái phù lục', '626', '8ffb820f9fe09045a9e8ecdfbc712802', '1', '7');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '724', 'Cứng rắn cánh phong mật ong', '625', 'ec3dcb49b71ec220951be37a1e1cbda2', '6', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '725', 'Cường hóa trang bị dùng đạo cụ', '627', 'ef9ba5ede60da54d81838439bf4957d5', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '726', 'Hối đoái phù lục', '627', 'ef9ba5ede60da54d81838439bf4957d5', '1', '7');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '727', 'Cường hóa trang bị dùng đạo cụ', '628', '4e192ae86106454c54d1c8571060d9cb', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '728', 'Cường hóa trang bị dùng đạo cụ', '625', 'ec3dcb49b71ec220951be37a1e1cbda2', '85', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '729', 'Hối đoái phù lục dùng', '625', 'ec3dcb49b71ec220951be37a1e1cbda2', '100', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '730', 'Hối đoái phù lục', '625', 'ec3dcb49b71ec220951be37a1e1cbda2', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '731', 'Hối đoái phù lục dùng', '628', '4e192ae86106454c54d1c8571060d9cb', '1', '6');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '732', 'Cường hóa trang bị dùng đạo cụ', '629', '4faa68ad2836d9a580a095d5d4e5ac34', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '733', 'Cường hóa trang bị dùng đạo cụ', '630', '2569b951da435bb9c77d68f84156b531', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '734', 'Hối đoái phù lục dùng', '629', '4faa68ad2836d9a580a095d5d4e5ac34', '1', '6');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '735', 'Cường hóa trang bị dùng đạo cụ', '631', '8096bab241a745965c3fc88cc699df17', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '736', 'Cường hóa trang bị dùng đạo cụ', '632', 'b9914dd0b8bdc9ab234a551d6a9989c3', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '737', 'Cường hóa trang bị dùng đạo cụ', '633', '4028d7fd3906be6e99e9847cf5ec5748', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '738', 'Cường hóa trang bị dùng đạo cụ', '634', 'e24af8ce4572a56388bba51fce9c5c2d', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '739', 'Hối đoái phù lục dùng', '634', 'e24af8ce4572a56388bba51fce9c5c2d', '1', '6');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '740', 'Cường hóa trang bị dùng đạo cụ', '635', '67f1b64af52c989385241db4b2b6daf8', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '741', 'Hối đoái phù lục dùng', '635', '67f1b64af52c989385241db4b2b6daf8', '1', '6');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '742', 'Cường hóa trang bị dùng đạo cụ', '636', 'fa80a1400e8952183e656d20ae298168', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '743', 'Hối đoái phù lục dùng', '636', 'fa80a1400e8952183e656d20ae298168', '1', '6');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '744', 'Cường hóa trang bị dùng đạo cụ', '637', '4c2776c8859d4e1723bd6d7fab1b2772', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '745', 'Hối đoái phù lục dùng', '637', '4c2776c8859d4e1723bd6d7fab1b2772', '1', '6');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '746', 'Cường hóa trang bị dùng đạo cụ', '638', '5a383efd6fd05659b53d81f46bb374ba', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '747', 'Hối đoái phù lục dùng', '638', '5a383efd6fd05659b53d81f46bb374ba', '1', '6');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '748', 'Cường hóa trang bị dùng đạo cụ', '639', 'c316eef7f547fdb67b02a02991c08595', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '749', 'Hối đoái phù lục dùng', '639', 'c316eef7f547fdb67b02a02991c08595', '1', '6');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '750', 'Cường hóa trang bị dùng đạo cụ', '640', '6641224d5c7b03639d8c3a821aaf5265', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '751', 'Hối đoái phù lục dùng', '640', '6641224d5c7b03639d8c3a821aaf5265', '1', '6');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '752', 'Cường hóa trang bị dùng đạo cụ', '641', '7e11a224cf7d680b4434a8d4ffb38e18', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '753', 'Hối đoái phù lục dùng', '641', '7e11a224cf7d680b4434a8d4ffb38e18', '1', '6');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '754', 'Cường hóa trang bị dùng đạo cụ', '642', 'ae48252617495d4d8415a9b2897e88da', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '755', 'Cường hóa trang bị dùng đạo cụ', '643', 'ed1e41cb1a37291afaeafe372a999ece', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp man', '756', 'Phù lục Tàn Hiệt - sơ cấp rất', '643', 'ed1e41cb1a37291afaeafe372a999ece', '1', '9');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '757', 'Cường hóa trang bị dùng đạo cụ', '644', 'cba408727a6faf27e19799a28a7245d9', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '758', 'Cường hóa trang bị dùng đạo cụ', '645', '392d311e85536f5a22ac352458ed417d', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp man', '759', 'Phù lục Tàn Hiệt - sơ cấp rất', '645', '392d311e85536f5a22ac352458ed417d', '1', '9');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '760', 'Cường hóa trang bị dùng đạo cụ', '646', 'b1a11bf20372c1917c015177e70da375', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '761', 'Cường hóa trang bị dùng đạo cụ', '647', '51218a11dafd6581e03eb517fd323935', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp man', '762', 'Phù lục Tàn Hiệt - sơ cấp rất', '646', 'b1a11bf20372c1917c015177e70da375', '1', '9');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '763', 'Cường hóa trang bị dùng đạo cụ', '648', '78452c0d4b172fb2dcee08d338f56acc', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '764', 'Cường hóa trang bị dùng đạo cụ', '649', '0a02202fed191e30afc1626b1171b09d', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '765', 'Cứng rắn cánh phong mật ong', '649', '0a02202fed191e30afc1626b1171b09d', '2', '8');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp man', '766', 'Phù lục Tàn Hiệt - sơ cấp rất', '648', '78452c0d4b172fb2dcee08d338f56acc', '1', '9');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '767', 'Cường hóa trang bị dùng đạo cụ', '650', 'f47188dbeb689c63337216ffcfdc80aa', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp man', '768', 'Phù lục Tàn Hiệt - sơ cấp rất', '650', 'f47188dbeb689c63337216ffcfdc80aa', '1', '9');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '769', 'Cường hóa trang bị dùng đạo cụ', '651', 'b69d90fc03f0fa785b1c6ddb3b3829b8', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '770', 'Cường hóa trang bị dùng đạo cụ', '652', '97f6c8467286a08954edfa6955510a71', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '771', 'Cường hóa trang bị dùng đạo cụ', '653', 'ce4cd32dada7f32b83853711542c22ca', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '772', 'Cường hóa trang bị dùng đạo cụ', '654', '8a7efb7f2df77e079d227b2b0518b47f', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp man', '773', 'Phù lục Tàn Hiệt - sơ cấp rất', '654', '8a7efb7f2df77e079d227b2b0518b47f', '1', '9');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '774', 'Cường hóa trang bị dùng đạo cụ', '655', '071cc2053b1d893f70a8717e139a890b', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '775', 'Cường hóa trang bị dùng đạo cụ', '656', 'b07cf0573d533fd6fafea889f4b00341', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '776', 'Cường hóa trang bị dùng đạo cụ', '658', '9224230b7a147c55b158c0642c0dae34', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '777', 'Cường hóa trang bị dùng đạo cụ', '659', 'bf32173db0102374b65590833ad0cc7f', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '778', 'Cường hóa trang bị dùng đạo cụ', '660', '2c2297bb0c8a0ac18b2fd1f3f48787e2', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '779', 'Cường hóa trang bị dùng đạo cụ', '661', '8459472e192b644642eb5042a71624a4', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '780', 'Cường hóa trang bị dùng đạo cụ', '662', '03dd6871353d919e243d6cc9cd0edc21', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '781', 'Cường hóa trang bị dùng đạo cụ', '663', '2a111a75f25e6f87d99b0925f8fa4f09', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '782', 'Cường hóa trang bị dùng đạo cụ', '664', '485169fef9ff97368fad99c5d7b9eaba', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp man', '783', 'Phù lục Tàn Hiệt - sơ cấp rất', '664', '485169fef9ff97368fad99c5d7b9eaba', '1', '9');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '784', 'Cường hóa trang bị dùng đạo cụ', '665', 'c8d9ca8dc1c454d877b29418bb69c23f', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '785', 'Cường hóa trang bị dùng đạo cụ', '666', 'da5ec0d2cab02e7b2f6f617fcfbac658', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp man', '786', 'Phù lục Tàn Hiệt - sơ cấp rất', '666', 'da5ec0d2cab02e7b2f6f617fcfbac658', '1', '9');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '787', 'Cường hóa trang bị dùng đạo cụ', '667', '3646314d5a3e639bcb2cba2d20ea1227', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp man', '788', 'Phù lục Tàn Hiệt - sơ cấp rất', '667', '3646314d5a3e639bcb2cba2d20ea1227', '1', '9');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '789', 'Cường hóa trang bị dùng đạo cụ', '668', 'd7c100e7739bbbd6446020fa21eb43cb', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp man', '790', 'Phù lục Tàn Hiệt - sơ cấp rất', '668', 'd7c100e7739bbbd6446020fa21eb43cb', '1', '9');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '791', 'Cường hóa trang bị dùng đạo cụ', '669', '90e8f3a897aa7fcb31627a8e75eeaa9c', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '792', 'Hối đoái phù lục dùng', '669', '90e8f3a897aa7fcb31627a8e75eeaa9c', '1', '6');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '793', 'Cường hóa trang bị dùng đạo cụ', '670', 'edcbf1d0ea9bb879b925b69aac3a4019', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '794', 'Hối đoái phù lục dùng', '670', 'edcbf1d0ea9bb879b925b69aac3a4019', '1', '6');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '795', 'Cường hóa trang bị dùng đạo cụ', '671', '144f1c155fcb7fedf5915e15c68aed52', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '796', 'Hối đoái phù lục dùng', '671', '144f1c155fcb7fedf5915e15c68aed52', '1', '6');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '797', 'Cường hóa trang bị dùng đạo cụ', '672', '45500dfe80d0c1774817786a44a50e93', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '798', 'Hối đoái phù lục dùng', '672', '45500dfe80d0c1774817786a44a50e93', '1', '6');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '799', 'Cường hóa trang bị dùng đạo cụ', '673', 'de606cacc6a6ba649a3bf437b993d5fb', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '800', 'Hối đoái phù lục dùng', '673', 'de606cacc6a6ba649a3bf437b993d5fb', '1', '6');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '801', 'Cường hóa trang bị dùng đạo cụ', '674', 'f47ac3d9c8ff47415290e5bbee5d94ba', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '802', 'Cường hóa trang bị dùng đạo cụ', '675', '9467812eb836c2b70c021e8ef1d52ab1', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '803', 'Cường hóa trang bị dùng đạo cụ', '676', '7c8c3deb469f9576d97eb1bdedd44ded', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '804', 'Cường hóa trang bị dùng đạo cụ', '677', 'e4eeb15d095a35e9ca0934aa4c5d7348', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '805', 'Hối đoái phù lục dùng', '677', 'e4eeb15d095a35e9ca0934aa4c5d7348', '1', '6');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '806', 'Cường hóa trang bị dùng đạo cụ', '678', '820454b1128c1a80ae000002be521290', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '807', 'Cường hóa trang bị dùng đạo cụ', '679', '0bc389301f085642f280e2bb5736a480', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '808', 'Cường hóa trang bị dùng đạo cụ', '680', 'e08d6b644f78d1b2fba58b3b9336e7c7', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '809', 'Cường hóa trang bị dùng đạo cụ', '681', '4d6c7bbb353fe3b1998ab154b4b8de34', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '810', 'Cường hóa trang bị dùng đạo cụ', '682', '022efa153704457feb2e54c5bbe671b5', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '811', 'Cường hóa trang bị dùng đạo cụ', '683', 'e1ea2ceff741958658f9ec6f3fb34337', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '812', 'Cường hóa trang bị dùng đạo cụ', '684', '5203a615004c27accb73b0d2dfe0d7e9', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '813', 'Cường hóa trang bị dùng đạo cụ', '685', '2a9d05e96984a01ac6a3d3fa26c423d2', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '814', 'Cường hóa trang bị dùng đạo cụ', '686', 'c4370b9318ff613ff94f1c1f579ceffd', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '815', 'Cường hóa trang bị dùng đạo cụ', '687', 'f94a4e70090449b1305bcfabc2fc3063', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '816', 'Cường hóa trang bị dùng đạo cụ', '688', '500a2437c1bb8f02f7c49e28601dfb6e', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '817', 'Cường hóa trang bị dùng đạo cụ', '689', '3133ef63491fc4a52701e636dfbf9fa3', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '818', 'Cường hóa trang bị dùng đạo cụ', '690', 'f7f614975423ea19029307b81d8c830d', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '819', 'Cường hóa trang bị dùng đạo cụ', '691', '17a653630bf9efddc2913636da715feb', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '820', 'Cường hóa trang bị dùng đạo cụ', '692', '596e08e7ab36427ead738fb68c3b0a19', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '821', 'Cường hóa trang bị dùng đạo cụ', '693', 'e1cdfa10364d6fe840293d6058435f84', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '822', 'Cường hóa trang bị dùng đạo cụ', '694', 'c39e1158234b1cbed1235f3a92e2190a', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '823', 'Cường hóa trang bị dùng đạo cụ', '695', 'c40d9b4ce23e9d6301ae100078b494b1', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '824', 'Cường hóa trang bị dùng đạo cụ', '696', '39486819141832199e9f6ce0f07df80f', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '825', 'Cường hóa trang bị dùng đạo cụ', '697', '28540a58a176409ab6ab670ad8b84d9a', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '826', 'Cường hóa trang bị dùng đạo cụ', '698', 'db0c22a8d6c70028f1458c5bde301d42', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '827', 'Cường hóa trang bị dùng đạo cụ', '699', 'e26d19ccb75a13d79282f2494544ed63', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '828', 'Cường hóa trang bị dùng đạo cụ', '700', 'ae43a1ceec1a1cd209229a4a2a576694', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '829', 'Cường hóa trang bị dùng đạo cụ', '701', 'dad5603cf172dda4d361f94d72ffa9b3', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '830', 'Cường hóa trang bị dùng đạo cụ', '702', '477f97929463f731805fea917796116b', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '831', 'Cường hóa trang bị dùng đạo cụ', '703', '3a70d43cd5e915c33fca9ecaed82c166', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '832', 'Cường hóa trang bị dùng đạo cụ', '704', 'd94223c92b09cca1881b7aa57c9be239', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '833', 'Cường hóa trang bị dùng đạo cụ', '705', '4e8649b4605a7b24838a6eb8ccbcdafd', '1', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '834', 'Cường hóa trang bị dùng đạo cụ', '706', 'ddfafa84970edb8a1a2e1ce511cb3bea', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '835', 'Cường hóa trang bị dùng đạo cụ', '707', 'dd799830db04c768c1bc8c999adb9eb3', '1', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '836', 'Cường hóa trang bị dùng đạo cụ', '708', '0728f444fe41245dc6009bae1abd5076', '1', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '837', 'Cường hóa trang bị dùng đạo cụ', '709', '907c9e6c88d5dfdc389cd159e8e1227c', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '838', 'Cường hóa trang bị dùng đạo cụ', '710', '42de75f09bd5e5f02dc4ec20d84f6ec1', '1', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '839', 'Cường hóa trang bị dùng đạo cụ', '711', '59906aabadcb687e8dd91cc3e7840c8f', '1', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '840', 'Cường hóa trang bị dùng đạo cụ', '712', '90888bddd4da7a0ca3c3400b09cb8608', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '841', 'Cường hóa trang bị dùng đạo cụ', '713', '24924d381bc4839740c136cba998f8a1', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '842', 'Cường hóa trang bị dùng đạo cụ', '714', 'd8561aa207c9c921d2fcbff47f1b004f', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '843', 'Cường hóa trang bị dùng đạo cụ', '715', 'b28c7d5de2c2ba559cf68ae2e2d8aa8e', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '844', 'Cường hóa trang bị dùng đạo cụ', '716', '677f23772319fda9f0b168cb4e7a921e', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '845', 'Cường hóa trang bị dùng đạo cụ', '717', 'da689f730710e8cbc65d9ca654e5ffc5', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-trung cấp linh', '846', 'Phù lục Tàn Hiệt - trung cấp linh', '505', '5342074c8ce889f9ce11bcd4f254355f', '52', '10');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '847', 'Cứng rắn cánh phong mật ong', '718', '1f4d7e6d0493153d0a425f21883df5fe', '10', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '848', 'Cường hóa trang bị dùng đạo cụ', '718', '1f4d7e6d0493153d0a425f21883df5fe', '90', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '849', 'Hối đoái phù lục dùng', '718', '1f4d7e6d0493153d0a425f21883df5fe', '100', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '850', 'Hối đoái phù lục', '718', '1f4d7e6d0493153d0a425f21883df5fe', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp man', '851', 'Phù lục Tàn Hiệt - sơ cấp rất', '501', '7d1526a0dd4803a1fda914bcebd93b47', '50', '9');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '852', 'Cứng rắn cánh phong mật ong', '719', '53cd539db99d47571d60f4d91d019219', '3', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '853', 'Cường hóa trang bị dùng đạo cụ', '719', '53cd539db99d47571d60f4d91d019219', '5', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '854', 'Hối đoái phù lục dùng', '719', '53cd539db99d47571d60f4d91d019219', '108', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '855', 'Hối đoái phù lục', '719', '53cd539db99d47571d60f4d91d019219', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-trung cấp linh', '856', 'Phù lục Tàn Hiệt - trung cấp linh', '501', '7d1526a0dd4803a1fda914bcebd93b47', '50', '10');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '857', 'Cường hóa trang bị dùng đạo cụ', '720', '361279866296d10396c06791e1f7b796', '191', '1');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '858', 'Cứng rắn cánh phong mật ong', '720', '361279866296d10396c06791e1f7b796', '6', '8');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '859', 'Hối đoái phù lục dùng', '720', '361279866296d10396c06791e1f7b796', '100', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '860', 'Hối đoái phù lục', '720', '361279866296d10396c06791e1f7b796', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '861', 'Cường hóa trang bị dùng đạo cụ', '722', '8d97e33eb204fcab472e184928d89803', '372', '1');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '862', 'Cứng rắn cánh phong mật ong', '722', '8d97e33eb204fcab472e184928d89803', '0', '8');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '863', 'Hối đoái phù lục dùng', '722', '8d97e33eb204fcab472e184928d89803', '100', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '864', 'Hối đoái phù lục', '722', '8d97e33eb204fcab472e184928d89803', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '865', 'Cứng rắn cánh phong mật ong', '723', '9ca6dc570525096a45e9d1fd4bdda384', '1', '8');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '866', 'Cứng rắn cánh phong mật ong', '724', 'eca24beba178ffa2d273410f2b1eff68', '1', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '867', 'Cường hóa trang bị dùng đạo cụ', '724', 'eca24beba178ffa2d273410f2b1eff68', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '868', 'Cường hóa trang bị dùng đạo cụ', '723', '9ca6dc570525096a45e9d1fd4bdda384', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '869', 'Cường hóa trang bị dùng đạo cụ', '725', 'efb6f6c5f57692b790f014c5b38dd816', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '870', 'Cứng rắn cánh phong mật ong', '725', 'efb6f6c5f57692b790f014c5b38dd816', '1', '8');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp man', '871', 'Phù lục Tàn Hiệt - sơ cấp rất', '535', '9dc0bb8899c5497aa2dacab00c77fd5c', '100', '9');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp man', '872', 'Phù lục Tàn Hiệt - sơ cấp rất', '519', '00bec478348b21e8e9135bb08a6787cd', '100', '9');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-trung cấp linh', '873', 'Phù lục Tàn Hiệt - trung cấp linh', '535', '9dc0bb8899c5497aa2dacab00c77fd5c', '50', '10');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '874', 'Cường hóa trang bị dùng đạo cụ', '533', '67d33ee391a22e8e317f6a3b9bd43b9d', '0', '1');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '875', 'Cứng rắn cánh phong mật ong', '726', 'e99904f72c48e48b4bc5ee8cf8e966d6', '8', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '876', 'Cường hóa trang bị dùng đạo cụ', '726', 'e99904f72c48e48b4bc5ee8cf8e966d6', '8', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '877', 'Hối đoái phù lục dùng', '726', 'e99904f72c48e48b4bc5ee8cf8e966d6', '99', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '878', 'Hối đoái phù lục', '726', 'e99904f72c48e48b4bc5ee8cf8e966d6', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '879', 'Cứng rắn cánh phong mật ong', '727', '9c484fb3dc297a35f106796ed135a98d', '3', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '880', 'Cường hóa trang bị dùng đạo cụ', '727', '9c484fb3dc297a35f106796ed135a98d', '104', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '881', 'Hối đoái phù lục dùng', '727', '9c484fb3dc297a35f106796ed135a98d', '102', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '882', 'Hối đoái phù lục', '727', '9c484fb3dc297a35f106796ed135a98d', '100', '7');
+INSERT INTO `playerdaoju` VALUES ('Ngạnh sí phong mật', '883', 'Cứng rắn cánh phong mật ong', '728', '0e67ef9235186f4f55a624ee83eb0eb9', '5', '8');
+INSERT INTO `playerdaoju` VALUES ('Cường hóa thạch', '884', 'Cường hóa trang bị dùng đạo cụ', '728', '0e67ef9235186f4f55a624ee83eb0eb9', '44', '1');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp linh', '885', 'Hối đoái phù lục dùng', '728', '0e67ef9235186f4f55a624ee83eb0eb9', '100', '6');
+INSERT INTO `playerdaoju` VALUES ('Phù lục tàn hiệt-sơ cấp ma', '886', 'Hối đoái phù lục', '728', '0e67ef9235186f4f55a624ee83eb0eb9', '100', '7');
 
 -- ----------------------------
 -- Table structure for playerjineng
@@ -2170,6 +2348,132 @@ CREATE TABLE `playerjineng` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of playerjineng
+-- ----------------------------
+INSERT INTO `playerjineng` VALUES ('Tụ linh trảm', '4', '10', '0', '0', '2', '43e4c5c6dda6740216e3bd54ff200c15', '7');
+INSERT INTO `playerjineng` VALUES ('Ngưu B đích kỹ năng', '5', '0', '0', '100', '100', '43e4c5c6dda6740216e3bd54ff200c15', '3');
+INSERT INTO `playerjineng` VALUES ('Ngưu B đích kỹ năng', '5', '0', '0', '100', '100', 'af1d74362b935eb0ac845b7e4f7f707f', '1');
+INSERT INTO `playerjineng` VALUES ('Tụ linh trảm', '4', '10', '0', '0', '2', '099f465c0c34dd5ef59f230a21447af4', '8');
+INSERT INTO `playerjineng` VALUES ('Tụ linh trảm', '4', '10', '0', '0', '2', '9bb5f086e2f1efdbc8215e55f8a4a30f', '0');
+INSERT INTO `playerjineng` VALUES ('Tụ linh trảm', '4', '10', '0', '0', '2', '6d07cdb650fc1fca94c0dd51a8ed971e', '32');
+INSERT INTO `playerjineng` VALUES ('Ma tâm bạo phát', '5', '5', '0', '10', '10', '6d07cdb650fc1fca94c0dd51a8ed971e', '0');
+INSERT INTO `playerjineng` VALUES ('Man lực phụ thể', '6', '7', '7', '7', '7', '6d07cdb650fc1fca94c0dd51a8ed971e', '0');
+INSERT INTO `playerjineng` VALUES ('Tụ linh trảm', '4', '10', '0', '0', '2', '36f30db66d6fe42f34a91d15b6097af0', '0');
+INSERT INTO `playerjineng` VALUES ('Man lực phụ thể', '6', '7', '7', '7', '7', '43e4c5c6dda6740216e3bd54ff200c15', '1');
+INSERT INTO `playerjineng` VALUES ('Ma tâm bạo phát', '5', '5', '0', '10', '10', '9bb5f086e2f1efdbc8215e55f8a4a30f', '0');
+INSERT INTO `playerjineng` VALUES ('Man lực phụ thể', '6', '7', '7', '7', '7', '9bb5f086e2f1efdbc8215e55f8a4a30f', '0');
+INSERT INTO `playerjineng` VALUES ('Nộ huyết bạo', '7', '12', '2', '20', '12', '9bb5f086e2f1efdbc8215e55f8a4a30f', '0');
+INSERT INTO `playerjineng` VALUES ('Nộ huyết bạo', '7', '12', '2', '20', '12', '36f30db66d6fe42f34a91d15b6097af0', '0');
+INSERT INTO `playerjineng` VALUES ('Man lực phụ thể', '6', '7', '7', '7', '7', '36f30db66d6fe42f34a91d15b6097af0', '9');
+INSERT INTO `playerjineng` VALUES ('Nộ huyết bạo', '7', '12', '2', '20', '8', '43e4c5c6dda6740216e3bd54ff200c15', '0');
+INSERT INTO `playerjineng` VALUES ('Tụ linh trảm', '4', '10', '0', '0', '2', 'f58bb53a4bdd39d6d70b706d77fbc74f', '0');
+INSERT INTO `playerjineng` VALUES ('Man lực phụ thể', '6', '7', '7', '7', '7', 'f58bb53a4bdd39d6d70b706d77fbc74f', '0');
+INSERT INTO `playerjineng` VALUES ('Tụ linh trảm', '4', '10', '0', '0', '2', 'c4339dfb63d53dbe95ff3f1297cd889d', '5');
+INSERT INTO `playerjineng` VALUES ('Nộ huyết bạo', '7', '12', '2', '20', '8', '6d07cdb650fc1fca94c0dd51a8ed971e', '0');
+INSERT INTO `playerjineng` VALUES ('Nộ huyết bạo', '7', '12', '2', '20', '8', 'f58bb53a4bdd39d6d70b706d77fbc74f', '0');
+INSERT INTO `playerjineng` VALUES ('Tụ linh trảm', '4', '10', '0', '0', '2', '592857bc812f813ed52fa8b187582fc2', '0');
+INSERT INTO `playerjineng` VALUES ('Ma tâm bạo phát', '5', '5', '0', '10', '10', '592857bc812f813ed52fa8b187582fc2', '3');
+INSERT INTO `playerjineng` VALUES ('Tụ linh trảm', '4', '10', '0', '0', '2', '781a121e409741ff53f5978578067146', '20');
+INSERT INTO `playerjineng` VALUES ('Tụ linh trảm', '4', '10', '0', '0', '2', '775c0ff651b405a676fc9ee1729302f4', '20');
+INSERT INTO `playerjineng` VALUES ('Man lực phụ thể', '6', '7', '7', '7', '7', '6b7b2713b1a52397c7282509906e8c5e', '1');
+INSERT INTO `playerjineng` VALUES ('Tụ linh trảm', '4', '10', '0', '0', '2', 'c9879e4c3738297c06b0b14d78dc39d6', '15');
+INSERT INTO `playerjineng` VALUES ('Ma tâm bạo phát', '5', '5', '0', '10', '10', 'c9879e4c3738297c06b0b14d78dc39d6', '25');
+INSERT INTO `playerjineng` VALUES ('Ma tâm bạo phát', '5', '5', '0', '10', '10', '781a121e409741ff53f5978578067146', '12');
+INSERT INTO `playerjineng` VALUES ('Tụ linh trảm', '4', '10', '0', '0', '2', 'eb61a0b08b9bfdfda961d64410eba5bc', '3');
+INSERT INTO `playerjineng` VALUES ('Ma tâm bạo phát', '5', '5', '0', '10', '10', 'eb61a0b08b9bfdfda961d64410eba5bc', '2');
+INSERT INTO `playerjineng` VALUES ('Tụ linh trảm', '4', '10', '0', '0', '2', '77099dca8f67b65ca91af53d0461ac2f', '0');
+INSERT INTO `playerjineng` VALUES ('Ma tâm bạo phát', '5', '5', '0', '10', '10', '77099dca8f67b65ca91af53d0461ac2f', '0');
+INSERT INTO `playerjineng` VALUES ('Ma tâm bạo phát', '5', '5', '0', '10', '10', '775c0ff651b405a676fc9ee1729302f4', '10');
+INSERT INTO `playerjineng` VALUES ('Man lực phụ thể', '6', '7', '7', '7', '7', '775c0ff651b405a676fc9ee1729302f4', '23');
+INSERT INTO `playerjineng` VALUES ('Ma tâm bạo phát', '5', '5', '0', '10', '10', 'ad8f4d8e577f50deae4492bd03c96b56', '2');
+INSERT INTO `playerjineng` VALUES ('Tụ linh trảm', '4', '10', '0', '0', '2', 'ad8f4d8e577f50deae4492bd03c96b56', '3');
+INSERT INTO `playerjineng` VALUES ('Tụ linh trảm', '4', '10', '0', '0', '2', 'bb2a45b7652a7900e7810128a329597e', '2');
+INSERT INTO `playerjineng` VALUES ('Ma tâm bạo phát', '5', '5', '0', '10', '10', 'bb2a45b7652a7900e7810128a329597e', '0');
+INSERT INTO `playerjineng` VALUES ('Tụ linh trảm', '4', '10', '0', '0', '2', '4e079b4084dcdd84cf4393a003a38283', '2');
+INSERT INTO `playerjineng` VALUES ('Tụ linh trảm', '4', '10', '0', '0', '2', 'ce13ba86e509d2fab5ed13c2cddf00c9', '2');
+INSERT INTO `playerjineng` VALUES ('Ma tâm bạo phát', '5', '5', '0', '10', '10', 'ce13ba86e509d2fab5ed13c2cddf00c9', '8');
+INSERT INTO `playerjineng` VALUES ('Tụ linh trảm', '4', '10', '0', '0', '2', 'ea5a17b7f6c42320f7c242f2871a0f8d', '0');
+INSERT INTO `playerjineng` VALUES ('Tụ linh trảm', '4', '10', '0', '0', '2', 'dd58b4170ec8d6d20f876405b4b1265d', '0');
+INSERT INTO `playerjineng` VALUES ('Ma tâm bạo phát', '5', '5', '0', '10', '10', 'dd58b4170ec8d6d20f876405b4b1265d', '0');
+INSERT INTO `playerjineng` VALUES ('Tụ linh trảm', '4', '10', '0', '0', '2', '7159624dfdba178c848da03a6ffefec9', '2');
+INSERT INTO `playerjineng` VALUES ('Ma tâm bạo phát', '5', '5', '0', '10', '10', '7159624dfdba178c848da03a6ffefec9', '3');
+INSERT INTO `playerjineng` VALUES ('Tụ linh trảm', '4', '10', '0', '0', '2', 'f76c11b6601d3a6ce505c616b64ed478', '0');
+INSERT INTO `playerjineng` VALUES ('Ma tâm bạo phát', '5', '5', '0', '10', '10', 'f76c11b6601d3a6ce505c616b64ed478', '10');
+INSERT INTO `playerjineng` VALUES ('Tụ linh trảm', '4', '10', '0', '0', '2', 'e14b6e0d27bea46402a112c75c170887', '0');
+INSERT INTO `playerjineng` VALUES ('聚灵斩', '4', '10', '0', '0', '2', '43e4c5c6dda6740216e3bd54ff200c15', '7');
+INSERT INTO `playerjineng` VALUES ('牛B的技能', '5', '0', '0', '100', '100', '43e4c5c6dda6740216e3bd54ff200c15', '3');
+INSERT INTO `playerjineng` VALUES ('牛B的技能', '5', '0', '0', '100', '100', 'af1d74362b935eb0ac845b7e4f7f707f', '1');
+INSERT INTO `playerjineng` VALUES ('聚灵斩', '4', '10', '0', '0', '2', '099f465c0c34dd5ef59f230a21447af4', '8');
+INSERT INTO `playerjineng` VALUES ('聚灵斩', '4', '10', '0', '0', '2', '9bb5f086e2f1efdbc8215e55f8a4a30f', '0');
+INSERT INTO `playerjineng` VALUES ('聚灵斩', '4', '10', '0', '0', '2', '6d07cdb650fc1fca94c0dd51a8ed971e', '32');
+INSERT INTO `playerjineng` VALUES ('魔心爆发', '5', '5', '0', '10', '10', '6d07cdb650fc1fca94c0dd51a8ed971e', '0');
+INSERT INTO `playerjineng` VALUES ('蛮力附体', '6', '7', '7', '7', '7', '6d07cdb650fc1fca94c0dd51a8ed971e', '0');
+INSERT INTO `playerjineng` VALUES ('聚灵斩', '4', '10', '0', '0', '2', '36f30db66d6fe42f34a91d15b6097af0', '0');
+INSERT INTO `playerjineng` VALUES ('蛮力附体', '6', '7', '7', '7', '7', '43e4c5c6dda6740216e3bd54ff200c15', '1');
+INSERT INTO `playerjineng` VALUES ('魔心爆发', '5', '5', '0', '10', '10', '9bb5f086e2f1efdbc8215e55f8a4a30f', '0');
+INSERT INTO `playerjineng` VALUES ('蛮力附体', '6', '7', '7', '7', '7', '9bb5f086e2f1efdbc8215e55f8a4a30f', '0');
+INSERT INTO `playerjineng` VALUES ('怒血爆', '7', '12', '2', '20', '12', '9bb5f086e2f1efdbc8215e55f8a4a30f', '0');
+INSERT INTO `playerjineng` VALUES ('怒血爆', '7', '12', '2', '20', '12', '36f30db66d6fe42f34a91d15b6097af0', '0');
+INSERT INTO `playerjineng` VALUES ('蛮力附体', '6', '7', '7', '7', '7', '36f30db66d6fe42f34a91d15b6097af0', '9');
+INSERT INTO `playerjineng` VALUES ('怒血爆', '7', '12', '2', '20', '8', '43e4c5c6dda6740216e3bd54ff200c15', '0');
+INSERT INTO `playerjineng` VALUES ('聚灵斩', '4', '10', '0', '0', '2', 'f58bb53a4bdd39d6d70b706d77fbc74f', '0');
+INSERT INTO `playerjineng` VALUES ('蛮力附体', '6', '7', '7', '7', '7', 'f58bb53a4bdd39d6d70b706d77fbc74f', '0');
+INSERT INTO `playerjineng` VALUES ('聚灵斩', '4', '10', '0', '0', '2', 'c4339dfb63d53dbe95ff3f1297cd889d', '5');
+INSERT INTO `playerjineng` VALUES ('怒血爆', '7', '12', '2', '20', '8', '6d07cdb650fc1fca94c0dd51a8ed971e', '0');
+INSERT INTO `playerjineng` VALUES ('怒血爆', '7', '12', '2', '20', '8', 'f58bb53a4bdd39d6d70b706d77fbc74f', '0');
+INSERT INTO `playerjineng` VALUES ('聚灵斩', '4', '10', '0', '0', '2', '592857bc812f813ed52fa8b187582fc2', '0');
+INSERT INTO `playerjineng` VALUES ('魔心爆发', '5', '5', '0', '10', '10', '592857bc812f813ed52fa8b187582fc2', '3');
+INSERT INTO `playerjineng` VALUES ('聚灵斩', '4', '10', '0', '0', '2', '781a121e409741ff53f5978578067146', '20');
+INSERT INTO `playerjineng` VALUES ('聚灵斩', '4', '10', '0', '0', '2', '775c0ff651b405a676fc9ee1729302f4', '20');
+INSERT INTO `playerjineng` VALUES ('蛮力附体', '6', '7', '7', '7', '7', '6b7b2713b1a52397c7282509906e8c5e', '1');
+INSERT INTO `playerjineng` VALUES ('聚灵斩', '4', '10', '0', '0', '2', 'c9879e4c3738297c06b0b14d78dc39d6', '15');
+INSERT INTO `playerjineng` VALUES ('魔心爆发', '5', '5', '0', '10', '10', 'c9879e4c3738297c06b0b14d78dc39d6', '25');
+INSERT INTO `playerjineng` VALUES ('魔心爆发', '5', '5', '0', '10', '10', '781a121e409741ff53f5978578067146', '12');
+INSERT INTO `playerjineng` VALUES ('聚灵斩', '4', '10', '0', '0', '2', 'eb61a0b08b9bfdfda961d64410eba5bc', '3');
+INSERT INTO `playerjineng` VALUES ('魔心爆发', '5', '5', '0', '10', '10', 'eb61a0b08b9bfdfda961d64410eba5bc', '2');
+INSERT INTO `playerjineng` VALUES ('聚灵斩', '4', '10', '0', '0', '2', '77099dca8f67b65ca91af53d0461ac2f', '0');
+INSERT INTO `playerjineng` VALUES ('魔心爆发', '5', '5', '0', '10', '10', '77099dca8f67b65ca91af53d0461ac2f', '0');
+INSERT INTO `playerjineng` VALUES ('魔心爆发', '5', '5', '0', '10', '10', '775c0ff651b405a676fc9ee1729302f4', '10');
+INSERT INTO `playerjineng` VALUES ('蛮力附体', '6', '7', '7', '7', '7', '775c0ff651b405a676fc9ee1729302f4', '23');
+INSERT INTO `playerjineng` VALUES ('魔心爆发', '5', '5', '0', '10', '10', 'ad8f4d8e577f50deae4492bd03c96b56', '2');
+INSERT INTO `playerjineng` VALUES ('聚灵斩', '4', '10', '0', '0', '2', 'ad8f4d8e577f50deae4492bd03c96b56', '3');
+INSERT INTO `playerjineng` VALUES ('聚灵斩', '4', '10', '0', '0', '2', 'bb2a45b7652a7900e7810128a329597e', '2');
+INSERT INTO `playerjineng` VALUES ('魔心爆发', '5', '5', '0', '10', '10', 'bb2a45b7652a7900e7810128a329597e', '0');
+INSERT INTO `playerjineng` VALUES ('聚灵斩', '4', '10', '0', '0', '2', '4e079b4084dcdd84cf4393a003a38283', '2');
+INSERT INTO `playerjineng` VALUES ('聚灵斩', '4', '10', '0', '0', '2', 'ce13ba86e509d2fab5ed13c2cddf00c9', '2');
+INSERT INTO `playerjineng` VALUES ('魔心爆发', '5', '5', '0', '10', '10', 'ce13ba86e509d2fab5ed13c2cddf00c9', '8');
+INSERT INTO `playerjineng` VALUES ('聚灵斩', '4', '10', '0', '0', '2', 'ea5a17b7f6c42320f7c242f2871a0f8d', '0');
+INSERT INTO `playerjineng` VALUES ('聚灵斩', '4', '10', '0', '0', '2', 'dd58b4170ec8d6d20f876405b4b1265d', '0');
+INSERT INTO `playerjineng` VALUES ('魔心爆发', '5', '5', '0', '10', '10', 'dd58b4170ec8d6d20f876405b4b1265d', '0');
+INSERT INTO `playerjineng` VALUES ('聚灵斩', '4', '10', '0', '0', '2', '7159624dfdba178c848da03a6ffefec9', '2');
+INSERT INTO `playerjineng` VALUES ('魔心爆发', '5', '5', '0', '10', '10', '7159624dfdba178c848da03a6ffefec9', '3');
+INSERT INTO `playerjineng` VALUES ('聚灵斩', '4', '10', '0', '0', '2', 'f76c11b6601d3a6ce505c616b64ed478', '0');
+INSERT INTO `playerjineng` VALUES ('魔心爆发', '5', '5', '0', '10', '10', 'f76c11b6601d3a6ce505c616b64ed478', '10');
+INSERT INTO `playerjineng` VALUES ('聚灵斩', '4', '10', '0', '0', '2', 'e14b6e0d27bea46402a112c75c170887', '0');
+INSERT INTO `playerjineng` VALUES ('Tụ linh trảm', '4', '10', '0', '0', '2', 'deef530148bcb297a74d0509125b844f', '0');
+INSERT INTO `playerjineng` VALUES ('Tụ linh trảm', '4', '10', '0', '0', '2', 'e83893c48ddfe5e084b2bdea428aa07f', '0');
+INSERT INTO `playerjineng` VALUES ('Ma tâm bạo phát', '5', '5', '0', '10', '10', 'e83893c48ddfe5e084b2bdea428aa07f', '12');
+INSERT INTO `playerjineng` VALUES ('Ma tâm bạo phát', '5', '5', '0', '10', '10', '6d269e625ac8a8e57a6f38d43ebbd3c6', '12');
+INSERT INTO `playerjineng` VALUES ('Tụ linh trảm', '4', '10', '0', '0', '2', '6d269e625ac8a8e57a6f38d43ebbd3c6', '20');
+INSERT INTO `playerjineng` VALUES ('Tụ linh trảm', '4', '10', '0', '0', '2', '91322e4d4529a1c0db2580a4d5e07ff1', '13');
+INSERT INTO `playerjineng` VALUES ('Man lực phụ thể', '6', '7', '7', '7', '7', '91322e4d4529a1c0db2580a4d5e07ff1', '12');
+INSERT INTO `playerjineng` VALUES ('Ma tâm bạo phát', '5', '5', '0', '10', '10', '91322e4d4529a1c0db2580a4d5e07ff1', '12');
+INSERT INTO `playerjineng` VALUES ('Ma tâm bạo phát', '5', '5', '0', '10', '10', '9dc0bb8899c5497aa2dacab00c77fd5c', '6');
+INSERT INTO `playerjineng` VALUES ('Ma tâm bạo phát', '5', '5', '0', '10', '10', '132a2ae60d254a56c7264893f03a6a25', '0');
+INSERT INTO `playerjineng` VALUES ('Tụ linh trảm', '4', '10', '0', '0', '2', '557b7f4de2be11fd91d173d236fea6b4', '5');
+INSERT INTO `playerjineng` VALUES ('Ma tâm bạo phát', '5', '5', '0', '10', '10', '557b7f4de2be11fd91d173d236fea6b4', '12');
+INSERT INTO `playerjineng` VALUES ('Nộ huyết bạo', '7', '12', '2', '20', '8', 'df1905b2799580cd3861d79686bacbad', '5');
+INSERT INTO `playerjineng` VALUES ('Ma tâm bạo phát', '5', '5', '0', '10', '10', 'a82a81044ec116f876d03885c2973ba6', '0');
+INSERT INTO `playerjineng` VALUES ('Man lực phụ thể', '6', '7', '7', '7', '7', '5342074c8ce889f9ce11bcd4f254355f', '0');
+INSERT INTO `playerjineng` VALUES ('Tụ linh trảm', '4', '10', '0', '0', '2', 'a82a81044ec116f876d03885c2973ba6', '0');
+INSERT INTO `playerjineng` VALUES ('Man lực phụ thể', '6', '7', '7', '7', '7', 'a82a81044ec116f876d03885c2973ba6', '3');
+INSERT INTO `playerjineng` VALUES ('Ma tâm bạo phát', '5', '5', '0', '10', '10', '5342074c8ce889f9ce11bcd4f254355f', '0');
+INSERT INTO `playerjineng` VALUES ('Nộ huyết bạo', '7', '12', '2', '20', '8', '3204b1df760fd73acf5332398961f416', '3');
+INSERT INTO `playerjineng` VALUES ('Man lực phụ thể', '6', '7', '7', '7', '7', '3204b1df760fd73acf5332398961f416', '10');
+INSERT INTO `playerjineng` VALUES ('Tụ linh trảm', '4', '10', '0', '0', '2', '3204b1df760fd73acf5332398961f416', '19');
+INSERT INTO `playerjineng` VALUES ('Man lực phụ thể', '6', '7', '7', '7', '7', '7d1526a0dd4803a1fda914bcebd93b47', '5');
+
+-- ----------------------------
 -- Table structure for playerrenwu
 -- ----------------------------
 DROP TABLE IF EXISTS `playerrenwu`;
@@ -2181,15 +2485,15 @@ CREATE TABLE `playerrenwu` (
   `rwexp` varchar(255) NOT NULL,
   `rwyxb` varchar(255) NOT NULL,
   `sid` text NOT NULL,
-  `rwzt` int(11) NULL DEFAULT '0',
-  `rwid` int(11) NULL DEFAULT '0',
-  `rwyq` int(11) NULL DEFAULT '0',
-  `rwcount` int(11) NULL DEFAULT '0',
-  `rwnowcount` int(11) NULL DEFAULT '0',
-  `rwlx` int(11) NULL DEFAULT '0',
-  `rwyp` text NULL,
-  `data` int(11) NULL DEFAULT '0',
-  `rwjineng` varchar(255) NULL
+  `rwzt` int(11) NOT NULL,
+  `rwid` int(11) NOT NULL,
+  `rwyq` int(11) NOT NULL,
+  `rwcount` int(11) NOT NULL,
+  `rwnowcount` int(11) NOT NULL,
+  `rwlx` int(11) NOT NULL,
+  `rwyp` text NOT NULL,
+  `data` int(11) NOT NULL,
+  `rwjineng` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -3683,6 +3987,700 @@ CREATE TABLE `playerzhuangbei` (
   PRIMARY KEY (`zbnowid`)
 ) ENGINE=MyISAM AUTO_INCREMENT=77598 DEFAULT CHARSET=utf8;
 
+-- ----------------------------
+-- Records of playerzhuangbei
+-- ----------------------------
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện khinh nhị giáp', 'Bách luyện khinh nhị giáp', '0', '8', '0', '0', '28', '422', '75742', '3c9d1d6c8f225e9e4139cccd830fdd00', '40', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Minh nguyệt chi kiếm', 'Minh nguyệt minh nguyệt', '3', '0', '0', '1', '25', '426', '75672', '0ed4ce0a982475dad32cea331e8e50d7', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '3', '0', '1', '3', '29', '431', '75659', '3bfa14243cba16bb92e090b54cc5d544', '0', '1', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '422', '75683', '3c9d1d6c8f225e9e4139cccd830fdd00', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '427', '75674', '9f98bca6ec1fa9e5b63f70012148b511', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '426', '75666', '0ed4ce0a982475dad32cea331e8e50d7', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Vẫn thiết vũ côn', 'Vẫn thiết vũ côn', '11', '3', '1', '1', '36', '422', '75715', '3c9d1d6c8f225e9e4139cccd830fdd00', '0', '3', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '427', '75675', '9f98bca6ec1fa9e5b63f70012148b511', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Thanh phong hộ giáp', 'Thủ tự thanh phong thường bạn', '0', '5', '1', '0', '26', '426', '75669', '0ed4ce0a982475dad32cea331e8e50d7', '25', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '427', '75676', '9f98bca6ec1fa9e5b63f70012148b511', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '427', '75677', '9f98bca6ec1fa9e5b63f70012148b511', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Khinh nhị khôi', 'Khinh nhị khôi', '1', '8', '1', '0', '30', '424', '75678', 'f76c11b6601d3a6ce505c616b64ed478', '50', '2', '0', '2');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện khinh nhị giáp', 'Bách luyện khinh nhị giáp', '0', '8', '0', '0', '28', '431', '75752', '3bfa14243cba16bb92e090b54cc5d544', '40', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện thanh cương kiếm', 'Bách luyện thanh cương kiếm', '13', '3', '0', '2', '27', '424', '75682', 'f76c11b6601d3a6ce505c616b64ed478', '0', '11', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Minh nguyệt chi kiếm', 'Minh nguyệt minh nguyệt', '3', '0', '0', '1', '25', '422', '75741', '3c9d1d6c8f225e9e4139cccd830fdd00', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Vẫn thiết vũ côn', 'Vẫn thiết vũ côn', '8', '3', '1', '1', '36', '422', '75717', '3c9d1d6c8f225e9e4139cccd830fdd00', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '0', '3', '3', '5', '32', '424', '75713', 'f76c11b6601d3a6ce505c616b64ed478', '22', '2', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Lôi ưng hộ giáp', 'Lôi ưng hộ giáp', '0', '8', '1', '0', '31', '431', '75711', '3bfa14243cba16bb92e090b54cc5d544', '55', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Nguyệt luân thương', 'Nguyệt luân thương', '11', '4', '0', '2', '37', '424', '75718', 'f76c11b6601d3a6ce505c616b64ed478', '3', '8', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Khinh nhị khôi', 'Khinh nhị khôi', '0', '7', '1', '0', '30', '422', '75709', '3c9d1d6c8f225e9e4139cccd830fdd00', '50', '0', '0', '2');
+INSERT INTO `playerzhuangbei` VALUES ('Lôi ưng hộ giáp', 'Lôi ưng hộ giáp', '0', '8', '1', '0', '31', '424', '75708', 'f76c11b6601d3a6ce505c616b64ed478', '55', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '422', '75740', '3c9d1d6c8f225e9e4139cccd830fdd00', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Nguyệt luân thương', 'Nguyệt luân thương', '10', '0', '0', '2', '37', '424', '75719', 'f76c11b6601d3a6ce505c616b64ed478', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện khinh nhị giáp', 'Bách luyện khinh nhị giáp', '0', '8', '0', '0', '28', '422', '75745', '3c9d1d6c8f225e9e4139cccd830fdd00', '40', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện khinh nhị giáp', 'Bách luyện khinh nhị giáp', '0', '8', '0', '0', '28', '422', '75746', '3c9d1d6c8f225e9e4139cccd830fdd00', '40', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện khinh nhị giáp', 'Bách luyện khinh nhị giáp', '0', '8', '0', '0', '28', '422', '75744', '3c9d1d6c8f225e9e4139cccd830fdd00', '40', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện khinh nhị giáp', 'Bách luyện khinh nhị giáp', '0', '8', '0', '0', '28', '422', '75743', '3c9d1d6c8f225e9e4139cccd830fdd00', '40', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện khinh nhị giáp', 'Bách luyện khinh nhị giáp', '0', '8', '0', '0', '28', '434', '75747', 'e14b6e0d27bea46402a112c75c170887', '40', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện khinh nhị giáp', 'Bách luyện khinh nhị giáp', '7', '9', '0', '0', '28', '475', '75896', 'e03886cbdd41f2973d1e16d83a1250a2', '40', '8', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Minh nguyệt chi kiếm', 'Minh nguyệt minh nguyệt', '10', '0', '0', '1', '25', '462', '75805', '7153c651e46f98c7061e956c023b4fca', '0', '7', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '463', '75791', '547f7c3b2c069650f414a69ef4402498', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '434', '75750', 'e14b6e0d27bea46402a112c75c170887', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '438', '75753', 'b7f5e984a6a22f3ef2b4072f2614f43e', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Hắc ma chủy thủ', 'Hắc ma chủy thủ', '18', '0', '3', '4', '33', '440', '75754', 'f0be893286b66272230904a0a7d33168', '0', '4', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hắc ma chủy thủ', 'Hắc ma chủy thủ', '14', '0', '3', '4', '33', '424', '75755', 'f76c11b6601d3a6ce505c616b64ed478', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hắc ma chủy thủ', 'Hắc ma chủy thủ', '14', '0', '3', '4', '33', '440', '75762', 'f0be893286b66272230904a0a7d33168', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '442', '75780', '7aa100d4e1f9756c2c918199f7c6f8cd', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Hắc ma chủy thủ', 'Hắc ma chủy thủ', '14', '0', '3', '4', '33', '440', '75760', 'f0be893286b66272230904a0a7d33168', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hắc ma chủy thủ', 'Hắc ma chủy thủ', '14', '0', '3', '4', '33', '440', '75763', 'f0be893286b66272230904a0a7d33168', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hắc ma chủy thủ', 'Hắc ma chủy thủ', '14', '0', '3', '4', '33', '441', '75764', 'f7c38ddb495be49224c8d819f34654ec', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hắc ma chủy thủ', 'Hắc ma chủy thủ', '14', '0', '3', '4', '33', '441', '75765', 'f7c38ddb495be49224c8d819f34654ec', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hắc ma chủy thủ', 'Hắc ma chủy thủ', '14', '0', '3', '4', '33', '441', '75766', 'f7c38ddb495be49224c8d819f34654ec', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hắc ma chủy thủ', 'Hắc ma chủy thủ', '14', '0', '3', '4', '33', '440', '75767', 'f0be893286b66272230904a0a7d33168', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hắc ma chủy thủ', 'Hắc ma chủy thủ', '14', '15', '3', '4', '33', '440', '75776', 'f0be893286b66272230904a0a7d33168', '0', '15', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '442', '75777', '7aa100d4e1f9756c2c918199f7c6f8cd', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ mộc kiếm', 'Tân thủ sử dụng đích mộc kiếm', '1', '0', '0', '1', '23', '442', '75778', '7aa100d4e1f9756c2c918199f7c6f8cd', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ mộc kiếm', 'Tân thủ sử dụng đích mộc kiếm', '1', '0', '0', '1', '23', '442', '75781', '7aa100d4e1f9756c2c918199f7c6f8cd', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ mộc kiếm', 'Tân thủ sử dụng đích mộc kiếm', '1', '0', '0', '1', '23', '442', '75782', '7aa100d4e1f9756c2c918199f7c6f8cd', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '442', '75783', '7aa100d4e1f9756c2c918199f7c6f8cd', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '0', '4', '3', '5', '32', '478', '76005', '483047f1250b4db899cb9a4770efe1e2', '20', '1', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '6', '10', '1', '0', '38', '450', '75932', '0d35be128035927ccc312fd5d99eb55c', '120', '6', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '462', '75785', '7153c651e46f98c7061e956c023b4fca', '13', '3', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '460', '75792', 'f15a4aaba08473a5afd6a6521c76d9cf', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Minh nguyệt chi kiếm', 'Minh nguyệt minh nguyệt', '3', '0', '0', '1', '25', '460', '75793', 'f15a4aaba08473a5afd6a6521c76d9cf', '5', '5', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '463', '76056', '547f7c3b2c069650f414a69ef4402498', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Phổ thông man giáp', 'Phổ thông man giáp', '5', '9', '2', '0', '35', '450', '75908', '0d35be128035927ccc312fd5d99eb55c', '62', '5', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '1', '4', '3', '5', '32', '477', '75944', 'e83893c48ddfe5e084b2bdea428aa07f', '20', '2', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · mặc hồn ngoa', 'Duyên phong · mặc hồn ngoa', '0', '10', '3', '0', '42', '530', '77417', 'a82a81044ec116f876d03885c2973ba6', '155', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '13', '0', '1', '3', '29', '478', '75973', '483047f1250b4db899cb9a4770efe1e2', '0', '11', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '2', '4', '3', '5', '32', '469', '75903', 'e3ce66181b307263d31593be743bdd64', '21', '4', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '2', '3', '3', '5', '32', '488', '77313', '1f014c041b1cb42cb1a75f9449e99998', '20', '2', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ mộc kiếm', 'Tân thủ sử dụng đích mộc kiếm', '1', '0', '0', '1', '23', '509', '76241', 'fcdd5d501dd7b299a36d97981bbd664f', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Trung cấp phệ huyết kiếm', 'Trung cấp phệ huyết kiếm', '20', '0', '0', '4', '34', '450', '75913', '0d35be128035927ccc312fd5d99eb55c', '0', '5', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Trung cấp phệ huyết kiếm', 'Trung cấp phệ huyết kiếm', '19', '2', '0', '4', '34', '450', '75875', '0d35be128035927ccc312fd5d99eb55c', '0', '6', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Lôi ưng hộ giáp', 'Lôi ưng hộ giáp', '0', '12', '1', '0', '31', '470', '75939', '0dee7d958d6808a52df8c485ce7657af', '55', '4', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Khinh nhị khôi', 'Khinh nhị khôi', '2', '8', '1', '0', '30', '469', '75897', 'e3ce66181b307263d31593be743bdd64', '53', '4', '0', '2');
+INSERT INTO `playerzhuangbei` VALUES ('Khinh nhị khôi', 'Khinh nhị khôi', '1', '8', '1', '0', '30', '727', '77564', '9c484fb3dc297a35f106796ed135a98d', '53', '3', '0', '2');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '0', '3', '3', '5', '32', '477', '75949', 'e83893c48ddfe5e084b2bdea428aa07f', '21', '1', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện khinh nhị giáp', 'Bách luyện khinh nhị giáp', '0', '8', '0', '0', '28', '487', '76043', '11ee841a987d5674196d37fef51ed9a6', '40', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Minh nguyệt chi kiếm', 'Minh nguyệt minh nguyệt', '4', '0', '0', '1', '25', '468', '75823', 'c1b448051cf88f6dcf535ced41e53127', '0', '1', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '10', '0', '1', '3', '29', '476', '75898', 'deef530148bcb297a74d0509125b844f', '0', '8', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '9', '1', '1', '3', '29', '481', '75981', 'c0787a8c7d117e9a540222e8c1b744af', '1', '9', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Khinh nhị khôi', 'Khinh nhị khôi', '2', '7', '1', '0', '30', '520', '76460', '5be0b95fe4591bf4593f16cacfb9136c', '50', '2', '0', '2');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '485', '76037', '80eaf5ea9d36f0a8c87d3eba1bd05055', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '2', '3', '3', '5', '32', '459', '76070', 'efc744bfecbcc5b1d2443ff739987af9', '20', '2', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '4', '0', '1', '3', '29', '468', '75872', 'c1b448051cf88f6dcf535ced41e53127', '0', '2', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Phổ thông man giáp', 'Phổ thông man giáp', '5', '9', '2', '0', '35', '450', '75878', '0d35be128035927ccc312fd5d99eb55c', '62', '5', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Trung cấp phệ huyết kiếm', 'Trung cấp phệ huyết kiếm', '18', '0', '0', '4', '34', '450', '75893', '0d35be128035927ccc312fd5d99eb55c', '0', '3', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Lôi ưng hộ giáp', 'Lôi ưng hộ giáp', '2', '9', '1', '0', '31', '469', '75901', 'e3ce66181b307263d31593be743bdd64', '64', '6', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Phổ thông man giáp', 'Phổ thông man giáp', '0', '10', '2', '0', '35', '470', '76048', '0dee7d958d6808a52df8c485ce7657af', '65', '2', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện khinh nhị giáp', 'Bách luyện khinh nhị giáp', '0', '8', '0', '0', '28', '475', '75902', 'e03886cbdd41f2973d1e16d83a1250a2', '40', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Lôi ưng hộ giáp', 'Lôi ưng hộ giáp', '3', '11', '1', '0', '31', '499', '76223', '987fa1ed57063997f01f22767178a600', '55', '6', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Vẫn thiết vũ côn', 'Vẫn thiết vũ côn', '9', '4', '1', '1', '36', '469', '75988', 'e3ce66181b307263d31593be743bdd64', '1', '3', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện khinh nhị giáp', 'Bách luyện khinh nhị giáp', '0', '8', '0', '0', '28', '468', '75857', 'c1b448051cf88f6dcf535ced41e53127', '40', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Trung cấp phệ huyết kiếm', 'Trung cấp phệ huyết kiếm', '19', '0', '0', '4', '34', '470', '76047', '0dee7d958d6808a52df8c485ce7657af', '0', '4', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Lôi ưng hộ giáp', 'Lôi ưng hộ giáp', '2', '11', '1', '0', '31', '477', '75926', 'e83893c48ddfe5e084b2bdea428aa07f', '64', '8', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '573', '77010', 'd2270581618374bd45714ee5704931b9', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Minh nguyệt chi kiếm', 'Minh nguyệt minh nguyệt', '7', '0', '0', '1', '25', '477', '75866', 'e83893c48ddfe5e084b2bdea428aa07f', '1', '5', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Minh nguyệt chi kiếm', 'Minh nguyệt minh nguyệt', '10', '1', '0', '1', '25', '475', '75869', 'e03886cbdd41f2973d1e16d83a1250a2', '0', '8', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '475', '75918', 'e03886cbdd41f2973d1e16d83a1250a2', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Hắc ma chủy thủ', 'Hắc ma chủy thủ', '29', '0', '3', '4', '33', '479', '75916', '91322e4d4529a1c0db2580a4d5e07ff1', '0', '15', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '1', '3', '3', '5', '32', '477', '75946', 'e83893c48ddfe5e084b2bdea428aa07f', '20', '1', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Lôi ưng hộ giáp', 'Lôi ưng hộ giáp', '0', '11', '1', '0', '31', '459', '76071', 'efc744bfecbcc5b1d2443ff739987af9', '70', '8', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Vẫn thiết vũ côn', 'Vẫn thiết vũ côn', '8', '3', '1', '1', '36', '459', '76080', 'efc744bfecbcc5b1d2443ff739987af9', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Khinh nhị khôi', 'Khinh nhị khôi', '2', '8', '1', '0', '30', '477', '75933', 'e83893c48ddfe5e084b2bdea428aa07f', '50', '3', '0', '2');
+INSERT INTO `playerzhuangbei` VALUES ('Minh nguyệt chi kiếm', 'Minh nguyệt minh nguyệt', '3', '0', '0', '1', '25', '463', '76059', '547f7c3b2c069650f414a69ef4402498', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '475', '75940', 'e03886cbdd41f2973d1e16d83a1250a2', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '475', '75941', 'e03886cbdd41f2973d1e16d83a1250a2', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Thị hồn cốt nhẫn', 'Thị hồn cốt nhẫn', '22', '0', '5', '3', '39', '450', '75950', '0d35be128035927ccc312fd5d99eb55c', '0', '5', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Lôi ưng hộ giáp', 'Lôi ưng hộ giáp', '0', '13', '1', '0', '31', '476', '75951', 'deef530148bcb297a74d0509125b844f', '55', '5', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Khinh nhị khôi', 'Khinh nhị khôi', '0', '10', '1', '0', '30', '486', '76300', '7837bb48be44041b2ee92d061d08653e', '50', '3', '0', '2');
+INSERT INTO `playerzhuangbei` VALUES ('Thị hồn cốt nhẫn', 'Thị hồn cốt nhẫn', '50', '0', '5', '3', '39', '492', '76492', '3204b1df760fd73acf5332398961f416', '0', '23', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Khinh nhị khôi', 'Khinh nhị khôi', '0', '8', '1', '0', '30', '478', '75998', '483047f1250b4db899cb9a4770efe1e2', '50', '1', '0', '2');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '485', '75982', '80eaf5ea9d36f0a8c87d3eba1bd05055', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '0', '3', '3', '5', '32', '459', '76076', 'efc744bfecbcc5b1d2443ff739987af9', '21', '1', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '484', '75957', '36774f5c423b7a8bb7858bb4642e128d', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Khinh nhị khôi', 'Khinh nhị khôi', '0', '8', '1', '0', '30', '481', '75997', 'c0787a8c7d117e9a540222e8c1b744af', '56', '3', '0', '2');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện thanh cương kiếm', 'Bách luyện thanh cương kiếm', '5', '0', '0', '2', '27', '551', '76679', 'ba3ce5be6bb148766f7d32bed729cfef', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '2', '11', '1', '0', '38', '450', '75965', '0d35be128035927ccc312fd5d99eb55c', '120', '3', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Khinh nhị khôi', 'Khinh nhị khôi', '4', '7', '1', '0', '30', '488', '77312', '1f014c041b1cb42cb1a75f9449e99998', '50', '4', '0', '2');
+INSERT INTO `playerzhuangbei` VALUES ('Nguyệt luân thương', 'Nguyệt luân thương', '12', '0', '0', '2', '37', '470', '76042', '0dee7d958d6808a52df8c485ce7657af', '0', '2', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Vẫn thiết vũ côn', 'Vẫn thiết vũ côn', '8', '3', '1', '1', '36', '488', '77316', '1f014c041b1cb42cb1a75f9449e99998', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện thanh cương kiếm', 'Bách luyện thanh cương kiếm', '10', '0', '0', '2', '27', '459', '76054', 'efc744bfecbcc5b1d2443ff739987af9', '0', '5', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '0', '3', '3', '5', '32', '481', '76035', 'c0787a8c7d117e9a540222e8c1b744af', '20', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Vẫn thiết vũ côn', 'Vẫn thiết vũ côn', '10', '3', '1', '1', '36', '459', '76009', 'efc744bfecbcc5b1d2443ff739987af9', '0', '2', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '728', '77573', '0e67ef9235186f4f55a624ee83eb0eb9', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Vẫn thiết vũ côn', 'Vẫn thiết vũ côn', '9', '3', '1', '1', '36', '470', '76011', '0dee7d958d6808a52df8c485ce7657af', '0', '1', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Lôi ưng hộ giáp', 'Lôi ưng hộ giáp', '1', '10', '1', '0', '31', '481', '76012', 'c0787a8c7d117e9a540222e8c1b744af', '61', '5', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện thanh cương kiếm', 'Bách luyện thanh cương kiếm', '13', '0', '0', '2', '27', '486', '76040', '7837bb48be44041b2ee92d061d08653e', '0', '8', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '1', '3', '3', '5', '32', '481', '76028', 'c0787a8c7d117e9a540222e8c1b744af', '20', '1', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Minh nguyệt chi kiếm', 'Minh nguyệt minh nguyệt', '3', '0', '0', '1', '25', '487', '76029', '11ee841a987d5674196d37fef51ed9a6', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Lôi ưng hộ giáp', 'Lôi ưng hộ giáp', '0', '10', '1', '0', '31', '478', '76018', '483047f1250b4db899cb9a4770efe1e2', '55', '2', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Trung cấp phệ huyết kiếm', 'Trung cấp phệ huyết kiếm', '15', '0', '0', '4', '34', '535', '77521', '9dc0bb8899c5497aa2dacab00c77fd5c', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '0', '3', '3', '5', '32', '481', '76032', 'c0787a8c7d117e9a540222e8c1b744af', '20', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Minh nguyệt chi kiếm', 'Minh nguyệt minh nguyệt', '3', '0', '0', '1', '25', '485', '76033', '80eaf5ea9d36f0a8c87d3eba1bd05055', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Lôi ưng hộ giáp', 'Lôi ưng hộ giáp', '1', '13', '1', '0', '31', '719', '77568', '53cd539db99d47571d60f4d91d019219', '58', '7', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '487', '76025', '11ee841a987d5674196d37fef51ed9a6', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '0', '3', '3', '5', '32', '722', '77024', '8d97e33eb204fcab472e184928d89803', '20', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Trung cấp phệ huyết kiếm', 'Trung cấp phệ huyết kiếm', '20', '0', '0', '4', '34', '501', '76259', '7d1526a0dd4803a1fda914bcebd93b47', '0', '5', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ mộc kiếm', 'Tân thủ sử dụng đích mộc kiếm', '1', '0', '0', '1', '23', '506', '76224', 'a995483a30393a2c0386c786200c4c84', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Quân quan mạch đao', 'Quân dụng tỏa tử giáp', '149', '0', '5', '4', '48', '531', '77212', '132a2ae60d254a56c7264893f03a6a25', '0', '32', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '519', '77407', '00bec478348b21e8e9135bb08a6787cd', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '11', '1', '0', '38', '470', '76067', '0dee7d958d6808a52df8c485ce7657af', '126', '2', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Vẫn thiết vũ côn', 'Vẫn thiết vũ côn', '8', '3', '1', '1', '36', '459', '76081', 'efc744bfecbcc5b1d2443ff739987af9', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Vẫn thiết vũ côn', 'Vẫn thiết vũ côn', '9', '3', '1', '1', '36', '459', '76079', 'efc744bfecbcc5b1d2443ff739987af9', '0', '1', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '15', '4', '3', '5', '32', '492', '76104', '3204b1df760fd73acf5332398961f416', '20', '16', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Thị hồn cốt nhẫn', 'Thị hồn cốt nhẫn', '25', '0', '5', '3', '39', '480', '76730', 'df1905b2799580cd3861d79686bacbad', '0', '8', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '493', '76113', '17101f9d4b65bad5d190afab2f99117b', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ mộc kiếm', 'Tân thủ sử dụng đích mộc kiếm', '1', '0', '0', '1', '23', '504', '76190', '78d406e749821c6f055f787edde7fee2', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · thú hồn hạng liên', 'Duyên phong · thú hồn hạng liên', '18', '12', '4', '4', '44', '492', '77036', '3204b1df760fd73acf5332398961f416', '55', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện thanh cương kiếm', 'Bách luyện thanh cương kiếm', '5', '0', '0', '2', '27', '502', '76252', 'f039e55562a77296188f2963ca97fae1', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Phổ thông man giáp', 'Phổ thông man giáp', '2', '9', '2', '0', '35', '518', '76570', '65f69095d290c9579a2255210d058fb1', '62', '2', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ mộc kiếm', 'Tân thủ sử dụng đích mộc kiếm', '1', '0', '0', '1', '23', '504', '76188', '78d406e749821c6f055f787edde7fee2', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện thanh cương kiếm', 'Bách luyện thanh cương kiếm', '14', '1', '0', '2', '27', '562', '76821', 'aecc6f9f63ececb58dcfe256ac7d6897', '1', '11', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '589', '76924', 'c5ade303cb17684643aeff84423cb708', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ mộc kiếm', 'Tân thủ sử dụng đích mộc kiếm', '1', '0', '0', '1', '23', '506', '76233', 'a995483a30393a2c0386c786200c4c84', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '505', '77428', '5342074c8ce889f9ce11bcd4f254355f', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '510', '76253', '5934d4cfe76f9339c8ba2a88b162269c', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Thanh phong hộ giáp', 'Thủ tự thanh phong thường bạn', '0', '5', '1', '0', '26', '494', '76123', '754ae44f81dc019f17c06a41aa2ea715', '25', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '494', '76120', '754ae44f81dc019f17c06a41aa2ea715', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Vẫn thiết vũ côn', 'Vẫn thiết vũ côn', '12', '4', '1', '1', '36', '499', '76254', '987fa1ed57063997f01f22767178a600', '0', '5', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Thanh phong hộ giáp', 'Thủ tự thanh phong thường bạn', '0', '5', '1', '0', '26', '494', '76122', '754ae44f81dc019f17c06a41aa2ea715', '25', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '0', '3', '3', '5', '32', '722', '76316', '8d97e33eb204fcab472e184928d89803', '20', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '4', '4', '3', '5', '32', '499', '76234', '987fa1ed57063997f01f22767178a600', '20', '5', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Lôi ưng hộ giáp', 'Lôi ưng hộ giáp', '2', '12', '1', '0', '31', '520', '76465', '5be0b95fe4591bf4593f16cacfb9136c', '55', '6', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '504', '76199', '78d406e749821c6f055f787edde7fee2', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Khinh nhị khôi', 'Khinh nhị khôi', '0', '7', '1', '0', '30', '532', '76524', '024285ca73e87438c68cf82f4d2ee7ca', '50', '0', '0', '2');
+INSERT INTO `playerzhuangbei` VALUES ('Hắc ma chủy thủ', 'Hắc ma chủy thủ', '62', '0', '3', '4', '33', '492', '76143', '3204b1df760fd73acf5332398961f416', '0', '30', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ mộc kiếm', 'Tân thủ sử dụng đích mộc kiếm', '1', '0', '0', '1', '23', '463', '76146', '547f7c3b2c069650f414a69ef4402498', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ mộc kiếm', 'Tân thủ sử dụng đích mộc kiếm', '1', '0', '0', '1', '23', '463', '76147', '547f7c3b2c069650f414a69ef4402498', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện thanh cương kiếm', 'Bách luyện thanh cương kiếm', '10', '0', '0', '2', '27', '499', '76189', '987fa1ed57063997f01f22767178a600', '0', '5', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Phổ thông man giáp', 'Phổ thông man giáp', '0', '10', '2', '0', '35', '501', '76263', '7d1526a0dd4803a1fda914bcebd93b47', '65', '2', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Trung cấp phệ huyết kiếm', 'Trung cấp phệ huyết kiếm', '20', '0', '0', '4', '34', '480', '76541', 'df1905b2799580cd3861d79686bacbad', '0', '5', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Thanh phong hộ giáp', 'Thủ tự thanh phong thường bạn', '0', '5', '1', '0', '26', '463', '76153', '547f7c3b2c069650f414a69ef4402498', '25', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '9', '0', '1', '3', '29', '502', '76249', 'f039e55562a77296188f2963ca97fae1', '0', '7', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '0', '5', '3', '5', '32', '719', '77587', '53cd539db99d47571d60f4d91d019219', '20', '2', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện khinh nhị giáp', 'Bách luyện khinh nhị giáp', '0', '8', '0', '0', '28', '562', '76819', 'aecc6f9f63ececb58dcfe256ac7d6897', '46', '3', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '544', '76680', 'c247e85792e955f2d8ca0663a95ef39d', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '524', '76473', 'a6edc2472e88417ac151bf97c7231a23', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '0', '3', '3', '5', '32', '501', '76211', '7d1526a0dd4803a1fda914bcebd93b47', '20', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện thanh cương kiếm', 'Bách luyện thanh cương kiếm', '5', '0', '0', '2', '27', '502', '76251', 'f039e55562a77296188f2963ca97fae1', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '590', '76932', 'e7da68284647dad4587312fb43c3c4cf', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện khinh nhị giáp', 'Bách luyện khinh nhị giáp', '0', '16', '0', '0', '28', '502', '76227', 'f039e55562a77296188f2963ca97fae1', '40', '8', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '504', '76204', '78d406e749821c6f055f787edde7fee2', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '3', '3', '3', '5', '32', '520', '76469', '5be0b95fe4591bf4593f16cacfb9136c', '20', '3', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Khinh nhị khôi', 'Khinh nhị khôi', '0', '7', '1', '0', '30', '499', '76206', '987fa1ed57063997f01f22767178a600', '50', '0', '0', '2');
+INSERT INTO `playerzhuangbei` VALUES ('Minh nguyệt chi kiếm', 'Minh nguyệt minh nguyệt', '3', '0', '0', '1', '25', '504', '76207', '78d406e749821c6f055f787edde7fee2', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Quân dụng tỏa tử giáp', 'Kiếp đao', '5', '25', '5', '0', '47', '531', '77207', '132a2ae60d254a56c7264893f03a6a25', '170', '9', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '520', '76481', '5be0b95fe4591bf4593f16cacfb9136c', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ mộc kiếm', 'Tân thủ sử dụng đích mộc kiếm', '1', '0', '0', '1', '23', '728', '77570', '0e67ef9235186f4f55a624ee83eb0eb9', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '8', '2', '1', '3', '29', '503', '76225', 'f0ac44856637b747beb115331972de83', '2', '10', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '504', '76222', '78d406e749821c6f055f787edde7fee2', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Khinh nhị khôi', 'Khinh nhị khôi', '1', '9', '1', '0', '30', '503', '76392', 'f0ac44856637b747beb115331972de83', '53', '4', '0', '2');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '509', '76242', 'fcdd5d501dd7b299a36d97981bbd664f', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '611', '77048', 'a5be62b4b78aa6ec7502924aa6c7ecb0', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '588', '77005', '95409c694fc35f303dc09eea69444dd8', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Trung cấp phệ huyết kiếm', 'Trung cấp phệ huyết kiếm', '17', '0', '0', '4', '34', '501', '76260', '7d1526a0dd4803a1fda914bcebd93b47', '0', '2', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện khinh nhị giáp', 'Bách luyện khinh nhị giáp', '0', '15', '0', '0', '28', '517', '76447', '5b5df97f24dda63106a3cfdbec0f2f37', '48', '11', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện thanh cương kiếm', 'Bách luyện thanh cương kiếm', '7', '0', '0', '2', '27', '520', '76443', '5be0b95fe4591bf4593f16cacfb9136c', '0', '2', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '10', '0', '1', '3', '29', '518', '76421', '65f69095d290c9579a2255210d058fb1', '0', '8', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện khinh nhị giáp', 'Bách luyện khinh nhị giáp', '0', '8', '0', '0', '28', '610', '76955', '4ab1097327f63a1deadfd6721b3155ad', '40', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '0', '4', '3', '5', '32', '486', '76312', '7837bb48be44041b2ee92d061d08653e', '20', '1', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Thị hồn cốt nhẫn', 'Thị hồn cốt nhẫn', '17', '0', '5', '3', '39', '519', '77414', '00bec478348b21e8e9135bb08a6787cd', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ mộc kiếm', 'Tân thủ sử dụng đích mộc kiếm', '1', '0', '0', '1', '23', '524', '76466', 'a6edc2472e88417ac151bf97c7231a23', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Lôi ưng hộ giáp', 'Lôi ưng hộ giáp', '0', '10', '1', '0', '31', '486', '76319', '7837bb48be44041b2ee92d061d08653e', '55', '2', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '521', '76428', 'eae57174fc4d0114b0a244a0b4d46cd1', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Minh nguyệt chi kiếm', 'Minh nguyệt minh nguyệt', '3', '0', '0', '1', '25', '521', '76446', 'eae57174fc4d0114b0a244a0b4d46cd1', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '8', '3', '3', '5', '32', '518', '76440', '65f69095d290c9579a2255210d058fb1', '20', '8', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '6', '1', '1', '3', '29', '521', '76430', 'eae57174fc4d0114b0a244a0b4d46cd1', '1', '6', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '0', '3', '3', '5', '32', '516', '76331', '6d269e625ac8a8e57a6f38d43ebbd3c6', '20', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '0', '3', '3', '5', '32', '722', '76334', '8d97e33eb204fcab472e184928d89803', '20', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '673', '77239', 'de606cacc6a6ba649a3bf437b993d5fb', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '521', '76425', 'eae57174fc4d0114b0a244a0b4d46cd1', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Khinh nhị khôi', 'Khinh nhị khôi', '3', '7', '1', '0', '30', '518', '76426', '65f69095d290c9579a2255210d058fb1', '50', '3', '0', '2');
+INSERT INTO `playerzhuangbei` VALUES ('Khinh nhị khôi', 'Khinh nhị khôi', '0', '9', '1', '0', '30', '517', '76497', '5b5df97f24dda63106a3cfdbec0f2f37', '50', '2', '0', '2');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '533', '77425', '67d33ee391a22e8e317f6a3b9bd43b9d', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '5', '3', '3', '5', '32', '533', '76490', '67d33ee391a22e8e317f6a3b9bd43b9d', '20', '5', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '2', '3', '3', '5', '32', '528', '76607', 'b0937c2a2e0292043bf9afbc25cc43d7', '20', '2', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '1', '3', '3', '5', '32', '503', '76414', 'f0ac44856637b747beb115331972de83', '20', '1', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '572', '76921', '97d54e32270c248846cd545730dff24c', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '1', '4', '3', '5', '32', '538', '76751', '2f1d8f88000b56e6b5c3007d36f2c1c8', '21', '3', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '0', '3', '3', '5', '32', '518', '76442', '65f69095d290c9579a2255210d058fb1', '20', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Nguyệt luân thương', 'Nguyệt luân thương', '10', '0', '0', '2', '37', '560', '76629', 'b9ed5f7f48d6002db99626ae8f022baa', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '521', '76436', 'eae57174fc4d0114b0a244a0b4d46cd1', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện khinh nhị giáp', 'Bách luyện khinh nhị giáp', '0', '8', '0', '0', '28', '524', '76527', 'a6edc2472e88417ac151bf97c7231a23', '40', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ mộc kiếm', 'Tân thủ sử dụng đích mộc kiếm', '1', '0', '0', '1', '23', '521', '76438', 'eae57174fc4d0114b0a244a0b4d46cd1', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '524', '76510', 'a6edc2472e88417ac151bf97c7231a23', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '0', '3', '3', '5', '32', '584', '77016', '471555821ff06e8c401d3e6fb0f890d9', '20', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện thanh cương kiếm', 'Bách luyện thanh cương kiếm', '5', '0', '0', '2', '27', '536', '76454', '5ee8523aac65e35244462f7c8b65aa4e', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Lôi ưng hộ giáp', 'Lôi ưng hộ giáp', '0', '8', '1', '0', '31', '503', '76409', 'f0ac44856637b747beb115331972de83', '55', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Phổ thông man giáp', 'Phổ thông man giáp', '0', '9', '2', '0', '35', '479', '76519', '91322e4d4529a1c0db2580a4d5e07ff1', '62', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '0', '3', '3', '5', '32', '520', '76480', '5be0b95fe4591bf4593f16cacfb9136c', '20', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '526', '76482', 'f365c41cca1867794c0d56a0d2964f52', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Lôi ưng hộ giáp', 'Lôi ưng hộ giáp', '0', '8', '1', '0', '31', '520', '76477', '5be0b95fe4591bf4593f16cacfb9136c', '55', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '15', '1', '0', '38', '722', '76940', '8d97e33eb204fcab472e184928d89803', '120', '5', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ mộc kiếm', 'Tân thủ sử dụng đích mộc kiếm', '1', '0', '0', '1', '23', '524', '76488', 'a6edc2472e88417ac151bf97c7231a23', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Phổ thông man giáp', 'Phổ thông man giáp', '2', '9', '2', '0', '35', '535', '76514', '9dc0bb8899c5497aa2dacab00c77fd5c', '62', '2', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '0', '4', '3', '5', '32', '517', '76525', '5b5df97f24dda63106a3cfdbec0f2f37', '20', '1', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '479', '76526', '91322e4d4529a1c0db2580a4d5e07ff1', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Vẫn thiết vũ côn', 'Vẫn thiết vũ côn', '12', '5', '1', '1', '36', '520', '76530', '5be0b95fe4591bf4593f16cacfb9136c', '0', '6', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Vẫn thiết vũ côn', 'Vẫn thiết vũ côn', '8', '3', '1', '1', '36', '564', '76733', '59c0c0ee89fc09541f4c7760cd40f2f0', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Vẫn thiết vũ côn', 'Vẫn thiết vũ côn', '10', '3', '1', '1', '36', '520', '76532', '5be0b95fe4591bf4593f16cacfb9136c', '0', '2', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Phổ thông man giáp', 'Phổ thông man giáp', '0', '9', '2', '0', '35', '0', '76533', '', '62', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · mặc hồn ngoa', 'Duyên phong · mặc hồn ngoa', '0', '10', '3', '0', '42', '691', '77146', '17a653630bf9efddc2913636da715feb', '155', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Bách trảm cuồng lan thương', 'Bách trảm cuồng lan', '20', '0', '0', '5', '40', '682', '77151', '022efa153704457feb2e54c5bbe671b5', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện thanh cương kiếm', 'Bách luyện thanh cương kiếm', '5', '0', '0', '2', '27', '553', '76698', '200bf133981166e62a56d838617bcab1', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '566', '76860', '254884cc98a27262e70f650f6f2692bc', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '14', '1', '0', '38', '480', '76749', 'df1905b2799580cd3861d79686bacbad', '120', '4', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '537', '76627', '1ad63d508f70be6d8d83235471f1fc8b', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện thanh cương kiếm', 'Bách luyện thanh cương kiếm', '5', '0', '0', '2', '27', '555', '76687', '06fbd149264dc74569f23b348101c0c4', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện khinh nhị giáp', 'Bách luyện khinh nhị giáp', '0', '8', '0', '0', '28', '524', '76538', 'a6edc2472e88417ac151bf97c7231a23', '40', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '586', '76971', '465133246a843b93c24201350509133a', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Lôi ưng hộ giáp', 'Lôi ưng hộ giáp', '7', '8', '1', '0', '31', '528', '76604', 'b0937c2a2e0292043bf9afbc25cc43d7', '55', '7', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '587', '76984', '6d3e49a106b7d4332c562fa96aaa7b31', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Vẫn thiết vũ côn', 'Vẫn thiết vũ côn', '11', '3', '1', '1', '36', '517', '76546', '5b5df97f24dda63106a3cfdbec0f2f37', '0', '3', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Thị hồn cốt nhẫn', 'Thị hồn cốt nhẫn', '23', '0', '5', '3', '39', '479', '76552', '91322e4d4529a1c0db2580a4d5e07ff1', '0', '6', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Nguyệt luân thương', 'Nguyệt luân thương', '10', '0', '0', '2', '37', '561', '76633', '96c3c7f28f7ada4dce2c8f1dbdc419ef', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Trung cấp phệ huyết kiếm', 'Trung cấp phệ huyết kiếm', '15', '0', '0', '4', '34', '518', '76564', '65f69095d290c9579a2255210d058fb1', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '654', '77143', '8a7efb7f2df77e079d227b2b0518b47f', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Khinh nhị khôi', 'Khinh nhị khôi', '2', '7', '1', '0', '30', '528', '76597', 'b0937c2a2e0292043bf9afbc25cc43d7', '50', '2', '0', '2');
+INSERT INTO `playerzhuangbei` VALUES ('Thị hồn cốt nhẫn', 'Thị hồn cốt nhẫn', '17', '0', '5', '3', '39', '479', '76568', '91322e4d4529a1c0db2580a4d5e07ff1', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '529', '76575', 'cf2f747ba60ee6e02aeb6b750182d691', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Vẫn thiết vũ côn', 'Vẫn thiết vũ côn', '12', '3', '1', '1', '36', '528', '76970', 'b0937c2a2e0292043bf9afbc25cc43d7', '0', '4', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ mộc kiếm', 'Tân thủ sử dụng đích mộc kiếm', '1', '0', '0', '1', '23', '529', '76577', 'cf2f747ba60ee6e02aeb6b750182d691', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Minh nguyệt chi kiếm', 'Minh nguyệt minh nguyệt', '3', '0', '0', '1', '25', '529', '76581', 'cf2f747ba60ee6e02aeb6b750182d691', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '472', '76870', '314b6439ec01d71838961c71c7d874c2', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '576', '76989', 'b640a2de9bf6e48433937295ee06bbcd', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '591', '76804', '0cb8f67a8c561a63dacaa09158f7f40c', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ mộc kiếm', 'Tân thủ sử dụng đích mộc kiếm', '1', '0', '0', '1', '23', '566', '76859', '254884cc98a27262e70f650f6f2692bc', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '655', '77136', '071cc2053b1d893f70a8717e139a890b', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '592', '76744', '8430ef32db1b255ff6cbe21f99e999f2', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Khinh nhị khôi', 'Khinh nhị khôi', '2', '8', '1', '0', '30', '538', '76732', '2f1d8f88000b56e6b5c3007d36f2c1c8', '53', '4', '0', '2');
+INSERT INTO `playerzhuangbei` VALUES ('Nguyệt luân thương', 'Nguyệt luân thương', '10', '0', '0', '2', '37', '608', '76626', '6e4aeebf5cd05538d633891e444f1122', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '669', '77229', '90e8f3a897aa7fcb31627a8e75eeaa9c', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '545', '76685', '83c1f495f13e5447fca661992ccee009', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Phổ thông man giáp', 'Phổ thông man giáp', '0', '9', '2', '0', '35', '539', '76650', 'e6830fe7835906ba70e9a1a8aed1ceb3', '62', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Phổ thông man giáp', 'Phổ thông man giáp', '0', '9', '2', '0', '35', '540', '76654', '66cf1a9ab2721d6c11dc4cb24249428a', '62', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '11', '1', '0', '38', '480', '76655', 'df1905b2799580cd3861d79686bacbad', '120', '1', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Lôi ưng hộ giáp', 'Lôi ưng hộ giáp', '5', '10', '1', '0', '31', '535', '76686', '9dc0bb8899c5497aa2dacab00c77fd5c', '55', '7', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Phổ thông man giáp', 'Phổ thông man giáp', '0', '9', '2', '0', '35', '541', '76659', '2185f80f47a082048bd9db8c3525d9f7', '62', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '50', '1', '0', '38', '492', '76660', '3204b1df760fd73acf5332398961f416', '120', '30', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Vẫn thiết vũ côn', 'Vẫn thiết vũ côn', '9', '3', '1', '1', '36', '578', '76716', 'a3662eaf07dda1c197ceabba10c75e02', '0', '1', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '574', '76925', 'c39219e0f88619106fc81c6324b91549', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '13', '0', '1', '3', '29', '568', '76896', 'efc23151bb317b15d8b8da7a9568727d', '0', '11', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Thanh phong hộ giáp', 'Thủ tự thanh phong thường bạn', '0', '5', '1', '0', '26', '612', '76957', 'fbd3d515e501ab709aaea351abf2acdd', '25', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Nguyệt luân thương', 'Nguyệt luân thương', '10', '0', '0', '2', '37', '538', '76817', '2f1d8f88000b56e6b5c3007d36f2c1c8', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '542', '76682', 'e238ea4bdb4a2a90dfcd4567e00945d3', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện thanh cương kiếm', 'Bách luyện thanh cương kiếm', '5', '0', '0', '2', '27', '543', '76683', 'd74a13192703b1cddd544c8b0ecd0bff', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Thị hồn cốt nhẫn', 'Thị hồn cốt nhẫn', '26', '0', '5', '3', '39', '480', '76713', 'df1905b2799580cd3861d79686bacbad', '0', '9', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện thanh cương kiếm', 'Bách luyện thanh cương kiếm', '5', '0', '0', '2', '27', '556', '76688', '83b5198f712e84da985fc479c9fc2c0e', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '546', '76689', 'e4f422fe1b5cc251be6e7937bd177f99', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '548', '76690', '62e06d38c7d24d82f21eb56f228cf03c', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện thanh cương kiếm', 'Bách luyện thanh cương kiếm', '5', '0', '0', '2', '27', '557', '76691', '85e633e596b131abb347dcf62a46e307', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '2', '3', '3', '5', '32', '535', '76692', '9dc0bb8899c5497aa2dacab00c77fd5c', '20', '2', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '549', '76693', '6993d6c9bbaa7e5b08a5093ca818b3da', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · thú hồn hạng liên', 'Duyên phong · thú hồn hạng liên', '32', '12', '4', '4', '44', '531', '77134', '132a2ae60d254a56c7264893f03a6a25', '55', '13', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '550', '76695', '2512c48fa5ad9252986d4170708adf43', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '552', '76696', '46d5fc2815779f012fb904af9b765de0', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '554', '76697', '37057f77a2ca4c7ef726f47004aa7eb6', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ mộc kiếm', 'Tân thủ sử dụng đích mộc kiếm', '1', '0', '0', '1', '23', '565', '76858', '6def45155adf21e7aad4a3e12759f7e6', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Lôi ưng hộ giáp', 'Lôi ưng hộ giáp', '2', '10', '1', '0', '31', '538', '76734', '2f1d8f88000b56e6b5c3007d36f2c1c8', '61', '6', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '656', '77135', 'b07cf0573d533fd6fafea889f4b00341', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Lôi ưng hộ giáp', 'Lôi ưng hộ giáp', '0', '8', '1', '0', '31', '503', '76740', 'f0ac44856637b747beb115331972de83', '55', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Vẫn thiết vũ côn', 'Vẫn thiết vũ côn', '8', '4', '1', '1', '36', '570', '76710', 'ae5c1ace8df289cb52e1e6e6bba81084', '0', '1', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '569', '76886', '328e720a8f53d40808701b2cc47641c9', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '1', '4', '3', '5', '32', '538', '76738', '2f1d8f88000b56e6b5c3007d36f2c1c8', '21', '3', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · mặc hồn ngoa', 'Duyên phong · mặc hồn ngoa', '0', '10', '3', '0', '42', '690', '77147', 'f7f614975423ea19029307b81d8c830d', '155', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '593', '76752', '382e2cfe200d1231ffe1a2e306d42a6b', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '1', '4', '3', '5', '32', '538', '76753', '2f1d8f88000b56e6b5c3007d36f2c1c8', '21', '3', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '564', '76851', '59c0c0ee89fc09541f4c7760cd40f2f0', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Vẫn thiết vũ côn', 'Vẫn thiết vũ côn', '10', '5', '1', '1', '36', '538', '76763', '2f1d8f88000b56e6b5c3007d36f2c1c8', '2', '6', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '595', '76757', 'ac715806d021d762ad5d783e08794bd4', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Trung cấp phệ huyết kiếm', 'Trung cấp phệ huyết kiếm', '20', '0', '0', '4', '34', '722', '76923', '8d97e33eb204fcab472e184928d89803', '0', '5', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '570', '76889', 'ae5c1ace8df289cb52e1e6e6bba81084', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '596', '76761', '8bc80ee3535cd08e96cbdc945bb9881d', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '479', '76793', '91322e4d4529a1c0db2580a4d5e07ff1', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '662', '77162', '03dd6871353d919e243d6cc9cd0edc21', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Minh nguyệt chi kiếm', 'Minh nguyệt minh nguyệt', '3', '0', '0', '1', '25', '569', '76885', '328e720a8f53d40808701b2cc47641c9', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '563', '76849', '07c4aa8db44ac27c5047134da59caf04', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Thị hồn cốt nhẫn', 'Thị hồn cốt nhẫn', '71', '0', '5', '3', '39', '492', '76780', '3204b1df760fd73acf5332398961f416', '0', '30', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '585', '76969', '8941761f4845a31c23a6328e5e579202', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '566', '76862', '254884cc98a27262e70f650f6f2692bc', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '566', '76861', '254884cc98a27262e70f650f6f2692bc', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '650', '77125', 'f47188dbeb689c63337216ffcfdc80aa', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '607', '77046', 'abad3256447bf495020a18e2c7f72df8', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Thanh phong hộ giáp', 'Thủ tự thanh phong thường bạn', '0', '5', '1', '0', '26', '617', '76958', '751058112ea7895985fa67cf23ed7bba', '25', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Nguyệt luân thương', 'Nguyệt luân thương', '10', '0', '0', '2', '37', '566', '76853', '254884cc98a27262e70f650f6f2692bc', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Nguyệt luân thương', 'Nguyệt luân thương', '10', '0', '0', '2', '37', '569', '76854', '328e720a8f53d40808701b2cc47641c9', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '566', '76855', '254884cc98a27262e70f650f6f2692bc', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '599', '76872', '0ed5b695d1c6831efb9ef209045e6872', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '472', '76873', '314b6439ec01d71838961c71c7d874c2', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '601', '76874', '998ea2ed1e539242b37b3d145ec984c1', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '602', '76875', 'f02ab205f576a1761a1efad0ee014d65', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện khinh nhị giáp', 'Bách luyện khinh nhị giáp', '0', '8', '0', '0', '28', '568', '76881', 'efc23151bb317b15d8b8da7a9568727d', '40', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Lôi ưng hộ giáp', 'Lôi ưng hộ giáp', '0', '8', '1', '0', '31', '547', '77026', '557b7f4de2be11fd91d173d236fea6b4', '55', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ mộc kiếm', 'Tân thủ sử dụng đích mộc kiếm', '1', '0', '0', '1', '23', '569', '76883', '328e720a8f53d40808701b2cc47641c9', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '575', '76976', 'bf9939cbe76a46d23d3518233af2f5c4', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '575', '76926', 'bf9939cbe76a46d23d3518233af2f5c4', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Khinh nhị khôi', 'Khinh nhị khôi', '0', '7', '1', '0', '30', '568', '76907', 'efc23151bb317b15d8b8da7a9568727d', '50', '0', '0', '2');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '568', '76920', 'efc23151bb317b15d8b8da7a9568727d', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '598', '77038', '1dae7225f245dd20b9e9819ccf00bb14', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '629', '77084', '4faa68ad2836d9a580a095d5d4e5ac34', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '597', '77037', '2db67eedafd57b9251452c84fd6e72dd', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '573', '76922', 'd2270581618374bd45714ee5704931b9', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '594', '77035', 'a99db0da877f1c5e3579d338f49271fe', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '0', '3', '3', '5', '32', '568', '76914', 'efc23151bb317b15d8b8da7a9568727d', '22', '2', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '7', '1', '1', '3', '29', '547', '76915', '557b7f4de2be11fd91d173d236fea6b4', '1', '7', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '578', '76931', 'a3662eaf07dda1c197ceabba10c75e02', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '576', '76928', 'b640a2de9bf6e48433937295ee06bbcd', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '632', '77090', 'b9914dd0b8bdc9ab234a551d6a9989c3', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '577', '76930', '834f2bbe62c7ff8b8588da6721123dfb', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '579', '76933', '6748710cbb3b0d6453f6f90c020b2f2e', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '1', '4', '3', '5', '32', '547', '77023', '557b7f4de2be11fd91d173d236fea6b4', '21', '3', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '580', '76937', 'cad17f862127f53425dba7035d7e7c04', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '581', '76938', '12859183b2c1aa3ab363f36b377d3e2a', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '604', '76943', 'fff129361f0ecd915545b09a4f23741a', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '606', '76946', '8bf7e7c51e89f7d055431b885e88c7aa', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '655', '77144', '071cc2053b1d893f70a8717e139a890b', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '577', '76949', '834f2bbe62c7ff8b8588da6721123dfb', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '615', '76950', '9fa9af61fba789b3a3a68dd18bec0355', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '574', '76951', 'c39219e0f88619106fc81c6324b91549', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Vẫn thiết vũ côn', 'Vẫn thiết vũ côn', '12', '3', '1', '1', '36', '528', '76982', 'b0937c2a2e0292043bf9afbc25cc43d7', '0', '4', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '625', '77083', 'ec3dcb49b71ec220951be37a1e1cbda2', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '609', '76954', '2aa1cf134292f1739bd9ff431db93908', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '605', '76956', '9bea8bb6f86f26e1a55e2abb63f9f479', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '607', '76978', 'abad3256447bf495020a18e2c7f72df8', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '613', '77049', '003222c0bc5a54469192d5c6dc2e96a4', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Thanh phong hộ giáp', 'Thủ tự thanh phong thường bạn', '0', '5', '1', '0', '26', '618', '76959', '96a60d2c0f22959633c766cd4be60293', '25', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Thanh phong hộ giáp', 'Thủ tự thanh phong thường bạn', '0', '5', '1', '0', '26', '619', '76960', 'cb477a5c69f52fc35afc1f62e97197e7', '25', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Thanh phong hộ giáp', 'Thủ tự thanh phong thường bạn', '0', '5', '1', '0', '26', '620', '76961', '112c512ed3ce9b33ac455449ad26e8a4', '25', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Thanh phong hộ giáp', 'Thủ tự thanh phong thường bạn', '0', '5', '1', '0', '26', '622', '76962', '97bf4556a5d23ded2646f81a24b293d6', '25', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '630', '77082', '2569b951da435bb9c77d68f84156b531', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '586', '76975', '465133246a843b93c24201350509133a', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '656', '77145', 'b07cf0573d533fd6fafea889f4b00341', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Trung cấp phệ huyết kiếm', 'Trung cấp phệ huyết kiếm', '20', '0', '0', '4', '34', '505', '77015', '5342074c8ce889f9ce11bcd4f254355f', '0', '5', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '587', '76983', '6d3e49a106b7d4332c562fa96aaa7b31', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Khinh nhị khôi', 'Khinh nhị khôi', '3', '7', '1', '0', '30', '584', '77004', '471555821ff06e8c401d3e6fb0f890d9', '50', '3', '0', '2');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '588', '77013', '95409c694fc35f303dc09eea69444dd8', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Minh nguyệt chi kiếm', 'Minh nguyệt minh nguyệt', '5', '0', '0', '1', '25', '563', '76987', '07c4aa8db44ac27c5047134da59caf04', '0', '2', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '613', '76993', '003222c0bc5a54469192d5c6dc2e96a4', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Trung cấp phệ huyết kiếm', 'Trung cấp phệ huyết kiếm', '16', '2', '0', '4', '34', '505', '77017', '5342074c8ce889f9ce11bcd4f254355f', '0', '3', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện thanh cương kiếm', 'Bách luyện thanh cương kiếm', '11', '4', '0', '2', '27', '584', '77009', '471555821ff06e8c401d3e6fb0f890d9', '0', '10', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Minh nguyệt chi kiếm', 'Minh nguyệt minh nguyệt', '3', '0', '0', '1', '25', '625', '77079', 'ec3dcb49b71ec220951be37a1e1cbda2', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Lôi ưng hộ giáp', 'Lôi ưng hộ giáp', '0', '11', '1', '0', '31', '584', '77011', '471555821ff06e8c401d3e6fb0f890d9', '55', '3', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '685', '77264', '2a9d05e96984a01ac6a3d3fa26c423d2', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '653', '77142', 'ce4cd32dada7f32b83853711542c22ca', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Vẫn thiết vũ côn', 'Vẫn thiết vũ côn', '10', '3', '1', '1', '36', '584', '77027', '471555821ff06e8c401d3e6fb0f890d9', '0', '2', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Khinh nhị khôi', 'Khinh nhị khôi', '3', '8', '1', '0', '30', '547', '77020', '557b7f4de2be11fd91d173d236fea6b4', '53', '5', '0', '2');
+INSERT INTO `playerzhuangbei` VALUES ('Lôi ưng hộ giáp', 'Lôi ưng hộ giáp', '2', '10', '1', '0', '31', '547', '77025', '557b7f4de2be11fd91d173d236fea6b4', '61', '6', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '0', '3', '3', '5', '32', '547', '77031', '557b7f4de2be11fd91d173d236fea6b4', '20', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '597', '77032', '2db67eedafd57b9251452c84fd6e72dd', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Lôi ưng hộ giáp', 'Lôi ưng hộ giáp', '0', '8', '1', '0', '31', '547', '77033', '557b7f4de2be11fd91d173d236fea6b4', '55', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · thú hồn hạng liên', 'Duyên phong · thú hồn hạng liên', '38', '12', '4', '4', '44', '492', '77034', '3204b1df760fd73acf5332398961f416', '55', '16', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '633', '77047', '4028d7fd3906be6e99e9847cf5ec5748', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '600', '77041', '6636a00499a701a8e4aee28099e899c3', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '0', '5', '3', '5', '32', '584', '77042', '471555821ff06e8c401d3e6fb0f890d9', '20', '2', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '0', '3', '3', '5', '32', '584', '77043', '471555821ff06e8c401d3e6fb0f890d9', '20', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '603', '77044', 'dbd913282216b9f36dc0aacf77fb8f4d', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '605', '77045', '9bea8bb6f86f26e1a55e2abb63f9f479', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '621', '77057', 'b7e9ee418c890496b897cfddc3827361', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '614', '77051', '2d3523906f45daf8b05d4ee873b2fb75', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '652', '77141', '97f6c8467286a08954edfa6955510a71', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '616', '77053', '745b8b0c24f3b050d2e5d4f040e09755', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · thú hồn hạng liên', 'Duyên phong · thú hồn hạng liên', '18', '12', '4', '4', '44', '492', '77054', '3204b1df760fd73acf5332398961f416', '55', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · thú hồn hạng liên', 'Duyên phong · thú hồn hạng liên', '20', '12', '4', '4', '44', '530', '77140', 'a82a81044ec116f876d03885c2973ba6', '55', '2', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '651', '77139', 'b69d90fc03f0fa785b1c6ddb3b3829b8', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · thú hồn hạng liên', 'Duyên phong · thú hồn hạng liên', '18', '12', '4', '4', '44', '530', '77138', 'a82a81044ec116f876d03885c2973ba6', '55', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '623', '77061', 'f63078630a88b1ecee7ee913ceb19812', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '631', '77062', '8096bab241a745965c3fc88cc699df17', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '651', '77137', 'b69d90fc03f0fa785b1c6ddb3b3829b8', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '624', '77064', '93f526702057373149a9cfa640385eb3', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Quân dụng tỏa tử giáp', 'Kiếp đao', '5', '16', '5', '0', '47', '492', '77320', '3204b1df760fd73acf5332398961f416', '170', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Kiếp đao', 'Yêu vương kiếm toái phiến hợp thành', '25', '0', '4', '5', '46', '492', '77319', '3204b1df760fd73acf5332398961f416', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '626', '77067', '8ffb820f9fe09045a9e8ecdfbc712802', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Phổ thông man giáp', 'Phổ thông man giáp', '0', '9', '2', '0', '35', '696', '77068', '39486819141832199e9f6ce0f07df80f', '62', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '625', '77069', 'ec3dcb49b71ec220951be37a1e1cbda2', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '627', '77070', 'ef9ba5ede60da54d81838439bf4957d5', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ mộc kiếm', 'Tân thủ sử dụng đích mộc kiếm', '1', '0', '0', '1', '23', '625', '77071', 'ec3dcb49b71ec220951be37a1e1cbda2', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '628', '77072', '4e192ae86106454c54d1c8571060d9cb', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Thị hồn cốt nhẫn', 'Thị hồn cốt nhẫn', '17', '3', '5', '3', '39', '505', '77073', '5342074c8ce889f9ce11bcd4f254355f', '0', '3', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '632', '77074', 'b9914dd0b8bdc9ab234a551d6a9989c3', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · thú hồn hạng liên', 'Duyên phong · thú hồn hạng liên', '18', '12', '4', '4', '44', '530', '77219', 'a82a81044ec116f876d03885c2973ba6', '55', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '630', '77085', '2569b951da435bb9c77d68f84156b531', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Trung cấp phệ huyết kiếm', 'Trung cấp phệ huyết kiếm', '16', '2', '0', '4', '34', '535', '77222', '9dc0bb8899c5497aa2dacab00c77fd5c', '0', '3', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '631', '77089', '8096bab241a745965c3fc88cc699df17', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · mặc hồn ngoa', 'Duyên phong · mặc hồn ngoa', '0', '10', '3', '0', '42', '689', '77253', '3133ef63491fc4a52701e636dfbf9fa3', '155', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · thú hồn hạng liên', 'Duyên phong · thú hồn hạng liên', '23', '19', '4', '4', '44', '531', '77133', '132a2ae60d254a56c7264893f03a6a25', '55', '12', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '633', '77092', '4028d7fd3906be6e99e9847cf5ec5748', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '702', '77228', '477f97929463f731805fea917796116b', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '635', '77099', '67f1b64af52c989385241db4b2b6daf8', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · mặc hồn ngoa', 'Duyên phong · mặc hồn ngoa', '0', '21', '3', '0', '42', '531', '77131', '132a2ae60d254a56c7264893f03a6a25', '155', '11', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '634', '77097', 'e24af8ce4572a56388bba51fce9c5c2d', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '668', '77227', 'd7c100e7739bbbd6446020fa21eb43cb', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '666', '77224', 'da5ec0d2cab02e7b2f6f617fcfbac658', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '653', '77102', 'ce4cd32dada7f32b83853711542c22ca', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '636', '77103', 'fa80a1400e8952183e656d20ae298168', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '667', '77225', '3646314d5a3e639bcb2cba2d20ea1227', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '637', '77105', '4c2776c8859d4e1723bd6d7fab1b2772', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '652', '77106', '97f6c8467286a08954edfa6955510a71', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '638', '77107', '5a383efd6fd05659b53d81f46bb374ba', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '647', '77108', '51218a11dafd6581e03eb517fd323935', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '649', '77109', '0a02202fed191e30afc1626b1171b09d', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '639', '77110', 'c316eef7f547fdb67b02a02991c08595', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '640', '77111', '6641224d5c7b03639d8c3a821aaf5265', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '644', '77112', 'cba408727a6faf27e19799a28a7245d9', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '641', '77113', '7e11a224cf7d680b4434a8d4ffb38e18', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '642', '77114', 'ae48252617495d4d8415a9b2897e88da', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '642', '77115', 'ae48252617495d4d8415a9b2897e88da', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '643', '77116', 'ed1e41cb1a37291afaeafe372a999ece', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '644', '77117', 'cba408727a6faf27e19799a28a7245d9', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '645', '77118', '392d311e85536f5a22ac352458ed417d', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '646', '77119', 'b1a11bf20372c1917c015177e70da375', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '647', '77120', '51218a11dafd6581e03eb517fd323935', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '648', '77121', '78452c0d4b172fb2dcee08d338f56acc', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Bách trảm cuồng lan thương', 'Bách trảm cuồng lan', '20', '0', '0', '5', '40', '681', '77221', '4d6c7bbb353fe3b1998ab154b4b8de34', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '681', '77260', '4d6c7bbb353fe3b1998ab154b4b8de34', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '687', '77266', 'f94a4e70090449b1305bcfabc2fc3063', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '649', '77124', '0a02202fed191e30afc1626b1171b09d', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '672', '77236', '45500dfe80d0c1774817786a44a50e93', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · thú hồn hạng liên', 'Duyên phong · thú hồn hạng liên', '18', '12', '4', '4', '44', '530', '77148', 'a82a81044ec116f876d03885c2973ba6', '55', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · mặc hồn ngoa', 'Duyên phong · mặc hồn ngoa', '0', '10', '3', '0', '42', '688', '77149', '500a2437c1bb8f02f7c49e28601dfb6e', '155', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '658', '77150', '9224230b7a147c55b158c0642c0dae34', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Bách trảm cuồng lan thương', 'Bách trảm cuồng lan', '20', '0', '0', '5', '40', '680', '77152', 'e08d6b644f78d1b2fba58b3b9336e7c7', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Bách trảm cuồng lan thương', 'Bách trảm cuồng lan', '20', '0', '0', '5', '40', '679', '77153', '0bc389301f085642f280e2bb5736a480', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '665', '77154', 'c8d9ca8dc1c454d877b29418bb69c23f', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '660', '77155', '2c2297bb0c8a0ac18b2fd1f3f48787e2', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '661', '77156', '8459472e192b644642eb5042a71624a4', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Bách trảm cuồng lan thương', 'Bách trảm cuồng lan', '20', '3', '0', '5', '40', '505', '77157', '5342074c8ce889f9ce11bcd4f254355f', '0', '3', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '663', '77158', '2a111a75f25e6f87d99b0925f8fa4f09', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · phá quân yêu đái', 'Duyên phong · phá quân yêu đái', '0', '24', '0', '0', '43', '531', '77161', '132a2ae60d254a56c7264893f03a6a25', '170', '10', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '659', '77165', 'bf32173db0102374b65590833ad0cc7f', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '671', '77235', '144f1c155fcb7fedf5915e15c68aed52', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '659', '77168', 'bf32173db0102374b65590833ad0cc7f', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '674', '77169', 'f47ac3d9c8ff47415290e5bbee5d94ba', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '660', '77170', '2c2297bb0c8a0ac18b2fd1f3f48787e2', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '661', '77171', '8459472e192b644642eb5042a71624a4', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '0', '3', '3', '5', '32', '519', '77191', '00bec478348b21e8e9135bb08a6787cd', '20', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '662', '77173', '03dd6871353d919e243d6cc9cd0edc21', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '663', '77174', '2a111a75f25e6f87d99b0925f8fa4f09', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '664', '77176', '485169fef9ff97368fad99c5d7b9eaba', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '665', '77177', 'c8d9ca8dc1c454d877b29418bb69c23f', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '675', '77190', '9467812eb836c2b70c021e8ef1d52ab1', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · mặc hồn ngoa', 'Duyên phong · mặc hồn ngoa', '0', '10', '3', '0', '42', '687', '77252', 'f94a4e70090449b1305bcfabc2fc3063', '155', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '0', '3', '3', '5', '32', '519', '77189', '00bec478348b21e8e9135bb08a6787cd', '20', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · mặc hồn ngoa', 'Duyên phong · mặc hồn ngoa', '0', '10', '3', '0', '42', '714', '77180', 'd8561aa207c9c921d2fcbff47f1b004f', '155', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện thanh cương kiếm', 'Bách luyện thanh cương kiếm', '5', '0', '0', '2', '27', '727', '77561', '9c484fb3dc297a35f106796ed135a98d', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · mặc hồn ngoa', 'Duyên phong · mặc hồn ngoa', '0', '10', '3', '0', '42', '712', '77182', '90888bddd4da7a0ca3c3400b09cb8608', '155', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · mặc hồn ngoa', 'Duyên phong · mặc hồn ngoa', '0', '10', '3', '0', '42', '717', '77183', 'da689f730710e8cbc65d9ca654e5ffc5', '155', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '691', '77270', '17a653630bf9efddc2913636da715feb', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '676', '77184', '7c8c3deb469f9576d97eb1bdedd44ded', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Minh nguyệt chi kiếm', 'Minh nguyệt minh nguyệt', '3', '0', '0', '1', '25', '728', '77572', '0e67ef9235186f4f55a624ee83eb0eb9', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Trung cấp phệ huyết kiếm', 'Trung cấp phệ huyết kiếm', '15', '0', '0', '4', '34', '519', '77410', '00bec478348b21e8e9135bb08a6787cd', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '2', '5', '3', '5', '32', '519', '77187', '00bec478348b21e8e9135bb08a6787cd', '20', '4', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '0', '3', '3', '5', '32', '519', '77198', '00bec478348b21e8e9135bb08a6787cd', '20', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '670', '77233', 'edcbf1d0ea9bb879b925b69aac3a4019', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '692', '77231', '596e08e7ab36427ead738fb68c3b0a19', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Quân quan mạch đao', 'Quân dụng tỏa tử giáp', '149', '0', '5', '4', '48', '530', '77208', 'a82a81044ec116f876d03885c2973ba6', '0', '32', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · thú hồn hạng liên', 'Duyên phong · thú hồn hạng liên', '18', '12', '4', '4', '44', '530', '77202', 'a82a81044ec116f876d03885c2973ba6', '55', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện khinh nhị giáp', 'Bách luyện khinh nhị giáp', '0', '8', '0', '0', '28', '722', '77401', '8d97e33eb204fcab472e184928d89803', '40', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '674', '77240', 'f47ac3d9c8ff47415290e5bbee5d94ba', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '675', '77241', '9467812eb836c2b70c021e8ef1d52ab1', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '676', '77242', '7c8c3deb469f9576d97eb1bdedd44ded', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '677', '77243', 'e4eeb15d095a35e9ca0934aa4c5d7348', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '678', '77244', '820454b1128c1a80ae000002be521290', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · mặc hồn ngoa', 'Duyên phong · mặc hồn ngoa', '0', '10', '3', '0', '42', '704', '77245', 'd94223c92b09cca1881b7aa57c9be239', '155', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · mặc hồn ngoa', 'Duyên phong · mặc hồn ngoa', '0', '10', '3', '0', '42', '713', '77246', '24924d381bc4839740c136cba998f8a1', '155', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · mặc hồn ngoa', 'Duyên phong · mặc hồn ngoa', '0', '10', '3', '0', '42', '716', '77247', '677f23772319fda9f0b168cb4e7a921e', '155', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '715', '77248', 'b28c7d5de2c2ba559cf68ae2e2d8aa8e', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Thanh phong hộ giáp', 'Thủ tự thanh phong thường bạn', '0', '5', '1', '0', '26', '728', '77591', '0e67ef9235186f4f55a624ee83eb0eb9', '25', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · mặc hồn ngoa', 'Duyên phong · mặc hồn ngoa', '0', '10', '3', '0', '42', '703', '77251', '3a70d43cd5e915c33fca9ecaed82c166', '155', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · mặc hồn ngoa', 'Duyên phong · mặc hồn ngoa', '0', '10', '3', '0', '42', '686', '77254', 'c4370b9318ff613ff94f1c1f579ceffd', '155', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · mặc hồn ngoa', 'Duyên phong · mặc hồn ngoa', '0', '10', '3', '0', '42', '685', '77255', '2a9d05e96984a01ac6a3d3fa26c423d2', '155', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · mặc hồn ngoa', 'Duyên phong · mặc hồn ngoa', '0', '10', '3', '0', '42', '684', '77256', '5203a615004c27accb73b0d2dfe0d7e9', '155', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · mặc hồn ngoa', 'Duyên phong · mặc hồn ngoa', '0', '10', '3', '0', '42', '683', '77257', 'e1ea2ceff741958658f9ec6f3fb34337', '155', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '679', '77258', '0bc389301f085642f280e2bb5736a480', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '680', '77259', 'e08d6b644f78d1b2fba58b3b9336e7c7', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '682', '77261', '022efa153704457feb2e54c5bbe671b5', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '683', '77262', 'e1ea2ceff741958658f9ec6f3fb34337', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '684', '77263', '5203a615004c27accb73b0d2dfe0d7e9', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '686', '77265', 'c4370b9318ff613ff94f1c1f579ceffd', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '712', '77293', '90888bddd4da7a0ca3c3400b09cb8608', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '688', '77267', '500a2437c1bb8f02f7c49e28601dfb6e', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '689', '77268', '3133ef63491fc4a52701e636dfbf9fa3', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '690', '77269', 'f7f614975423ea19029307b81d8c830d', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · mặc hồn ngoa', 'Duyên phong · mặc hồn ngoa', '0', '10', '3', '0', '42', '693', '77271', 'e1cdfa10364d6fe840293d6058435f84', '155', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '692', '77272', '596e08e7ab36427ead738fb68c3b0a19', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '693', '77273', 'e1cdfa10364d6fe840293d6058435f84', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '694', '77274', 'c39e1158234b1cbed1235f3a92e2190a', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '695', '77275', 'c40d9b4ce23e9d6301ae100078b494b1', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '696', '77276', '39486819141832199e9f6ce0f07df80f', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '697', '77277', '28540a58a176409ab6ab670ad8b84d9a', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '698', '77278', 'db0c22a8d6c70028f1458c5bde301d42', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '699', '77279', 'e26d19ccb75a13d79282f2494544ed63', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '700', '77280', 'ae43a1ceec1a1cd209229a4a2a576694', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '701', '77281', 'dad5603cf172dda4d361f94d72ffa9b3', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '702', '77282', '477f97929463f731805fea917796116b', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '703', '77283', '3a70d43cd5e915c33fca9ecaed82c166', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '704', '77284', 'd94223c92b09cca1881b7aa57c9be239', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '705', '77285', '4e8649b4605a7b24838a6eb8ccbcdafd', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '706', '77286', 'ddfafa84970edb8a1a2e1ce511cb3bea', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '707', '77287', 'dd799830db04c768c1bc8c999adb9eb3', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '708', '77288', '0728f444fe41245dc6009bae1abd5076', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '709', '77290', '907c9e6c88d5dfdc389cd159e8e1227c', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '710', '77291', '42de75f09bd5e5f02dc4ec20d84f6ec1', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '711', '77292', '59906aabadcb687e8dd91cc3e7840c8f', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '713', '77296', '24924d381bc4839740c136cba998f8a1', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '714', '77297', 'd8561aa207c9c921d2fcbff47f1b004f', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '715', '77298', 'b28c7d5de2c2ba559cf68ae2e2d8aa8e', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '716', '77299', '677f23772319fda9f0b168cb4e7a921e', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '717', '77300', 'da689f730710e8cbc65d9ca654e5ffc5', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Thị hồn cốt nhẫn', 'Thị hồn cốt nhẫn', '20', '0', '5', '3', '39', '505', '77301', '5342074c8ce889f9ce11bcd4f254355f', '0', '3', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Vẫn thiết vũ côn', 'Vẫn thiết vũ côn', '8', '3', '1', '1', '36', '488', '77315', '1f014c041b1cb42cb1a75f9449e99998', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Lôi ưng hộ giáp', 'Lôi ưng hộ giáp', '0', '8', '1', '0', '31', '488', '77314', '1f014c041b1cb42cb1a75f9449e99998', '55', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '13', '0', '1', '3', '29', '488', '77308', '1f014c041b1cb42cb1a75f9449e99998', '0', '11', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Quân quan mạch đao', 'Quân dụng tỏa tử giáp', '30', '0', '5', '4', '48', '492', '77318', '3204b1df760fd73acf5332398961f416', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '718', '77321', '1f4d7e6d0493153d0a425f21883df5fe', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '718', '77322', '1f4d7e6d0493153d0a425f21883df5fe', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ mộc kiếm', 'Tân thủ sử dụng đích mộc kiếm', '1', '0', '0', '1', '23', '718', '77323', '1f4d7e6d0493153d0a425f21883df5fe', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '718', '77324', '1f4d7e6d0493153d0a425f21883df5fe', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Minh nguyệt chi kiếm', 'Minh nguyệt minh nguyệt', '3', '0', '0', '1', '25', '718', '77325', '1f4d7e6d0493153d0a425f21883df5fe', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '11', '1', '0', '38', '501', '77327', '7d1526a0dd4803a1fda914bcebd93b47', '126', '2', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · mặc hồn ngoa', 'Duyên phong · mặc hồn ngoa', '0', '10', '3', '0', '42', '530', '77328', 'a82a81044ec116f876d03885c2973ba6', '155', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · mặc hồn ngoa', 'Duyên phong · mặc hồn ngoa', '0', '10', '3', '0', '42', '530', '77329', 'a82a81044ec116f876d03885c2973ba6', '155', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hắc ma chủy thủ', 'Hắc ma chủy thủ', '14', '0', '3', '4', '33', '530', '77330', 'a82a81044ec116f876d03885c2973ba6', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Nguyệt luân thương', 'Nguyệt luân thương', '10', '0', '0', '2', '37', '530', '77331', 'a82a81044ec116f876d03885c2973ba6', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Phổ thông man giáp', 'Phổ thông man giáp', '0', '9', '2', '0', '35', '530', '77332', 'a82a81044ec116f876d03885c2973ba6', '62', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · mặc hồn ngoa', 'Duyên phong · mặc hồn ngoa', '0', '15', '3', '0', '42', '722', '77337', '8d97e33eb204fcab472e184928d89803', '155', '5', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · mặc hồn ngoa', 'Duyên phong · mặc hồn ngoa', '0', '10', '3', '0', '42', '505', '77338', '5342074c8ce889f9ce11bcd4f254355f', '155', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '3', '1', '1', '3', '29', '727', '77558', '9c484fb3dc297a35f106796ed135a98d', '1', '3', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '728', '77571', '0e67ef9235186f4f55a624ee83eb0eb9', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Phổ thông man giáp', 'Phổ thông man giáp', '0', '9', '2', '0', '35', '720', '77346', '361279866296d10396c06791e1f7b796', '62', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Thị hồn cốt nhẫn', 'Thị hồn cốt nhẫn', '21', '0', '5', '3', '39', '501', '77347', '7d1526a0dd4803a1fda914bcebd93b47', '0', '4', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '505', '77353', '5342074c8ce889f9ce11bcd4f254355f', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện thanh cương kiếm', 'Bách luyện thanh cương kiếm', '9', '1', '0', '2', '27', '719', '77364', '53cd539db99d47571d60f4d91d019219', '1', '6', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Khinh nhị khôi', 'Khinh nhị khôi', '0', '7', '1', '0', '30', '719', '77588', '53cd539db99d47571d60f4d91d019219', '50', '0', '0', '2');
+INSERT INTO `playerzhuangbei` VALUES ('Thị hồn cốt nhẫn', 'Thị hồn cốt nhẫn', '17', '0', '5', '3', '39', '501', '77371', '7d1526a0dd4803a1fda914bcebd93b47', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hắc ma chủy thủ', 'Hắc ma chủy thủ', '14', '0', '3', '4', '33', '718', '77372', '1f4d7e6d0493153d0a425f21883df5fe', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '720', '77373', '361279866296d10396c06791e1f7b796', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '720', '77374', '361279866296d10396c06791e1f7b796', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện khinh nhị giáp', 'Bách luyện khinh nhị giáp', '0', '8', '0', '0', '28', '720', '77379', '361279866296d10396c06791e1f7b796', '40', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ mộc kiếm', 'Tân thủ sử dụng đích mộc kiếm', '1', '0', '0', '1', '23', '720', '77376', '361279866296d10396c06791e1f7b796', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '501', '77377', '7d1526a0dd4803a1fda914bcebd93b47', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Minh nguyệt chi kiếm', 'Minh nguyệt minh nguyệt', '3', '0', '0', '1', '25', '720', '77378', '361279866296d10396c06791e1f7b796', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Phổ thông man giáp', 'Phổ thông man giáp', '0', '9', '2', '0', '35', '519', '77413', '00bec478348b21e8e9135bb08a6787cd', '62', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện khinh nhị giáp', 'Bách luyện khinh nhị giáp', '0', '8', '0', '0', '28', '722', '77402', '8d97e33eb204fcab472e184928d89803', '40', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Phổ thông man giáp', 'Phổ thông man giáp', '0', '10', '2', '0', '35', '519', '77405', '00bec478348b21e8e9135bb08a6787cd', '62', '1', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '2', '10', '1', '0', '38', '535', '77404', '9dc0bb8899c5497aa2dacab00c77fd5c', '120', '2', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Trung cấp phệ huyết kiếm', 'Trung cấp phệ huyết kiếm', '16', '0', '0', '4', '34', '519', '77406', '00bec478348b21e8e9135bb08a6787cd', '0', '1', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Trung cấp phệ huyết kiếm', 'Trung cấp phệ huyết kiếm', '15', '0', '0', '4', '34', '519', '77411', '00bec478348b21e8e9135bb08a6787cd', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '724', '77396', 'eca24beba178ffa2d273410f2b1eff68', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '723', '77397', '9ca6dc570525096a45e9d1fd4bdda384', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '725', '77398', 'efb6f6c5f57692b790f014c5b38dd816', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Duyên phong · thú hồn hạng liên', 'Duyên phong · thú hồn hạng liên', '18', '12', '4', '4', '44', '492', '77418', '3204b1df760fd73acf5332398961f416', '55', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Thị hồn cốt nhẫn', 'Thị hồn cốt nhẫn', '17', '5', '5', '3', '39', '535', '77419', '9dc0bb8899c5497aa2dacab00c77fd5c', '3', '8', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Khinh nhị khôi', 'Khinh nhị khôi', '0', '10', '1', '0', '30', '719', '77590', '53cd539db99d47571d60f4d91d019219', '50', '3', '0', '2');
+INSERT INTO `playerzhuangbei` VALUES ('Khinh nhị khôi', 'Khinh nhị khôi', '0', '7', '1', '0', '30', '719', '77589', '53cd539db99d47571d60f4d91d019219', '50', '0', '0', '2');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện thanh cương kiếm', 'Bách luyện thanh cương kiếm', '5', '0', '0', '2', '27', '487', '77518', '11ee841a987d5674196d37fef51ed9a6', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '8', '0', '1', '3', '29', '726', '77537', 'e99904f72c48e48b4bc5ee8cf8e966d6', '0', '6', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện khinh nhị giáp', 'Bách luyện khinh nhị giáp', '2', '8', '0', '0', '28', '726', '77538', 'e99904f72c48e48b4bc5ee8cf8e966d6', '53', '8', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện khinh nhị giáp', 'Bách luyện khinh nhị giáp', '0', '8', '0', '0', '28', '726', '77539', 'e99904f72c48e48b4bc5ee8cf8e966d6', '40', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện thanh cương kiếm', 'Bách luyện thanh cương kiếm', '5', '0', '0', '2', '27', '487', '77531', '11ee841a987d5674196d37fef51ed9a6', '0', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Phổ thông man giáp', 'Phổ thông man giáp', '1', '10', '2', '0', '35', '538', '77542', '2f1d8f88000b56e6b5c3007d36f2c1c8', '62', '2', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '505', '77543', '5342074c8ce889f9ce11bcd4f254355f', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '505', '77544', '5342074c8ce889f9ce11bcd4f254355f', '120', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Bách luyện khinh nhị giáp', 'Bách luyện khinh nhị giáp', '1', '9', '0', '0', '28', '727', '77553', '9c484fb3dc297a35f106796ed135a98d', '42', '3', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Minh nguyệt chi kiếm', 'Minh nguyệt minh nguyệt', '7', '0', '0', '1', '25', '726', '77536', 'e99904f72c48e48b4bc5ee8cf8e966d6', '1', '5', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Trung cấp phệ huyết kiếm', 'Trung cấp phệ huyết kiếm', '15', '0', '0', '4', '34', '535', '77517', '9dc0bb8899c5497aa2dacab00c77fd5c', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ mộc kiếm', 'Tân thủ sử dụng đích mộc kiếm', '2', '0', '0', '1', '23', '726', '77535', 'e99904f72c48e48b4bc5ee8cf8e966d6', '0', '1', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('Trung cấp phệ huyết kiếm', 'Trung cấp phệ huyết kiếm', '15', '0', '0', '4', '34', '535', '77513', '9dc0bb8899c5497aa2dacab00c77fd5c', '0', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '475', '77541', 'e03886cbdd41f2973d1e16d83a1250a2', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '2', '2', '0', '0', '24', '726', '77534', 'e99904f72c48e48b4bc5ee8cf8e966d6', '10', '2', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('Phổ thông man giáp', 'Phổ thông man giáp', '0', '9', '2', '0', '35', '535', '77533', '9dc0bb8899c5497aa2dacab00c77fd5c', '62', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '0', '3', '3', '5', '32', '505', '77508', '5342074c8ce889f9ce11bcd4f254355f', '20', '0', '0', '0');
+INSERT INTO `playerzhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '475', '77540', 'e03886cbdd41f2973d1e16d83a1250a2', '10', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('<span style=color:red> 【khai thiên kiếm】</span>', '<span style=color:red> 【khai thiên kiếm】</span>', '50', '0', '10', '10', '100', '440', '77592', 'f0be893286b66272230904a0a7d33168', '100', '0', '0', '1');
+INSERT INTO `playerzhuangbei` VALUES ('<span style=color:red> 【khai thiên dây chuyền】</span>', '<span style=color:red> 【khai thiên dây chuyền】</span>', '0', '0', '15', '15', '200', '440', '77593', 'f0be893286b66272230904a0a7d33168', '0', '0', '0', '2');
+INSERT INTO `playerzhuangbei` VALUES ('<span style=color:red> 【khai thiên chiến giáp】</span>', '<span style=color:red> 【khai thiên chiến giáp】</span>', '0', '60', '0', '0', '300', '440', '77594', 'f0be893286b66272230904a0a7d33168', '450', '0', '0', '3');
+INSERT INTO `playerzhuangbei` VALUES ('<span style=color:red>【khai thiên đai lưng】 </span>', '<span style=color:red>【khai thiên đai lưng】 </span>', '20', '20', '0', '0', '400', '440', '77595', 'f0be893286b66272230904a0a7d33168', '150', '0', '0', '4');
+INSERT INTO `playerzhuangbei` VALUES ('<span style=color:red>【khai thiên nhẫn】</span>', '<span style=color:red>【khai thiên nhẫn】</span>', '25', '0', '0', '10', '500', '440', '77596', 'f0be893286b66272230904a0a7d33168', '0', '0', '0', '5');
+INSERT INTO `playerzhuangbei` VALUES ('<span style=color:red>【 khai thiên giày】</span>', '<span style=color:red>【 khai thiên giày】</span>', '20', '20', '10', '10', '600', '440', '77597', 'f0be893286b66272230904a0a7d33168', '0', '0', '0', '6');
+
+-- ----------------------------
+-- Table structure for qy
+-- ----------------------------
+DROP TABLE IF EXISTS `qy`;
+CREATE TABLE `qy` (
+  `qyid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `qyname` varchar(255) NOT NULL,
+  `mid` int(11) NOT NULL,
+  PRIMARY KEY (`qyid`)
+) ENGINE=MyISAM AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of qy
+-- ----------------------------
+INSERT INTO `qy` VALUES ('14', 'Tân thủ thôn', '225');
+INSERT INTO `qy` VALUES ('16', 'Tụ tiên thành', '239');
+INSERT INTO `qy` VALUES ('17', 'Ma hóa khu vực', '249');
+INSERT INTO `qy` VALUES ('18', 'Vạn thiên sơn vực', '260');
+INSERT INTO `qy` VALUES ('20', 'Yêu vương điện', '267');
+INSERT INTO `qy` VALUES ('21', 'Viêm dương thành', '272');
+INSERT INTO `qy` VALUES ('22', 'Trung tâm mua sắm', '272');
+INSERT INTO `qy` VALUES ('23', 'Quảng trường trung tâm', '272');
+INSERT INTO `qy` VALUES ('24', 'Khu rèn luyện', '272');
+INSERT INTO `qy` VALUES ('25', 'Thung lũng hoang dã', '272');
+INSERT INTO `qy` VALUES ('26', 'Mỏ chất thải', '272');
+INSERT INTO `qy` VALUES ('27', 'Bãi biển phía Nam', '272');
+INSERT INTO `qy` VALUES ('28', 'Bên ngoài bãi biển phía Nam', '272');
+INSERT INTO `qy` VALUES ('29', 'Hang động dã thú', '272');
+INSERT INTO `qy` VALUES ('30', 'Mỏ bỏ hoang', '272');
+INSERT INTO `qy` VALUES ('31', 'Đảo ước mơ', '272');
+INSERT INTO `qy` VALUES ('32', 'Ngoại ô Đảo ước mơ', '272');
+INSERT INTO `qy` VALUES ('33', 'Bên ngoài Đền Shige', '272');
+INSERT INTO `qy` VALUES ('34', 'Bên trong Đền Shige', '272');
+INSERT INTO `qy` VALUES ('35', 'Bên ngoài đền Woma', '272');
+INSERT INTO `qy` VALUES ('36', 'Bên trong đền Woma', '272');
+INSERT INTO `qy` VALUES ('37', 'Bên ngoài đền Zuma', '272');
+INSERT INTO `qy` VALUES ('38', 'Bên trong đền Zuma', '272');
+INSERT INTO `qy` VALUES ('39', 'Rừng cây', '272');
+INSERT INTO `qy` VALUES ('40', 'Thung lũng Chết', '272');
+INSERT INTO `qy` VALUES ('41', 'Vùng ngoại ô Rồng Quỷ', '272');
+INSERT INTO `qy` VALUES ('42', 'Hang Kiến', '272');
+INSERT INTO `qy` VALUES ('43', 'Đảo Panyu', '272');
+INSERT INTO `qy` VALUES ('44', 'Thung Lũng Giun', '272');
+INSERT INTO `qy` VALUES ('45', 'Thung lũng Wannian', '272');
+
+-- ----------------------------
+-- Table structure for renwu
+-- ----------------------------
+DROP TABLE IF EXISTS `renwu`;
+CREATE TABLE `renwu` (
+  `rwname` varchar(255) NOT NULL,
+  `rwzl` int(11) NOT NULL,
+  `rwdj` varchar(255) NOT NULL,
+  `rwzb` varchar(255) NOT NULL,
+  `rwexp` varchar(255) NOT NULL,
+  `rwyxb` varchar(255) NOT NULL,
+  `rwid` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `rwyq` int(11) NOT NULL,
+  `rwinfo` varchar(255) NOT NULL,
+  `rwcount` int(11) NOT NULL,
+  `rwlx` int(255) NOT NULL,
+  `rwyp` text NOT NULL,
+  `lastrwid` int(11) NOT NULL,
+  `rwjineng` varchar(255) NOT NULL,
+  PRIMARY KEY (`rwid`)
+) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of renwu
+-- ----------------------------
+INSERT INTO `renwu` VALUES ('Sơn trư họa loạn', '2', '1|5', '24', '100', '120', '13', '56', 'Tối cận sơn trư hạ sơn, nhiễu loạn liễu ngã môn đích sinh hoạt, thỉnh bang ngã môn cản bào tha môn', '5', '2', '6|3', '0', '');
+INSERT INTO `renwu` VALUES ('Thu tập phong mật', '1', '1|5', '23', '200', '100', '14', '8', 'Thu tập ngạnh sí phong đích phong mật', '10', '2', '6|3', '0', '');
+INSERT INTO `renwu` VALUES ('Man!', '2', '1|30,9|50', '38', '500', '500', '19', '76', 'Ma đạo đối giá phiến đại địa thủy chung bất tử tâm, dụ hoặc liễu ngã môn ngận đa tộc nhân nhập ma liễu, hi vọng nhĩ năng cú giải cứu tha môn', '50', '1', '', '-1', '');
+INSERT INTO `renwu` VALUES ('Sát!', '2', '1|50,9|50', '39', '600', '400', '20', '77', 'Ngã hảo phạ, bang ngã sát liễu tha môn! ! !', '50', '1', '', '-1', '');
+INSERT INTO `renwu` VALUES ('Xích lân thú bì', '2', '1|10,10|50', '39', '800', '350', '21', '82', 'Bộ lạc hiện tại khuyết thiểu đại lượng thú bì quá đông', '30', '2', '', '-1', '');
+INSERT INTO `renwu` VALUES ('Ngạnh sí phong nhiễu', '2', '1|15,6|100,7|100', '', '200', '150', '25', '55', 'Ngạnh sí phong nhiễu', '20', '3', '', '-1', '');
+INSERT INTO `renwu` VALUES ('Hoa vương đại mụ', '3', '1|20', '25', '200', '100', '24', '11', 'Hoa vương đại mụ', '18', '3', '6|10', '25', '');
+INSERT INTO `renwu` VALUES ('Cố nhân', '3', '1|50', '29', '400', '200', '28', '11', 'Cố nhân', '14', '1', '6|10', '-1', '');
+INSERT INTO `renwu` VALUES ('Đồ tẫn yêu vương', '1', '', '45', '2000', '2000', '27', '12', 'Đồ tẫn yêu vương', '150', '1', '9|5', '-1', '');
+INSERT INTO `renwu` VALUES ('Lang hoạn', '2', '1|100', '', '400', '300', '29', '62', 'Lang hoạn thành tai, bang bang ngã môn', '10', '3', '', '24', '');
 
 -- ----------------------------
 -- Table structure for userinfo
@@ -4383,6 +5381,175 @@ INSERT INTO `yaopin` VALUES ('Hoàn nguyên đan', '6', '100', '0', '0', '0', '0
 INSERT INTO `yaopin` VALUES ('Hồi huyết tán', '7', '300', '0', '0', '0', '0', '80');
 INSERT INTO `yaopin` VALUES ('Hồi xuân thang', '8', '600', '0', '0', '0', '0', '155');
 INSERT INTO `yaopin` VALUES ('Phục thương đan', '9', '1200', '0', '0', '0', '0', '310');
+
+-- ----------------------------
+-- Table structure for zhuangbei
+-- ----------------------------
+DROP TABLE IF EXISTS `zhuangbei`;
+CREATE TABLE `zhuangbei` (
+  `zbname` varchar(255) NOT NULL,
+  `zbinfo` varchar(255) NOT NULL,
+  `zbgj` varchar(255) NOT NULL,
+  `zbfy` varchar(255) NOT NULL,
+  `zbbj` varchar(255) NOT NULL,
+  `zbxx` varchar(255) NOT NULL,
+  `zbid` int(11) NOT NULL AUTO_INCREMENT,
+  `zbhp` varchar(255) NOT NULL,
+  `zblv` int(11) NOT NULL,
+  `zbtool` int(11) NOT NULL,
+  PRIMARY KEY (`zbid`)
+) ENGINE=MyISAM AUTO_INCREMENT=608 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of zhuangbei
+-- ----------------------------
+INSERT INTO `zhuangbei` VALUES ('Tân thủ mộc kiếm', 'Tân thủ sử dụng đích mộc kiếm', '1', '0', '0', '1', '23', '0', '0', '1');
+INSERT INTO `zhuangbei` VALUES ('Tân thủ bố y', 'Tân thủ sử dụng đích bố y', '0', '2', '0', '0', '24', '10', '0', '3');
+INSERT INTO `zhuangbei` VALUES ('Minh nguyệt chi kiếm', 'Minh nguyệt minh nguyệt', '3', '0', '0', '1', '25', '0', '0', '1');
+INSERT INTO `zhuangbei` VALUES ('Thanh phong hộ giáp', 'Thủ tự thanh phong thường bạn', '0', '5', '1', '0', '26', '25', '0', '3');
+INSERT INTO `zhuangbei` VALUES ('Bách luyện thanh cương kiếm', 'Bách luyện thanh cương kiếm', '5', '0', '0', '2', '27', '0', '0', '1');
+INSERT INTO `zhuangbei` VALUES ('Bách luyện khinh nhị giáp', 'Bách luyện khinh nhị giáp', '0', '8', '0', '0', '28', '40', '0', '3');
+INSERT INTO `zhuangbei` VALUES ('Sơ cấp thị huyết kiếm', 'Sơ cấp thị huyết kiếm', '2', '0', '1', '3', '29', '0', '0', '1');
+INSERT INTO `zhuangbei` VALUES ('Khinh nhị khôi', 'Khinh nhị khôi', '0', '7', '1', '0', '30', '50', '0', '2');
+INSERT INTO `zhuangbei` VALUES ('Lôi ưng hộ giáp', 'Lôi ưng hộ giáp', '0', '8', '1', '0', '31', '55', '0', '3');
+INSERT INTO `zhuangbei` VALUES ('Huyết ưng hạng liên', 'Huyết ưng hạng liên', '0', '3', '3', '5', '32', '20', '0', '0');
+INSERT INTO `zhuangbei` VALUES ('Hắc ma chủy thủ', 'Hắc ma chủy thủ', '14', '0', '3', '4', '33', '0', '0', '0');
+INSERT INTO `zhuangbei` VALUES ('Trung cấp phệ huyết kiếm', 'Trung cấp phệ huyết kiếm', '15', '0', '0', '4', '34', '0', '0', '0');
+INSERT INTO `zhuangbei` VALUES ('Phổ thông man giáp', 'Phổ thông man giáp', '0', '9', '2', '0', '35', '62', '0', '0');
+INSERT INTO `zhuangbei` VALUES ('Vẫn thiết vũ côn', 'Vẫn thiết vũ côn', '8', '3', '1', '1', '36', '0', '0', '0');
+INSERT INTO `zhuangbei` VALUES ('Nguyệt luân thương', 'Nguyệt luân thương', '10', '0', '0', '2', '37', '0', '0', '0');
+INSERT INTO `zhuangbei` VALUES ('Hậu thổ giáp', 'Hậu thổ giáp', '0', '10', '1', '0', '38', '120', '0', '0');
+INSERT INTO `zhuangbei` VALUES ('Thị hồn cốt nhẫn', 'Thị hồn cốt nhẫn', '17', '0', '5', '3', '39', '0', '0', '0');
+INSERT INTO `zhuangbei` VALUES ('Bách trảm cuồng lan thương', 'Bách trảm cuồng lan', '20', '0', '0', '5', '40', '0', '0', '0');
+INSERT INTO `zhuangbei` VALUES ('Duyên phong · cầu lôi y', 'Duyên phong · cầu lôi y', '0', '10', '0', '0', '41', '150', '0', '0');
+INSERT INTO `zhuangbei` VALUES ('Duyên phong · mặc hồn ngoa', 'Duyên phong · mặc hồn ngoa', '0', '10', '3', '0', '42', '155', '0', '0');
+INSERT INTO `zhuangbei` VALUES ('Duyên phong · phá quân yêu đái', 'Duyên phong · phá quân yêu đái', '0', '14', '0', '0', '43', '170', '0', '0');
+INSERT INTO `zhuangbei` VALUES ('Duyên phong · thú hồn hạng liên', 'Duyên phong · thú hồn hạng liên', '18', '12', '4', '4', '44', '55', '0', '0');
+INSERT INTO `zhuangbei` VALUES ('[ thần khí ] yêu vương kiếm', '[ thần khí ] yêu vương kiếm', '45', '0', '13', '11', '45', '0', '0', '0');
+INSERT INTO `zhuangbei` VALUES ('Kiếp đao', 'Yêu vương kiếm toái phiến hợp thành', '25', '0', '4', '5', '46', '0', '0', '0');
+INSERT INTO `zhuangbei` VALUES ('Quân dụng tỏa tử giáp', 'Kiếp đao', '5', '16', '5', '0', '47', '170', '0', '0');
+INSERT INTO `zhuangbei` VALUES ('Quân quan mạch đao', 'Quân dụng tỏa tử giáp', '30', '0', '5', '4', '48', '0', '0', '0');
+INSERT INTO `zhuangbei` VALUES ('Chu Niên Khánh Kiếm', 'Vũ Khí', '20', '0', '0', '10', '49', '0', '0', '1');
+INSERT INTO `zhuangbei` VALUES ('Chu Niên Khánh Găng', 'Găng Tay', '0', '5', '10', '0', '50', '150', '0', '2');
+INSERT INTO `zhuangbei` VALUES ('Chu Niên Khánh Y Phục', 'Y Phục', '0', '0', '20', '3', '51', '150', '0', '3');
+INSERT INTO `zhuangbei` VALUES ('Chu Niên Khánh Đai', 'Đai Lưng', '0', '10', '10', '5', '52', '50', '0', '4');
+INSERT INTO `zhuangbei` VALUES ('Chu Niên Khánh Nhẫn', 'Nhẫn', '5', '5', '5', '10', '53', '0', '0', '5');
+INSERT INTO `zhuangbei` VALUES ('Chu niên Khánh Giày', 'Giày', '10', '10', '10', '10', '54', '100', '0', '6');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:red> 【khai thiên kiếm】</span>', '<span style=color:red> 【khai thiên kiếm】</span>', '50', '0', '10', '10', '100', '100', '0', '1');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:#DCB5FF> huyền thiên </span>', '<span style=color:#DCB5FF> huyền thiên </span>', '30', '0', '5', '4', '101', '0', '0', '1');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:#DCB5FF> trấn thiên </span>', '<span style=color:#DCB5FF> trấn thiên </span>', '30', '0', '5', '4', '102', '0', '0', '1');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green>AWM thư kích thương </span>', '<span style=color:green>AWM thư kích thương </span>', '30', '0', '5', '4', '103', '0', '0', '1');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green>Groza bộ thương </span>', '<span style=color:green>Groza bộ thương </span>', '30', '0', '5', '4', '104', '0', '0', '1');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green>M249 ky thương </span>', '<span style=color:green>M249 ky thương </span>', '30', '0', '5', '4', '105', '0', '0', '1');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green>M24 thư kích thương </span>', '<span style=color:green>M24 thư kích thương </span>', '30', '0', '5', '4', '106', '0', '0', '1');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green>Mk14EBR bộ thương </span>', '<span style=color:green>Mk14EBR bộ thương </span>', '30', '0', '5', '4', '107', '0', '0', '1');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green>【 trác việt chi kiếm (chiến)】</span>', '<span style=color:green>【 trác việt chi kiếm (chiến)】</span>', '30', '0', '5', '4', '108', '0', '0', '1');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green>【 trác việt chi kiếm (pháp)】</span>', '<span style=color:green>【 trác việt chi kiếm (pháp)】</span>', '30', '0', '5', '4', '109', '0', '0', '1');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green>【 trác việt chi kiếm (đạo)】</span>', '<span style=color:green>【 trác việt chi kiếm (đạo)】</span>', '30', '0', '5', '4', '110', '0', '0', '1');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green>【 thành chủ chi nhận 】</span>', '<span style=color:green>【 thành chủ chi nhận 】</span>', '30', '0', '5', '4', '111', '0', '0', '1');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green>【 quý tân chi kiếm 】</span>', '<span style=color:green>【 quý tân chi kiếm 】</span>', '30', '0', '5', '4', '112', '0', '0', '1');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green> luyện ngục </span>', '<span style=color:green> luyện ngục </span>', '30', '0', '5', '4', '113', '0', '0', '1');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green> ngân xà </span>', '<span style=color:green> ngân xà </span>', '30', '0', '5', '4', '114', '0', '0', '1');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green> ma trượng </span>', '<span style=color:green> ma trượng </span>', '30', '0', '5', '4', '115', '0', '0', '1');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:orange> vô cực côn </span>', '<span style=color:orange> vô cực côn </span>', '30', '0', '5', '4', '116', '0', '0', '1');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:orange> tài quyết chi trượng </span>', '<span style=color:orange> tài quyết chi trượng </span>', '30', '0', '5', '4', '117', '0', '0', '1');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:orange> cốt ngọc quyền trượng </span>', '<span style=color:orange> cốt ngọc quyền trượng </span>', '30', '0', '5', '4', '118', '0', '0', '1');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:red>【 hội viên huyết nhận 】</span>', '<span style=color:red>【 hội viên huyết nhận 】</span>', '30', '0', '5', '4', '119', '0', '0', '1');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:red> thị hồn pháp trượng </span>', '<span style=color:red> thị hồn pháp trượng </span>', '30', '0', '5', '4', '120', '0', '0', '1');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:red> đồ long đao </span>', '<span style=color:red> đồ long đao </span>', '30', '0', '5', '4', '121', '0', '0', '1');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:red> tiêu diêu phiến </span>', '<span style=color:red> tiêu diêu phiến </span>', '30', '0', '5', '4', '122', '0', '0', '1');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:red> long văn kiếm </span>', '<span style=color:red> long văn kiếm </span>', '30', '0', '5', '4', '123', '0', '0', '1');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:red> 【khai thiên dây chuyền】</span>', '<span style=color:red> 【khai thiên dây chuyền】</span>', '0', '0', '15', '15', '200', '0', '0', '2');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:#DCB5FF> liệt diễm dây chuyền </span>', '<span style=color:#DCB5FF> liệt diễm dây chuyền </span>', '30', '0', '5', '4', '201', '0', '0', '2');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:#DCB5FF> lôi đình dây chuyền </span>', '<span style=color:#DCB5FF> lôi đình dây chuyền </span>', '30', '0', '5', '4', '202', '0', '0', '2');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green>【 trác việt chi liên (chiến)】</span>', '<span style=color:green>【 trác việt chi liên (chiến)】</span>', '30', '0', '5', '4', '203', '0', '0', '2');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green>【 trác việt chi liên (pháp)】</span>', '<span style=color:green>【 trác việt chi liên (pháp)】</span>', '30', '0', '5', '4', '204', '0', '0', '2');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green>【 trác việt chi liên (đạo)】</span>', '<span style=color:green>【 trác việt chi liên (đạo)】</span>', '30', '0', '5', '4', '205', '0', '0', '2');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green>【 quý tân nhân tâm 】</span>', '<span style=color:green>【 quý tân nhân tâm 】</span>', '30', '0', '5', '4', '206', '0', '0', '2');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green> thiên địa </span>', '<span style=color:green> thiên địa </span>', '30', '0', '5', '4', '207', '0', '0', '2');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green> thiên châu dây chuyền </span>', '<span style=color:green> thiên châu dây chuyền </span>', '30', '0', '5', '4', '208', '0', '0', '2');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green> u linh dây chuyền </span>', '<span style=color:green> u linh dây chuyền </span>', '30', '0', '5', '4', '209', '0', '0', '2');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green> sinh mệnh dây chuyền </span>', '<span style=color:green> sinh mệnh dây chuyền </span>', '30', '0', '5', '4', '210', '0', '0', '2');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green> hồng ma dây chuyền </span>', '<span style=color:green> hồng ma dây chuyền </span>', '30', '0', '5', '4', '211', '0', '0', '2');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green> ma huyết dây chuyền </span>', '<span style=color:green> ma huyết dây chuyền </span>', '30', '0', '5', '4', '212', '0', '0', '2');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:orange> ác ma linh đang </span>', '<span style=color:orange> ác ma linh đang </span>', '30', '0', '5', '4', '213', '0', '0', '2');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:orange> linh hồn dây chuyền </span>', '<span style=color:orange> linh hồn dây chuyền </span>', '30', '0', '5', '4', '214', '0', '0', '2');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:orange> lục sắc dây chuyền </span>', '<span style=color:orange> lục sắc dây chuyền </span>', '30', '0', '5', '4', '215', '0', '0', '2');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:orange> đồng vực dây chuyền </span>', '<span style=color:orange> đồng vực dây chuyền </span>', '30', '0', '5', '4', '216', '0', '0', '2');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:purple> mộc vực dây chuyền </span>', '<span style=color:purple> mộc vực dây chuyền </span>', '30', '0', '5', '4', '217', '0', '0', '2');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:red>【 hội viên dây chuyền 】</span>', '<span style=color:red>【 hội viên dây chuyền 】</span>', '30', '0', '5', '4', '218', '0', '0', '2');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:red> thánh chiến dây chuyền </span>', '<span style=color:red> thánh chiến dây chuyền </span>', '30', '0', '5', '4', '219', '0', '0', '2');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:red> thiên tôn dây chuyền </span>', '<span style=color:red> thiên tôn dây chuyền </span>', '30', '0', '5', '4', '220', '0', '0', '2');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:red> pháp thần dây chuyền </span>', '<span style=color:red> pháp thần dây chuyền </span>', '30', '0', '5', '4', '221', '0', '0', '2');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:red> 【khai thiên chiến giáp】</span>', '<span style=color:red> 【khai thiên chiến giáp】</span>', '0', '60', '0', '0', '300', '450', '0', '3');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:#DCB5FF> quang mang chiến giáp </span>', '<span style=color:#DCB5FF> quang mang chiến giáp </span>', '30', '0', '5', '4', '301', '0', '0', '3');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:#DCB5FF> liệt diễm chiến giáp </span>', '<span style=color:#DCB5FF> liệt diễm chiến giáp </span>', '30', '0', '5', '4', '302', '0', '0', '3');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:#DCB5FF> liệt diễm chiến giáp </span>', '<span style=color:#DCB5FF> liệt diễm chiến giáp </span>', '30', '0', '5', '4', '303', '0', '0', '3');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:#DCB5FF> lôi đình chiến giáp </span>', '<span style=color:#DCB5FF> lôi đình chiến giáp </span>', '30', '0', '5', '4', '304', '0', '0', '3');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:#DCB5FF> lôi đình chiến giáp </span>', '<span style=color:#DCB5FF> lôi đình chiến giáp </span>', '30', '0', '5', '4', '305', '0', '0', '3');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green>【 trác việt chi giáp (chiến)】</span>', '<span style=color:green>【 trác việt chi giáp (chiến)】</span>', '30', '0', '5', '4', '306', '0', '0', '3');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green>【 trác việt chi giáp (pháp)】</span>', '<span style=color:green>【 trác việt chi giáp (pháp)】</span>', '30', '0', '5', '4', '307', '0', '0', '3');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green>【 trác việt chi giáp (đạo)】</span>', '<span style=color:green>【 trác việt chi giáp (đạo)】</span>', '30', '0', '5', '4', '308', '0', '0', '3');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green>【 quý tân vô địch 】</span>', '<span style=color:green>【 quý tân vô địch 】</span>', '30', '0', '5', '4', '309', '0', '0', '3');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green> cát lợi phục </span>', '<span style=color:green> cát lợi phục </span>', '30', '0', '5', '4', '310', '0', '0', '3');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:red>【 hội viên chiến giáp 】</span>', '<span style=color:red>【 hội viên chiến giáp 】</span>', '30', '0', '5', '4', '311', '0', '0', '3');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:red> thánh chiến bảo giáp </span>', '<span style=color:red> thánh chiến bảo giáp </span>', '30', '0', '5', '4', '312', '0', '0', '3');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:red> thiên tôn đạo bào </span>', '<span style=color:red> thiên tôn đạo bào </span>', '30', '0', '5', '4', '313', '0', '0', '3');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:red> thiên sư trường bào </span>', '<span style=color:red> thiên sư trường bào </span>', '30', '0', '5', '4', '314', '0', '0', '3');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:red> thiên ma thần giáp </span>', '<span style=color:red> thiên ma thần giáp </span>', '30', '0', '5', '4', '315', '0', '0', '3');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:red> pháp thần phi phong </span>', '<span style=color:red> pháp thần phi phong </span>', '30', '0', '5', '4', '316', '0', '0', '3');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:red> nghê thường vũ y </span>', '<span style=color:red> nghê thường vũ y </span>', '30', '0', '5', '4', '317', '0', '0', '3');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:red>【khai thiên đai lưng】 </span>', '<span style=color:red>【khai thiên đai lưng】 </span>', '20', '20', '0', '0', '400', '150', '0', '4');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:#DCB5FF> liệt diễm đai lưng </span>', '<span style=color:#DCB5FF> liệt diễm đai lưng </span>', '30', '0', '5', '4', '401', '0', '0', '4');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:#DCB5FF> lôi đình đai lưng </span>', '<span style=color:#DCB5FF> lôi đình đai lưng </span>', '30', '0', '5', '4', '402', '0', '0', '4');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green>【 trác việt đai lưng (chiến)】</span>', '<span style=color:green>【 trác việt đai lưng (chiến)】</span>', '30', '0', '5', '4', '403', '0', '0', '4');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green>【 trác việt đai lưng (pháp)】</span>', '<span style=color:green>【 trác việt đai lưng (pháp)】</span>', '30', '0', '5', '4', '404', '0', '0', '4');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green>【 trác việt đai lưng (đạo)】</span>', '<span style=color:green>【 trác việt đai lưng (đạo)】</span>', '30', '0', '5', '4', '405', '0', '0', '4');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green>【 quý tân tí hoàn 】</span>', '<span style=color:green>【 quý tân tí hoàn 】</span>', '30', '0', '5', '4', '406', '0', '0', '4');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green> tam nhãn đai lưng</span>', '<span style=color:green> tam nhãn đai lưng</span>', '30', '0', '5', '4', '407', '0', '0', '4');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green> uy hợp </span>', '<span style=color:green> uy hợp </span>', '30', '0', '5', '4', '408', '0', '0', '4');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green> u linh thủ sáo</span>', '<span style=color:green> u linh thủ sáo</span>', '30', '0', '5', '4', '409', '0', '0', '4');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green> tư bối nhi đai lưng</span>', '<span style=color:green> tư bối nhi đai lưng</span>', '30', '0', '5', '4', '410', '0', '0', '4');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green> thần bí đai lưng </span>', '<span style=color:green> thần bí đai lưng </span>', '30', '0', '5', '4', '411', '0', '0', '4');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green> hồng ma đai lưng </span>', '<span style=color:green> hồng ma đai lưng </span>', '30', '0', '5', '4', '412', '0', '0', '4');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green> ma huyết đai lưng </span>', '<span style=color:green> ma huyết đai lưng </span>', '30', '0', '5', '4', '413', '0', '0', '4');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:orange> tâm linh đai lưng</span>', '<span style=color:orange> tâm linh đai lưng</span>', '30', '0', '5', '4', '414', '0', '0', '4');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:orange> đồng vực đai lưng</span>', '<span style=color:orange> đồng vực đai lưng</span>', '30', '0', '5', '4', '415', '0', '0', '4');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:orange> kỵ sĩ đai lưng</span>', '<span style=color:orange> kỵ sĩ đai lưng</span>', '30', '0', '5', '4', '416', '0', '0', '4');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:orange> long chi đai lưng</span>', '<span style=color:orange> long chi đai lưng</span>', '30', '0', '5', '4', '417', '0', '0', '4');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:purple> mộc vực đai lưng</span>', '<span style=color:purple> mộc vực đai lưng</span>', '30', '0', '5', '4', '418', '0', '0', '4');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:red>【 hội viên đai lưng 】</span>', '<span style=color:red>【 hội viên đai lưng 】</span>', '30', '0', '5', '4', '419', '0', '0', '4');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:red> thánh chiến đai lưng</span>', '<span style=color:red> thánh chiến đai lưng</span>', '30', '0', '5', '4', '420', '0', '0', '4');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:red> thiên tôn đai lưng</span>', '<span style=color:red> thiên tôn đai lưng</span>', '30', '0', '5', '4', '421', '0', '0', '4');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:red> pháp thần đai lưng</span>', '<span style=color:red> pháp thần đai lưng</span>', '30', '0', '5', '4', '422', '0', '0', '4');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:red>【khai thiên nhẫn】</span>', '<span style=color:red>【khai thiên nhẫn】</span>', '25', '0', '0', '10', '500', '0', '0', '5');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:red> thiên tôn nhẫn</span>', '<span style=color:red> thiên tôn nhẫn</span>', '30', '0', '5', '4', '501', '0', '0', '5');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:red> thánh chiến nhẫn</span>', '<span style=color:red> thánh chiến nhẫn</span>', '30', '0', '5', '4', '502', '0', '0', '5');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:purple> mộc vực nhẫn</span>', '<span style=color:purple> mộc vực nhẫn</span>', '30', '0', '5', '4', '503', '0', '0', '5');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:orange> thái thản nhẫn</span>', '<span style=color:orange> thái thản nhẫn</span>', '30', '0', '5', '4', '504', '0', '0', '5');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:orange> lực lượng nhẫn</span>', '<span style=color:orange> lực lượng nhẫn</span>', '30', '0', '5', '4', '505', '0', '0', '5');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green> long chi nhẫn</span>', '<span style=color:green> long chi nhẫn</span>', '30', '0', '5', '4', '506', '0', '0', '5');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green> ma tý nhẫn</span>', '<span style=color:green> ma tý nhẫn</span>', '30', '0', '5', '4', '507', '0', '0', '5');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green> ma huyết nhẫn </span>', '<span style=color:green> ma huyết nhẫn </span>', '30', '0', '5', '4', '508', '0', '0', '5');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green> ẩn thân nhẫn</span>', '<span style=color:green> ẩn thân nhẫn</span>', '30', '0', '5', '4', '509', '0', '0', '5');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green> phòng ngự nhẫn</span>', '<span style=color:green> phòng ngự nhẫn</span>', '30', '0', '5', '4', '510', '0', '0', '5');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green> bạc kim nhẫn</span>', '<span style=color:green> bạc kim nhẫn</span>', '30', '0', '5', '4', '511', '0', '0', '5');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green> hồng ma nhẫn </span>', '<span style=color:green> hồng ma nhẫn </span>', '30', '0', '5', '4', '512', '0', '0', '5');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green> hồng bảo thạch nhẫn</span>', '<span style=color:green> hồng bảo thạch nhẫn</span>', '30', '0', '5', '4', '513', '0', '0', '5');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green> thần bí nhẫn </span>', '<span style=color:green> thần bí nhẫn </span>', '30', '0', '5', '4', '514', '0', '0', '5');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green> thần lực nhẫn</span>', '<span style=color:green> thần lực nhẫn</span>', '30', '0', '5', '4', '515', '0', '0', '5');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green> hỏa diễm nhẫn</span>', '<span style=color:green> hỏa diễm nhẫn</span>', '30', '0', '5', '4', '516', '0', '0', '5');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green> hộ thân nhẫn</span>', '<span style=color:green> hộ thân nhẫn</span>', '30', '0', '5', '4', '517', '0', '0', '5');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green> phục hoạt nhẫn</span>', '<span style=color:green> phục hoạt nhẫn</span>', '30', '0', '5', '4', '518', '0', '0', '5');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green> truyện tống nhẫn</span>', '<span style=color:green> truyện tống nhẫn</span>', '30', '0', '5', '4', '519', '0', '0', '5');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:red>【 khai thiên giày】</span>', '<span style=color:red>【 khai thiên giày】</span>', '20', '20', '10', '10', '600', '0', '0', '6');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green>【 quý tân giày 】</span>', '<span style=color:green>【 quý tân giày 】</span>', '30', '0', '5', '4', '601', '0', '0', '6');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green>【 trác việt chi ngoa (đạo)】</span>', '<span style=color:green>【 trác việt chi ngoa (đạo)】</span>', '30', '0', '5', '4', '602', '0', '0', '6');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green>【 trác việt chi ngoa (pháp)】</span>', '<span style=color:green>【 trác việt chi ngoa (pháp)】</span>', '30', '0', '5', '4', '603', '0', '0', '6');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:green>【 trác việt chi ngoa (chiến)】</span>', '<span style=color:green>【 trác việt chi ngoa (chiến)】</span>', '30', '0', '5', '4', '604', '0', '0', '6');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:#DCB5FF> lôi đình giày </span>', '<span style=color:#DCB5FF> lôi đình giày </span>', '30', '0', '5', '4', '605', '0', '0', '6');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:#DCB5FF> liệt diễm giày </span>', '<span style=color:#DCB5FF> liệt diễm giày </span>', '30', '0', '5', '4', '606', '0', '0', '6');
+INSERT INTO `zhuangbei` VALUES ('<span style=color:#DCB5FF> quang mang giày </span>', '<span style=color:#DCB5FF> quang mang giày </span>', '30', '0', '5', '4', '607', '0', '0', '6');
 
 -- ----------------------------
 -- Table structure for zhurenwu

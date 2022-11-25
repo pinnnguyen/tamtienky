@@ -1,11 +1,11 @@
 <?php
 
-$player = \player\getplayer($sid, $dblj);//Nhận thông tin người chơi
+$player = player\getplayer($sid, $dblj);//获取玩家信息
 $lastmid = $player->nowmid;
 
 if (isset($newmid)) {
     if ($player->nowmid != $newmid) {
-        $clmid = \player\getmid($newmid, $dblj); //Nhận thông tin bản đồ sắp tới
+        $clmid = player\getmid($newmid, $dblj); //获取即将走的地图信息
         $ucmd = $encode->encode("cmd=getplayerinfo&uid=$uid&sid=$player->sid");
         //$playerinfo .="<a href='?cmd=$ucmd'>$player->uname</a>"." Hướng $clmid->mname đi đến";
         $playerinfo = $player->uname . " Hướng $clmid->mname đi đến";//当前位置更新最后一条行走记录
@@ -28,14 +28,13 @@ if (isset($newmid)) {
 
 }
 
-if ($player->nowmid == '' || $player->nowmid == 0) {//Xác định xem một ký tự có xuất hiện trên bản đồ bất hợp pháp không
+if ($player->nowmid == '' || $player->nowmid == 0) {//判断角色是否出现在非法地图
     $gameconfig = \player\getgameconfig($dblj);
     $sql = "update game1 set nowmid='$gameconfig->firstmid' WHERE sid='$sid'";
     $dblj->exec($sql);
     $player->nowmid = $gameconfig->firstmid;
 }
-
-$clmid = player\getmid($player->nowmid, $dblj); // Nhận thông tin bản đồ
+$clmid = player\getmid($player->nowmid, $dblj); //获取地图信息
 if ($clmid->playerinfo != '') {
     $clmid->playerinfo .= '<br/>';
 }
@@ -106,13 +105,13 @@ if ($downmid->mname != '') {
 HTML;
 }
 
-$sql = "select * from midguaiwu where mid='$player->nowmid' AND sid = ''";//Nhận quái vật bản đồ hiện tại
+$sql = "select * from midguaiwu where mid='$player->nowmid' AND sid = ''";//获取当前地图怪物
 $cxjg = $dblj->query($sql);
 $cxallguaiwu = $cxjg->rowCount();
 $nowdate = date('Y-m-d H:i:s');
-$second = floor((strtotime($nowdate) - strtotime($clmid->mgtime)) % 86400);//Nhận khoảng thời gian làm mới
+$second = floor((strtotime($nowdate) - strtotime($clmid->mgtime)) % 86400);//获取刷新间隔
 
-if ($second > $clmid->ms && $cxallguaiwu == 0 && $clmid->mgid != '') {// làm mới quái vật
+if ($second > $clmid->ms && $cxallguaiwu == 0 && $clmid->mgid != '') {//刷新怪物
     $sql = "update mid set mgtime='$nowdate' WHERE mid='$player->nowmid'";
     $dblj->exec($sql);
     $retgw = explode(",", $clmid->mgid);
@@ -140,8 +139,9 @@ if ($second > $clmid->ms && $cxallguaiwu == 0 && $clmid->mgid != '') {// làm m�
 
     }
 }
-$sql = "select * from midguaiwu where mid='$player->nowmid' AND sid = ''";//Nhận quái vật bản đồ hiện tại
+$sql = "select * from midguaiwu where mid='$player->nowmid' AND sid = ''";//获取当前地图怪物
 $cxjg = $dblj->query($sql);
+
 $cxallguaiwu = $cxjg->fetchAll(PDO::FETCH_ASSOC);
 
 $gwhtml = '';
@@ -150,7 +150,7 @@ for ($i = 0; $i < count($cxallguaiwu); $i++) {
     $gwhtml .= "<a href='?cmd=$gwcmd'>" . $cxallguaiwu[$i]['gname'] . "</a> ";
 }
 
-$sql = "select * from game1 where nowmid='$player->nowmid' AND sfzx = 1";//Tải trình phát bản đồ hiện tại
+$sql = "select * from game1 where nowmid='$player->nowmid' AND sfzx = 1";//获取当前地图玩家
 $cxjg = $dblj->query($sql);
 $playerhtml = '';
 if ($cxjg) {
@@ -186,7 +186,7 @@ if ($cxjg) {
 
 
 $npchtml = '';
-$task = \player\getplayerrenwu($sid, $dblj);//mảng nhiệm vụ của người chơi
+$task = \player\getplayerrenwu($sid, $dblj);//玩家任务数组
 
 $sql = "select * from playerrenwu WHERE sid='$sid' AND rwlx = 2";
 $cxjg = $dblj->query($sql);
@@ -287,7 +287,7 @@ HTML;
 }
 
 
-$sql = 'SELECT * FROM ggliaotian ORDER BY id DESC LIMIT 2';//mua lại danh sách trò chuyện
+$sql = 'SELECT * FROM ggliaotian ORDER BY id DESC LIMIT 2';//聊天列表获取
 $ltcxjg = $dblj->query($sql);
 $lthtml = '';
 if ($ltcxjg) {
@@ -320,11 +320,11 @@ $msghtml = <<<HTML
 HTML;
 
 $nowhtml = <<<HTML
-Bản đồ hiện tại: $clmid->mname$pvphtml <a href="?cmd=$mytask">Nhiệm vụ($taskcount)</a><a href="?cmd=$gonowmid">Làm mới</a> <br/>
+Bản đồ hiện tại:$clmid->mname$pvphtml<a href="?cmd=$mytask">Nhiệm vụ($taskcount)</a><a href="?cmd=$gonowmid">Làm mới</a> <br/>
 $npchtml
 $bosshtml
-Ngươi thấy: $gwhtml<br/>
-Mời chọn giao lộ: <br/>
+Ngươi thấy:$gwhtml<br/>
+Mời chọn giao lộ:<br/>
 $lukouhtml
 $clmid->mname Người chơi: $playerhtml<br/>
 【<a href="?cmd=$mapcmd">K.tra bản đồ</a>】<br/>
@@ -334,7 +334,7 @@ $msghtml
 $lthtml
 </div>
 &nbsp;&nbsp;<span class="xinxi3">$clmid->midinfo</span><br/>
-<a class="btn" href="?cmd=$ztcmd">T.thái</a> <a href="?cmd=$getbagcmd" >B.lô</a> <a href="?cmd=$goliaotian" >T.chuyện</a> <a href="?cmd=$getbagjncmd" >Phù lục</a>
+<a href="?cmd=$ztcmd">T.thái</a> <a href="?cmd=$getbagcmd" >B.lô</a> <a href="?cmd=$goliaotian" >T.chuyện</a> <a href="?cmd=$getbagjncmd" >Phù lục</a>
 <br/>
 <a href="?cmd=$phcmd" >X.hạng</a> <a href="?cmd=$xiuliancmd" >T.luyện</a> <a href="?cmd=$fangshi" >Chợ</a> <a href="?cmd=$clubcmd" >M.phái</a>
 <br/>
@@ -344,5 +344,5 @@ $lthtml
 <br/>
 <a href="index.php" >Quay lại trang chủ</a><br/>
 HTML;
+
 echo $nowhtml;
-?>

@@ -115,7 +115,7 @@ a:hover, a:active, a:focus {
 
 /*main样式*/
 .main {
-    width: auto;
+    max-width: 400px;
     margin: 0 auto;
     background: #fff;
     padding: 20px;

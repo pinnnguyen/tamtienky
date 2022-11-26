@@ -295,6 +295,7 @@ if (isset($zdjg)) {
             <a href="?cmd=$gonowmid">Trở về trò chơi</a>
 HTML;
             echo $html;
+            exit();
             break;
         case 0:
             $html = <<<HTML
@@ -303,8 +304,10 @@ HTML;
             Chiến đấu thất bại!<br/>
             Mời Thiếu Hiệp thử lại<br/>
             <br/>
-            <a href="?cmd=$gorehpmid">Trở về trò chơi</a>
+            <a href="?cmd=$gonowmid">Trở về trò chơi</a>
 HTML;
+            echo $html;
+            exit();
             break;
         case -1:
             $html = <<<HTML
@@ -312,8 +315,10 @@ HTML;
             Ngươi đã trọng thương, không thể tiến hành chiến đấu!<br/>
             Mời Thiếu Hiệp khôi phục và làm lại<br/>
             <br/>
-            <a href="?cmd=$gorehpmid">Trở về trò chơi</a>
+            <a href="?cmd=$gonowmid">Trở về trò chơi</a>
 HTML;
+            echo $html;
+            exit();
             break;
     }
 } else {

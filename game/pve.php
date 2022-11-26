@@ -291,7 +291,7 @@ if (isset($zdjg)) {
         case 1:
             $expPlayer = 0;
             # Chia đều kinh nghiệm nhận đc nếu có đang deo pet
-            if ($player->cw !== '') {
+            if ($player->cw !== '0' && $player->cw !== '') {
                 $expPlayer = $guaiwu->gexp / 2;
                 $expPet = $guaiwu->gexp / 2;
                 player\changecwexp($player->cw, $expPet, $dblj);

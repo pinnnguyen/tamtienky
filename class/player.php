@@ -3,22 +3,22 @@
 namespace player;
 class player
 {
-    var $uname;//昵称
+    var $uname;//nick
     var $uid;
     var $sid;//sid
-    var $ulv;//等级
-    var $uyxb;//游戏币
-    var $uczb;//充值币
-    var $uexp;//经验
-    var $umaxexp;//经验上限
-    var $uhp;//生命
-    var $umaxhp;//生命
-    var $ugj;//攻击
-    var $ufy;//防御
-    var $ubj;//暴击
-    var $uxx;//吸血
-    var $uwx;//五行
-    var $usex;//性别
+    var $ulv;//lv
+    var $uyxb;//tiền tệ trò chơi
+    var $uczb;// nap tien tệ
+    var $uexp;//exp
+    var $umaxexp;//giới hạn kinh nghiệm
+    var $uhp;//hp
+    var $umaxhp;// gioi han hp
+    var $ugj;//tấn công
+    var $ufy;//phòng thủ
+    var $ubj;//chí mạng
+    var $uxx;//hút máu
+    var $uwx;//năm yêu tô
+    var $usex;//giới tính
     var $vip;//vip
     var $nowmid;//当前地图
     var $endtime;

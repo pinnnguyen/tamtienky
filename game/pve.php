@@ -1,5 +1,5 @@
 <?php
-$player = player\getplayer($sid, $dblj);
+$player = \player\getplayer($sid, $dblj);
 $gonowmid = $encode->encode("cmd=gomid&newmid=$player->nowmid&sid=$player->sid");
 $cxmid = \player\getmid($player->nowmid, $dblj);
 $cxqy = \player\getqy($cxmid->mqy, $dblj);
@@ -170,7 +170,7 @@ if ($cmd == 'pve' && $guaiwu->sid == '') {
             }
         }
 
-        $sjjv = mt_rand(1, 120); //取随机数，判断爆率，然后看怪物装备有的话
+        $sjjv = mt_rand(1, 120); //lấy số ngẫu nhiên ，Đánh giá tỷ lệ nổ，Sau đó nhìn vào những gì con quái vật được trang bị
         if ($yguaiwu->dljv >= $sjjv && $yguaiwu->gzb != '') {
             $sql = "select * from zhuangbei WHERE zbid in ($yguaiwu->gzb)";
             $cxdljg = $dblj->query($sql);
@@ -184,7 +184,8 @@ if ($cmd == 'pve' && $guaiwu->sid == '') {
                 $huode .= "Thu hoạch: <div class='zbys'>" . '<a href="?cmd=' . $chakanzb . '">' . $zbname . '</a></div>';
             }
         }
-        $sjjv = mt_rand(1, 180);//djjv 道具几率1-100 gdj是道具物品id,用逗号分隔
+
+        $sjjv = mt_rand(1, 180);//xác suất đạo cụ djjv 1-100 gdj là id mục đạo cụ, được phân tách bằng dấu phẩy
         if ($yguaiwu->djjv >= $sjjv && $yguaiwu->gdj != '') {
             $sql = "select * from daoju WHERE djid in ($yguaiwu->gdj)";
             $cxdljg = $dblj->query($sql);
@@ -196,7 +197,7 @@ if ($cmd == 'pve' && $guaiwu->sid == '') {
                 if (($djid == 1 && $lvc >= 5) && !($djid == 1 && $guaiwu->glv >= 46 && $player->ulv >= 50)) { //道具id 1是强化石，这里意思是强化石在人物比怪物等级高10级后不会爆,看pve.php文件107行
                     goto yp;
                 }
-                $djsum = mt_rand(1, 2); //随机获得1到两个道具
+                $djsum = mt_rand(1, 2); //Nhận ngẫu nhiên 1 hoặc 2 đạo cụ
                 \player\adddj($sid, $djid, $djsum, $dblj);
                 $huode .= "Thu hoạch: <div class='djys'>$djname x$djsum</div>";
 
@@ -228,14 +229,15 @@ if ($cmd == 'pve' && $guaiwu->sid == '') {
             $huode .= "Thu hoạch: <div class='ypys'>$ypname x$ypsum</div>";
         }
 
-        if ($lvc < 0) { //说明人物越级打怪，应该给提成
-            $guaiwu->gexp = round($guaiwu->gexp + 5 * abs($lvc), 0);//经验计算
-        } elseif ($lvc >= 0) {//说明人物等级比怪物等级高，应该消减经验
-            $guaiwu->gexp = round($guaiwu->gexp / ($lvc + 1), 0);//经验计算
+        if ($lvc < 0) { //Giải thích nhân vật vượt ải đánh quái nên được hoa hồng
+            $guaiwu->gexp = round($guaiwu->gexp + 5 * abs($lvc), 0);//tính toán theo kinh nghiệm
+        } elseif ($lvc >= 0) {//Giải thích rằng cấp độ nhân vật cao hơn cấp độ quái vật và nên giảm kinh nghiệm
+            $guaiwu->gexp = round($guaiwu->gexp / ($lvc + 1), 0);//tính toán theo kinh nghiệm
         }
-        if ($guaiwu->gexp < 3) {//如果人物比怪物高太多了，还是象征性给3点经验
+        if ($guaiwu->gexp < 3) {// Nếu nhân vật cao hơn nhiều so với quái vật, hãy cho 3 điểm kinh nghiệm tượng trưng
             $guaiwu->gexp = 3;
         }
+
         $zdjg = 1;
     }
     $pzssh = $phurt - $pvexx;
@@ -287,7 +289,6 @@ if ($player->jn3 != 0) {
 if (isset($zdjg)) {
     switch ($zdjg) {
         case 1:
-
             player\changeexp($sid, $dblj, $guaiwu->gexp);
             $huode .= 'Thu hoạch được tu vị:' . $guaiwu->gexp . '<br/>';
 
@@ -357,32 +358,93 @@ HTML;
 //
 //    }
 
+    $remainingGuaiwuHp = ($guaiwu->ghp / $guaiwu->gmaxhp) * 100;
+    $remainingGuaiwuHp .= 'px';
+
+    $remainingPlayerHp = ($player->uhp / $player->umaxhp) * 100;
+    $remainingPlayerHp .= 'px';
+
+
+//    Khí huyết:(
+//                <div class="hpys" style="display: inline;">$guaiwu->ghp</div>
+//                /
+//                <div class="hpys" style="display: inline;">$guaiwu->gmaxhp</div>
+//                )$pvebj$ghurt<br />
+//                Công kích:($guaiwu->ggj)<br />
+//                Phòng ngự:($guaiwu->gfy)<br />
+//
+
+//    Khí huyết:(
+//                <div class="hpys" style="display: inline;">$player->uhp</div>
+//                /
+//                <div class="hpys" style="display: inline;">$player->umaxhp</div>
+//                ) $phurt$pvexx
+//    <br />
+//                Công kích:($player->ugj)<br />
+//                Phòng ngự:($player->ufy)<br />
     $html = <<<HTML
 <div>
-<div>==Chiến đấu==</div>
-<div>$guaiwu->gname [lv:$guaiwu->glv]</div>
-
-Khí huyết:(<div class="hpys" style="display: inline">$guaiwu->ghp</div>/<div class="hpys" style="display: inline">$guaiwu->gmaxhp</div>)$pvebj$ghurt<br/>
-Công kích:($guaiwu->ggj)<br/>
-Phòng ngự:($guaiwu->gfy)<br/>
-===================<br/>
-$player->uname [lv:$player->ulv]<br/>
-Khí huyết:(<div class="hpys" style="display: inline">$player->uhp</div>/<div class="hpys" style="display: inline">$player->umaxhp</div>)$phurt$pvexx<br/>
-Công kích:($player->ugj)<br/>
-Phòng ngự:($player->ufy)<br/>
-$tishihtml
-<br/>
-<div>
-    <a href="?cmd=$gonowmid">Chạy trốn</a>
-    <a href="?cmd=$pgjcmd">Công kích</a>
+<div style="background: url('images/bg-pve.jpg');">
+    <div class="flex justify-between p-2">
+        <div>
+            <div class="flex items-end">
+                <img class="h-[40px]" src="images/pve/player-avatar.png" />
+                <span class="pb-[2px]">$player->uname [lv:$player->ulv]</span>
+            </div>
+            <div>
+                <div class="flex items-center justify-start">
+                    <span class="pr-2">
+                        HP
+                    </span>
+                    <div class="h-3 w-24 rounded-full bg-[#212121] flex items-center p-[2px]">
+                        <div class="h-2 w-20 rounded-full bg-red-600" style="width: $remainingPlayerHp;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="flex items-end">
+                <span class="pb-[2px]">$guaiwu->gname [lv:$guaiwu->glv]</span>
+                <img class="h-[40px]" src="images/pve/monter-avatar.png" />
+            </div>
+            <div>
+                <div class="flex items-center justify-end">
+                    <div class="h-3 w-24 rounded-full bg-[#212121] flex items-center p-[2px]">
+                        <div class="h-2 w-12 rounded-full bg-red-600" style="width: $remainingGuaiwuHp;"></div>
+                    </div>
+                    <span class="pl-2">
+                        HP
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex justify-around mt-3">
+        <div class="relative">
+            <span class="absolute top-0 right-0 font-semibold text-2xl text-red-500">$phurt$pvexx</span>
+            <img class="h-[185px]" src="images/pve/player.png" />
+        </div>
+        <div class="relative">
+            <span class="absolute top-0 right-0 font-semibold text-2xl text-red-500">$pvebj$ghurt</span>
+            <img class="h-[185px]" src="images/pve/monter.png" />
+        </div>
+    </div>
+     <div>
+        <a href="?cmd=$gonowmid">Chạy trốn</a>
+        <a href="?cmd=$pgjcmd">Công kích</a>
+    </div>
+    <div>
+        <a href="?cmd=$usejn1">$jnname1</a> <a href="?cmd=$usejn2">$jnname2</a> <a href="?cmd=$usejn3">$jnname3</a><br />
+        <a href="?cmd=$useyp1">$ypname1</a> <a href="?cmd=$useyp2">$ypname2</a> <a href="?cmd=$useyp3">$ypname3</a><br />
+    </div>
+    <div>
+        $tishihtml
+        <img class="fixed bottom-0" src="images/pve/alert-box.png" />
+    </div>
+</div>
 </div>
 
-<div>
-    <a href="?cmd=$usejn1">$jnname1</a> <a href="?cmd=$usejn2">$jnname2</a> <a href="?cmd=$usejn3">$jnname3</a><br/>
-    <a href="?cmd=$useyp1">$ypname1</a> <a href="?cmd=$useyp2">$ypname2</a> <a href="?cmd=$useyp3">$ypname3</a><br/>
-</div>
-<br/>
-</div>
+
 HTML;
 }
 echo $html;

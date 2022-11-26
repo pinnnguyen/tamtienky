@@ -25,3 +25,1298 @@ INSERT INTO `fangshi_dj`
 VALUES ('1', '53', '505', '2000', '82', 'Cường hóa thạch', 'Cường hóa trang bị dùng đạo cụ');
 INSERT INTO `fangshi_dj`
 VALUES ('6', '1', '726', '1000', '83', 'Phù lục tàn hiệt-sơ cấp linh', 'Hối đoái phù lục dùng');
+
+
+-- ----------------------------
+-- Table structure for daoju
+-- ----------------------------
+DROP TABLE IF EXISTS `daoju`;
+CREATE TABLE `daoju`
+(
+    `djname` varchar(255) NOT NULL,
+    `djzl`   varchar(255) NOT NULL,
+    `djinfo` varchar(255) NOT NULL,
+    `djid`   int(11) NOT NULL AUTO_INCREMENT,
+    `djyxb`  int(11) NOT NULL,
+    PRIMARY KEY (`djid`)
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of daoju
+-- ----------------------------
+INSERT INTO `daoju`
+VALUES ('Cường hóa thạch', '2', 'Cường hóa trang bị dùng đạo cụ', '1', '10');
+INSERT INTO `daoju`
+VALUES ('Phù lục tàn hiệt-sơ cấp linh', '', 'Hối đoái phù lục dùng', '6', '1');
+INSERT INTO `daoju`
+VALUES ('Phù lục tàn hiệt-sơ cấp ma', '', 'Hối đoái phù lục', '7', '1');
+INSERT INTO `daoju`
+VALUES ('Ngạnh sí phong mật', '', 'Cứng rắn cánh phong mật ong', '8', '1');
+INSERT INTO `daoju`
+VALUES ('Phù lục tàn hiệt-sơ cấp man', '', 'Phù lục Tàn Hiệt - sơ cấp rất', '9', '1');
+INSERT INTO `daoju`
+VALUES ('Phù lục tàn hiệt-trung cấp linh', '', 'Phù lục Tàn Hiệt - trung cấp linh', '10', '5');
+INSERT INTO `daoju`
+VALUES ('Sơ cấp ma linh', '', 'Sơ cấp Ma Linh', '11', '10');
+INSERT INTO `daoju`
+VALUES ('[thần khí] yêu vương kiếm toái phiến', '', '[Thần khí] Yêu Vương kiếm mảnh vỡ', '12', '100');
+
+
+
+-- ----------------------------
+-- Table structure for playerdaoju
+-- ----------------------------
+DROP TABLE IF EXISTS `playerdaoju`;
+CREATE TABLE `playerdaoju`
+(
+    `djname` varchar(255) NOT NULL,
+    `djzl`   int(255) NOT NULL AUTO_INCREMENT,
+    `djinfo` varchar(255) NOT NULL,
+    `uid`    int(11) NOT NULL,
+    `sid`    text         NOT NULL,
+    `djsum`  int(11) NOT NULL,
+    `djid`   int(11) NOT NULL,
+    UNIQUE KEY `djzl` (`djzl`)
+) ENGINE=MyISAM AUTO_INCREMENT=887 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of playerdaoju
+-- ----------------------------
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '452', 'Ngạnh sí phong đích phong mật', '425', '42352a5bb2acc1e76e8a2fa10ba7673b', '2',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '2', 'Cường hóa trang bị dụng đích đạo cụ', '424', 'f76c11b6601d3a6ce505c616b64ed478', '15',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '453', 'Ngạnh sí phong đích phong mật', '424', 'f76c11b6601d3a6ce505c616b64ed478', '4',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '454', 'Đoái hoán phù lục dụng đích', '424', 'f76c11b6601d3a6ce505c616b64ed478',
+--         '0', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '455', 'Đoái hoán phù lục', '424', 'f76c11b6601d3a6ce505c616b64ed478', '8', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '456', 'Ngạnh sí phong đích phong mật', '426', '0ed4ce0a982475dad32cea331e8e50d7', '5',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '457', 'Đoái hoán phù lục dụng đích', '426', '0ed4ce0a982475dad32cea331e8e50d7',
+--         '100', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '458', 'Đoái hoán phù lục', '426', '0ed4ce0a982475dad32cea331e8e50d7', '100',
+--         '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '459', 'Ngạnh sí phong đích phong mật', '431', '3bfa14243cba16bb92e090b54cc5d544', '0',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '460', 'Đoái hoán phù lục dụng đích', '431', '3bfa14243cba16bb92e090b54cc5d544',
+--         '98', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '461', 'Đoái hoán phù lục', '431', '3bfa14243cba16bb92e090b54cc5d544', '100',
+--         '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '462', 'Ngạnh sí phong đích phong mật', '434', 'e14b6e0d27bea46402a112c75c170887', '11',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '463', 'Đoái hoán phù lục dụng đích', '434', 'e14b6e0d27bea46402a112c75c170887',
+--         '95', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '464', 'Đoái hoán phù lục', '434', 'e14b6e0d27bea46402a112c75c170887', '100',
+--         '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '467', 'Ngạnh sí phong đích phong mật', '438', 'b7f5e984a6a22f3ef2b4072f2614f43e', '2',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '472', 'Cường hóa trang bị dùng đạo cụ', '441', 'f7c38ddb495be49224c8d819f34654ec', '50',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '468', 'Cứng rắn cánh phong mật ong', '440', 'f0be893286b66272230904a0a7d33168', '7',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '469', 'Hối đoái phù lục dùng', '440', 'f0be893286b66272230904a0a7d33168',
+--         '100', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '470', 'Hối đoái phù lục', '440', 'f0be893286b66272230904a0a7d33168', '100', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '471', 'Cường hóa trang bị dụng đích đạo cụ', '440', 'f0be893286b66272230904a0a7d331689',
+--         '10100', '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '473', 'Cường hóa trang bị dùng đạo cụ', '440', 'f0be893286b66272230904a0a7d33168', '14',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '474', 'Cứng rắn cánh phong mật ong', '442', '7aa100d4e1f9756c2c918199f7c6f8cd', '6',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-trung cấp linh', '475', 'Phù lục Tàn Hiệt - trung cấp linh', '440',
+--         'f0be893286b66272230904a0a7d33168', '50', '10');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '476', 'Cường hóa trang bị dùng đạo cụ', '450', '0d35be128035927ccc312fd5d99eb55c', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '477', 'Cường hóa trang bị dùng đạo cụ', '453', '876222b500a060ca6f99934a9a5a46bc', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '478', 'Cứng rắn cánh phong mật ong', '460', 'f15a4aaba08473a5afd6a6521c76d9cf', '2',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '479', 'Cường hóa trang bị dùng đạo cụ', '462', '7153c651e46f98c7061e956c023b4fca', '6',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '480', 'Cường hóa trang bị dùng đạo cụ', '459', 'efc744bfecbcc5b1d2443ff739987af9', '1',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '481', 'Cứng rắn cánh phong mật ong', '459', 'efc744bfecbcc5b1d2443ff739987af9', '2',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '482', 'Cường hóa trang bị dùng đạo cụ', '463', '547f7c3b2c069650f414a69ef4402498', '47',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '483', 'Cường hóa trang bị dùng đạo cụ', '460', 'f15a4aaba08473a5afd6a6521c76d9cf', '8',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '484', 'Hối đoái phù lục dùng', '460', 'f15a4aaba08473a5afd6a6521c76d9cf',
+--         '100', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '485', 'Hối đoái phù lục', '460', 'f15a4aaba08473a5afd6a6521c76d9cf', '100', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '486', 'Cứng rắn cánh phong mật ong', '462', '7153c651e46f98c7061e956c023b4fca', '6',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '487', 'Cứng rắn cánh phong mật ong', '450', '0d35be128035927ccc312fd5d99eb55c', '2',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '488', 'Hối đoái phù lục dùng', '450', '0d35be128035927ccc312fd5d99eb55c',
+--         '100', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '489', 'Hối đoái phù lục', '450', '0d35be128035927ccc312fd5d99eb55c', '104', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '490', 'Hối đoái phù lục dùng', '462', '7153c651e46f98c7061e956c023b4fca',
+--         '100', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '491', 'Hối đoái phù lục', '462', '7153c651e46f98c7061e956c023b4fca', '100', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '492', 'Cứng rắn cánh phong mật ong', '468', 'c1b448051cf88f6dcf535ced41e53127', '6',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '493', 'Cường hóa trang bị dùng đạo cụ', '469', 'e3ce66181b307263d31593be743bdd64', '2',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '494', 'Cứng rắn cánh phong mật ong', '469', 'e3ce66181b307263d31593be743bdd64', '8',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '495', 'Cường hóa trang bị dùng đạo cụ', '468', 'c1b448051cf88f6dcf535ced41e53127', '190',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '496', 'Hối đoái phù lục dùng', '468', 'c1b448051cf88f6dcf535ced41e53127',
+--         '100', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '497', 'Hối đoái phù lục', '468', 'c1b448051cf88f6dcf535ced41e53127', '100', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '498', 'Hối đoái phù lục dùng', '469', 'e3ce66181b307263d31593be743bdd64',
+--         '102', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '499', 'Hối đoái phù lục', '469', 'e3ce66181b307263d31593be743bdd64', '100', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '500', 'Cường hóa trang bị dùng đạo cụ', '470', '0dee7d958d6808a52df8c485ce7657af', '2',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '501', 'Cứng rắn cánh phong mật ong', '470', '0dee7d958d6808a52df8c485ce7657af', '0',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '502', 'Hối đoái phù lục dùng', '459', 'efc744bfecbcc5b1d2443ff739987af9',
+--         '102', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '503', 'Hối đoái phù lục', '459', 'efc744bfecbcc5b1d2443ff739987af9', '107', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '504', 'Cường hóa trang bị dùng đạo cụ', '475', 'e03886cbdd41f2973d1e16d83a1250a2', '17',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '505', 'Hối đoái phù lục dùng', '470', '0dee7d958d6808a52df8c485ce7657af', '20',
+--         '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '506', 'Hối đoái phù lục', '470', '0dee7d958d6808a52df8c485ce7657af', '10', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '507', 'Cứng rắn cánh phong mật ong', '476', 'deef530148bcb297a74d0509125b844f', '0',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '508', 'Cứng rắn cánh phong mật ong', '475', 'e03886cbdd41f2973d1e16d83a1250a2', '11',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '509', 'Cường hóa trang bị dùng đạo cụ', '476', 'deef530148bcb297a74d0509125b844f', '10',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '510', 'Cứng rắn cánh phong mật ong', '477', 'e83893c48ddfe5e084b2bdea428aa07f', '4',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '511', 'Cường hóa trang bị dùng đạo cụ', '477', 'e83893c48ddfe5e084b2bdea428aa07f', '2',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '512', 'Hối đoái phù lục dùng', '477', 'e83893c48ddfe5e084b2bdea428aa07f', '1',
+--         '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '513', 'Hối đoái phù lục', '477', 'e83893c48ddfe5e084b2bdea428aa07f', '4', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '514', 'Hối đoái phù lục dùng', '476', 'deef530148bcb297a74d0509125b844f', '99',
+--         '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '515', 'Hối đoái phù lục', '476', 'deef530148bcb297a74d0509125b844f', '100', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '516', 'Hối đoái phù lục dùng', '475', 'e03886cbdd41f2973d1e16d83a1250a2',
+--         '100', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '517', 'Hối đoái phù lục', '475', 'e03886cbdd41f2973d1e16d83a1250a2', '100', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '518', 'Cứng rắn cánh phong mật ong', '478', '483047f1250b4db899cb9a4770efe1e2', '5',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '519', 'Cứng rắn cánh phong mật ong', '481', 'c0787a8c7d117e9a540222e8c1b744af', '1',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '520', 'Cường hóa trang bị dùng đạo cụ', '478', '483047f1250b4db899cb9a4770efe1e2', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '521', 'Hối đoái phù lục dùng', '478', '483047f1250b4db899cb9a4770efe1e2',
+--         '100', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '522', 'Hối đoái phù lục', '478', '483047f1250b4db899cb9a4770efe1e2', '100', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '523', 'Cường hóa trang bị dùng đạo cụ', '479', '91322e4d4529a1c0db2580a4d5e07ff1', '17',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '524', 'Cứng rắn cánh phong mật ong', '480', 'df1905b2799580cd3861d79686bacbad', '7',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '525', 'Cường hóa trang bị dùng đạo cụ', '481', 'c0787a8c7d117e9a540222e8c1b744af', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp man', '526', 'Phù lục Tàn Hiệt - sơ cấp rất', '450',
+--         '0d35be128035927ccc312fd5d99eb55c', '55', '9');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '527', 'Hối đoái phù lục dùng', '481', 'c0787a8c7d117e9a540222e8c1b744af',
+--         '103', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '528', 'Hối đoái phù lục', '481', 'c0787a8c7d117e9a540222e8c1b744af', '100', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-trung cấp linh', '529', 'Phù lục Tàn Hiệt - trung cấp linh', '450',
+--         '0d35be128035927ccc312fd5d99eb55c', '52', '10');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '530', 'Cứng rắn cánh phong mật ong', '479', '91322e4d4529a1c0db2580a4d5e07ff1', '0',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '531', 'Cứng rắn cánh phong mật ong', '484', '36774f5c423b7a8bb7858bb4642e128d', '4',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '532', 'Hối đoái phù lục dùng', '479', '91322e4d4529a1c0db2580a4d5e07ff1', '8',
+--         '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '533', 'Hối đoái phù lục', '479', '91322e4d4529a1c0db2580a4d5e07ff1', '4', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '534', 'Cứng rắn cánh phong mật ong', '486', '7837bb48be44041b2ee92d061d08653e', '6',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '535', 'Cường hóa trang bị dùng đạo cụ', '485', '80eaf5ea9d36f0a8c87d3eba1bd05055', '57',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '536', 'Cường hóa trang bị dùng đạo cụ', '486', '7837bb48be44041b2ee92d061d08653e', '63',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '537', 'Hối đoái phù lục dùng', '486', '7837bb48be44041b2ee92d061d08653e',
+--         '102', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '538', 'Hối đoái phù lục', '486', '7837bb48be44041b2ee92d061d08653e', '100', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '539', 'Cường hóa trang bị dùng đạo cụ', '487', '11ee841a987d5674196d37fef51ed9a6', '196',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '540', 'Cứng rắn cánh phong mật ong', '487', '11ee841a987d5674196d37fef51ed9a6', '8',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '541', 'Cường hóa trang bị dùng đạo cụ', '488', '1f014c041b1cb42cb1a75f9449e99998', '3',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '542', 'Hối đoái phù lục dùng', '487', '11ee841a987d5674196d37fef51ed9a6',
+--         '100', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '543', 'Hối đoái phù lục', '487', '11ee841a987d5674196d37fef51ed9a6', '100', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '544', 'Cứng rắn cánh phong mật ong', '488', '1f014c041b1cb42cb1a75f9449e99998', '8',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '545', 'Hối đoái phù lục dùng', '488', '1f014c041b1cb42cb1a75f9449e99998',
+--         '100', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '546', 'Hối đoái phù lục', '488', '1f014c041b1cb42cb1a75f9449e99998', '102', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '547', 'Cứng rắn cánh phong mật ong', '463', '547f7c3b2c069650f414a69ef4402498', '16',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '548', 'Hối đoái phù lục dùng', '463', '547f7c3b2c069650f414a69ef4402498',
+--         '100', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '549', 'Hối đoái phù lục', '463', '547f7c3b2c069650f414a69ef4402498', '100', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp man', '550', 'Phù lục Tàn Hiệt - sơ cấp rất', '470',
+--         '0dee7d958d6808a52df8c485ce7657af', '50', '9');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '551', 'Cứng rắn cánh phong mật ong', '492', '3204b1df760fd73acf5332398961f416', '0',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '552', 'Cường hóa trang bị dùng đạo cụ', '492', '3204b1df760fd73acf5332398961f416', '24489',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '553', 'Hối đoái phù lục dùng', '492', '3204b1df760fd73acf5332398961f416', '3',
+--         '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '554', 'Hối đoái phù lục', '492', '3204b1df760fd73acf5332398961f416', '100', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '555', 'Cứng rắn cánh phong mật ong', '494', '754ae44f81dc019f17c06a41aa2ea715', '6',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '556', 'Cường hóa trang bị dùng đạo cụ', '494', '754ae44f81dc019f17c06a41aa2ea715', '73',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '557', 'Hối đoái phù lục dùng', '494', '754ae44f81dc019f17c06a41aa2ea715',
+--         '100', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '558', 'Hối đoái phù lục', '494', '754ae44f81dc019f17c06a41aa2ea715', '100', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '559', 'Cường hóa trang bị dùng đạo cụ', '499', '987fa1ed57063997f01f22767178a600', '40',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '560', 'Cứng rắn cánh phong mật ong', '499', '987fa1ed57063997f01f22767178a600', '6',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '561', 'Hối đoái phù lục dùng', '499', '987fa1ed57063997f01f22767178a600',
+--         '102', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '562', 'Hối đoái phù lục', '499', '987fa1ed57063997f01f22767178a600', '100', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '563', 'Cứng rắn cánh phong mật ong', '501', '7d1526a0dd4803a1fda914bcebd93b47', '6',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '564', 'Cường hóa trang bị dùng đạo cụ', '501', '7d1526a0dd4803a1fda914bcebd93b47', '178',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '565', 'Hối đoái phù lục dùng', '501', '7d1526a0dd4803a1fda914bcebd93b47',
+--         '106', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '566', 'Hối đoái phù lục', '501', '7d1526a0dd4803a1fda914bcebd93b47', '102', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '567', 'Cứng rắn cánh phong mật ong', '502', 'f039e55562a77296188f2963ca97fae1', '2',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '568', 'Cứng rắn cánh phong mật ong', '503', 'f0ac44856637b747beb115331972de83', '5',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '569', 'Cứng rắn cánh phong mật ong', '504', '78d406e749821c6f055f787edde7fee2', '4',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '570', 'Cường hóa trang bị dùng đạo cụ', '502', 'f039e55562a77296188f2963ca97fae1', '2',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '571', 'Hối đoái phù lục dùng', '502', 'f039e55562a77296188f2963ca97fae1',
+--         '101', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '572', 'Hối đoái phù lục', '502', 'f039e55562a77296188f2963ca97fae1', '100', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '573', 'Cường hóa trang bị dùng đạo cụ', '505', '5342074c8ce889f9ce11bcd4f254355f', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '574', 'Cường hóa trang bị dùng đạo cụ', '504', '78d406e749821c6f055f787edde7fee2', '90',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '575', 'Hối đoái phù lục dùng', '504', '78d406e749821c6f055f787edde7fee2',
+--         '100', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '576', 'Hối đoái phù lục', '504', '78d406e749821c6f055f787edde7fee2', '100', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '577', 'Cường hóa trang bị dùng đạo cụ', '503', 'f0ac44856637b747beb115331972de83', '7',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '578', 'Hối đoái phù lục dùng', '503', 'f0ac44856637b747beb115331972de83',
+--         '100', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '579', 'Hối đoái phù lục', '503', 'f0ac44856637b747beb115331972de83', '100', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '580', 'Cứng rắn cánh phong mật ong', '505', '5342074c8ce889f9ce11bcd4f254355f', '0',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '581', 'Cứng rắn cánh phong mật ong', '506', 'a995483a30393a2c0386c786200c4c84', '7',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '582', 'Cường hóa trang bị dùng đạo cụ', '506', 'a995483a30393a2c0386c786200c4c84', '3',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '583', 'Cứng rắn cánh phong mật ong', '509', 'fcdd5d501dd7b299a36d97981bbd664f', '3',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '584', 'Cường hóa trang bị dùng đạo cụ', '509', 'fcdd5d501dd7b299a36d97981bbd664f', '5',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '585', 'Hối đoái phù lục dùng', '505', '5342074c8ce889f9ce11bcd4f254355f', '1',
+--         '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '586', 'Hối đoái phù lục', '505', '5342074c8ce889f9ce11bcd4f254355f', '1', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '587', 'Cường hóa trang bị dùng đạo cụ', '480', 'df1905b2799580cd3861d79686bacbad', '28',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '588', 'Hối đoái phù lục dùng', '480', 'df1905b2799580cd3861d79686bacbad',
+--         '103', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '589', 'Hối đoái phù lục', '480', 'df1905b2799580cd3861d79686bacbad', '106', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '590', 'Cường hóa trang bị dùng đạo cụ', '516', '6d269e625ac8a8e57a6f38d43ebbd3c6', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '591', 'Cứng rắn cánh phong mật ong', '516', '6d269e625ac8a8e57a6f38d43ebbd3c6', '5',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '592', 'Hối đoái phù lục dùng', '516', '6d269e625ac8a8e57a6f38d43ebbd3c6', '0',
+--         '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '593', 'Hối đoái phù lục', '516', '6d269e625ac8a8e57a6f38d43ebbd3c6', '7', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '594', 'Cứng rắn cánh phong mật ong', '517', '5b5df97f24dda63106a3cfdbec0f2f37', '4',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '595', 'Cứng rắn cánh phong mật ong', '518', '65f69095d290c9579a2255210d058fb1', '14',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '596', 'Cường hóa trang bị dùng đạo cụ', '518', '65f69095d290c9579a2255210d058fb1', '2',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '597', 'Cứng rắn cánh phong mật ong', '519', '00bec478348b21e8e9135bb08a6787cd', '0',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '598', 'Cường hóa trang bị dùng đạo cụ', '519', '00bec478348b21e8e9135bb08a6787cd', '168',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '599', 'Hối đoái phù lục dùng', '519', '00bec478348b21e8e9135bb08a6787cd', '0',
+--         '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '600', 'Hối đoái phù lục', '519', '00bec478348b21e8e9135bb08a6787cd', '0', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '601', 'Cường hóa trang bị dùng đạo cụ', '517', '5b5df97f24dda63106a3cfdbec0f2f37', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '602', 'Cứng rắn cánh phong mật ong', '520', '5be0b95fe4591bf4593f16cacfb9136c', '3',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '603', 'Cường hóa trang bị dùng đạo cụ', '520', '5be0b95fe4591bf4593f16cacfb9136c', '56',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '604', 'Hối đoái phù lục dùng', '520', '5be0b95fe4591bf4593f16cacfb9136c',
+--         '104', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '605', 'Hối đoái phù lục', '520', '5be0b95fe4591bf4593f16cacfb9136c', '106', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '606', 'Hối đoái phù lục dùng', '518', '65f69095d290c9579a2255210d058fb1',
+--         '101', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '607', 'Hối đoái phù lục dùng', '517', '5b5df97f24dda63106a3cfdbec0f2f37',
+--         '105', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '608', 'Hối đoái phù lục', '517', '5b5df97f24dda63106a3cfdbec0f2f37', '100', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '609', 'Cường hóa trang bị dùng đạo cụ', '521', 'eae57174fc4d0114b0a244a0b4d46cd1', '40',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '610', 'Cứng rắn cánh phong mật ong', '521', 'eae57174fc4d0114b0a244a0b4d46cd1', '3',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '611', 'Hối đoái phù lục dùng', '521', 'eae57174fc4d0114b0a244a0b4d46cd1',
+--         '100', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '612', 'Hối đoái phù lục', '521', 'eae57174fc4d0114b0a244a0b4d46cd1', '100', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '613', 'Hối đoái phù lục', '518', '65f69095d290c9579a2255210d058fb1', '103', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '614', 'Cứng rắn cánh phong mật ong', '524', 'a6edc2472e88417ac151bf97c7231a23', '2',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '615', 'Cường hóa trang bị dùng đạo cụ', '524', 'a6edc2472e88417ac151bf97c7231a23', '193',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '616', 'Hối đoái phù lục dùng', '524', 'a6edc2472e88417ac151bf97c7231a23',
+--         '100', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '617', 'Hối đoái phù lục', '524', 'a6edc2472e88417ac151bf97c7231a23', '100', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '618', 'Cường hóa trang bị dùng đạo cụ', '526', 'f365c41cca1867794c0d56a0d2964f52', '50',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '619', 'Cứng rắn cánh phong mật ong', '526', 'f365c41cca1867794c0d56a0d2964f52', '2',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-trung cấp linh', '620', 'Phù lục Tàn Hiệt - trung cấp linh', '492',
+--         '3204b1df760fd73acf5332398961f416', '6', '10');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '621', 'Cường hóa trang bị dùng đạo cụ', '528', 'b0937c2a2e0292043bf9afbc25cc43d7', '19',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp man', '622', 'Phù lục Tàn Hiệt - sơ cấp rất', '479',
+--         '91322e4d4529a1c0db2580a4d5e07ff1', '10', '9');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '623', 'Cứng rắn cánh phong mật ong', '530', 'a82a81044ec116f876d03885c2973ba6', '11',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '624', 'Cứng rắn cánh phong mật ong', '528', 'b0937c2a2e0292043bf9afbc25cc43d7', '1',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '625', 'Hối đoái phù lục dùng', '528', 'b0937c2a2e0292043bf9afbc25cc43d7',
+--         '104', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '626', 'Hối đoái phù lục', '528', 'b0937c2a2e0292043bf9afbc25cc43d7', '98', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '627', 'Cứng rắn cánh phong mật ong', '531', '132a2ae60d254a56c7264893f03a6a25', '1',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '628', 'Cường hóa trang bị dùng đạo cụ', '530', 'a82a81044ec116f876d03885c2973ba6', '1212',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '629', 'Hối đoái phù lục dùng', '530', 'a82a81044ec116f876d03885c2973ba6', '88',
+--         '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '630', 'Hối đoái phù lục', '530', 'a82a81044ec116f876d03885c2973ba6', '92', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '631', 'Cường hóa trang bị dùng đạo cụ', '531', '132a2ae60d254a56c7264893f03a6a25', '55',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '632', 'Hối đoái phù lục dùng', '531', '132a2ae60d254a56c7264893f03a6a25', '62',
+--         '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '633', 'Hối đoái phù lục', '531', '132a2ae60d254a56c7264893f03a6a25', '1', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-trung cấp linh', '634', 'Phù lục Tàn Hiệt - trung cấp linh', '479',
+--         '91322e4d4529a1c0db2580a4d5e07ff1', '51', '10');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '635', 'Cứng rắn cánh phong mật ong', '535', '9dc0bb8899c5497aa2dacab00c77fd5c', '0',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '636', 'Cường hóa trang bị dùng đạo cụ', '535', '9dc0bb8899c5497aa2dacab00c77fd5c', '9',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '637', 'Hối đoái phù lục dùng', '535', '9dc0bb8899c5497aa2dacab00c77fd5c', '79',
+--         '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '638', 'Hối đoái phù lục', '535', '9dc0bb8899c5497aa2dacab00c77fd5c', '16', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '639', 'Cường hóa trang bị dùng đạo cụ', '537', '1ad63d508f70be6d8d83235471f1fc8b', '5',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp man', '640', 'Phù lục Tàn Hiệt - sơ cấp rất', '480',
+--         'df1905b2799580cd3861d79686bacbad', '139', '9');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp man', '641', 'Phù lục Tàn Hiệt - sơ cấp rất', '492',
+--         '3204b1df760fd73acf5332398961f416', '6', '9');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '642', 'Cường hóa trang bị dùng đạo cụ', '538', '2f1d8f88000b56e6b5c3007d36f2c1c8', '4',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '643', 'Cứng rắn cánh phong mật ong', '538', '2f1d8f88000b56e6b5c3007d36f2c1c8', '0',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '644', 'Hối đoái phù lục dùng', '538', '2f1d8f88000b56e6b5c3007d36f2c1c8', '90',
+--         '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '645', 'Hối đoái phù lục', '538', '2f1d8f88000b56e6b5c3007d36f2c1c8', '91', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '646', 'Cường hóa trang bị dùng đạo cụ', '547', '557b7f4de2be11fd91d173d236fea6b4', '7',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-trung cấp linh', '647', 'Phù lục Tàn Hiệt - trung cấp linh', '480',
+--         'df1905b2799580cd3861d79686bacbad', '8', '10');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp man', '648', 'Phù lục Tàn Hiệt - sơ cấp rất', '531',
+--         '132a2ae60d254a56c7264893f03a6a25', '138', '9');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '649', 'Cường hóa trang bị dùng đạo cụ', '562', 'aecc6f9f63ececb58dcfe256ac7d6897', '8',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '650', 'Cứng rắn cánh phong mật ong', '562', 'aecc6f9f63ececb58dcfe256ac7d6897', '12',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '651', 'Hối đoái phù lục dùng', '562', 'aecc6f9f63ececb58dcfe256ac7d6897',
+--         '100', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '652', 'Hối đoái phù lục', '562', 'aecc6f9f63ececb58dcfe256ac7d6897', '100', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '653', 'Cứng rắn cánh phong mật ong', '563', '07c4aa8db44ac27c5047134da59caf04', '5',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-trung cấp linh', '654', 'Phù lục Tàn Hiệt - trung cấp linh', '531',
+--         '132a2ae60d254a56c7264893f03a6a25', '59', '10');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '655', 'Cường hóa trang bị dùng đạo cụ', '563', '07c4aa8db44ac27c5047134da59caf04', '15',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '656', 'Hối đoái phù lục', '563', '07c4aa8db44ac27c5047134da59caf04', '101', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '657', 'Cường hóa trang bị dùng đạo cụ', '564', '59c0c0ee89fc09541f4c7760cd40f2f0', '50',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '658', 'Cứng rắn cánh phong mật ong', '564', '59c0c0ee89fc09541f4c7760cd40f2f0', '1',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '659', 'Cường hóa trang bị dùng đạo cụ', '566', '254884cc98a27262e70f650f6f2692bc', '55',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '660', 'Cứng rắn cánh phong mật ong', '565', '6def45155adf21e7aad4a3e12759f7e6', '1',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '661', 'Cứng rắn cánh phong mật ong', '566', '254884cc98a27262e70f650f6f2692bc', '2',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '662', 'Cứng rắn cánh phong mật ong', '568', 'efc23151bb317b15d8b8da7a9568727d', '6',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '663', 'Cường hóa trang bị dùng đạo cụ', '568', 'efc23151bb317b15d8b8da7a9568727d', '6',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '664', 'Hối đoái phù lục dùng', '568', 'efc23151bb317b15d8b8da7a9568727d',
+--         '104', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '665', 'Hối đoái phù lục', '568', 'efc23151bb317b15d8b8da7a9568727d', '100', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp man', '666', 'Phù lục Tàn Hiệt - sơ cấp rất', '530',
+--         'a82a81044ec116f876d03885c2973ba6', '113', '9');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '667', 'Cứng rắn cánh phong mật ong', '569', '328e720a8f53d40808701b2cc47641c9', '8',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '668', 'Cường hóa trang bị dùng đạo cụ', '569', '328e720a8f53d40808701b2cc47641c9', '41',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '669', 'Hối đoái phù lục dùng', '569', '328e720a8f53d40808701b2cc47641c9',
+--         '100', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '670', 'Hối đoái phù lục', '569', '328e720a8f53d40808701b2cc47641c9', '100', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '671', 'Cứng rắn cánh phong mật ong', '547', '557b7f4de2be11fd91d173d236fea6b4', '10',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '672', 'Cường hóa trang bị dùng đạo cụ', '570', 'ae5c1ace8df289cb52e1e6e6bba81084', '50',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '673', 'Hối đoái phù lục dùng', '547', '557b7f4de2be11fd91d173d236fea6b4', '7',
+--         '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '674', 'Hối đoái phù lục', '547', '557b7f4de2be11fd91d173d236fea6b4', '4', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-trung cấp linh', '675', 'Phù lục Tàn Hiệt - trung cấp linh', '530',
+--         'a82a81044ec116f876d03885c2973ba6', '51', '10');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '676', 'Cường hóa trang bị dùng đạo cụ', '572', '97d54e32270c248846cd545730dff24c', '1',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '677', 'Cường hóa trang bị dùng đạo cụ', '573', 'd2270581618374bd45714ee5704931b9', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '678', 'Cường hóa trang bị dùng đạo cụ', '574', 'c39219e0f88619106fc81c6324b91549', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '679', 'Cường hóa trang bị dùng đạo cụ', '575', 'bf9939cbe76a46d23d3518233af2f5c4', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '680', 'Cường hóa trang bị dùng đạo cụ', '576', 'b640a2de9bf6e48433937295ee06bbcd', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '681', 'Cường hóa trang bị dùng đạo cụ', '577', '834f2bbe62c7ff8b8588da6721123dfb', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '682', 'Cường hóa trang bị dùng đạo cụ', '578', 'a3662eaf07dda1c197ceabba10c75e02', '50',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '683', 'Cường hóa trang bị dùng đạo cụ', '579', '6748710cbb3b0d6453f6f90c020b2f2e', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '684', 'Cường hóa trang bị dùng đạo cụ', '580', 'cad17f862127f53425dba7035d7e7c04', '1',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '685', 'Cường hóa trang bị dùng đạo cụ', '581', '12859183b2c1aa3ab363f36b377d3e2a', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp man', '686', 'Phù lục Tàn Hiệt - sơ cấp rất', '505',
+--         '5342074c8ce889f9ce11bcd4f254355f', '84', '9');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '687', 'Cường hóa trang bị dùng đạo cụ', '534', 'd70281320ec95b488021284e329cdd71', '1',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '688', 'Cường hóa trang bị dùng đạo cụ', '582', 'e7cdc591dbe160e68e7d717912eb7ac1', '1',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '689', 'Cường hóa trang bị dùng đạo cụ', '583', 'c118a42af67aeea4f07ec4b02676a533', '1',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '690', 'Cường hóa trang bị dùng đạo cụ', '584', '471555821ff06e8c401d3e6fb0f890d9', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '691', 'Cường hóa trang bị dùng đạo cụ', '585', '8941761f4845a31c23a6328e5e579202', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '692', 'Cứng rắn cánh phong mật ong', '584', '471555821ff06e8c401d3e6fb0f890d9', '0',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '693', 'Hối đoái phù lục dùng', '585', '8941761f4845a31c23a6328e5e579202', '1',
+--         '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '694', 'Cường hóa trang bị dùng đạo cụ', '586', '465133246a843b93c24201350509133a', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '695', 'Hối đoái phù lục dùng', '584', '471555821ff06e8c401d3e6fb0f890d9',
+--         '100', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '696', 'Hối đoái phù lục', '584', '471555821ff06e8c401d3e6fb0f890d9', '104', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '697', 'Cường hóa trang bị dùng đạo cụ', '587', '6d3e49a106b7d4332c562fa96aaa7b31', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '698', 'Hối đoái phù lục dùng', '563', '07c4aa8db44ac27c5047134da59caf04',
+--         '100', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '699', 'Cường hóa trang bị dùng đạo cụ', '588', '95409c694fc35f303dc09eea69444dd8', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '700', 'Hối đoái phù lục', '581', '12859183b2c1aa3ab363f36b377d3e2a', '1', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '701', 'Cường hóa trang bị dùng đạo cụ', '594', 'a99db0da877f1c5e3579d338f49271fe', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '702', 'Hối đoái phù lục', '594', 'a99db0da877f1c5e3579d338f49271fe', '1', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '703', 'Cường hóa trang bị dùng đạo cụ', '597', '2db67eedafd57b9251452c84fd6e72dd', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '704', 'Cường hóa trang bị dùng đạo cụ', '598', '1dae7225f245dd20b9e9819ccf00bb14', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '705', 'Hối đoái phù lục', '598', '1dae7225f245dd20b9e9819ccf00bb14', '1', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '706', 'Cường hóa trang bị dùng đạo cụ', '600', '6636a00499a701a8e4aee28099e899c3', '2',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '707', 'Cường hóa trang bị dùng đạo cụ', '603', 'dbd913282216b9f36dc0aacf77fb8f4d', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '708', 'Cường hóa trang bị dùng đạo cụ', '605', '9bea8bb6f86f26e1a55e2abb63f9f479', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '709', 'Cường hóa trang bị dùng đạo cụ', '607', 'abad3256447bf495020a18e2c7f72df8', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '710', 'Cường hóa trang bị dùng đạo cụ', '611', 'a5be62b4b78aa6ec7502924aa6c7ecb0', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '711', 'Hối đoái phù lục', '611', 'a5be62b4b78aa6ec7502924aa6c7ecb0', '1', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '712', 'Cường hóa trang bị dùng đạo cụ', '613', '003222c0bc5a54469192d5c6dc2e96a4', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '713', 'Cường hóa trang bị dùng đạo cụ', '614', '2d3523906f45daf8b05d4ee873b2fb75', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '714', 'Cường hóa trang bị dùng đạo cụ', '616', '745b8b0c24f3b050d2e5d4f040e09755', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '715', 'Hối đoái phù lục', '616', '745b8b0c24f3b050d2e5d4f040e09755', '1', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '716', 'Cường hóa trang bị dùng đạo cụ', '621', 'b7e9ee418c890496b897cfddc3827361', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '717', 'Hối đoái phù lục', '621', 'b7e9ee418c890496b897cfddc3827361', '1', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '718', 'Cường hóa trang bị dùng đạo cụ', '623', 'f63078630a88b1ecee7ee913ceb19812', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '719', 'Hối đoái phù lục', '623', 'f63078630a88b1ecee7ee913ceb19812', '1', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '720', 'Cường hóa trang bị dùng đạo cụ', '624', '93f526702057373149a9cfa640385eb3', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '721', 'Hối đoái phù lục', '624', '93f526702057373149a9cfa640385eb3', '1', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '722', 'Cường hóa trang bị dùng đạo cụ', '626', '8ffb820f9fe09045a9e8ecdfbc712802', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '723', 'Hối đoái phù lục', '626', '8ffb820f9fe09045a9e8ecdfbc712802', '1', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '724', 'Cứng rắn cánh phong mật ong', '625', 'ec3dcb49b71ec220951be37a1e1cbda2', '6',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '725', 'Cường hóa trang bị dùng đạo cụ', '627', 'ef9ba5ede60da54d81838439bf4957d5', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '726', 'Hối đoái phù lục', '627', 'ef9ba5ede60da54d81838439bf4957d5', '1', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '727', 'Cường hóa trang bị dùng đạo cụ', '628', '4e192ae86106454c54d1c8571060d9cb', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '728', 'Cường hóa trang bị dùng đạo cụ', '625', 'ec3dcb49b71ec220951be37a1e1cbda2', '85',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '729', 'Hối đoái phù lục dùng', '625', 'ec3dcb49b71ec220951be37a1e1cbda2',
+--         '100', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '730', 'Hối đoái phù lục', '625', 'ec3dcb49b71ec220951be37a1e1cbda2', '100', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '731', 'Hối đoái phù lục dùng', '628', '4e192ae86106454c54d1c8571060d9cb', '1',
+--         '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '732', 'Cường hóa trang bị dùng đạo cụ', '629', '4faa68ad2836d9a580a095d5d4e5ac34', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '733', 'Cường hóa trang bị dùng đạo cụ', '630', '2569b951da435bb9c77d68f84156b531', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '734', 'Hối đoái phù lục dùng', '629', '4faa68ad2836d9a580a095d5d4e5ac34', '1',
+--         '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '735', 'Cường hóa trang bị dùng đạo cụ', '631', '8096bab241a745965c3fc88cc699df17', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '736', 'Cường hóa trang bị dùng đạo cụ', '632', 'b9914dd0b8bdc9ab234a551d6a9989c3', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '737', 'Cường hóa trang bị dùng đạo cụ', '633', '4028d7fd3906be6e99e9847cf5ec5748', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '738', 'Cường hóa trang bị dùng đạo cụ', '634', 'e24af8ce4572a56388bba51fce9c5c2d', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '739', 'Hối đoái phù lục dùng', '634', 'e24af8ce4572a56388bba51fce9c5c2d', '1',
+--         '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '740', 'Cường hóa trang bị dùng đạo cụ', '635', '67f1b64af52c989385241db4b2b6daf8', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '741', 'Hối đoái phù lục dùng', '635', '67f1b64af52c989385241db4b2b6daf8', '1',
+--         '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '742', 'Cường hóa trang bị dùng đạo cụ', '636', 'fa80a1400e8952183e656d20ae298168', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '743', 'Hối đoái phù lục dùng', '636', 'fa80a1400e8952183e656d20ae298168', '1',
+--         '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '744', 'Cường hóa trang bị dùng đạo cụ', '637', '4c2776c8859d4e1723bd6d7fab1b2772', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '745', 'Hối đoái phù lục dùng', '637', '4c2776c8859d4e1723bd6d7fab1b2772', '1',
+--         '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '746', 'Cường hóa trang bị dùng đạo cụ', '638', '5a383efd6fd05659b53d81f46bb374ba', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '747', 'Hối đoái phù lục dùng', '638', '5a383efd6fd05659b53d81f46bb374ba', '1',
+--         '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '748', 'Cường hóa trang bị dùng đạo cụ', '639', 'c316eef7f547fdb67b02a02991c08595', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '749', 'Hối đoái phù lục dùng', '639', 'c316eef7f547fdb67b02a02991c08595', '1',
+--         '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '750', 'Cường hóa trang bị dùng đạo cụ', '640', '6641224d5c7b03639d8c3a821aaf5265', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '751', 'Hối đoái phù lục dùng', '640', '6641224d5c7b03639d8c3a821aaf5265', '1',
+--         '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '752', 'Cường hóa trang bị dùng đạo cụ', '641', '7e11a224cf7d680b4434a8d4ffb38e18', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '753', 'Hối đoái phù lục dùng', '641', '7e11a224cf7d680b4434a8d4ffb38e18', '1',
+--         '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '754', 'Cường hóa trang bị dùng đạo cụ', '642', 'ae48252617495d4d8415a9b2897e88da', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '755', 'Cường hóa trang bị dùng đạo cụ', '643', 'ed1e41cb1a37291afaeafe372a999ece', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp man', '756', 'Phù lục Tàn Hiệt - sơ cấp rất', '643',
+--         'ed1e41cb1a37291afaeafe372a999ece', '1', '9');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '757', 'Cường hóa trang bị dùng đạo cụ', '644', 'cba408727a6faf27e19799a28a7245d9', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '758', 'Cường hóa trang bị dùng đạo cụ', '645', '392d311e85536f5a22ac352458ed417d', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp man', '759', 'Phù lục Tàn Hiệt - sơ cấp rất', '645',
+--         '392d311e85536f5a22ac352458ed417d', '1', '9');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '760', 'Cường hóa trang bị dùng đạo cụ', '646', 'b1a11bf20372c1917c015177e70da375', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '761', 'Cường hóa trang bị dùng đạo cụ', '647', '51218a11dafd6581e03eb517fd323935', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp man', '762', 'Phù lục Tàn Hiệt - sơ cấp rất', '646',
+--         'b1a11bf20372c1917c015177e70da375', '1', '9');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '763', 'Cường hóa trang bị dùng đạo cụ', '648', '78452c0d4b172fb2dcee08d338f56acc', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '764', 'Cường hóa trang bị dùng đạo cụ', '649', '0a02202fed191e30afc1626b1171b09d', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '765', 'Cứng rắn cánh phong mật ong', '649', '0a02202fed191e30afc1626b1171b09d', '2',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp man', '766', 'Phù lục Tàn Hiệt - sơ cấp rất', '648',
+--         '78452c0d4b172fb2dcee08d338f56acc', '1', '9');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '767', 'Cường hóa trang bị dùng đạo cụ', '650', 'f47188dbeb689c63337216ffcfdc80aa', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp man', '768', 'Phù lục Tàn Hiệt - sơ cấp rất', '650',
+--         'f47188dbeb689c63337216ffcfdc80aa', '1', '9');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '769', 'Cường hóa trang bị dùng đạo cụ', '651', 'b69d90fc03f0fa785b1c6ddb3b3829b8', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '770', 'Cường hóa trang bị dùng đạo cụ', '652', '97f6c8467286a08954edfa6955510a71', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '771', 'Cường hóa trang bị dùng đạo cụ', '653', 'ce4cd32dada7f32b83853711542c22ca', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '772', 'Cường hóa trang bị dùng đạo cụ', '654', '8a7efb7f2df77e079d227b2b0518b47f', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp man', '773', 'Phù lục Tàn Hiệt - sơ cấp rất', '654',
+--         '8a7efb7f2df77e079d227b2b0518b47f', '1', '9');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '774', 'Cường hóa trang bị dùng đạo cụ', '655', '071cc2053b1d893f70a8717e139a890b', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '775', 'Cường hóa trang bị dùng đạo cụ', '656', 'b07cf0573d533fd6fafea889f4b00341', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '776', 'Cường hóa trang bị dùng đạo cụ', '658', '9224230b7a147c55b158c0642c0dae34', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '777', 'Cường hóa trang bị dùng đạo cụ', '659', 'bf32173db0102374b65590833ad0cc7f', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '778', 'Cường hóa trang bị dùng đạo cụ', '660', '2c2297bb0c8a0ac18b2fd1f3f48787e2', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '779', 'Cường hóa trang bị dùng đạo cụ', '661', '8459472e192b644642eb5042a71624a4', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '780', 'Cường hóa trang bị dùng đạo cụ', '662', '03dd6871353d919e243d6cc9cd0edc21', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '781', 'Cường hóa trang bị dùng đạo cụ', '663', '2a111a75f25e6f87d99b0925f8fa4f09', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '782', 'Cường hóa trang bị dùng đạo cụ', '664', '485169fef9ff97368fad99c5d7b9eaba', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp man', '783', 'Phù lục Tàn Hiệt - sơ cấp rất', '664',
+--         '485169fef9ff97368fad99c5d7b9eaba', '1', '9');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '784', 'Cường hóa trang bị dùng đạo cụ', '665', 'c8d9ca8dc1c454d877b29418bb69c23f', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '785', 'Cường hóa trang bị dùng đạo cụ', '666', 'da5ec0d2cab02e7b2f6f617fcfbac658', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp man', '786', 'Phù lục Tàn Hiệt - sơ cấp rất', '666',
+--         'da5ec0d2cab02e7b2f6f617fcfbac658', '1', '9');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '787', 'Cường hóa trang bị dùng đạo cụ', '667', '3646314d5a3e639bcb2cba2d20ea1227', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp man', '788', 'Phù lục Tàn Hiệt - sơ cấp rất', '667',
+--         '3646314d5a3e639bcb2cba2d20ea1227', '1', '9');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '789', 'Cường hóa trang bị dùng đạo cụ', '668', 'd7c100e7739bbbd6446020fa21eb43cb', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp man', '790', 'Phù lục Tàn Hiệt - sơ cấp rất', '668',
+--         'd7c100e7739bbbd6446020fa21eb43cb', '1', '9');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '791', 'Cường hóa trang bị dùng đạo cụ', '669', '90e8f3a897aa7fcb31627a8e75eeaa9c', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '792', 'Hối đoái phù lục dùng', '669', '90e8f3a897aa7fcb31627a8e75eeaa9c', '1',
+--         '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '793', 'Cường hóa trang bị dùng đạo cụ', '670', 'edcbf1d0ea9bb879b925b69aac3a4019', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '794', 'Hối đoái phù lục dùng', '670', 'edcbf1d0ea9bb879b925b69aac3a4019', '1',
+--         '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '795', 'Cường hóa trang bị dùng đạo cụ', '671', '144f1c155fcb7fedf5915e15c68aed52', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '796', 'Hối đoái phù lục dùng', '671', '144f1c155fcb7fedf5915e15c68aed52', '1',
+--         '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '797', 'Cường hóa trang bị dùng đạo cụ', '672', '45500dfe80d0c1774817786a44a50e93', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '798', 'Hối đoái phù lục dùng', '672', '45500dfe80d0c1774817786a44a50e93', '1',
+--         '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '799', 'Cường hóa trang bị dùng đạo cụ', '673', 'de606cacc6a6ba649a3bf437b993d5fb', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '800', 'Hối đoái phù lục dùng', '673', 'de606cacc6a6ba649a3bf437b993d5fb', '1',
+--         '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '801', 'Cường hóa trang bị dùng đạo cụ', '674', 'f47ac3d9c8ff47415290e5bbee5d94ba', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '802', 'Cường hóa trang bị dùng đạo cụ', '675', '9467812eb836c2b70c021e8ef1d52ab1', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '803', 'Cường hóa trang bị dùng đạo cụ', '676', '7c8c3deb469f9576d97eb1bdedd44ded', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '804', 'Cường hóa trang bị dùng đạo cụ', '677', 'e4eeb15d095a35e9ca0934aa4c5d7348', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '805', 'Hối đoái phù lục dùng', '677', 'e4eeb15d095a35e9ca0934aa4c5d7348', '1',
+--         '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '806', 'Cường hóa trang bị dùng đạo cụ', '678', '820454b1128c1a80ae000002be521290', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '807', 'Cường hóa trang bị dùng đạo cụ', '679', '0bc389301f085642f280e2bb5736a480', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '808', 'Cường hóa trang bị dùng đạo cụ', '680', 'e08d6b644f78d1b2fba58b3b9336e7c7', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '809', 'Cường hóa trang bị dùng đạo cụ', '681', '4d6c7bbb353fe3b1998ab154b4b8de34', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '810', 'Cường hóa trang bị dùng đạo cụ', '682', '022efa153704457feb2e54c5bbe671b5', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '811', 'Cường hóa trang bị dùng đạo cụ', '683', 'e1ea2ceff741958658f9ec6f3fb34337', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '812', 'Cường hóa trang bị dùng đạo cụ', '684', '5203a615004c27accb73b0d2dfe0d7e9', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '813', 'Cường hóa trang bị dùng đạo cụ', '685', '2a9d05e96984a01ac6a3d3fa26c423d2', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '814', 'Cường hóa trang bị dùng đạo cụ', '686', 'c4370b9318ff613ff94f1c1f579ceffd', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '815', 'Cường hóa trang bị dùng đạo cụ', '687', 'f94a4e70090449b1305bcfabc2fc3063', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '816', 'Cường hóa trang bị dùng đạo cụ', '688', '500a2437c1bb8f02f7c49e28601dfb6e', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '817', 'Cường hóa trang bị dùng đạo cụ', '689', '3133ef63491fc4a52701e636dfbf9fa3', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '818', 'Cường hóa trang bị dùng đạo cụ', '690', 'f7f614975423ea19029307b81d8c830d', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '819', 'Cường hóa trang bị dùng đạo cụ', '691', '17a653630bf9efddc2913636da715feb', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '820', 'Cường hóa trang bị dùng đạo cụ', '692', '596e08e7ab36427ead738fb68c3b0a19', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '821', 'Cường hóa trang bị dùng đạo cụ', '693', 'e1cdfa10364d6fe840293d6058435f84', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '822', 'Cường hóa trang bị dùng đạo cụ', '694', 'c39e1158234b1cbed1235f3a92e2190a', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '823', 'Cường hóa trang bị dùng đạo cụ', '695', 'c40d9b4ce23e9d6301ae100078b494b1', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '824', 'Cường hóa trang bị dùng đạo cụ', '696', '39486819141832199e9f6ce0f07df80f', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '825', 'Cường hóa trang bị dùng đạo cụ', '697', '28540a58a176409ab6ab670ad8b84d9a', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '826', 'Cường hóa trang bị dùng đạo cụ', '698', 'db0c22a8d6c70028f1458c5bde301d42', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '827', 'Cường hóa trang bị dùng đạo cụ', '699', 'e26d19ccb75a13d79282f2494544ed63', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '828', 'Cường hóa trang bị dùng đạo cụ', '700', 'ae43a1ceec1a1cd209229a4a2a576694', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '829', 'Cường hóa trang bị dùng đạo cụ', '701', 'dad5603cf172dda4d361f94d72ffa9b3', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '830', 'Cường hóa trang bị dùng đạo cụ', '702', '477f97929463f731805fea917796116b', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '831', 'Cường hóa trang bị dùng đạo cụ', '703', '3a70d43cd5e915c33fca9ecaed82c166', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '832', 'Cường hóa trang bị dùng đạo cụ', '704', 'd94223c92b09cca1881b7aa57c9be239', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '833', 'Cường hóa trang bị dùng đạo cụ', '705', '4e8649b4605a7b24838a6eb8ccbcdafd', '1',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '834', 'Cường hóa trang bị dùng đạo cụ', '706', 'ddfafa84970edb8a1a2e1ce511cb3bea', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '835', 'Cường hóa trang bị dùng đạo cụ', '707', 'dd799830db04c768c1bc8c999adb9eb3', '1',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '836', 'Cường hóa trang bị dùng đạo cụ', '708', '0728f444fe41245dc6009bae1abd5076', '1',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '837', 'Cường hóa trang bị dùng đạo cụ', '709', '907c9e6c88d5dfdc389cd159e8e1227c', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '838', 'Cường hóa trang bị dùng đạo cụ', '710', '42de75f09bd5e5f02dc4ec20d84f6ec1', '1',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '839', 'Cường hóa trang bị dùng đạo cụ', '711', '59906aabadcb687e8dd91cc3e7840c8f', '1',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '840', 'Cường hóa trang bị dùng đạo cụ', '712', '90888bddd4da7a0ca3c3400b09cb8608', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '841', 'Cường hóa trang bị dùng đạo cụ', '713', '24924d381bc4839740c136cba998f8a1', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '842', 'Cường hóa trang bị dùng đạo cụ', '714', 'd8561aa207c9c921d2fcbff47f1b004f', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '843', 'Cường hóa trang bị dùng đạo cụ', '715', 'b28c7d5de2c2ba559cf68ae2e2d8aa8e', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '844', 'Cường hóa trang bị dùng đạo cụ', '716', '677f23772319fda9f0b168cb4e7a921e', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '845', 'Cường hóa trang bị dùng đạo cụ', '717', 'da689f730710e8cbc65d9ca654e5ffc5', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-trung cấp linh', '846', 'Phù lục Tàn Hiệt - trung cấp linh', '505',
+--         '5342074c8ce889f9ce11bcd4f254355f', '52', '10');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '847', 'Cứng rắn cánh phong mật ong', '718', '1f4d7e6d0493153d0a425f21883df5fe', '10',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '848', 'Cường hóa trang bị dùng đạo cụ', '718', '1f4d7e6d0493153d0a425f21883df5fe', '90',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '849', 'Hối đoái phù lục dùng', '718', '1f4d7e6d0493153d0a425f21883df5fe',
+--         '100', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '850', 'Hối đoái phù lục', '718', '1f4d7e6d0493153d0a425f21883df5fe', '100', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp man', '851', 'Phù lục Tàn Hiệt - sơ cấp rất', '501',
+--         '7d1526a0dd4803a1fda914bcebd93b47', '50', '9');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '852', 'Cứng rắn cánh phong mật ong', '719', '53cd539db99d47571d60f4d91d019219', '3',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '853', 'Cường hóa trang bị dùng đạo cụ', '719', '53cd539db99d47571d60f4d91d019219', '5',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '854', 'Hối đoái phù lục dùng', '719', '53cd539db99d47571d60f4d91d019219',
+--         '108', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '855', 'Hối đoái phù lục', '719', '53cd539db99d47571d60f4d91d019219', '100', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-trung cấp linh', '856', 'Phù lục Tàn Hiệt - trung cấp linh', '501',
+--         '7d1526a0dd4803a1fda914bcebd93b47', '50', '10');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '857', 'Cường hóa trang bị dùng đạo cụ', '720', '361279866296d10396c06791e1f7b796', '191',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '858', 'Cứng rắn cánh phong mật ong', '720', '361279866296d10396c06791e1f7b796', '6',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '859', 'Hối đoái phù lục dùng', '720', '361279866296d10396c06791e1f7b796',
+--         '100', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '860', 'Hối đoái phù lục', '720', '361279866296d10396c06791e1f7b796', '100', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '861', 'Cường hóa trang bị dùng đạo cụ', '722', '8d97e33eb204fcab472e184928d89803', '372',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '862', 'Cứng rắn cánh phong mật ong', '722', '8d97e33eb204fcab472e184928d89803', '0',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '863', 'Hối đoái phù lục dùng', '722', '8d97e33eb204fcab472e184928d89803',
+--         '100', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '864', 'Hối đoái phù lục', '722', '8d97e33eb204fcab472e184928d89803', '100', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '865', 'Cứng rắn cánh phong mật ong', '723', '9ca6dc570525096a45e9d1fd4bdda384', '1',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '866', 'Cứng rắn cánh phong mật ong', '724', 'eca24beba178ffa2d273410f2b1eff68', '1',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '867', 'Cường hóa trang bị dùng đạo cụ', '724', 'eca24beba178ffa2d273410f2b1eff68', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '868', 'Cường hóa trang bị dùng đạo cụ', '723', '9ca6dc570525096a45e9d1fd4bdda384', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '869', 'Cường hóa trang bị dùng đạo cụ', '725', 'efb6f6c5f57692b790f014c5b38dd816', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '870', 'Cứng rắn cánh phong mật ong', '725', 'efb6f6c5f57692b790f014c5b38dd816', '1',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp man', '871', 'Phù lục Tàn Hiệt - sơ cấp rất', '535',
+--         '9dc0bb8899c5497aa2dacab00c77fd5c', '100', '9');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp man', '872', 'Phù lục Tàn Hiệt - sơ cấp rất', '519',
+--         '00bec478348b21e8e9135bb08a6787cd', '100', '9');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-trung cấp linh', '873', 'Phù lục Tàn Hiệt - trung cấp linh', '535',
+--         '9dc0bb8899c5497aa2dacab00c77fd5c', '50', '10');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '874', 'Cường hóa trang bị dùng đạo cụ', '533', '67d33ee391a22e8e317f6a3b9bd43b9d', '0',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '875', 'Cứng rắn cánh phong mật ong', '726', 'e99904f72c48e48b4bc5ee8cf8e966d6', '8',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '876', 'Cường hóa trang bị dùng đạo cụ', '726', 'e99904f72c48e48b4bc5ee8cf8e966d6', '8',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '877', 'Hối đoái phù lục dùng', '726', 'e99904f72c48e48b4bc5ee8cf8e966d6', '99',
+--         '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '878', 'Hối đoái phù lục', '726', 'e99904f72c48e48b4bc5ee8cf8e966d6', '100', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '879', 'Cứng rắn cánh phong mật ong', '727', '9c484fb3dc297a35f106796ed135a98d', '3',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '880', 'Cường hóa trang bị dùng đạo cụ', '727', '9c484fb3dc297a35f106796ed135a98d', '104',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '881', 'Hối đoái phù lục dùng', '727', '9c484fb3dc297a35f106796ed135a98d',
+--         '102', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '882', 'Hối đoái phù lục', '727', '9c484fb3dc297a35f106796ed135a98d', '100', '7');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Ngạnh sí phong mật', '883', 'Cứng rắn cánh phong mật ong', '728', '0e67ef9235186f4f55a624ee83eb0eb9', '5',
+--         '8');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Cường hóa thạch', '884', 'Cường hóa trang bị dùng đạo cụ', '728', '0e67ef9235186f4f55a624ee83eb0eb9', '44',
+--         '1');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp linh', '885', 'Hối đoái phù lục dùng', '728', '0e67ef9235186f4f55a624ee83eb0eb9',
+--         '100', '6');
+-- INSERT INTO `playerdaoju`
+-- VALUES ('Phù lục tàn hiệt-sơ cấp ma', '886', 'Hối đoái phù lục', '728', '0e67ef9235186f4f55a624ee83eb0eb9', '100', '7');

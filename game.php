@@ -304,14 +304,13 @@ if (isset($cmd)) {
             break;
     }
     if (!isset($sid) || $sid == '') {
-
         if ($cmd != 'cj' && $cmd !== 'cjplayer') {
             header("refresh:1;url=index.php");
             exit();
         }
     } else {
         if ($cmd != 'pve' && $cmd != 'pvegj') {
-            $sql = "delete from midguaiwu where sid='$sid'";//删除地图该玩家已经被攻击怪物
+            $sql = "delete from midguaiwu where sid='$sid'";//Xóa bản đồ và người chơi đã bị quái vật tấn công
             $dblj->exec($sql);
         }
 
@@ -326,12 +325,11 @@ if (isset($cmd)) {
         if (\player\istupo($sid, $dblj) != 0 && $player->uexp >= $player->umaxexp) {
             $tupocmd = $encode->encode("cmd=tupo&sid=$sid");
             $tupocmd = "<a href='?cmd=$tupocmd'>Đột phá</a>";
-            $tpts = "Bạn cần đột phá, nếu không sẽ không thể tích lũy được kinh nghiệm:$tupocmd<br/>";
+            $tpts = "<p class='p-2 text-white bg-gray-400'>Bạn cần đột phá, nếu không sẽ không thể tích lũy được kinh nghiệm:$tupocmd</p>";
         }
 
         $nowdate = date('Y-m-d H:i:s');
-        $second = floor((strtotime($nowdate) - strtotime($player->endtime)) % 86400);//获取刷新间隔
-
+        $second = floor((strtotime($nowdate) - strtotime($player->endtime)) % 86400);//Nhận khoảng thời gian làm mới
         if ($second >= 900) {
             echo '<meta charset="utf-8" content="width=device-width,user-scalable=no" name="viewport">';
             echo $player->uname . "Thời gian ngoại tuyến quá lâu, vui lòng đăng nhập lại-";
@@ -357,6 +355,9 @@ if (isset($cmd)) {
     <link rel="icon" href="images/logo.ico" type="image/x-icon">
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <script src="js/game.js"></script>
     <script>
         tailwind.config = {
             shortcuts: {
@@ -375,16 +376,18 @@ if (isset($cmd)) {
     </script>
 </head>
 <body>
-<div class="main max-w-[400px]">
-    <?php
-    if (!$ym == '') {
-        echo $tpts;
-        if ($ym != "game/pvp.php") {
-            echo $pvpts;
-        }
+<div class="main max-w-[400px] h-[100vh]">
+    <div class="h-full">
+        <?php
+        if (!$ym == '') {
+            echo $tpts;
+            if ($ym != "game/pvp.php") {
+                echo $pvpts;
+            }
 
-        include "$ym";
-    } ?>
+            include "$ym";
+        } ?>
+    </div>
 </div>
 </body>
 </html>

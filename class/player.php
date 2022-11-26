@@ -1069,14 +1069,15 @@ function getchongwuall($sid, $dblj)
 
 function addchongwu($sid, $dblj)
 {
-    $cw1 = array('句芒', '禺疆', '神荼', '烛龙', '白泽');
-    $cw2 = array('青龙', '白虎', '朱雀', '玄武');
-    $cw3 = array('饕餮', '寿杌', '混沌', '穷奇');
-    $cw4 = array('伶俐鼠', '笨笨牛', '威威虎', '跳跳兔', '酷酷龙', '花花蛇', '溜溜马', '咩咩羊', '帅帅猴', '蛋蛋鸡', '乖乖狗', '招财猪');
+//    $cw1 = array('句芒', '禺疆', '神荼', '烛龙', '白泽');
+//    $cw2 = array('青龙', '白虎', '朱雀', '玄武');
+//    $cw3 = array('饕餮', '寿杌', '混沌', '穷奇');
+    $cw4 = array('Linh lỵ thử', 'Suất suất hầu', 'Khốc khốc long', 'Đản đản kê', 'Suất suất hầu', 'Đản đản kê', 'yo ngựa', 'cừu kêu be be', 'khỉ đẹp trai');
     $uphp = mt_rand(8, 25);
     $upgj = mt_rand(2, 5);
     $upfy = mt_rand(3, 8);
     $cwpz = mt_rand(0, 500);
+
     if ($cwpz < 200) {
         $cwpz = 0;
     } elseif ($cwpz < 350) {
@@ -1098,7 +1099,7 @@ function addchongwu($sid, $dblj)
     $cwfy = 4;
     $sjs = mt_rand(0, 11);
     $sql = "insert into playerchongwu(cwname,cwlv,cwhp,cwmaxhp,cwgj,cwfy,uphp,upgj,upfy,cwpz,sid) VALUES ('$cw4[$sjs]','$cwlv','$cwhp','$cwmaxhp','$cwgj','$cwfy','$uphp','$upgj','$upfy','$cwpz','$sid')";
-    $cxjg = $dblj->exec($sql);
+    $dblj->exec($sql);
 }
 
 function delechongwu($cwid, $sid, $dblj)
@@ -1118,9 +1119,9 @@ function changecwexp($cwid, $exp, $dblj)
 
         $rangeslv = array(1, 30, 50, 70, 80, 90, 100, 110);
         $playernextlv = $cw->cwlv + 1;
+
         for ($i = 0; $i < count($rangeslv) - 1; $i++) {
             if ($playernextlv >= $rangeslv[$i] && $playernextlv < $rangeslv[$i + 1]) {
-
                 $rangeshp = array(20, 30, 50, 70, 90, 110, 140);
                 $rangesgj = array(2.5, 5, 7.5, 10, 12.5, 15, 17.5);
                 $rangesfy = array(2.5, 5, 7.5, 10, 12.5, 15, 17.5);

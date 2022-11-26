@@ -289,7 +289,18 @@ if ($player->jn3 != 0) {
 if (isset($zdjg)) {
     switch ($zdjg) {
         case 1:
-            player\changeexp($sid, $dblj, $guaiwu->gexp);
+            $expPlayer = 0;
+            # Chia đều kinh nghiệm nhận đc nếu có đang deo pet
+            if ($player->cw !== '') {
+                $expPlayer = $guaiwu->gexp / 2;
+                $expPet = $guaiwu->gexp / 2;
+                player\changecwexp($player->cw, $expPet, $dblj);
+                $huode .= 'Pet nhận được được tu vị:' . $guaiwu->gexp . '<br/>';
+            } else {
+                $expPlayer = $guaiwu->gexp;
+            }
+
+            player\changeexp($sid, $dblj, $expPlayer);
             $huode .= 'Thu hoạch được tu vị:' . $guaiwu->gexp . '<br/>';
 
             $html = <<<HTML

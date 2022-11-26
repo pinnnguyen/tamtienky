@@ -149,7 +149,7 @@ if ($cmd == 'pve' && $guaiwu->sid == '') {
         $sql = "delete from midguaiwu where id = $gid AND sid='$player->sid'";
         $dblj->exec($sql);
 
-        $yxb = round($guaiwu->glv / 1.9) + 1;
+        $yxb = round($guaiwu->glv * 3);
         if (($hurt || $lvc >= 5) && !($guaiwu->glv >= 46 && $player->ulv >= 50)) {  //没有进行伤害或者人物比怪物高5级,并且不在怪物大于46级，人物大于50的情况下，才不爆灵石
             $yxb = 0;
         }

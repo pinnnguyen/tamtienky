@@ -321,6 +321,8 @@ $duihuancmd = $encode->encode("cmd=duihuan&sid=$sid");
 $imcmd = $encode->encode("cmd=im&sid=$sid");
 
 $nowhtml = <<<HTML
+<div>
+
 <div class="flex items-end">
     <img class="h-[40px]" src="images/pve/player-avatar.png">
     <span class="pb-[2px]">$player->uname [lv:$player->ulv]</span>
@@ -350,6 +352,8 @@ $clmid->mname Người chơi: $playerhtml<br/>
 <a href="?cmd=$imcmd" >H.hữu</a> <a href="?cmd=$duihuancmd" >Đ.thưởng</a>
 <a href="?cmd=$cwcmd" >Pet</a> <a href="?cmd=$bugreportcmd" >G.lỗi</a>
 <br/>
+</div>
+
 <!--<a href="index.php" >Quay lại trang chủ</a><br/>-->
 HTML;
 

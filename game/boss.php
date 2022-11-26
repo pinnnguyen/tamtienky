@@ -21,6 +21,15 @@ $jnname1 = 'Phù lục 1';
 $jnname2 = 'Phù lục 2';
 $jnname3 = 'Phù lục 3';
 
+var_dump($gid);
+var_dump($bossid);
+var_dump($sid);
+//$guaiwu = player\getguaiwu($gid, $dblj);
+//$yguaiwu = new \player\guaiwu();
+//if ($guaiwu->gyid) {
+//    $yguaiwu = player\getyguaiwu($guaiwu->gyid, $dblj);
+//}
+
 // Lấy thông tin phù lục và dược phẩm
 if ($player->yp1 != 0) {
     $yaopin = \player\getplayeryaopin($player->yp1, $sid, $dblj);
@@ -163,7 +172,7 @@ HTML;
     $boss = \player\getboss($bossid, $dblj);
     if ($boss->bosshp <= 0) {// Boss đã chết
         // Update lại thời gian hồi sinh của boss
-        $sql = "UPDATE `boss` SET `bosstime`=(SELECT DATE_ADD(NOW(), INTERVAL 2 HOUR)) WHERE (`bossid`=$bossid)";
+        $sql = "UPDATE `boss` SET `bosstime`=(SELECT DATE_ADD(NOW(), INTERVAL 1 HOUR)) WHERE (`bossid`=$bossid)";
         $dblj->exec($sql);
 
         $yxb = round($guaiwu->glv / 2.9) + 1;
@@ -189,6 +198,8 @@ HTML;
                 break;
             }
         }
+
+        var_dump($yguaiwu);
         // Tỉ lệ rớt ra trang bị sau khi boss chết, cái này nên xác định người chơi gây ra sát thương
         $sjjv = mt_rand(1, 120); //Lấy một số ngẫu nhiên, xác định tỷ lệ nổ và sau đó xem liệu quái vật có được trang bị hay không
         if ($yguaiwu->dljv >= $sjjv && $yguaiwu->gzb != '') {
@@ -209,6 +220,7 @@ HTML;
         if ($yguaiwu->djjv >= $sjjv && $yguaiwu->gdj != '') {
             $sql = "select * from daoju WHERE djid in ($yguaiwu->gdj)";
             $cxdljg = $dblj->query($sql);
+
             if ($cxdljg) {
                 $retdj = $cxdljg->fetchAll(PDO::FETCH_ASSOC);
                 $sjdj = mt_rand(0, count($retdj) - 1);
@@ -259,6 +271,7 @@ HTML;
         }
         $zdjg = 1;
     }
+
     // Trường hợp k đánh chết boss
     $pzssh = $phurt - $pvexx;
     if ($pzssh) {

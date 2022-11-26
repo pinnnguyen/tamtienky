@@ -357,7 +357,6 @@ if (isset($cmd)) {
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
-    <script src="js/game.js"></script>
     <script>
         tailwind.config = {
             shortcuts: {

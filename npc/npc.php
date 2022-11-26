@@ -122,7 +122,7 @@ $npchtml = <<<HTML
         $taskhtml
         $gnhtml<br/>
         <a href="?cmd=$gonowmid">Trở về</a>
-        <a href="?cmd=$boss">Trở về trò chơi</a>
+        <a href="?cmd=$gonowmid">Trở về trò chơi</a>
 HTML;
 echo $npchtml
 ?>

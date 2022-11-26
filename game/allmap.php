@@ -25,6 +25,12 @@ for ($i = 0; $i < count($cxallmap); $i++) {
         $map .= <<<HTML
         <a href="?cmd=$gomid" >[$qyame]$mname</a>
 HTML;
+
+        if ($cxmid->ispvp === "1") {
+            $map .= <<<HTML
+            <span class="text-red-600">[PvP]</span>
+HTML;
+        }
     }
     if ($br >= 3) {
         $br = 0;

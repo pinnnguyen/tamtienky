@@ -169,25 +169,25 @@ function getplayer1($uid, $dblj)
 
 class guaiwu
 {
-    var $gname;//昵称
+    var $gname;//tên nick
     var $ginfo;
     var $gsex;
-    var $gzb;//装备
-    var $dljv;//装备几率
-    var $gdj;//道具
-    var $djjv;//道具几率
-    var $gyp;//药品
-    var $ypjv;//药品几率
+    var $gzb;//Trang thiết bị
+    var $dljv;//cơ hội thiết bị
+    var $gdj;//đạo cụ
+    var $djjv;//cơ hội vật phẩm
+    var $gyp;//các loại thuốc
+    var $ypjv;//tỷ lệ ma túy
     var $gid;
     var $sid;
     var $glv;
-    var $gexp;//经验
-    var $ghp;//生命
+    var $gexp;//exp
+    var $ghp;//hp
     var $gmaxhp;
-    var $ggj;//攻击
-    var $gfy;//防御
-    var $gbj;//暴击
-    var $gxx;//吸血
+    var $ggj;//tấn công
+    var $gfy;//phòng thủ
+    var $gbj;//chí mạng
+    var $gxx;//hút máu
     var $gyid;
     var $jingjie;
 }

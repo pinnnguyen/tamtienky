@@ -2,6 +2,8 @@
 //新手村村长
 $player = player\getplayer($sid, $dblj);
 $rehp = $encode->encode("cmd=npc&nid=$nid&canshu=rehp&sid=$sid");
+$gonowmid = $encode->encode("cmd=gomid&newmid=$player->nowmid&sid=$sid");
+
 $npchtml = <<<HTML
 Trò chơi sai lầm
  <p><a href="?cmd=$gonowmid">Trở về trò chơi</a></p>;

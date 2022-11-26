@@ -118,12 +118,14 @@ if ($second > $clmid->ms && $cxallguaiwu == 0 && $clmid->mgid != '') {//làm m�
     $sql = "update mid set mgtime='$nowdate' WHERE mid='$player->nowmid'";
     $dblj->exec($sql);
     $retgw = explode(",", $clmid->mgid);
+
     foreach ($retgw as $itemgw) {
         $gwinfo = explode("|", $itemgw);
         $guaiwu = \player\getyguaiwu($gwinfo[0], $dblj);
         $guaiwu->gyid = $gwinfo[0];
         $sjexp = mt_rand(6, 8) + 0.5;
         $guaiwu->gexp = round($guaiwu->glv * $sjexp, 0);
+
         for ($n = 0; $n < $gwinfo[1]; $n++) {
             $sql = "insert into midguaiwu(mid,gname,glv,ghp,ggj,gfy,gbj,gxx,gexp,gyid,gmaxhp) 
                     values('$player->nowmid',
@@ -142,7 +144,7 @@ if ($second > $clmid->ms && $cxallguaiwu == 0 && $clmid->mgid != '') {//làm m�
 
     }
 }
-$sql = "select * from midguaiwu where mid='$player->nowmid' AND sid = ''";//获取当前地图怪物
+$sql = "select * from midguaiwu where mid='$player->nowmid' AND sid = ''";//Nhận quái vật bản đồ hiện tại
 $cxjg = $dblj->query($sql);
 
 $cxallguaiwu = $cxjg->fetchAll(PDO::FETCH_ASSOC);

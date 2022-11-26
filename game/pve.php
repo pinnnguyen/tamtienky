@@ -10,6 +10,7 @@ $cwhtml = '';
 $pgjcmd = $encode->encode("cmd=pvegj&gid=$gid&sid=$player->sid&nowmid=$nowmid");
 $guaiwu = player\getguaiwu($gid, $dblj);
 $yguaiwu = new \player\guaiwu();
+
 if ($guaiwu->gyid) {
     $yguaiwu = player\getyguaiwu($guaiwu->gyid, $dblj);
 }

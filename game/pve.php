@@ -365,14 +365,6 @@ HTML;
     $remainingPlayerHp .= 'px';
 
 
-//    Khí huyết:(
-//                <div class="hpys" style="display: inline;">$guaiwu->ghp</div>
-//                /
-//                <div class="hpys" style="display: inline;">$guaiwu->gmaxhp</div>
-//                )$pvebj$ghurt<br />
-//                Công kích:($guaiwu->ggj)<br />
-//                Phòng ngự:($guaiwu->gfy)<br />
-//
 
 //    Khí huyết:(
 //                <div class="hpys" style="display: inline;">$player->uhp</div>
@@ -383,7 +375,7 @@ HTML;
 //                Công kích:($player->ugj)<br />
 //                Phòng ngự:($player->ufy)<br />
     $html = <<<HTML
-<div>
+<div class="h-full">
 <div style="background: url('images/bg-pve.jpg');">
     <div class="flex justify-between p-2">
         <div>
@@ -391,7 +383,7 @@ HTML;
                 <img class="h-[40px]" src="images/pve/player-avatar.png" />
                 <span class="pb-[2px]">$player->uname [lv:$player->ulv]</span>
             </div>
-            <div>
+            <div class="mt-2">
                 <div class="flex items-center justify-start">
                     <span class="pr-2">
                         HP
@@ -401,13 +393,17 @@ HTML;
                     </div>
                 </div>
             </div>
+            <div class="flex justify-start">
+              Công kích:($player->ugj)<br />
+              Phòng ngự:($player->ufy)<br />
+            </div>
         </div>
         <div>
             <div class="flex items-end">
                 <span class="pb-[2px]">$guaiwu->gname [lv:$guaiwu->glv]</span>
                 <img class="h-[40px]" src="images/pve/monter-avatar.png" />
             </div>
-            <div>
+            <div class="mt-2">
                 <div class="flex items-center justify-end">
                     <div class="h-3 w-24 rounded-full bg-[#212121] flex items-center p-[2px]">
                         <div class="h-2 w-12 rounded-full bg-red-600" style="width: $remainingGuaiwuHp;"></div>
@@ -416,6 +412,10 @@ HTML;
                         HP
                     </span>
                 </div>
+            </div>
+            <div class="flex justify-end">
+                Công kích:($guaiwu->ggj)<br />
+                Phòng ngự:($guaiwu->gfy)<br />
             </div>
         </div>
     </div>
@@ -429,19 +429,28 @@ HTML;
             <img class="h-[185px]" src="images/pve/monter.png" />
         </div>
     </div>
-     <div>
-        <a href="?cmd=$gonowmid">Chạy trốn</a>
-        <a href="?cmd=$pgjcmd">Công kích</a>
-    </div>
-    <div>
-        <a href="?cmd=$usejn1">$jnname1</a> <a href="?cmd=$usejn2">$jnname2</a> <a href="?cmd=$usejn3">$jnname3</a><br />
-        <a href="?cmd=$useyp1">$ypname1</a> <a href="?cmd=$useyp2">$ypname2</a> <a href="?cmd=$useyp3">$ypname3</a><br />
-    </div>
-    <div>
-        $tishihtml
-        <img class="fixed bottom-0" src="images/pve/alert-box.png" />
-    </div>
 </div>
+
+ <div>
+            <a href="?cmd=$usejn1">$jnname1</a> 
+            <a href="?cmd=$usejn2">$jnname2</a> 
+            <a href="?cmd=$usejn3">$jnname3</a><br />
+            <a href="?cmd=$useyp1">$ypname1</a> 
+            <a href="?cmd=$useyp2">$ypname2</a> 
+            <a href="?cmd=$useyp3">$ypname3</a><br />
+        </div>
+
+    <div class="bg-[#efebe0]">
+        $tishihtml
+        <div class="text-center">[Bắt đầu chiến đấu]</div>
+         <div class="flex">
+           <a class="!flex items-center justify-center bg-[#621e1f] !text-white h-[34px] w-[100px]" href="?cmd=$pgjcmd">
+               <svg class="svg-inline--fa fa-sword fa-w-16 w-[12px]" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sword" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M110.11 227.59c-6.25-6.25-16.38-6.25-22.63 0l-18.79 18.8a16.005 16.005 0 0 0-2 20.19l53.39 80.09-53.43 53.43-29.26-14.63a13.902 13.902 0 0 0-16.04 2.6L4.07 405.36c-5.42 5.43-5.42 14.22 0 19.64L87 507.93c5.42 5.42 14.22 5.42 19.64 0l17.29-17.29a13.873 13.873 0 0 0 2.6-16.03l-14.63-29.26 53.43-53.43 80.09 53.39c6.35 4.23 14.8 3.39 20.19-2l18.8-18.79c6.25-6.25 6.25-16.38 0-22.63l-174.3-174.3zM493.73.16L400 16 171.89 244.11l96 96L496 112l15.83-93.73c1.51-10.56-7.54-19.61-18.1-18.11z"></path></svg>
+               <div>Công kích</div>
+           </a>
+           <a href="?cmd=$gonowmid">Chạy trốn</a>
+        </div>
+    </div>
 </div>
 
 

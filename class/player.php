@@ -1464,6 +1464,33 @@ class duihuan
     var $dhexp;
 }
 
+class playerUseCode
+{
+    var $sid;
+    var $code;
+}
+
+function getPlayerUseCode($sid, $code, $dblj) {
+    $playCode = new playerUseCode();
+    $sql = "select * from player_use_code WHERE sid = '$sid' AND code = '$code'";
+    $ret = $dblj->query($sql);
+
+    $ret->bindColumn('sid', $playCode->sid);
+    $ret->bindColumn('code', $playCode->code);
+
+    $ret = $ret->fetch(\PDO::FETCH_ASSOC);
+    if ($ret) {
+        return $playCode;
+    }
+    return $ret;
+}
+
+function addPlayerCode($sid, $code, $dblj)
+{
+    $sql = "insert into player_use_code(sid, code) VALUES ('$sid','$code')";
+    $dblj->exec($sql);
+}
+
 function getduihuan($dhm, $dblj)
 {
     $duihuan = new duihuan();

@@ -499,13 +499,14 @@ function changerwyq1($rwzl, $rwyq, $gaibian, $sid, $dblj)
 {
     if ($rwzl == 1) {
         $daoju = getplayerdaoju($sid, $rwyq, $dblj);
-        $sql = "update playerrenwu set rwnowcount = $daoju->djsum WHERE sid='$sid' AND rwyq = $rwyq AND $rwzl = $rwzl AND rwzt = 1";
+        $sql = "update playerrenwu set rwnowcount = $daoju->djsum WHERE sid='$sid' AND rwyq = '$rwyq' AND rwzl = '$rwzl' AND rwzt = 1";
         $rwt = $dblj->exec($sql);
     } elseif ($rwzl == 2) {
-        $sql = "update playerrenwu set rwnowcount = rwnowcount + $gaibian WHERE sid = '$sid' AND rwyq = $rwyq AND $rwzl = $rwzl AND rwzt = 1";
+        $sql = "update playerrenwu set rwnowcount = rwnowcount + $gaibian WHERE sid = '$sid' AND rwyq = '$rwyq' AND rwzl = '$rwzl' AND rwzt = 1";
         $rwt = $dblj->exec($sql);
     }
-    $sql = "update playerrenwu set rwzt = 2 WHERE sid = '$sid' AND rwyq = '$rwyq' AND $rwzl= $rwzl AND rwnowcount >= rwcount AND rwzt = 1";
+
+    $sql = "update playerrenwu set rwzt = 2 WHERE sid = '$sid' AND rwyq = '$rwyq' AND rwzl= '$rwzl' AND rwnowcount >= rwcount AND rwzt = 1";
     $dblj->exec($sql);
 }
 
@@ -1532,4 +1533,10 @@ function addim($imuid, $sid, $dblj)
     $player = getplayer($sid, $dblj);
     $sql = "insert into `im`(imuid, sid, uid) VALUES ($imuid,'$sid',$player->uid)";
     $dblj->exec($sql);
+}
+
+function updateMidBoss($mid, $midBoss, $dblj)
+{
+        $sql = "update mid set midboss = $midBoss  WHERE mid = '$mid'";
+        $dblj->exec($sql);
 }

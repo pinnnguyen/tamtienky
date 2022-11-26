@@ -67,20 +67,23 @@ $pvbcmd = $encode->encode("cmd=boss&sid=$sid&idboss=1");
 
 $lukouhtml = '';
 $bosshtml = '';
+
 if ($clmid->midinfo == '') {
     $clmid->midinfo = $clmid->mname;
 }
-
 
 if ($clmid->midboss != 0) {
     // echo "bosssssssssss: $clmid->midboss";
     $idboss = $clmid->midboss;
     $boss = \player\getboss($idboss, $dblj);
+    $bossTime = date("H:i:s", strtotime($boss->bosstime));
+
     $bossinfo = $encode->encode("cmd=boss&bossid=$boss->bossid&sid=$sid");
     $bosshtml = <<<HTML
-    BOSS:<a href="?cmd=$bossinfo">$boss->bossname $boss->bossid</a><br/>
+    BOSS:<a href="?cmd=$bossinfo">$boss->bossname [lv$boss->bosslv] [$bossTime]</a><br/>
 HTML;
 }
+
 if ($upmid->mname != '') {
     $lukouhtml .= <<<HTML
     Hướng Bắc:<a href="?cmd=$upmidlj">$upmid->mname ↑</a><br/>
@@ -105,13 +108,13 @@ if ($downmid->mname != '') {
 HTML;
 }
 
-$sql = "select * from midguaiwu where mid='$player->nowmid' AND sid = ''";//获取当前地图怪物
+$sql = "select * from midguaiwu where mid='$player->nowmid' AND sid = ''";//Nhận quái vật bản đồ hiện tại
 $cxjg = $dblj->query($sql);
 $cxallguaiwu = $cxjg->rowCount();
 $nowdate = date('Y-m-d H:i:s');
-$second = floor((strtotime($nowdate) - strtotime($clmid->mgtime)) % 86400);//获取刷新间隔
+$second = floor((strtotime($nowdate) - strtotime($clmid->mgtime)) % 86400);//Nhận khoảng thời gian làm mới
 
-if ($second > $clmid->ms && $cxallguaiwu == 0 && $clmid->mgid != '') {//刷新怪物
+if ($second > $clmid->ms && $cxallguaiwu == 0 && $clmid->mgid != '') {//làm mới quái vật
     $sql = "update mid set mgtime='$nowdate' WHERE mid='$player->nowmid'";
     $dblj->exec($sql);
     $retgw = explode(",", $clmid->mgid);

@@ -1,14 +1,14 @@
 <?php
 
-$player = \player\getplayer($sid,$dblj);
+$player = \player\getplayer($sid, $dblj);
 $gonowmid = $encode->encode("cmd=gomid&newmid=$player->nowmid&sid=$sid");
 $zhuangbei = new \player\zhuangbei();
-if ($zbnowid!=0){
-    $zhuangbei = player\getzb($zbnowid,$dblj);
+if ($zbnowid != 0) {
+    $zhuangbei = player\getzb($zbnowid, $dblj);
 }
 
-$arr = array($player->tool1,$player->tool2,$player->tool3,$player->tool4,$player->tool5,$player->tool6);
-$setzbwz='';
+$arr = array($player->tool1, $player->tool2, $player->tool3, $player->tool4, $player->tool5, $player->tool6);
+$setzbwz = '';
 $upgj = '';
 $upfy = '';
 $uphp = '';
@@ -16,10 +16,10 @@ $upbj = '';
 $upxx = '';
 $upts = '';
 $qhssum = '';
-$upls = round($zhuangbei->qianghua/2) * round($zhuangbei->qianghua/3) * 2 * (round($zhuangbei->qianghua / 4) )+ 1;
+$upls = round($zhuangbei->qianghua / 2) * round($zhuangbei->qianghua / 3) * 2 * (round($zhuangbei->qianghua / 4)) + 1;
 
-if (isset($canshu)){
-    if ($canshu == "chushou" && !in_array($zhuangbei->zbnowid,$arr) && isset($pay) && $pay > 0){
+if (isset($canshu)) {
+    if ($canshu == "chushou" && !in_array($zhuangbei->zbnowid, $arr) && isset($pay) && $pay > 0) {
         try {
 
             $dblj->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
@@ -28,48 +28,46 @@ if (isset($canshu)){
 
             $sql = "insert into `fangshi_zb`(zbname, zbinfo, zbgj, zbfy, zbbj, zbxx, zbid, uid, zbnowid, sid, zbhp, qianghua, zblv, pay) VALUES ('$zhuangbei->zbname','$zhuangbei->zbinfo','$zhuangbei->zbgj','$zhuangbei->zbfy','$zhuangbei->zbbj','$zhuangbei->zbxx','$zhuangbei->zbid','$player->uid','$zbnowid','$sid','$zhuangbei->zbhp','$zhuangbei->qianghua','$zhuangbei->zblv','$pay')";
             $affected_rows = $dblj->exec($sql);
-            if (!$affected_rows){
+            if (!$affected_rows) {
                 throw new PDOException("Trang bị treo bán thất bại<br/>");//那个错误抛出异常
             }
-            $sql="UPDATE `playerzhuangbei` SET uid=0,sid='' WHERE zbnowid = $zbnowid";
-            $affected_rows=$dblj->exec($sql);
-            if (!$affected_rows){
+            $sql = "UPDATE `playerzhuangbei` SET uid=0,sid='' WHERE zbnowid = $zbnowid";
+            $affected_rows = $dblj->exec($sql);
+            if (!$affected_rows) {
                 throw new PDOException("Trang bị truyền tống thất bại<br/>");//那个错误抛出异常
             }
             echo "Treo bán thành công!<br/>";
             $dblj->commit();//交易成功就提交
-        }catch(PDOException $e){
+        } catch (PDOException $e) {
             echo $e->getMessage();
             $dblj->rollBack();
         }
         $dblj->setAttribute(PDO::ATTR_AUTOCOMMIT, 1);//关闭
-        $zhuangbei = player\getzb($zbnowid,$dblj);
+        $zhuangbei = player\getzb($zbnowid, $dblj);
     }
 }
 
 
-if ($player->uid == $zhuangbei->uid){
-    $uyxb = '/'.$player->uyxb;
-    if ($cmd=='upzb'){
-        if ($player->uyxb >=$upls){
-            $ret = \player\upzbsx($zbnowid,$upsx,$sid,$dblj);
-            if ($ret != -1){
-                $retyxb = \player\changeyxb(2,$upls,$sid,$dblj);
-				if ($ret==2){
+if ($player->uid == $zhuangbei->uid) {
+    $uyxb = '/' . $player->uyxb;
+    if ($cmd == 'upzb') {
+        if ($player->uyxb >= $upls) {
+            $ret = \player\upzbsx($zbnowid, $upsx, $sid, $dblj);
+            if ($ret != -1) {
+                $retyxb = \player\changeyxb(2, $upls, $sid, $dblj);
+                if ($ret == 2) {
                     $upts = "Nên trang bị đã cường hóa đến hạn mức lớn nhất+50 !<br/>";
-                }
-                elseif ($ret==1){
+                } elseif ($ret == 1) {
                     $upts = "Chúc mừng cường hóa thành công<br/>";
-                }
-				elseif ($ret==0){
+                } elseif ($ret == 0) {
                     $upts = "Cường hóa thất bại, mời tích lũy tích nhân phẩm<br/>";
                 }
-                $zhuangbei = \player\getzb($zbnowid,$dblj);
+                $zhuangbei = \player\getzb($zbnowid, $dblj);
 
-            }else{
+            } else {
                 $upts = "Cường hóa thất bại, cường hóa thạch không đủ<br/>";
             }
-        }else{
+        } else {
             $upts = "Cường hóa thất bại, linh thạch không đủ<br/>";
         }
     }
@@ -78,40 +76,40 @@ if ($player->uid == $zhuangbei->uid){
     $uphp = $encode->encode("cmd=upzb&upsx=zbhp&zbnowid=$zhuangbei->zbnowid&sid=$sid");
 //    $upbj = $encode->encode("cmd=upzb&upsx=zbbj&zbnowid=$zhuangbei->zbnowid&sid=$sid");
 //    $upxx = $encode->encode("cmd=upzb&upsx=zbxx&zbnowid=$zhuangbei->zbnowid&sid=$sid");
-    $daoju = player\getplayerdaoju($sid,1,$dblj);
+    $daoju = player\getplayerdaoju($sid, 1, $dblj);
     $qhssum = '/0';
-    if ($daoju){
-        $qhssum = '/'.$daoju->djsum;
+    if ($daoju) {
+        $qhssum = '/' . $daoju->djsum;
     }
 
-    $upgj =<<<HTML
+    $upgj = <<<HTML
     <a href="?cmd=$upgj">Cường hóa công kích</a>
 HTML;
-    $upfy =<<<HTML
+    $upfy = <<<HTML
     <a href="?cmd=$upfy">Cường hóa phòng ngự</a>
 HTML;
-    $uphp =<<<HTML
+    $uphp = <<<HTML
     <a href="?cmd=$uphp">Cường hóa khí huyết</a>
 HTML;
-    $upbj =<<<HTML
+    $upbj = <<<HTML
     <a href="?cmd=$upbj">Cường hóa bạo kích</a>
 HTML;
-    $upxx =<<<HTML
+    $upxx = <<<HTML
     <a href="?cmd=$upxx">Cường hóa hút máu</a>
 HTML;
-}else{
-    $uyxb='';
+} else {
+    $uyxb = '';
 }
 
-if ($player->uid == $zhuangbei->uid && !in_array($zhuangbei->zbnowid,$arr)){
+if ($player->uid == $zhuangbei->uid && !in_array($zhuangbei->zbnowid, $arr)) {
 
-    $player = \player\getplayer($sid,$dblj);
+    $player = \player\getplayer($sid, $dblj);
     $delezb = $encode->encode("cmd=delezb&zbnowid=$zhuangbei->zbnowid&sid=$sid");
     $self = $_SERVER['PHP_SELF'];
     $setzbwz = $encode->encode("cmd=setzbwz&zbwz={$zhuangbei->tool}&zbnowid=$zhuangbei->zbnowid&sid=$sid");
     $setzbwz = "<a href='?cmd=$setzbwz'>Mặc trang bị</a><br/>";
 
-    if ($zhuangbei->tool == 0){
+    if ($zhuangbei->tool == 0) {
         $setzbwz1 = $encode->encode("cmd=setzbwz&zbwz=1&zbnowid=$zhuangbei->zbnowid&sid=$sid");
         $setzbwz2 = $encode->encode("cmd=setzbwz&zbwz=2&zbnowid=$zhuangbei->zbnowid&sid=$sid");
         $setzbwz3 = $encode->encode("cmd=setzbwz&zbwz=3&zbnowid=$zhuangbei->zbnowid&sid=$sid");
@@ -128,32 +126,32 @@ if ($player->uid == $zhuangbei->uid && !in_array($zhuangbei->zbnowid,$arr)){
     <a href='?cmd=$setzbwz6'>Trang bị tại 【  giày 】 vị trí</a><br/>";
     }
 
-    $setzbwz .=<<<HTML
+    $setzbwz .= <<<HTML
     <br/>
     <a href="?cmd=$delezb">Phân giải nên trang bị</a>
     <br/>
     <form action="$self">
-    <input type="hidden" name="cmd" value="chakanzb">
-    <input type="hidden" name="canshu" value="chushou">
-    <input type="hidden" name="sid" value='$sid'>
-    <input type="hidden" name="zbnowid" value="$zhuangbei->zbnowid">
+    <input class="border border-1" type="hidden" name="cmd" value="chakanzb">
+    <input class="border border-1" type="hidden" name="canshu" value="chushou">
+    <input class="border border-1" type="hidden" name="sid" value='$sid'>
+    <input class="border border-1" type="hidden" name="zbnowid" value="$zhuangbei->zbnowid">
     Treo bán đơn giá:<br/>
-    <input type="number" name="pay"> 
-    <input type="submit" class="gamesubmit" value="Treo bán">
+    <input class="border border-1" type="number" name="pay"> 
+    <button type="submit" class="gamesubmit" value="Treo bán">Treo bán</button>
     </form>
 HTML;
 }
 $updjsl = $zhuangbei->qianghua * 3 + 1;
-$upls = round($zhuangbei->qianghua/2) * round($zhuangbei->qianghua/3) * 2 * (round($zhuangbei->qianghua / 4) )+ 1;
+$upls = round($zhuangbei->qianghua / 2) * round($zhuangbei->qianghua / 3) * 2 * (round($zhuangbei->qianghua / 4)) + 1;
 $fjls = $zhuangbei->qianghua * 20 + 20;
 $qianghua = '';
-if ($zhuangbei->qianghua>0){
-    $qianghua="+".$zhuangbei->qianghua;
+if ($zhuangbei->qianghua > 0) {
+    $qianghua = "+" . $zhuangbei->qianghua;
 }
 
-$qhcgl = round((30-$zhuangbei->qianghua)/30,2) * 100;
-$qhcgl .='%';
-$tools = array("Không hạn định","Vũ khí","Đồ trang sức","Quần áo","Đai lưng","Đồ trang sức","Giày");
+$qhcgl = round((30 - $zhuangbei->qianghua) / 30, 2) * 100;
+$qhcgl .= '%';
+$tools = array("Không hạn định", "Vũ khí", "Đồ trang sức", "Quần áo", "Đai lưng", "Đồ trang sức", "Giày");
 $tool = $tools[$zhuangbei->tool];
 
 

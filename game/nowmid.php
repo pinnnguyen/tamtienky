@@ -323,7 +323,7 @@ $nowhtml = <<<HTML
 Bản đồ hiện tại:$clmid->mname$pvphtml<a href="?cmd=$mytask">Nhiệm vụ($taskcount)</a><a href="?cmd=$gonowmid">Làm mới</a> <br/>
 $npchtml
 $bosshtml
-Ngươi thấy:$gwhtml<br/>
+Ngươi nhìn thấy:$gwhtml<br/>
 Mời chọn giao lộ:<br/>
 $lukouhtml
 $clmid->mname Người chơi: $playerhtml<br/>
@@ -336,13 +336,12 @@ $lthtml
 &nbsp;&nbsp;<span class="xinxi3">$clmid->midinfo</span><br/>
 <a href="?cmd=$ztcmd">T.thái</a> <a href="?cmd=$getbagcmd" >B.lô</a> <a href="?cmd=$goliaotian" >T.chuyện</a> <a href="?cmd=$getbagjncmd" >Phù lục</a>
 <br/>
-<a href="?cmd=$phcmd" >X.hạng</a> <a href="?cmd=$xiuliancmd" >T.luyện</a> <a href="?cmd=$fangshi" >Chợ</a> <a href="?cmd=$clubcmd" >M.phái</a>
+<a href="?cmd=$phcmd" >X.hạng</a> <a href="?cmd=$xiuliancmd" >T.luyện</a> <a href="?cmd=$fangshi" >Chợ</a> <a href="?cmd=$clubcmd" >Tông môn</a>
 <br/>
 <a href="?cmd=$imcmd" >H.hữu</a> <a href="?cmd=$duihuancmd" >Đ.thưởng</a>
 <a href="?cmd=$cwcmd" >Pet</a> <a href="?cmd=$bugreportcmd" >G.lỗi</a>
-<!--<a href="http://playdreamer.cn/alipay/?id=9&user_id=$player->uid" target="_blank">Nạp tiền</a>--!>
 <br/>
-<a href="index.php" >Quay lại trang chủ</a><br/>
+<!--<a href="index.php" >Quay lại trang chủ</a><br/>-->
 HTML;
 
 echo $nowhtml;

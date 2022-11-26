@@ -105,7 +105,7 @@ if ($cmd == 'pve' && $guaiwu->sid == '') {
     $player->uxx += $jineng->jnxx;
 
     //如果是负数会影响获取不到修为
-    $lvc = $player->ulv - $guaiwu->glv; //人物等级-怪物等级 如果人物等级比怪物等级低，就不爆强化石。改为人物等级高怪物10级后才不爆，比怪物低的话随便
+    $lvc = $player->ulv - $guaiwu->glv; //Cấp độ nhân vật-Cấp quái vật Nếu cấp độ nhân vật thấp hơn cấp độ quái vật, đá cường hóa sẽ không phát nổ. Đổi thành quái vật có cấp độ nhân vật cao sẽ không phát nổ sau cấp 10, và nếu thấp hơn quái vật, nó sẽ là ngẫu nhiên
     // if ($lvc >= 10){ //如果人物等级大怪物等级十级，返回0.改掉，只要这个差值
     // $lvc = 0;
     // }

@@ -74,7 +74,10 @@ $dhhtml =<<<HTML
     <input type="hidden" name="cmd" value="duihuan">
     <input type="hidden" name="sid" value="$sid">
     Mã đổi thưởng:<br/>
-    <input name="dhm"> <input type="submit" class="gamesubmit" value="Đổi thưởng"><br/><br/>
+    <input name="dhm" class="border border-1"> 
+    <button type="submit" class="gamesubmit" value="Đổi thưởng">
+    Đổi thưởng
+</button>
 </form>
 $tishi
 <button onClick="javascript :history.back(-1);">Trở về</button> <a href='?cmd=$gonowmid'>Trở về trò chơi</a>

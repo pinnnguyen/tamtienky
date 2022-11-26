@@ -84,6 +84,7 @@ function getplayer($sid, $dblj)
     $cxjg->bindColumn('sfzx', $player->sfzx);
     $cxjg->bindColumn('ispvp', $player->ispvp);
     $cxjg->fetch(\PDO::FETCH_ASSOC);
+
     if ($player->tool1 != 0) {
         $zhuangbei = getzb($player->tool1, $dblj);
         $player->ugj = $player->ugj + $zhuangbei->zbgj;
@@ -132,9 +133,11 @@ function getplayer($sid, $dblj)
         $player->uxx = $player->uxx + $zhuangbei->zbxx;
         $player->umaxhp = $player->umaxhp + $zhuangbei->zbhp;
     }
+
     $rangeslv = array(0, 30, 50, 70, 80, 90, 100, 110);
     $rangesexp = array(2.5, 5, 7.5, 10, 12.5, 15, 17.5);
     $playernextlv = $player->ulv + 1;
+
     $rangesjj = array('Luyện khí', 'Trúc Cơ', 'Kim đan', 'Nguyên anh', 'Hóa thần', 'Luyện Hư', 'Hợp thể', 'Đại thừa');
     for ($i = 0; $i < count($rangeslv); $i++) {
         if ($player->ulv >= $rangeslv[$i] && $player->ulv < $rangeslv[$i + 1]) {
@@ -144,7 +147,7 @@ function getplayer($sid, $dblj)
             $jieduan = floor($djc / $jds);
             $jd = $rangesjd[$jieduan];
             $player->jingjie = $rangesjj[$i];
-            $player->cengci = $jd . 'Tầng';
+            $player->cengci = ' Tầng ' . $jd;
             $player->umaxexp = $playernextlv * ($playernextlv + round($playernextlv / 2)) * 12 * $rangesexp[$i] + $playernextlv;
             break;
         }

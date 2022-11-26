@@ -152,7 +152,7 @@ $cxallguaiwu = $cxjg->fetchAll(PDO::FETCH_ASSOC);
 $gwhtml = '';
 for ($i = 0; $i < count($cxallguaiwu); $i++) {
     $gwcmd = $encode->encode("cmd=getginfo&gid=" . $cxallguaiwu[$i]['id'] . "&gyid=" . $cxallguaiwu[$i]['gyid'] . "&sid=$sid&nowmid=$player->nowmid");
-    $gwhtml .= "<a href='?cmd=$gwcmd'>" . $cxallguaiwu[$i]['gname'] . "</a> ";
+    $gwhtml .= "<a style='font-size: 10px' class='bg-[#cd4020] flex items-center justify-center !text-white font-medium text-center w-[55px] h-[55px] rounded-full overflow-hidden' href='?cmd=$gwcmd'>" . $cxallguaiwu[$i]['gname'] . "</a> ";
 }
 
 $sql = "select * from game1 where nowmid='$player->nowmid' AND sfzx = 1";//获取当前地图玩家
@@ -182,7 +182,7 @@ if ($cxjg) {
                     $club->clubname = "";
                 }
                 $playercmd = $encode->encode("cmd=getplayerinfo&uid=$cxuid&sid=$sid");
-                $playerhtml .= "<a href='?cmd=$playercmd'>{$club->clubname}$cxuname</a>";
+                $playerhtml .= "<a class='flex items-center justify-center bg-[#1c1cb6] !text-white font-medium text-center w-[55px] h-[55px] overflow-hidden rounded-full' href='?cmd=$playercmd'><span>$club->clubname</span><span>$cxuname</span></a>";
             }
 
         }
@@ -303,9 +303,9 @@ if ($ltcxjg) {
         $uid = $ret[count($ret) - $i - 1]['uid'];
         $ucmd = $encode->encode("cmd=getplayerinfo&uid=$uid&sid=$player->sid");
         if ($uid) {
-            $lthtml .= "<div class='text-red-600'><a clas='font-semibold text-sm' href='?cmd=$ucmd''>[$uname]: </a><span class='text-white text-sm'>$umsg</span></div>";
+            $lthtml .= "<div class='text-red-600'><a clas='font-semibold text-xs' href='?cmd=$ucmd''>[$uname]: </a><span class='text-white text-sm'>$umsg</span></div>";
         } else {
-            $lthtml .= "<div class='text-red-600'><span class='font-semibold text-sm'>[$uname]: </span><span class='text-white text-sm'>$umsg</span></div>";
+            $lthtml .= "<div class='text-red-600'><span class='font-semibold text-xs'>[$uname]: </span><span class='text-white text-sm'>$umsg</span></div>";
         }
 
     }
@@ -322,21 +322,25 @@ $imcmd = $encode->encode("cmd=im&sid=$sid");
 
 $nowhtml = <<<HTML
 <div>
-
-<div class="flex items-end">
-    <img class="h-[40px]" src="images/pve/player-avatar.png">
-    <span class="pb-[2px]">$player->uname [lv:$player->ulv]</span>
-</div>
+    <div class="flex items-end">
+        <img class="h-[40px]" src="images/pve/player-avatar.png">
+        <span class="pb-[2px]">$player->uname [lv:$player->ulv]</span>
+    </div>
+    <div class="p-2">
+        <div class="uppercase text-center font-semibold mb-2">$clmid->mname$pvphtml</div>
+        <div class="">
+            $playerhtml
+            $gwhtml
+        </div>
+    </div>
 <div>
-Bản đồ hiện tại:$clmid->mname$pvphtml
 </div>
 <a href="?cmd=$mytask">Nhiệm vụ($taskcount)</a>
 $npchtml
 $bosshtml
-Ngươi nhìn thấy:$gwhtml<br/>
 Mời chọn giao lộ:<br/>
 $lukouhtml
-$clmid->mname Người chơi: $playerhtml<br/>
+$clmid->mname
 【<a href="?cmd=$mapcmd">K.tra bản đồ</a>】<br/>
 <span class="xinxi2">$clmid->playerinfo</span>
 
@@ -345,13 +349,19 @@ $clmid->mname Người chơi: $playerhtml<br/>
 <div>$lthtml</div>
 </div>
 
-<a href="?cmd=$ztcmd">T.thái</a> <a href="?cmd=$getbagcmd" >B.lô</a>  <a href="?cmd=$getbagjncmd" >Phù lục</a>
-<br/>
-<a href="?cmd=$phcmd" >X.hạng</a> <a href="?cmd=$xiuliancmd" >T.luyện</a> <a href="?cmd=$fangshi" >Chợ</a> <a href="?cmd=$clubcmd" >Tông môn</a>
-<br/>
-<a href="?cmd=$imcmd" >H.hữu</a> <a href="?cmd=$duihuancmd" >Đ.thưởng</a>
-<a href="?cmd=$cwcmd" >Pet</a> <a href="?cmd=$bugreportcmd" >G.lỗi</a>
-<br/>
+<div class="fixed bottom-0">
+    <a href="?cmd=$ztcmd">T.thái</a>
+     <a href="?cmd=$getbagcmd" >B.lô</a>  
+    <a href="?cmd=$getbagjncmd" >Phù lục</a>
+    <br/>
+    <a href="?cmd=$phcmd" >X.hạng</a>
+     <a href="?cmd=$xiuliancmd" >T.luyện</a> 
+     <a href="?cmd=$fangshi" >Chợ</a> 
+    <a href="?cmd=$clubcmd" >Tông môn</a>
+    <a href="?cmd=$imcmd" >H.hữu</a> <a href="?cmd=$duihuancmd" >Đ.thưởng</a>
+    <a href="?cmd=$cwcmd" >Pet</a> <a href="?cmd=$bugreportcmd" >G.lỗi</a>
+</div>
+
 </div>
 
 <!--<a href="index.php" >Quay lại trang chủ</a><br/>-->

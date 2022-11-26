@@ -303,13 +303,14 @@ if ($ltcxjg) {
         $uid = $ret[count($ret) - $i - 1]['uid'];
         $ucmd = $encode->encode("cmd=getplayerinfo&uid=$uid&sid=$player->sid");
         if ($uid) {
-            $lthtml .= "[Công cộng]<a href='?cmd=$ucmd''>$uname</a>:<span class='xinxi'>$umsg</span> <br/>";
+            $lthtml .= "<div class='text-red-600'><a clas='font-semibold text-sm' href='?cmd=$ucmd''>[$uname]: </a><span class='text-white text-sm'>$umsg</span></div>";
         } else {
-            $lthtml .= "[Công cộng]<div class='hpys' style='display: inline'>$uname:</div><span class='xinxi'>$umsg</span><br/>";
+            $lthtml .= "<div class='text-red-600'><span class='font-semibold text-sm'>[$uname]: </span><span class='text-white text-sm'>$umsg</span></div>";
         }
 
     }
 }
+
 $mapcmd = $encode->encode("cmd=allmap&sid=$sid");
 $xiuliancmd = $encode->encode("cmd=goxiulian&sid=$sid");
 $mytask = $encode->encode("cmd=mytask&sid=$sid");
@@ -318,14 +319,16 @@ $fangshi = $encode->encode("cmd=fangshi&fangshi=daoju&sid=$sid");
 $clubcmd = $encode->encode("cmd=club&sid=$sid");
 $duihuancmd = $encode->encode("cmd=duihuan&sid=$sid");
 $imcmd = $encode->encode("cmd=im&sid=$sid");
-$msghtml = <<<HTML
-<hr style="height:1px;border:none;border-top:1px dashed #e3e3e3;">
-<font style="font-size:12px;color:#666;">Nếu có bất kỳ lỗi nào trong game, vui lòng gửi lỗi, tôi sẽ lập biên bản thống kê và sửa theo khả năng của mình, mong các bạn bỏ qua những chỗ không sửa được.!<br></font>
-<hr style="height:1px;border:none;border-top:1px dashed #e3e3e3;">
-HTML;
 
 $nowhtml = <<<HTML
-Bản đồ hiện tại:$clmid->mname$pvphtml<a href="?cmd=$mytask">Nhiệm vụ($taskcount)</a><a href="?cmd=$gonowmid">Làm mới</a> <br/>
+<div class="flex items-end">
+    <img class="h-[40px]" src="images/pve/player-avatar.png">
+    <span class="pb-[2px]">Sagabus [lv:9]</span>
+</div>
+<div>
+Bản đồ hiện tại:$clmid->mname$pvphtml
+</div>
+<a href="?cmd=$mytask">Nhiệm vụ($taskcount)</a>
 $npchtml
 $bosshtml
 Ngươi nhìn thấy:$gwhtml<br/>
@@ -333,13 +336,14 @@ Mời chọn giao lộ:<br/>
 $lukouhtml
 $clmid->mname Người chơi: $playerhtml<br/>
 【<a href="?cmd=$mapcmd">K.tra bản đồ</a>】<br/>
-$msghtml
 <span class="xinxi2">$clmid->playerinfo</span>
-<div id="ltmsg">
-$lthtml
+
+<div class="bg-black text-white p-2 flex" id="ltmsg">
+<a href="?cmd=$goliaotian" >T.chuyện</a>
+<div>$lthtml</div>
 </div>
-&nbsp;&nbsp;<span class="xinxi3">$clmid->midinfo</span><br/>
-<a href="?cmd=$ztcmd">T.thái</a> <a href="?cmd=$getbagcmd" >B.lô</a> <a href="?cmd=$goliaotian" >T.chuyện</a> <a href="?cmd=$getbagjncmd" >Phù lục</a>
+
+<a href="?cmd=$ztcmd">T.thái</a> <a href="?cmd=$getbagcmd" >B.lô</a>  <a href="?cmd=$getbagjncmd" >Phù lục</a>
 <br/>
 <a href="?cmd=$phcmd" >X.hạng</a> <a href="?cmd=$xiuliancmd" >T.luyện</a> <a href="?cmd=$fangshi" >Chợ</a> <a href="?cmd=$clubcmd" >Tông môn</a>
 <br/>

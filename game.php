@@ -142,7 +142,7 @@ if (isset($cmd)) {
                     $sql2 = "insert into ggliaotian(name,msg,uid) values(?,?,?)";
                     $stmt2 = $dblj->prepare($sql2);
 
-                    $stmt2->execute(array('Thông báo hệ thống', " vạn người không được một người chơi {$username} Bước lên Tiên đồ", '0'));
+                    $stmt2->execute(array('Hệ thống', " Vạn người không được một người chơi {$username} Bước lên Tiên đồ", '0'));
                     header("refresh:1;url=?cmd=$gonowmid");
                 }
                 exit();
@@ -325,7 +325,7 @@ if (isset($cmd)) {
         if (\player\istupo($sid, $dblj) != 0 && $player->uexp >= $player->umaxexp) {
             $tupocmd = $encode->encode("cmd=tupo&sid=$sid");
             $tupocmd = "<a href='?cmd=$tupocmd'>Đột phá</a>";
-            $tpts = "<p class='p-2 text-white bg-gray-400'>Bạn cần đột phá, nếu không sẽ không thể tích lũy được kinh nghiệm:$tupocmd</p>";
+            $tpts = "<p class='p-2 text-white bg-black'><strong>Tip: </strong>Bạn cần đột phá, nếu không sẽ không thể tích lũy được kinh nghiệm:$tupocmd</p>";
         }
 
         $nowdate = date('Y-m-d H:i:s');

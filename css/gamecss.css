@@ -62,8 +62,7 @@ body {
     margin: 0px;
     font-size: 14px;
     line-height: 22px;
-    background: #eae6e6;
-    font-family: monospace;
+    font-family: auto;
 }
 
 a:link {

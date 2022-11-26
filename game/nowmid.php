@@ -323,7 +323,7 @@ $imcmd = $encode->encode("cmd=im&sid=$sid");
 $nowhtml = <<<HTML
 <div class="flex items-end">
     <img class="h-[40px]" src="images/pve/player-avatar.png">
-    <span class="pb-[2px]">Sagabus [lv:9]</span>
+    <span class="pb-[2px]">$player->uname [lv:$player->ulv]</span>
 </div>
 <div>
 Bản đồ hiện tại:$clmid->mname$pvphtml

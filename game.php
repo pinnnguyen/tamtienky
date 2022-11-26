@@ -325,7 +325,7 @@ if (isset($cmd)) {
         if (\player\istupo($sid, $dblj) != 0 && $player->uexp >= $player->umaxexp) {
             $tupocmd = $encode->encode("cmd=tupo&sid=$sid");
             $tupocmd = "<a href='?cmd=$tupocmd'>Đột phá</a>";
-            $tpts = "<p class='p-2 text-white bg-black'><strong>Tip: </strong>Bạn cần đột phá, nếu không sẽ không thể tích lũy được kinh nghiệm:$tupocmd</p>";
+            $tpts = "<p class='p-2 text-white bg-black text-sm'><strong>Tip: </strong>Bạn cần đột phá, nếu không sẽ không thể tích lũy được kinh nghiệm:$tupocmd</p>";
         }
 
         $nowdate = date('Y-m-d H:i:s');

@@ -48,14 +48,24 @@ $tool4 = '';
 $tool5 = '';
 $tool6 = '';
 
+$isTool1 = false;
+$isTool2 = false;
+$isTool3 = false;
+$isTool4 = false;
+$isTool5 = false;
+$isTool6 = false;
+
 if ($player->tool1 != 0) {
     $zhuangbei = player\getzb($player->tool1, $dblj);
     $qhs = '';
     if ($zhuangbei->qianghua > 0) {
         $qhs = '+' . $zhuangbei->qianghua;
     }
-    $xxzb1 = '<a href="?cmd=' . $encode->encode("cmd=xxzb&zbwz=1&sid=$sid") . '">Dỡ xuống</a>';
-    $tool1 = '<a href="?cmd=' . $encode->encode("cmd=chakanzb&zbnowid=$player->tool1&uid=$player->uid&sid=$sid") . '">' . $zhuangbei->zbname . $qhs . '</a>' . $xxzb1;
+
+    $isTool1 = '<span class="absolute left-[10px] top-[7px] rounded-full bg-white w-[10px] h-[10px]"></span>';
+
+//    $xxzb1 = '<a href="?cmd=' . $encode->encode("cmd=xxzb&zbwz=1&sid=$sid") . '">Dỡ xuống</a>';
+    $tool1 = '<a class="absolute opacity-0 left-0 top-0 w-[60px] h-[55px]" href="?cmd=' . $encode->encode("cmd=chakanzb&zbnowid=$player->tool1&uid=$player->uid&sid=$sid") . '">' . $zhuangbei->zbname . $qhs . '</a>' . $xxzb1;
 }
 if ($player->tool2 != 0) {
     $zhuangbei = player\getzb($player->tool2, $dblj);
@@ -63,8 +73,9 @@ if ($player->tool2 != 0) {
     if ($zhuangbei->qianghua > 0) {
         $qhs = '+' . $zhuangbei->qianghua;
     }
-    $xxzb2 = '<a href="?cmd=' . $encode->encode("cmd=xxzb&zbwz=2&sid=$sid") . '">Dỡ xuống</a>';
-    $tool2 = '<a href="?cmd=' . $encode->encode("cmd=chakanzb&zbnowid=$player->tool2&uid=$player->uid&sid=$sid") . '">' . $zhuangbei->zbname . $qhs . '</a>' . $xxzb2;
+    $isTool2 = '<span class="absolute left-[10px] top-[7px] rounded-full bg-white w-[10px] h-[10px]"></span>';;
+//    $xxzb2 = '<a href="?cmd=' . $encode->encode("cmd=xxzb&zbwz=2&sid=$sid") . '">Dỡ xuống</a>';
+    $tool2 = '<a class="absolute opacity-0 left-0 top-0 w-[60px] h-[55px]" href="?cmd=' . $encode->encode("cmd=chakanzb&zbnowid=$player->tool2&uid=$player->uid&sid=$sid") . '">' . $zhuangbei->zbname . $qhs . '</a>' . $xxzb2;
 }
 if ($player->tool3 != 0) {
     $zhuangbei = player\getzb($player->tool3, $dblj);
@@ -72,8 +83,9 @@ if ($player->tool3 != 0) {
     if ($zhuangbei->qianghua > 0) {
         $qhs = '+' . $zhuangbei->qianghua;
     }
-    $xxzb3 = '<a href="?cmd=' . $encode->encode("cmd=xxzb&zbwz=3&sid=$sid") . '">Dỡ xuống</a>';
-    $tool3 = '<a href="?cmd=' . $encode->encode("cmd=chakanzb&zbnowid=$player->tool3&uid=$player->uid&sid=$sid") . '">' . $zhuangbei->zbname . $qhs . '</a>' . $xxzb3;
+    $isTool3 = '<span class="absolute left-[10px] top-[7px] rounded-full bg-white w-[10px] h-[10px]"></span>';;
+//    $xxzb3 = '<a href="?cmd=' . $encode->encode("cmd=xxzb&zbwz=3&sid=$sid") . '">Dỡ xuống</a>';
+    $tool3 = '<a class="absolute opacity-0 left-0 top-0 w-[60px] h-[55px]" href="?cmd=' . $encode->encode("cmd=chakanzb&zbnowid=$player->tool3&uid=$player->uid&sid=$sid") . '">' . $zhuangbei->zbname . $qhs . '</a>' . $xxzb3;
 }
 if ($player->tool4 != 0) {
     $zhuangbei = player\getzb($player->tool4, $dblj);
@@ -81,8 +93,10 @@ if ($player->tool4 != 0) {
     if ($zhuangbei->qianghua > 0) {
         $qhs = '+' . $zhuangbei->qianghua;
     }
-    $xxzb4 = '<a href="?cmd=' . $encode->encode("cmd=xxzb&zbwz=4&sid=$sid") . '">Dỡ xuống</a>';
-    $tool4 = '<a href="?cmd=' . $encode->encode("cmd=chakanzb&zbnowid=$player->tool4&uid=$player->uid&sid=$sid") . '">' . $zhuangbei->zbname . $qhs . '</a>' . $xxzb4;
+
+    $isTool4 = '<span class="absolute left-[10px] top-[7px] rounded-full bg-white w-[10px] h-[10px]"></span>';;
+//    $xxzb4 = '<a href="?cmd=' . $encode->encode("cmd=xxzb&zbwz=4&sid=$sid") . '">Dỡ xuống</a>';
+    $tool4 = '<a class="absolute opacity-0 left-0 top-0 w-[60px] h-[55px]" href="?cmd=' . $encode->encode("cmd=chakanzb&zbnowid=$player->tool4&uid=$player->uid&sid=$sid") . '">' . $zhuangbei->zbname . $qhs . '</a>' . $xxzb4;
 }
 if ($player->tool5 != 0) {
     $zhuangbei = player\getzb($player->tool5, $dblj);
@@ -90,8 +104,10 @@ if ($player->tool5 != 0) {
     if ($zhuangbei->qianghua > 0) {
         $qhs = '+' . $zhuangbei->qianghua;
     }
-    $xxzb5 = '<a href="?cmd=' . $encode->encode("cmd=xxzb&zbwz=5&sid=$sid") . '">Dỡ xuống</a>';
-    $tool5 = '<a href="?cmd=' . $encode->encode("cmd=chakanzb&zbnowid=$player->tool5&uid=$player->uid&sid=$sid") . '">' . $zhuangbei->zbname . $qhs . '</a>' . $xxzb5;
+
+    $isTool5 = '<span class="absolute left-[10px] top-[7px] rounded-full bg-white w-[10px] h-[10px]"></span>';;
+//    $xxzb5 = '<a href="?cmd=' . $encode->encode("cmd=xxzb&zbwz=5&sid=$sid") . '">Dỡ xuống</a>';
+    $tool5 = '<a class="absolute opacity-0 left-0 top-0 w-[60px] h-[55px]" href="?cmd=' . $encode->encode("cmd=chakanzb&zbnowid=$player->tool5&uid=$player->uid&sid=$sid") . '">' . $zhuangbei->zbname . $qhs . '</a>' . $xxzb5;
 }
 if ($player->tool6 != 0) {
     $zhuangbei = player\getzb($player->tool6, $dblj);
@@ -99,8 +115,10 @@ if ($player->tool6 != 0) {
     if ($zhuangbei->qianghua > 0) {
         $qhs = '+' . $zhuangbei->qianghua;
     }
-    $xxzb6 = '<a href="?cmd=' . $encode->encode("cmd=xxzb&zbwz=6&sid=$sid") . '">Dỡ xuống</a>';
-    $tool6 = '<a href="?cmd=' . $encode->encode("cmd=chakanzb&zbnowid=$player->tool6&uid=$player->uid&sid=$sid") . '">' . $zhuangbei->zbname . $qhs . '</a>' . $xxzb6;
+
+    $isTool6 = '<span class="absolute left-[10px] top-[7px] rounded-full bg-white w-[10px] h-[10px]"></span>';;
+//    $xxzb6 = '<a href="?cmd=' . $encode->encode("cmd=xxzb&zbwz=6&sid=$sid") . '">Dỡ xuống</a>';
+    $tool6 = '<a class="absolute opacity-0 left-0 top-0 w-[60px] h-[55px]" href="?cmd=' . $encode->encode("cmd=chakanzb&zbnowid=$player->tool6&uid=$player->uid&sid=$sid") . '">' . $zhuangbei->zbname . $qhs . '</a>' . $xxzb6;
 
 }
 
@@ -157,34 +175,40 @@ $html = <<<HTML
                  <div class="text-sm text-center font-semibold mb-2">Trang bị</div>
 
                 <div class="grid grid-cols-4 gap-2">
-                    <div>
+                    <div class="relative">
                     <img class="w-[60px] h-[55px]" src="images/trangbi/vukhi.png" />
 <!--                        Vũ khí: -->
+                            $isTool1
                             $tool1
                     </div>
                     <div>
                     <img class="w-[60px] h-[55px]" src="images/trangbi/ngocboi.png" />
 <!--                        Ngọc Bội: -->
+                            $isTool2
                             $tool2
                     </div>
                     <div>
                     <img class="w-[60px] h-[55px]" src="images/trangbi/giap.png" />
 <!--                        áo: -->
+                        $isTool3
                         $tool3
                     </div>
                     <div>
                     <img class="w-[60px] h-[55px]" src="images/trangbi/baotay.png" />
 <!--                        Bao tay: -->
+                        $isTool4
                         $tool4
                     </div>
                     <div>
                     <img class="w-[60px] h-[55px]" src="images/trangbi/rinh.png" />
 <!--                        Nhẫn: -->
+                        $isTool5
                         $tool5
                     </div>
                     <div>
                     <img class="w-[60px] h-[55px]" src="images/trangbi/giay.png" />
 <!--                        Giày:-->
+                        $isTool6
                         $tool6
                     </div>
                      <div>

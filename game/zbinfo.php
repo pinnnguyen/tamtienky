@@ -2,6 +2,7 @@
 
 $player = \player\getplayer($sid, $dblj);
 $gonowmid = $encode->encode("cmd=gomid&newmid=$player->nowmid&sid=$sid");
+$gotrangbi = $encode->encode("cmd=xxzb&zbwz=1&sid=$sid");
 $zhuangbei = new \player\zhuangbei();
 if ($zbnowid != 0) {
     $zhuangbei = player\getzb($zbnowid, $dblj);
@@ -172,7 +173,9 @@ Phân giải cần Linh Thạch: $fjls$uyxb<br/>
 $upts
 $setzbwz
 <br/>
-<button onClick="javascript :history.back(-1);">Trở về</button> <a href="?cmd=$gonowmid">Trở về trò chơi</a>
+<button onClick="javascript :history.back(-1);">Trở về</button> 
+<a href="?cmd=$gotrangbi">Dỡ xuống</a>
+<a href="?cmd=$gonowmid">Trở về trò chơi</a>
 HTML;
 echo $html;
 ?>

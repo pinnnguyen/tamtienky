@@ -48,7 +48,6 @@ if (isset($canshu)) {
     }
 }
 
-
 if ($player->uid == $zhuangbei->uid) {
     $uyxb = '/' . $player->uyxb;
     if ($cmd == 'upzb') {
@@ -72,6 +71,7 @@ if ($player->uid == $zhuangbei->uid) {
             $upts = "Cường hóa thất bại, linh thạch không đủ<br/>";
         }
     }
+
     $upgj = $encode->encode("cmd=upzb&upsx=zbgj&zbnowid=$zhuangbei->zbnowid&sid=$sid");
     $upfy = $encode->encode("cmd=upzb&upsx=zbfy&zbnowid=$zhuangbei->zbnowid&sid=$sid");
     $uphp = $encode->encode("cmd=upzb&upsx=zbhp&zbnowid=$zhuangbei->zbnowid&sid=$sid");
@@ -142,10 +142,12 @@ if ($player->uid == $zhuangbei->uid && !in_array($zhuangbei->zbnowid, $arr)) {
     </form>
 HTML;
 }
+
 $updjsl = $zhuangbei->qianghua * 3 + 1;
 $upls = round($zhuangbei->qianghua / 2) * round($zhuangbei->qianghua / 3) * 2 * (round($zhuangbei->qianghua / 4)) + 1;
 $fjls = $zhuangbei->qianghua * 20 + 20;
 $qianghua = '';
+
 if ($zhuangbei->qianghua > 0) {
     $qianghua = "+" . $zhuangbei->qianghua;
 }
@@ -154,7 +156,6 @@ $qhcgl = round((30 - $zhuangbei->qianghua) / 30, 2) * 100;
 $qhcgl .= '%';
 $tools = array("Không hạn định", "Vũ khí", "Đồ trang sức", "Quần áo", "Đai lưng", "Đồ trang sức", "Giày");
 $tool = $tools[$zhuangbei->tool];
-
 
 $html = <<<HTML
 Tên:$zhuangbei->zbname$qianghua<br/>

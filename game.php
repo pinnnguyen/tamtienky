@@ -3,6 +3,7 @@ error_reporting(0);
 require_once 'class/player.php';
 require_once 'class/encode.php';
 include 'exp/rule.php';
+include 'item/rule.php';
 include 'pdo.php';
 
 header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");

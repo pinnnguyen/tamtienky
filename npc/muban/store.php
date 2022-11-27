@@ -27,6 +27,7 @@ if (isset($canshu)) {
                     $gnhtml .= "Không đủ số lượng đá tinh thần<br/>";
                 }
             }
+
             $yaopin = \player\getyaopin($dblj);
             foreach ($yaopin as $oneyaopin) {
                 $ypname = $oneyaopin['ypname'];

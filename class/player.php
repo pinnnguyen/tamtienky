@@ -588,16 +588,24 @@ function upzbsx($zbnowid, $upsx, $sid, $dblj)
     $cxjg->bindColumn("$upsx", $zbsx);
     $cxjg->bindColumn("qianghua", $zbqh);
     $cxjg->fetch(\PDO::FETCH_ASSOC);
-    $djsum = $zbqh * 3 + 1;  //装备强化等级*3+1  消耗强化石
+    $djsum = $zbqh * 4 + 1;  // Cấp cường hóa trang bị*4+1 Tiêu hao đá cường hóa
+
     $ret = \player\deledjsum(1, $djsum, $sid, $dblj);
     if ($ret) {
-        $upint = round($zbsx * 0.05); //强化增加装备刷新的5%,太少了就增加1点刷新
+        $upint = round($zbsx * 0.05); //Cường hóa tăng 5% làm mới trang bị, ít quá thì tăng 1 điểm làm mới
         if ($zbqh >= 50) {
-            return 2; //装备强化已达上限
+            return 2; //Cường hóa trang bị đã đạt đến giới hạn trên
         }
+
+//        # Cuong hoa tan cong
+//        if ($upsx === "zbgj") {
+//            $upint = round($zbsx * 0.08);
+//        }
+
         if ($upint < 1) {
             $upint = 1;
         }
+
         \player\changezbsx($upsx, $upint, $zbnowid, $dblj);
         changezbsx('qianghua', 1, $zbnowid, $dblj);
         return 1;

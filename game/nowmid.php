@@ -152,7 +152,7 @@ $cxallguaiwu = $cxjg->fetchAll(PDO::FETCH_ASSOC);
 $gwhtml = '';
 for ($i = 0; $i < count($cxallguaiwu); $i++) {
     $gwcmd = $encode->encode("cmd=getginfo&gid=" . $cxallguaiwu[$i]['id'] . "&gyid=" . $cxallguaiwu[$i]['gyid'] . "&sid=$sid&nowmid=$player->nowmid");
-    $gwhtml .= "<a style='font-size: 10px' class='!flex flex-col justify-center bg-[#8b0808] !text-white font-medium text-center max-w-[80px] overflow-hidden h-[55px] overflow-hidden rounded' href='?cmd=$gwcmd'><span>[TC]</span>" . $cxallguaiwu[$i]['gname'] . "</a> ";
+    $gwhtml .= "<a style='font-size: 10px' class='!flex flex-col justify-center bg-[#8b0808] !text-white font-medium text-center max-w-[80px] overflow-hidden h-[55px] overflow-hidden rounded' href='?cmd=$gwcmd'><span>[lv". $cxallguaiwu[$i]['glv']."]</span>" . $cxallguaiwu[$i]['gname'] . "</a> ";
 }
 
 $sql = "select * from game1 where nowmid='$player->nowmid' AND sfzx = 1";//获取当前地图玩家

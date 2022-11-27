@@ -376,7 +376,7 @@ if (isset($cmd)) {
 </head>
 <body>
 <div class="main max-w-[400px] h-[100vh]">
-    <div class="h-full" style="background: url('images/bg-pve.jpg'); background-size: cover">
+    <div class="h-full">
         <?php
         if (!$ym == '') {
             echo $tpts;

@@ -80,14 +80,14 @@ if ($clmid->midboss != 0) {
 
     $bossinfo = $encode->encode("cmd=boss&bossid=$boss->bossid&sid=$sid");
     $bosshtml = <<<HTML
-    BOSS:<a href="?cmd=$bossinfo">$boss->bossname [lv$boss->bosslv] [$bossTime]</a><br/>
+    <span class="text-white">BOSS:</span>:<a class="bg-[#ff623e] !text-white" href="?cmd=$bossinfo">$boss->bossname [lv$boss->bosslv] [$bossTime]</a>
 HTML;
 }
 
 if ($upmid->mname != '') {
     $lukouhtml .= <<<HTML
 <div>
-    Hướng Bắc:<a class="bg-[#621e1f] !text-white h-[34px] !flex items-center" href="?cmd=$upmidlj">$upmid->mname ↑</a>
+    Hướng Bắc:<a style="background: radial-gradient(black, transparent)" class="!text-white h-[34px] !flex items-center" href="?cmd=$upmidlj">$upmid->mname ↑</a>
 </div>
 HTML;
 }
@@ -95,7 +95,7 @@ HTML;
 if ($leftmid->mname != '') {
     $lukouhtml .= <<<HTML
 <div>
-    <span>Hướng Tây</span>:<a class="bg-[#621e1f] !text-white h-[34px] !flex items-center" href="?cmd=$leftmidlj">$leftmid->mname ←</a>
+    <span>Hướng Tây</span>:<a style="background: radial-gradient(black, transparent)" class="!text-white h-[34px] !flex items-center" href="?cmd=$leftmidlj">$leftmid->mname ←</a>
 </div>
 HTML;
 }
@@ -103,7 +103,7 @@ HTML;
 if ($rightmid->mname != '') {
     $lukouhtml .= <<<HTML
 <div>
-    <span>Hướng Đông</span>:<a class="bg-[#621e1f] !text-white h-[34px] !flex items-center" href="?cmd=$rightmidlj">$rightmid->mname →</a>
+    <span>Hướng Đông</span>:<a style="background: radial-gradient(black, transparent)" class="!text-white h-[34px] !flex items-center" href="?cmd=$rightmidlj">$rightmid->mname →</a>
 </div>
 HTML;
 }
@@ -111,7 +111,7 @@ HTML;
 if ($downmid->mname != '') {
     $lukouhtml .= <<<HTML
 <div>
-    <span>Hướng Nam</span>:<a class="bg-[#621e1f] !text-white h-[34px] !flex items-center" href="?cmd=$downmidlj">$downmid->mname ↓</a>
+    <span>Hướng Nam</span>:<a style="background: radial-gradient(black, transparent)" class="bg-[#621e1f] !text-white h-[34px] !flex items-center" href="?cmd=$downmidlj">$downmid->mname ↓</a>
 </div>
 HTML;
 }
@@ -296,7 +296,7 @@ if ($clmid->mnpc != "") {
 //        }
         $npccmd = $encode->encode("cmd=npc&nid=$nid&sid=$player->sid");
         $npchtml .= <<<HTML
-        <a href="?cmd=$npccmd">$nname</a>
+        <a style="background: radial-gradient(black, transparent); color: white" href="?cmd=$npccmd">$nname</a>
 HTML;
     }
 }
@@ -331,13 +331,19 @@ $duihuancmd = $encode->encode("cmd=duihuan&sid=$sid");
 $imcmd = $encode->encode("cmd=im&sid=$sid");
 
 $nowhtml = <<<HTML
-<div>
-    <div class="flex items-end">
+<div class="absolute top-0 left-0 w-full h-full opacity-90" style="background: url('images/bg.jpg'); background-size: cover"></div>
+<div class="h-full absolute">
+    <div class="flex items-end bg-[#36445a] text-white p-2 border border-t-white">
         <a class="border-none p-0" href="?cmd=$ztcmd"><img class="h-[40px]" src="images/pve/player-avatar.png"></a>
         <span class="pb-[2px]">$player->uname [lv:$player->ulv]</span>
     </div>
+    <div class="text-right">
+        <a href="?cmd=$fangshi" ><img class="w-[30px]" src="images/menu/market.png" /></span>Chợ</span></a> 
+        <a href="?cmd=$imcmd"><img class="w-[30px]" src="images/menu/party.png" /><span>H.Hữu</span></a> 
+        <a href="?cmd=$phcmd"><img class="w-[30px]" src="images/menu/xephang.png" /><span>X.hạng</span></a>
+    </div>
     <div class="p-2">
-        <div class="uppercase font-semibold">$clmid->mname$pvphtml</div>
+        <div class="uppercase font-semibold text-xs">$clmid->mname$pvphtml</div>
         <span class="text-xs mb-2 text-[#ff380b]">Chú ý: $clmid->playerinfo</span>
         <div class="flex flex-wrap">
             $playerhtml
@@ -349,17 +355,13 @@ $nowhtml = <<<HTML
 <div class="p-2">
     $npchtml
 </div>
-
-$bosshtml
-
-<div class="absolute bottom-0 bg-black overflow-scroll border border-t-white p-2">
-
+<div class="absolute bottom-0 bg-[#36445a] overflow-scroll border border-t-white">
 <div class="p-2">
- <a class="bg-[#621e1f] !text-white h-[34px] !flex items-center" href="?cmd=$mytask">Nhiệm vụ($taskcount)</a>
-<div class="flex">
+<div class="flex text-white text-xs">
     $lukouhtml
     </div>
-    <div class="text-center">
+    <div class="flex items-end">
+    $bosshtml
 </div>
 </div>
 
@@ -373,21 +375,28 @@ $bosshtml
     </div>
     </div>
 
-
-     <a href="?cmd=$getbagcmd" >B.lô</a>  
-    <a href="?cmd=$getbagjncmd" >Phù lục</a>
-    <br/>
-    <a href="?cmd=$phcmd" >X.hạng</a>
-     <a href="?cmd=$xiuliancmd" >T.luyện</a> 
-     <a href="?cmd=$fangshi" >Chợ</a> 
-    <a href="?cmd=$clubcmd" >Tông môn</a>
-    <a href="?cmd=$imcmd" >H.hữu</a> <a href="?cmd=$duihuancmd" >Đ.thưởng</a>
-    <a href="?cmd=$cwcmd" >Pet</a> <a href="?cmd=$bugreportcmd" >G.lỗi</a>
+    <div class="flex items-center justify-center h-[60px] bg-[#36445a]">
+        <a class="border-none p-0" href="?cmd=$ztcmd"><img class="w-[60px]" src="images/menu/player.png"></a>
+        <a href="?cmd=$getbagcmd"><img class="w-[60px]" src="images/menu/bag.png" /></a>  
+        <a href="?cmd=$cwcmd" ><img class="w-[60px]" src="images/menu/pet.png" /></a>
+        <a href="?cmd=$clubcmd"><img class="w-[60px]" src="images/menu/club.png" /></a>
+        <a href="?cmd=$mytask"><img class="w-[60px]" src="images/menu/nhiem_vu.png" /></a>
+    </div>
 </div>
-
 </div>
 
 <!--<a href="index.php" >Quay lại trang chủ</a><br/>-->
 HTML;
 
 echo $nowhtml;
+
+
+//<a href="?cmd=$getbagcmd" >B.lô</a>
+//    <a href="?cmd=$getbagjncmd" >Phù lục</a>
+//    <br/>
+//    <a href="?cmd=$phcmd" >X.hạng</a>
+//     <a href="?cmd=$xiuliancmd" >T.luyện</a>
+//     <a href="?cmd=$fangshi" >Chợ</a>
+//    <a href="?cmd=$clubcmd" >Tông môn</a>
+//    <a href="?cmd=$imcmd" >H.hữu</a> <a href="?cmd=$duihuancmd" >Đ.thưởng</a>
+//    <a href="?cmd=$cwcmd" >Pet</a> <a href="?cmd=$bugreportcmd" >G.lỗi</a>

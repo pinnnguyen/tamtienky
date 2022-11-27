@@ -126,28 +126,29 @@ if ($player1->tool6 != 0) {
 }
 
 $html = <<<HTML
-==Võ luyện đỉnh phong trạng thái==<br/>
-Nickname:$player1->uname<br/>
-Môn phái:$clubname<br/>
-Cảnh giới:$player1->jingjie$player1->cengci<br/>
-Đẳng cấp:$player1->ulv<br/>
-Tu vị:$player1->uexp/$player1->umaxexp<br/>
-Linh thạch:$player1->uyxb<br/>
-Cực phẩm linh thạch:$player1->uczb<br/>
-Khí huyết:$player1->uhp/$player1->umaxhp<br/>
-Công kích:$player1->ugj<br/>
-Phòng ngự:$player1->ufy<br/>
-Bạo kích:$player1->ubj%<br/>
-Hút máu:$player1->uxx%<br/>
-========<br/>
-$tool1
-$tool2
-$tool3
-$tool4
-$tool5
-$tool6
-$immenu
-<button onClick="javascript:history.back(-1);">Trở về</button> <a href="?cmd=$gonowmid">Trở về trò chơi</a>
+<div>
+    <h3>Thông tin cá nhân</h3>
+    Nickname:$player1->uname
+    Môn phái:$clubname<br/>
+    Cảnh giới:$player1->jingjie$player1->cengci<br/>
+    Đẳng cấp:$player1->ulv<br/>
+    Tu vị:$player1->uexp/$player1->umaxexp<br/>
+    Linh thạch:$player1->uyxb<br/>
+    Cực phẩm linh thạch:$player1->uczb<br/>
+    Khí huyết:$player1->uhp/$player1->umaxhp<br/>
+    Công kích:$player1->ugj<br/>
+    Phòng ngự:$player1->ufy<br/>
+    Bạo kích:$player1->ubj%<br/>
+    Hút máu:$player1->uxx%<br/>
+    $tool1
+    $tool2
+    $tool3
+    $tool4
+    $tool5
+    $tool6
+    $immenu
+    <button onClick="javascript:history.back(-1);">Trở về</button> <a href="?cmd=$gonowmid">Trở về trò chơi</a>
+</div>
 HTML;
 echo $html;
 

@@ -11,6 +11,12 @@ $gonowmid = $encode->encode("cmd=gomid&newmid=$player->nowmid&sid=$sid");
 $tupo = \player\istupo($sid, $dblj);
 $tplshtml = "";
 $tpls = 0;
+
+if ($player->uexp < $player->umaxexp) {
+    echo 'Tu vi chưa đủ để đột phá<a href="?cmd=$gonowmid">Trở về trò chơi</a>';
+    exit();
+}
+
 if ($tupo == 1) {
     $tpls = $player->ulv * $player->ulv * $player->ulv * 6;
 } elseif ($tupo == 2) {
@@ -42,6 +48,9 @@ if ($tupo != 0) {
                             echo "Đột phá thất bại<br/>";
                             break;
                         }
+
+                        var_dump($player->uhp);
+                        var_dump(4 + round($player->uhp / 16));
                         $uphp = 4 + round($player->uhp / 16);
                         $upgj = 2 + round($player->ugj / 8);
                         $upfy = 3 + round($player->ufy / 6);
@@ -55,7 +64,6 @@ if ($tupo != 0) {
                     $player = \player\getplayer($sid, $dblj);
 
                     echo "Đột phá thành công thu hoạch được thuộc tính: <br/>Công kích +$upgj<br/>Phòng ngự +$upfy<br/>Khí huyết +$uphp<br/>";
-                    exit();
                 } else {
                     echo "Linh thạch không đủ<br/>Đột phá cần linh thạch:$tpls<br/>";
                 }

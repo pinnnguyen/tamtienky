@@ -350,29 +350,13 @@ if (isset($cmd)) {
 <html lang="en">
 <head>
     <meta charset="utf-8" content="width=device-width,user-scalable=no" name="viewport">
-    <title>Võ luyện đỉnh phong</title>
+    <title>Tu Tiên Hội</title>
     <link rel="stylesheet" href="css/gamecss.css">
     <link rel="icon" href="images/logo.ico" type="image/x-icon">
-
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!--    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
+    <link rel="manifest" href="manifest.json" />
 
-    <script>
-        tailwind.config = {
-            shortcuts: {
-                'light-img': 'block dark:hidden',
-                'dark-img': 'hidden dark:block',
-                'btn': 'font-medium focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 focus:ring-offset-white dark:focus:ring-offset-black text-xs px-2.5 py-1.5 border border-transparent text-gray-700 bg-gray-100 hover:bg-gray-200 disabled:bg-gray-100 focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 inline-flex items-center rounded-lg'
-            },
-            theme: {
-                extend: {
-                    colors: {
-                        clifford: '#da373d',
-                    }
-                }
-            }
-        }
-    </script>
 </head>
 <body>
 <div class="main max-w-[400px] h-[100vh]">
@@ -389,4 +373,23 @@ if (isset($cmd)) {
     </div>
 </div>
 </body>
+
+<script src="js/game.js"></script>
+<script>
+    tailwind.config = {
+        shortcuts: {
+            'light-img': 'block dark:hidden',
+            'dark-img': 'hidden dark:block',
+            'btn': 'font-medium focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 focus:ring-offset-white dark:focus:ring-offset-black text-xs px-2.5 py-1.5 border border-transparent text-gray-700 bg-gray-100 hover:bg-gray-200 disabled:bg-gray-100 focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 inline-flex items-center rounded-lg'
+        },
+        theme: {
+            extend: {
+                colors: {
+                    clifford: '#da373d',
+                }
+            }
+        }
+    }
+</script>
+
 </html>

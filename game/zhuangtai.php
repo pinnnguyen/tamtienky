@@ -103,7 +103,7 @@ if ($player->tool6 != 0) {
 }
 
 $html = <<<HTML
-==Võ luyện đỉnh phong trạng thái==<br/>
+==Tu Tiên Hội trạng thái==<br/>
 Nickname: $player->uname<br/>
 
 Cảnh giới: $player->jingjie$player->cengci<br/>

@@ -332,7 +332,7 @@ $imcmd = $encode->encode("cmd=im&sid=$sid");
 
 $nowhtml = <<<HTML
 <div class="absolute top-0 left-0 w-full h-full opacity-90" style="background: url('images/bg.jpg'); background-size: cover"></div>
-<div class="h-full absolute">
+<div class="h-full w-full absolute">
     <div class="flex items-end bg-[#36445a] text-white p-2 border border-t-white">
         <a class="border-none p-0" href="?cmd=$ztcmd"><img class="h-[40px]" src="images/pve/player-avatar.png"></a>
         <span class="pb-[2px]">$player->uname [lv:$player->ulv]</span>

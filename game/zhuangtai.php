@@ -10,6 +10,8 @@ $getbagzbcmd = $encode->encode("cmd=getbagzb&sid=$sid");
 //}else{
 //    $clubname = "无门无派";
 //}
+
+$duihuancmd = $encode->encode("cmd=duihuan&sid=$sid");
 if ($cmd == 'xxzb') {
     if (isset($zbwz)) {
         $sql = "update game1 set tool$zbwz = 0 WHERE sid = '$sid'";
@@ -180,6 +182,7 @@ Giày: $tool6
 </div>
 
 <br/><br/>
+<a href="?cmd=$duihuancmd" >Đ.thưởng</a>
 <button onClick="javascript :history.back(-1);">Trở về</button> <a href="?cmd=$gonowmid">Trở về trò chơi</a>
 </div>
 

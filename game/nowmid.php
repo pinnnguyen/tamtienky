@@ -398,5 +398,4 @@ echo $nowhtml;
 //     <a href="?cmd=$xiuliancmd" >T.luyện</a>
 //     <a href="?cmd=$fangshi" >Chợ</a>
 //    <a href="?cmd=$clubcmd" >Tông môn</a>
-//    <a href="?cmd=$imcmd" >H.hữu</a> <a href="?cmd=$duihuancmd" >Đ.thưởng</a>
 //    <a href="?cmd=$cwcmd" >Pet</a> <a href="?cmd=$bugreportcmd" >G.lỗi</a>

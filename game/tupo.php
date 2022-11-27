@@ -66,5 +66,4 @@ $tplshtml
 <button onClick="javascript:history.back(-1);">Trở về</button> <a href="?cmd=$gonowmid">Trở về trò chơi</a>
 HTML;
 echo $tupohtml;
-?>
 

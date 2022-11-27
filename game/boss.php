@@ -21,9 +21,6 @@ $jnname1 = 'Phù lục 1';
 $jnname2 = 'Phù lục 2';
 $jnname3 = 'Phù lục 3';
 
-var_dump($gid);
-var_dump($bossid);
-var_dump($sid);
 //$guaiwu = player\getguaiwu($gid, $dblj);
 //$yguaiwu = new \player\guaiwu();
 //if ($guaiwu->gyid) {
@@ -199,7 +196,6 @@ HTML;
             }
         }
 
-        var_dump($yguaiwu);
         // Tỉ lệ rớt ra trang bị sau khi boss chết, cái này nên xác định người chơi gây ra sát thương
         $sjjv = mt_rand(1, 120); //Lấy một số ngẫu nhiên, xác định tỷ lệ nổ và sau đó xem liệu quái vật có được trang bị hay không
         if ($yguaiwu->dljv >= $sjjv && $yguaiwu->gzb != '') {

@@ -93,6 +93,7 @@ function getplayer($sid, $dblj)
         $player->uxx = $player->uxx + $zhuangbei->zbxx;
         $player->umaxhp = $player->umaxhp + $zhuangbei->zbhp;
     }
+
     if ($player->tool2 != 0) {
         $zhuangbei = getzb($player->tool2, $dblj);
         $player->ugj = $player->ugj + $zhuangbei->zbgj;
@@ -101,6 +102,7 @@ function getplayer($sid, $dblj)
         $player->uxx = $player->uxx + $zhuangbei->zbxx;
         $player->umaxhp = $player->umaxhp + $zhuangbei->zbhp;
     }
+
     if ($player->tool3 != 0) {
         $zhuangbei = getzb($player->tool3, $dblj);
         $player->ugj = $player->ugj + $zhuangbei->zbgj;
@@ -109,6 +111,7 @@ function getplayer($sid, $dblj)
         $player->uxx = $player->uxx + $zhuangbei->zbxx;
         $player->umaxhp = $player->umaxhp + $zhuangbei->zbhp;
     }
+
     if ($player->tool4 != 0) {
         $zhuangbei = getzb($player->tool4, $dblj);
         $player->ugj = $player->ugj + $zhuangbei->zbgj;
@@ -117,6 +120,7 @@ function getplayer($sid, $dblj)
         $player->uxx = $player->uxx + $zhuangbei->zbxx;
         $player->umaxhp = $player->umaxhp + $zhuangbei->zbhp;
     }
+
     if ($player->tool5 != 0) {
         $zhuangbei = getzb($player->tool5, $dblj);
         $player->ugj = $player->ugj + $zhuangbei->zbgj;
@@ -125,6 +129,7 @@ function getplayer($sid, $dblj)
         $player->uxx = $player->uxx + $zhuangbei->zbxx;
         $player->umaxhp = $player->umaxhp + $zhuangbei->zbhp;
     }
+
     if ($player->tool6 != 0) {
         $zhuangbei = getzb($player->tool6, $dblj);
         $player->ugj = $player->ugj + $zhuangbei->zbgj;
@@ -310,16 +315,18 @@ function istupo($sid, $dblj)
         if ($playernextlv >= $rangeslv[$i] && $playernextlv < $rangeslv[$i + 1]) {
 
             if ($player->jingjie != $rangesjj[$i]) {
-                return 1;//阶段突破
+                return 1;//bước đột phá
             }
+
             $rangesjd = array('1', '2', '3', '4', '5', '6', '7', '8', '9', '10');
             $djc = $playernextlv - $rangeslv[$i];
             $jds = ($rangeslv[$i + 1] - $rangeslv[$i]) / 10;
             $jieduan = floor($djc / $jds);
             $jd = $rangesjd[$jieduan];
             if ($player->cengci != $jd . 'Tầng') {
-                return 2;//层次突破
+                return 2;//đột phá cấp độ
             }
+
             return 0;
         }
     }

@@ -376,7 +376,7 @@ if (isset($cmd)) {
 </head>
 <body>
 <div class="main max-w-[400px] h-[100vh]">
-    <div class="h-full">
+    <div class="h-full relateve">
         <?php
         if (!$ym == '') {
             echo $tpts;

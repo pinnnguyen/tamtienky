@@ -86,25 +86,33 @@ HTML;
 
 if ($upmid->mname != '') {
     $lukouhtml .= <<<HTML
-    Hướng Bắc:<a href="?cmd=$upmidlj">$upmid->mname ↑</a><br/>
+<div>
+    Hướng Bắc:<a class="bg-[#621e1f] !text-white h-[34px] !flex items-center" href="?cmd=$upmidlj">$upmid->mname ↑</a>
+</div>
 HTML;
 }
 
 if ($leftmid->mname != '') {
     $lukouhtml .= <<<HTML
-    Hướng Tây:<a href="?cmd=$leftmidlj">$leftmid->mname ←</a><br/>
+<div>
+    <span>Hướng Tây</span>:<a class="bg-[#621e1f] !text-white h-[34px] !flex items-center" href="?cmd=$leftmidlj">$leftmid->mname ←</a>
+</div>
 HTML;
 }
 
 if ($rightmid->mname != '') {
     $lukouhtml .= <<<HTML
-    Hướng Đông:<a href="?cmd=$rightmidlj">$rightmid->mname →</a><br/>
+<div>
+    <span>Hướng Đông</span>:<a class="bg-[#621e1f] !text-white h-[34px] !flex items-center" href="?cmd=$rightmidlj">$rightmid->mname →</a>
+</div>
 HTML;
 }
 
 if ($downmid->mname != '') {
     $lukouhtml .= <<<HTML
-    Hướng Nam:<a href="?cmd=$downmidlj">$downmid->mname ↓</a><br/>
+<div>
+    <span>Hướng Nam</span>:<a class="bg-[#621e1f] !text-white h-[34px] !flex items-center" href="?cmd=$downmidlj">$downmid->mname ↓</a>
+</div>
 HTML;
 }
 
@@ -329,7 +337,8 @@ $nowhtml = <<<HTML
         <span class="pb-[2px]">$player->uname [lv:$player->ulv]</span>
     </div>
     <div class="p-2">
-        <div class="uppercase text-center font-semibold mb-2">$clmid->mname$pvphtml</div>
+        <div class="uppercase font-semibold">$clmid->mname$pvphtml</div>
+        <span class="text-xs mb-2 text-[#ff380b]">Chú ý: $clmid->playerinfo</span>
         <div class="flex flex-wrap">
             $playerhtml
             $gwhtml
@@ -337,30 +346,34 @@ $nowhtml = <<<HTML
     </div>
 <div>
 </div>
-<div>
-    <div class="uppercase font-semibold mb-2">NPC</div>
-    <a href="?cmd=$mytask">Nhiệm vụ($taskcount)</a>
+<div class="p-2">
     $npchtml
 </div>
 
 $bosshtml
 
+<div class="absolute bottom-0 bg-black overflow-scroll border border-t-white p-2">
 
-<div class="fixed bottom-[160px]">
+<div class="p-2">
+ <a class="bg-[#621e1f] !text-white h-[34px] !flex items-center" href="?cmd=$mytask">Nhiệm vụ($taskcount)</a>
+<div class="flex">
     $lukouhtml
-    【<a href="?cmd=$mapcmd">Bản đồ</a>
-    <div class="xinxi2">Chú ý: $clmid->playerinfo</div>
+    </div>
+    <div class="text-center">
+</div>
 </div>
 
+    <div class="text-white overflow-scroll border border-t-b-white mx-2">    
+        <div class="flex">
+        <a class="!flex items-center border-none justify-center !text-white" href="?cmd=$goliaotian">
+            <svg class="w-[24px]" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="comments" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M416 192c0-88.4-93.1-160-208-160S0 103.6 0 192c0 34.3 14.1 65.9 38 92-13.4 30.2-35.5 54.2-35.8 54.5-2.2 2.3-2.8 5.7-1.5 8.7S4.8 352 8 352c36.6 0 66.9-12.3 88.7-25 32.2 15.7 70.3 25 111.3 25 114.9 0 208-71.6 208-160zm122 220c23.9-26 38-57.7 38-92 0-66.9-53.5-124.2-129.3-148.1.9 6.6 1.3 13.3 1.3 20.1 0 105.9-107.7 192-240 192-10.8 0-21.3-.8-31.7-1.9C207.8 439.6 281.8 480 368 480c41 0 79.1-9.2 111.3-25 21.8 12.7 52.1 25 88.7 25 3.2 0 6.1-1.9 7.3-4.8 1.3-2.9.7-6.3-1.5-8.7-.3-.3-22.4-24.2-35.8-54.5z"></path></svg>
+        </a>
+        <div>$lthtml</div>
+        <a class="w-[110px] !flex justify-center items-center !text-white" href="?cmd=$mapcmd">Bản đồ</a>
+    </div>
+    </div>
 
-<div class="bg-black text-white p-2 flex fixed bottom-[100px] h-[60px] overflow-scroll" id="ltmsg">
-<a class="!flex items-center border-none justify-center" href="?cmd=$goliaotian">
-    <svg class="w-[24px]" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="comments" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M416 192c0-88.4-93.1-160-208-160S0 103.6 0 192c0 34.3 14.1 65.9 38 92-13.4 30.2-35.5 54.2-35.8 54.5-2.2 2.3-2.8 5.7-1.5 8.7S4.8 352 8 352c36.6 0 66.9-12.3 88.7-25 32.2 15.7 70.3 25 111.3 25 114.9 0 208-71.6 208-160zm122 220c23.9-26 38-57.7 38-92 0-66.9-53.5-124.2-129.3-148.1.9 6.6 1.3 13.3 1.3 20.1 0 105.9-107.7 192-240 192-10.8 0-21.3-.8-31.7-1.9C207.8 439.6 281.8 480 368 480c41 0 79.1-9.2 111.3-25 21.8 12.7 52.1 25 88.7 25 3.2 0 6.1-1.9 7.3-4.8 1.3-2.9.7-6.3-1.5-8.7-.3-.3-22.4-24.2-35.8-54.5z"></path></svg>
-</a>
-<div>$lthtml</div>
-</div>
 
-<div class="fixed bottom-0 bg-black h-[100px] overflow-scroll border border-t-white">
      <a href="?cmd=$getbagcmd" >B.lô</a>  
     <a href="?cmd=$getbagjncmd" >Phù lục</a>
     <br/>

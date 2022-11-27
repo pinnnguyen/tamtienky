@@ -85,7 +85,8 @@ a {
     border-radius: 3px;
     text-decoration: none;
     margin-right: 3px;
-    background: radial-gradient(black, transparent);
+    /*background: radial-gradient(black, transparent);*/
+    border: 1px solid gray;
 }
 
 

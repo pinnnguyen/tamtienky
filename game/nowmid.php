@@ -338,9 +338,9 @@ $nowhtml = <<<HTML
         <span class="pb-[2px]">$player->uname [lv:$player->ulv]</span>
     </div>
     <div class="text-right">
-        <a href="?cmd=$fangshi" ><img class="w-[30px]" src="images/menu/market.png" /></span>Chợ</span></a> 
-        <a href="?cmd=$imcmd"><img class="w-[30px]" src="images/menu/party.png" /><span>H.Hữu</span></a> 
-        <a href="?cmd=$phcmd"><img class="w-[30px]" src="images/menu/xephang.png" /><span>X.hạng</span></a>
+        <a class="inline-block" href="?cmd=$fangshi" ><img class="w-[30px]" src="images/menu/market.png" /></span>Chợ</span></a> 
+        <a class="inline-block" href="?cmd=$imcmd"><img class="w-[30px]" src="images/menu/party.png" /><span>H.Hữu</span></a> 
+        <a class="inline-block" href="?cmd=$phcmd"><img class="w-[30px]" src="images/menu/xephang.png" /><span>X.hạng</span></a>
     </div>
     <div class="p-2">
         <div class="uppercase font-semibold text-xs">$clmid->mname$pvphtml</div>

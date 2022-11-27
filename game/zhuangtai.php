@@ -110,7 +110,7 @@ $html = <<<HTML
         <h3 class="text-xl text-center pt-2 bg-[#88b3b9] font-semibold">
             Thông tin thuộc tính
         </h3>
-        <div class="bg-[#7a989f] m-3 rounded-md pt-2">
+        <div class="m-3 rounded-md pt-2" style="background-image: linear-gradient(to bottom right, #7a989e, #a5bfbc, #d6e4e0); height: calc(100% - 60px)">
             <div class="h-[60px] bg-[#b5c7c7] justify-between flex items-center mx-3">
                 <div>
                     <img class="h-[50px]" src="images/pve/player-avatar.png">
@@ -126,7 +126,7 @@ $html = <<<HTML
                     Đẳng cấp: $player->ulv
                     </div>
                 </div>
-                 <a style="background: radial-gradient(black, transparent)" href="?cmd=$duihuancmd">Giftcode</a>
+                 <a style="background: radial-gradient(black, transparent)" class="text-white" href="?cmd=$duihuancmd">Giftcode</a>
             </div>
             <div class="m-3">
              <div class="border border-[#80999d] bg-[#9ab1b0] my-1 px-2">
@@ -153,38 +153,57 @@ $html = <<<HTML
                 <div class="border border-[#80999d] bg-[#9ab1b0] my-1 px-2">
                     Hút máu: $player->uxx%
                 </div>
-                <div >
-                    <div>
-                        Vũ khí: $tool1
+                <div>
+                 <div class="text-sm text-center font-semibold mb-2">Trang bị</div>
 
+                <div class="grid grid-cols-4 gap-2">
+                    <div>
+                    <img class="w-[60px] h-[55px]" src="images/trangbi/vukhi.png" />
+<!--                        Vũ khí: -->
+                            $tool1
                     </div>
                     <div>
-                        Ngọc Bội: $tool2
-
+                    <img class="w-[60px] h-[55px]" src="images/trangbi/ngocboi.png" />
+<!--                        Ngọc Bội: -->
+                            $tool2
                     </div>
                     <div>
-                        Quần áo: $tool3
-
+                    <img class="w-[60px] h-[55px]" src="images/trangbi/giap.png" />
+<!--                        áo: -->
+                        $tool3
                     </div>
                     <div>
-                        Đai lưng: $tool4
-
+                    <img class="w-[60px] h-[55px]" src="images/trangbi/baotay.png" />
+<!--                        Bao tay: -->
+                        $tool4
                     </div>
                     <div>
-                        Nhẫn: $tool5
-
+                    <img class="w-[60px] h-[55px]" src="images/trangbi/rinh.png" />
+<!--                        Nhẫn: -->
+                        $tool5
                     </div>
                     <div>
-                        Giày: $tool6
-
+                    <img class="w-[60px] h-[55px]" src="images/trangbi/giay.png" />
+<!--                        Giày:-->
+                        $tool6
                     </div>
+                     <div>
+                    <img class="w-[60px] h-[55px]" src="images/trangbi/ngoc.png" />
+<!--                        Giày:-->
+                    </div>
+                     <div>
+                    <img class="w-[60px] h-[55px]" src="images/trangbi/mu.png" />
+<!--                        Giày:-->
+                    </div>
+                </div>
+
                 </div>
 
             </div>
         </div>
-        <div class="absolute bottom-0 h-[50px]">
-            <a style="background: radial-gradient(black, transparent)" onClick="javascript :history.back(-1);">Trở về</a> 
-            <a style="background: radial-gradient(black, transparent)" href="?cmd=$gonowmid">Trở về trò chơi</a>
+        <div class="absolute bottom-0 h-[50px] ml-6">
+            <a style="background: radial-gradient(black, transparent)" class="text-white" onClick="javascript :history.back(-1);">Trở về</a> 
+            <a style="background: radial-gradient(black, transparent)" class="text-white" href="?cmd=$gonowmid">Trở về trò chơi</a>
         </div>
     </div>
 </div>

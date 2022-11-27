@@ -80,12 +80,12 @@ ul {
 }
 
 a {
-    color: white;
+    color: #fffff !important;
     padding: 1px 10px;
     border-radius: 3px;
     text-decoration: none;
     margin-right: 3px;
-    background: background: radial-gradient(black, transparent);
+    background: radial-gradient(black, transparent);
 }
 
 

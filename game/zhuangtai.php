@@ -105,85 +105,100 @@ if ($player->tool6 != 0) {
 }
 
 $html = <<<HTML
-<div class="bg-[#8ba6ab] w-full h-full">
+<div class="bg-[#395661] w-full h-full">
+    <div class="h-full">
+        <h3 class="text-2xl">
+            Thông tin thuộc tính
+        </h3>
+        <div class="bg-[#7a989f] m-3 rounded-md pt-2">
+            <div class="h-[60px] bg-[#b5c7c7] flex items-center mx-3">
+                <div>
+                    <img class="h-[50px]" src="images/pve/player-avatar.png">
+                </div>
+                <div>
+                    <div>
+                        Nickname1: $player->uname
+                    </div>
+                    <div>
+                        Cảnh giới: $player->jingjie$player->cengci
+                    </div>
+                    <div>
+                    Đẳng cấp: $player->ulv
+                    </div>
+                </div>
 
-<h3>
-Thông tin thuộc tính
-</h3>
-<div>
-Nickname1: $player->uname
 
+            </div>
+            <div class="m-3">
+                <div class="border border-[#80999d] bg-[#9ab1b0]">
+                    Đẳng cấp: $player->ulv
+                </div>
+                <div class="border border-[#80999d] bg-[#9ab1b0]">
+                    Tu vị: $player->uexp/$player->umaxexp
+
+                </div>
+                <div class="border border-[#80999d] bg-[#9ab1b0]">
+                    Linh thạch: $player->uyxb
+
+                </div>
+                <div>
+                    Cực phẩm linh thạch: $player->uczb
+
+                </div>
+                <div>
+                    Khí huyết: $player->uhp/$player->umaxhp
+
+                </div>
+                <div>
+                    Công Kích: $player->ugj
+
+                </div>
+                <div>
+                    Phòng Ngự: $player->ufy
+
+                </div>
+                <div>
+                    Bạo kích: $player->ubj%
+
+                </div>
+                <div>
+                    Hút máu: $player->uxx%
+
+                </div>
+                <div>
+                    <div>
+                        Vũ khí: $tool1
+
+                    </div>
+                    <div>
+                        Ngọc Bội: $tool2
+
+                    </div>
+                    <div>
+                        Quần áo: $tool3
+
+                    </div>
+                    <div>
+                        Đai lưng: $tool4
+
+                    </div>
+                    <div>
+                        Nhẫn: $tool5
+
+                    </div>
+                    <div>
+                        Giày: $tool6
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="absolute bottom-0">
+        <a href="?cmd=$duihuancmd">Đ.thưởng</a>
+        <button onClick="javascript :history.back(-1);">Trở về</button> <a href="?cmd=$gonowmid">Trở về trò chơi</a>
 </div>
-<div>
-Cảnh giới: $player->jingjie$player->cengci
-
-</div>
-<div>
-Đẳng cấp: $player->ulv
-
-</div>
-<div>
-Tu vị: $player->uexp/$player->umaxexp
-
-</div>
-<div>
-Linh thạch: $player->uyxb
-
-</div>
-<div>
-Cực phẩm linh thạch: $player->uczb
-
-</div>
-<div>
-Khí huyết: $player->uhp/$player->umaxhp
-
-</div>
-<div>
-Công Kích: $player->ugj
-
-</div>
-<div>
-Phòng Ngự: $player->ufy
-
-</div>
-<div>
-Bạo kích: $player->ubj%
-
-</div>
-<div>
-Hút máu: $player->uxx%
-
-</div>
-<div>
-<div>
-Vũ khí: $tool1
-
-</div>
-<div>
-Ngọc Bội: $tool2
-
-</div>
-<div>
-Quần áo: $tool3
-
-</div>
-<div>
-Đai lưng: $tool4
-
-</div>
-<div>
-Nhẫn: $tool5
-
-</div>
-<div>
-Giày: $tool6
-
-</div>
-</div>
-
-<br/><br/>
-<a href="?cmd=$duihuancmd" >Đ.thưởng</a>
-<button onClick="javascript :history.back(-1);">Trở về</button> <a href="?cmd=$gonowmid">Trở về trò chơi</a>
+    </div>
 </div>
 
 HTML;

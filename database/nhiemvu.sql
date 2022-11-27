@@ -28,6 +28,7 @@ INSERT INTO `renwu`
 VALUES ('Sơn trư họa loạn', '2', '1|5', '24', '100', '120', '13', '56',
         'Tối cận sơn trư hạ sơn, nhiễu loạn liễu ngã môn đích sinh hoạt, thỉnh bang ngã môn cản bào tha môn', '5', '2',
         '6|3', '0', '');
+
 INSERT INTO `renwu`
 VALUES ('Thu tập phong mật', '1', '1|5', '23', '200', '100', '14', '8', 'Thu tập ngạnh sí phong đích phong mật', '10',
         '2', '6|3', '0', '');

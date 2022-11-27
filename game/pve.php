@@ -165,6 +165,7 @@ if ($cmd == 'pve' && $guaiwu->sid == '') {
             $rwid = $taskarr[$i]['rwid'];
             $rwzl = $taskarr[$i]['rwzl'];
             $rwzt = $taskarr[$i]['rwzt'];
+
             if ($rwyq == $guaiwu->gyid && $rwzl == 2 && $rwzt != 3) {
                 $rwnowcount = $taskarr[$i]['rwnowcount'] + 1;
                 $rwts = $taskarr[$i]['rwname'] . '(' . $rwnowcount . "/" . $taskarr[$i]['rwcount'] . ')<br/>';

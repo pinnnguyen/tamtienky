@@ -28,8 +28,10 @@ CREATE TABLE `guaiwu`
 -- ----------------------------
 INSERT INTO `guaiwu`
 VALUES ('Ngạnh sí phong', '1', '55', 'Ngạnh sí phong', 'M', '40', '5', '3', '0', '0', '23', '10', '8', '30', '6', '8');
+
 INSERT INTO `guaiwu`
-VALUES ('Sơn trư', '1', '56', 'Sơn thượng đích chư', 'M', '40', '4', '4', '0', '0', '24', '10', '1', '2', '', '0');
+VALUES ('Nhím', '1', '1', 'Nhím', 'M', '40', '4', '4', '0', '0', '24', '10', '1', '2', '', '0');
+
 INSERT INTO `guaiwu`
 VALUES ('Lão hổ', '2', '57', 'Hung mãnh đích lão hổ', 'M', '70', '8', '6', '0', '0', '25', '10', '1', '3', '', '0');
 INSERT INTO `guaiwu`

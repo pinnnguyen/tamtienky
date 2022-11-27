@@ -796,7 +796,7 @@ class task
     var $rwexp;
     var $rwyxb;
     var $sid;
-    var $rwzt;//状态
+    var $rwzt;//tiểu bang
     var $rwcount;
     var $rwyp;
     var $rwlx;

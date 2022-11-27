@@ -18,6 +18,8 @@ CREATE TABLE `npc`
 -- Records of npc
 -- ----------------------------
 INSERT INTO `npc`
+VALUES ('10', 'Sứ giả nhiệm vụ', 'M', 'Sứ giả nhiệm vụ', '', '13,25,24,28');
+INSERT INTO `npc`
 VALUES ('11', 'Thôn trường', 'M', 'Trưởng thôn', '', '13,25,24,28');
 INSERT INTO `npc`
 VALUES ('13', 'Vương lão ngũ', 'M', 'Ai... Một người thời gian, thật thật là khó.', '', '24');

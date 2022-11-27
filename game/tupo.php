@@ -13,7 +13,9 @@ $tplshtml = "";
 $tpls = 0;
 
 if ($player->uexp < $player->umaxexp) {
-    echo 'Tu vi chưa đủ để đột phá<a href="?cmd=$gonowmid">Trở về trò chơi</a>';
+    echo <<<HTML
+ Tu vi chưa đủ để đột phá<a href="?cmd=$gonowmid">Trở về trò chơi</a>
+HTML;
     exit();
 }
 

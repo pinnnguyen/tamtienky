@@ -67,7 +67,7 @@ if ($allcw) {
             $gncmd = $czcmd . $fscmd;
         } else {
             $shcmd = $encode->encode("cmd=chongwu&canshu=shouhui&cwid=$cwid&sid=$sid");
-            $shcmd = '<a href="?cmd=' . $shcmd . '">Thu hồi</a>';
+            $shcmd = '<a href="?cmd=' . $shcmd . '">Triệu hồi</a>';
             $gncmd = '(Đã xuất chiến)' . $shcmd;
         }
         $cwinfo = $encode->encode("cmd=chongwu&cwid=$cwid&canshu=cwinfo&sid=$sid");

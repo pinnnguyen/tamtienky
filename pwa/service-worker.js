@@ -3,8 +3,8 @@ self.addEventListener("install", function(event) {
 		caches.open("pwa").then(function(cache) {
 			return cache.addAll([
 				"/",
-				"/style.css",
-				"/script.js",
+				"/css/game.css",
+				"/js/game.js"
 			]);
 		})
 	);

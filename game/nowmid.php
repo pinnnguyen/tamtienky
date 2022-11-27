@@ -131,7 +131,7 @@ if ($second > $clmid->ms && $cxallguaiwu == 0 && $clmid->mgid != '') {//lÃ m má»
         $gwinfo = explode("|", $itemgw);
         $guaiwu = \player\getyguaiwu($gwinfo[0], $dblj);
         $guaiwu->gyid = $gwinfo[0];
-        $sjexp = mt_rand(6, 8) + 0.5;
+        $sjexp = monsterExp();
         $guaiwu->gexp = round($guaiwu->glv * $sjexp, 0);
 
         for ($n = 0; $n < $gwinfo[1]; $n++) {

@@ -5,7 +5,7 @@ $html = <<<HTML
         Tên nhân vật:
         <input type="hidden" name="cmd" value="cjplayer">
         <input type="hidden" name="token" value='$token'>
-        <p><input type="text" name="username" maxlength="7"></p>
+        <p><input type="text" name="username" maxlength="12"></p>
         <p><label>Nam:<input type="radio" name="sex" value="1" checked></label>
             <label>Nữ<input type="radio" name="sex" value="2"></label>
         </p>

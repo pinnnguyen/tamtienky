@@ -201,10 +201,6 @@ if ($cmd == 'pve' && $guaiwu->sid == '') {
 //                    goto yp;
 //                }
                 $djsum = mt_rand(1, 2); //Nhận ngẫu nhiên 1 hoặc 2 đạo cụ
-                if ($djid == 1) {
-                    $djsum = mt_rand(1, 2);
-                }
-
                 \player\adddj($sid, $djid, $djsum, $dblj);
                 $huode .= "Thu hoạch: <div class='djys'>$djname x$djsum</div>";
 

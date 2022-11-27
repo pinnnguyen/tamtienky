@@ -152,7 +152,7 @@ $cxallguaiwu = $cxjg->fetchAll(PDO::FETCH_ASSOC);
 $gwhtml = '';
 for ($i = 0; $i < count($cxallguaiwu); $i++) {
     $gwcmd = $encode->encode("cmd=getginfo&gid=" . $cxallguaiwu[$i]['id'] . "&gyid=" . $cxallguaiwu[$i]['gyid'] . "&sid=$sid&nowmid=$player->nowmid");
-    $gwhtml .= "<a style='font-size: 10px' class='!flex flex-col justify-center bg-[#8b0808] !text-white font-medium text-center w-[70px] overflow-hidden h-[55px] overflow-hidden rounded' href='?cmd=$gwcmd'><span>[lv". $cxallguaiwu[$i]['glv']."]</span>" . $cxallguaiwu[$i]['gname'] . "</a> ";
+    $gwhtml .= "<a style='font-size: 10px' class='!flex flex-col justify-center bg-[#8b0808] !text-white font-medium text-center w-[70px] overflow-hidden h-[55px] overflow-hidden rounded' href='?cmd=$gwcmd'><span>[lv" . $cxallguaiwu[$i]['glv'] . "]</span>" . $cxallguaiwu[$i]['gname'] . "</a> ";
 }
 
 $sql = "select * from game1 where nowmid='$player->nowmid' AND sfzx = 1";//获取当前地图玩家
@@ -288,7 +288,7 @@ if ($clmid->mnpc != "") {
 //        }
         $npccmd = $encode->encode("cmd=npc&nid=$nid&sid=$player->sid");
         $npchtml .= <<<HTML
-        <a href="?cmd=$npccmd">$nname</a><br/>
+        <a href="?cmd=$npccmd">$nname</a>
 HTML;
     }
 }
@@ -325,7 +325,7 @@ $imcmd = $encode->encode("cmd=im&sid=$sid");
 $nowhtml = <<<HTML
 <div>
     <div class="flex items-end">
-        <img class="h-[40px]" src="images/pve/player-avatar.png">
+        <a class="border-none p-0" href="?cmd=$ztcmd"><img class="h-[40px]" src="images/pve/player-avatar.png"></a>
         <span class="pb-[2px]">$player->uname [lv:$player->ulv]</span>
     </div>
     <div class="p-2">
@@ -337,24 +337,30 @@ $nowhtml = <<<HTML
     </div>
 <div>
 </div>
-<a href="?cmd=$mytask">Nhiệm vụ($taskcount)</a>
-$npchtml
-$bosshtml
-Mời chọn giao lộ:<br/>
-$lukouhtml
-$clmid->mname
-【<a href="?cmd=$mapcmd">K.tra bản đồ</a>】<br/>
-<span class="xinxi2">$clmid->playerinfo</span>
+<div>
+    <div class="uppercase font-semibold mb-2">NPC</div>
+    <a href="?cmd=$mytask">Nhiệm vụ($taskcount)</a>
+    $npchtml
+</div>
 
-<div class="bg-black text-white p-2 flex fixed bottom-[100px]" id="ltmsg">
+$bosshtml
+
+
+<div class="fixed bottom-[160px]">
+    $lukouhtml
+    【<a href="?cmd=$mapcmd">Bản đồ</a>
+    <div class="xinxi2">Chú ý: $clmid->playerinfo</div>
+</div>
+
+
+<div class="bg-black text-white p-2 flex fixed bottom-[100px] h-[60px] overflow-scroll" id="ltmsg">
 <a class="!flex items-center border-none justify-center" href="?cmd=$goliaotian">
     <svg class="w-[24px]" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="comments" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M416 192c0-88.4-93.1-160-208-160S0 103.6 0 192c0 34.3 14.1 65.9 38 92-13.4 30.2-35.5 54.2-35.8 54.5-2.2 2.3-2.8 5.7-1.5 8.7S4.8 352 8 352c36.6 0 66.9-12.3 88.7-25 32.2 15.7 70.3 25 111.3 25 114.9 0 208-71.6 208-160zm122 220c23.9-26 38-57.7 38-92 0-66.9-53.5-124.2-129.3-148.1.9 6.6 1.3 13.3 1.3 20.1 0 105.9-107.7 192-240 192-10.8 0-21.3-.8-31.7-1.9C207.8 439.6 281.8 480 368 480c41 0 79.1-9.2 111.3-25 21.8 12.7 52.1 25 88.7 25 3.2 0 6.1-1.9 7.3-4.8 1.3-2.9.7-6.3-1.5-8.7-.3-.3-22.4-24.2-35.8-54.5z"></path></svg>
 </a>
 <div>$lthtml</div>
 </div>
 
-<div class="fixed bottom-0 bg-black h-[100px] overflow-scroll">
-    <a href="?cmd=$ztcmd">T.thái</a>
+<div class="fixed bottom-0 bg-black h-[100px] overflow-scroll border border-t-white">
      <a href="?cmd=$getbagcmd" >B.lô</a>  
     <a href="?cmd=$getbagjncmd" >Phù lục</a>
     <br/>

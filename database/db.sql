@@ -5690,10 +5690,21 @@ CREATE TABLE `yaopin` (
 -- ----------------------------
 -- Records of yaopin
 -- ----------------------------
-INSERT INTO `yaopin` VALUES ('Hoàn nguyên đan', '6', '100', '0', '0', '0', '0', '30');
-INSERT INTO `yaopin` VALUES ('Hồi huyết tán', '7', '300', '0', '0', '0', '0', '80');
-INSERT INTO `yaopin` VALUES ('Hồi xuân thang', '8', '600', '0', '0', '0', '0', '155');
-INSERT INTO `yaopin` VALUES ('Phục thương đan', '9', '1200', '0', '0', '0', '0', '310');
+INSERT INTO `yaopin` VALUES ('[Nhất phẩm] Hoàn nguyên đan', '6', '400', '0', '0', '0', '0', '30');
+INSERT INTO `yaopin` VALUES ('[Nhị phẩm] Hoàn nguyên đan', '10', '700', '0', '0', '0', '0', '45');
+INSERT INTO `yaopin` VALUES ('[Tam phẩm] Hoàn nguyên đan', '11', '900', '0', '0', '0', '0', '65');
+
+INSERT INTO `yaopin` VALUES ('[Nhất phẩm] Hồi huyết tán', '7', '900', '0', '0', '0', '0', '80');
+INSERT INTO `yaopin` VALUES ('[Nhị phẩm] Hồi huyết tán', '12', '1200', '0', '0', '0', '0', '120');
+INSERT INTO `yaopin` VALUES ('[Tam phẩm] Hồi huyết tán', '13', '1500', '0', '0', '0', '0', '140');
+
+INSERT INTO `yaopin` VALUES ('[Nhất phẩm] Hồi xuân thang', '8', '1200', '0', '0', '0', '0', '155');
+INSERT INTO `yaopin` VALUES ('[Nhị phẩm] Hồi xuân thang', '14', '1500', '0', '0', '0', '0', '255');
+INSERT INTO `yaopin` VALUES ('[Tam phẩm] Hồi xuân thang', '15', '1900', '0', '0', '0', '0', '355');
+
+INSERT INTO `yaopin` VALUES ('[Nhất phẩm] Phục thương đan', '9', '1900', '0', '0', '0', '0', '410');
+INSERT INTO `yaopin` VALUES ('[Nhị phẩm] Phục thương đan', '16', '1900', '0', '0', '0', '0', '510');
+INSERT INTO `yaopin` VALUES ('[Tam phẩm] Phục thương đan', '17', '1900', '0', '0', '0', '0', '610');
 
 -- ----------------------------
 -- Table structure for zhuangbei

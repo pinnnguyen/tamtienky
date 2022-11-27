@@ -107,11 +107,11 @@ if ($player->tool6 != 0) {
 $html = <<<HTML
 <div class="bg-[#395661] w-full h-full">
     <div class="h-full">
-        <h3 class="text-2xl">
+        <h3 class="text-xl text-center pt-2 bg-[#88b3b9] font-semibold">
             Thông tin thuộc tính
         </h3>
         <div class="bg-[#7a989f] m-3 rounded-md pt-2">
-            <div class="h-[60px] bg-[#b5c7c7] flex items-center mx-3">
+            <div class="h-[60px] bg-[#b5c7c7] justify-between flex items-center mx-3">
                 <div>
                     <img class="h-[50px]" src="images/pve/player-avatar.png">
                 </div>
@@ -126,46 +126,34 @@ $html = <<<HTML
                     Đẳng cấp: $player->ulv
                     </div>
                 </div>
-
-
+                 <a style="background: radial-gradient(black, transparent)" href="?cmd=$duihuancmd">Giftcode</a>
             </div>
             <div class="m-3">
-                <div class="border border-[#80999d] bg-[#9ab1b0]">
-                    Đẳng cấp: $player->ulv
-                </div>
-                <div class="border border-[#80999d] bg-[#9ab1b0]">
-                    Tu vị: $player->uexp/$player->umaxexp
-
-                </div>
-                <div class="border border-[#80999d] bg-[#9ab1b0]">
+             <div class="border border-[#80999d] bg-[#9ab1b0] my-1 px-2">
                     Linh thạch: $player->uyxb
-
                 </div>
-                <div>
+                <div class="border border-[#80999d] bg-[#9ab1b0] my-1 px-2">
                     Cực phẩm linh thạch: $player->uczb
-
                 </div>
-                <div>
+                <div class="border border-[#80999d] bg-[#9ab1b0] my-1 px-2">
+                    Tu vị: $player->uexp/$player->umaxexp
+                </div>
+                <div class="border border-[#80999d] bg-[#9ab1b0] my-1 px-2">
                     Khí huyết: $player->uhp/$player->umaxhp
-
                 </div>
-                <div>
+                <div class="border border-[#80999d] bg-[#9ab1b0] my-1 px-2">
                     Công Kích: $player->ugj
-
                 </div>
-                <div>
+                <div class="border border-[#80999d] bg-[#9ab1b0] my-1 px-2">
                     Phòng Ngự: $player->ufy
-
                 </div>
-                <div>
+                <div class="border border-[#80999d] bg-[#9ab1b0] my-1 px-2">
                     Bạo kích: $player->ubj%
-
                 </div>
-                <div>
+                <div class="border border-[#80999d] bg-[#9ab1b0] my-1 px-2">
                     Hút máu: $player->uxx%
-
                 </div>
-                <div>
+                <div >
                     <div>
                         Vũ khí: $tool1
 
@@ -194,10 +182,10 @@ $html = <<<HTML
 
             </div>
         </div>
-        <div class="absolute bottom-0">
-        <a href="?cmd=$duihuancmd">Đ.thưởng</a>
-        <button onClick="javascript :history.back(-1);">Trở về</button> <a href="?cmd=$gonowmid">Trở về trò chơi</a>
-</div>
+        <div class="absolute bottom-0 h-[50px]">
+            <a style="background: radial-gradient(black, transparent)" onClick="javascript :history.back(-1);">Trở về</a> 
+            <a style="background: radial-gradient(black, transparent)" href="?cmd=$gonowmid">Trở về trò chơi</a>
+        </div>
     </div>
 </div>
 

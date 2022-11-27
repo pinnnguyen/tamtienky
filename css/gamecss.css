@@ -66,8 +66,6 @@ body {
 }
 
 a:link {
-    color: #0093E8;
-    display: inline-block;
     margin: 4px 3px 2px 4px;
 }
 
@@ -82,17 +80,14 @@ ul {
 }
 
 a {
-
-    color: #0093E8;
+    color: white;
     padding: 1px 10px;
     border-radius: 3px;
     text-decoration: none;
     margin-right: 3px;
+    background: background: radial-gradient(black, transparent);
 }
 
-a:visited {
-    color: #0093E8;
-}
 
 a:hover, a:active, a:focus {
     color: #FFFFFF;

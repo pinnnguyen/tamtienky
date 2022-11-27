@@ -222,70 +222,70 @@ if ($clmid->mnpc != "") {
         $taskid = $cxnpcall[$i]['taskid'];
         $taskarr = explode(',', $taskid);
         $yrw = false;
-        if ($taskid != '') {
-            for ($l = 0; $l < count($taskarr); $l++) {
-                $nowrw = \player\gettask($taskarr[$l], $dblj);
-                $rwret = \player\getplayerrenwuonce($sid, $taskarr[$l], $dblj);
-                $lastrwid = $nowrw->lastrwid;
-
-                if ($nowrw->rwlx == 1 || $nowrw->rwlx == 2) {
-                    if (!$rwret) {
-                        if ($nowrw->rwzl != 3) {
-                            $npchtml .= '<img src="images/wen.gif" />';
-                        } elseif ($nowrw->rwyq == $nid) {
-                            $npchtml .= '<img src="images/wen.gif" />';
-                        } else {
-                            continue;
-                        }
-                    } elseif ($rwret->rwzt == 2) {
-                        if ($nowrw->rwzl != 3) {
-                            $npchtml .= '<img src="images/tan.gif" />';
-                        } elseif ($nowrw->rwcount == $nid) {
-                            $npchtml .= '<img src="images/tan.gif" />';
-                        } else {
-                            continue;
-                        }
-
-                    }
-                }
-                if ($nowrw->rwlx == 3) {
-                    if ($rwret) {
-                        if ($rwret->rwzt == 2) {
-                            if ($nowrw->rwzl != 3) {
-                                $npchtml .= '<img src="images/tan.gif" />';
-                            } elseif ($nowrw->rwcount == $nid) {
-                                $npchtml .= '<img src="images/tan.gif" />';
-                            } else {
-                                continue;
-                            }
-                        }
-                    } else {
-                        if ($lastrwid <= 0) {
-                            if ($nowrw->rwzl != 3) {
-                                $npchtml .= '<img src="images/wen.gif" />';
-                            } elseif ($nowrw->rwyq == $nid) {
-                                $npchtml .= '<img src="images/wen.gif" />';
-                            } else {
-                                continue;
-                            }
-                        } else {
-                            $rwret = \player\getplayerrenwuonce($sid, $lastrwid, $dblj);
-                            if ($rwret) {
-                                if ($rwret->rwzt == 3) {
-                                    if ($nowrw->rwzl != 3) {
-                                        $npchtml .= '<img src="images/wen.gif" />';
-                                    } elseif ($nowrw->rwyq == $nid) {
-                                        $npchtml .= '<img src="images/wen.gif" />';
-                                    } else {
-                                        continue;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+//        if ($taskid != '') {
+//            for ($l = 0; $l < count($taskarr); $l++) {
+//                $nowrw = \player\gettask($taskarr[$l], $dblj);
+//                $rwret = \player\getplayerrenwuonce($sid, $taskarr[$l], $dblj);
+//                $lastrwid = $nowrw->lastrwid;
+//
+//                if ($nowrw->rwlx == 1 || $nowrw->rwlx == 2) {
+//                    if (!$rwret) {
+//                        if ($nowrw->rwzl != 3) {
+//                            $npchtml .= '<img src="images/wen.gif" />';
+//                        } elseif ($nowrw->rwyq == $nid) {
+//                            $npchtml .= '<img src="images/wen.gif" />';
+//                        } else {
+//                            continue;
+//                        }
+//                    } elseif ($rwret->rwzt == 2) {
+//                        if ($nowrw->rwzl != 3) {
+//                            $npchtml .= '<img src="images/tan.gif" />';
+//                        } elseif ($nowrw->rwcount == $nid) {
+//                            $npchtml .= '<img src="images/tan.gif" />';
+//                        } else {
+//                            continue;
+//                        }
+//
+//                    }
+//                }
+//                if ($nowrw->rwlx == 3) {
+//                    if ($rwret) {
+//                        if ($rwret->rwzt == 2) {
+//                            if ($nowrw->rwzl != 3) {
+//                                $npchtml .= '<img src="images/tan.gif" />';
+//                            } elseif ($nowrw->rwcount == $nid) {
+//                                $npchtml .= '<img src="images/tan.gif" />';
+//                            } else {
+//                                continue;
+//                            }
+//                        }
+//                    } else {
+//                        if ($lastrwid <= 0) {
+//                            if ($nowrw->rwzl != 3) {
+//                                $npchtml .= '<img src="images/wen.gif" />';
+//                            } elseif ($nowrw->rwyq == $nid) {
+//                                $npchtml .= '<img src="images/wen.gif" />';
+//                            } else {
+//                                continue;
+//                            }
+//                        } else {
+//                            $rwret = \player\getplayerrenwuonce($sid, $lastrwid, $dblj);
+//                            if ($rwret) {
+//                                if ($rwret->rwzt == 3) {
+//                                    if ($nowrw->rwzl != 3) {
+//                                        $npchtml .= '<img src="images/wen.gif" />';
+//                                    } elseif ($nowrw->rwyq == $nid) {
+//                                        $npchtml .= '<img src="images/wen.gif" />';
+//                                    } else {
+//                                        continue;
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
         $npccmd = $encode->encode("cmd=npc&nid=$nid&sid=$player->sid");
         $npchtml .= <<<HTML
         <a href="?cmd=$npccmd">$nname</a><br/>

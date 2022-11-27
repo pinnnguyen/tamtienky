@@ -188,7 +188,7 @@ if ($cmd == 'pve' && $guaiwu->sid == '') {
             }
         }
 
-        $sjjv = mt_rand(1, 180);//xác suất đạo cụ djjv 1-100 gdj là id mục đạo cụ, được phân tách bằng dấu phẩy
+        $sjjv = mt_rand(1, 100);//xác suất đạo cụ djjv 1-100 gdj là id mục đạo cụ, được phân tách bằng dấu phẩy
         if ($yguaiwu->djjv >= $sjjv && $yguaiwu->gdj != '') {
             $sql = "select * from daoju WHERE djid in ($yguaiwu->gdj)";
             $cxdljg = $dblj->query($sql);
@@ -197,10 +197,14 @@ if ($cmd == 'pve' && $guaiwu->sid == '') {
                 $sjdj = mt_rand(0, count($retdj) - 1);
                 $djname = $retdj[$sjdj]['djname'];
                 $djid = $retdj[$sjdj]['djid'];
-                if (($djid == 1 && $lvc >= 5) && !($djid == 1 && $guaiwu->glv >= 46 && $player->ulv >= 50)) { //道具id 1是强化石，这里意思是强化石在人物比怪物等级高10级后不会爆,看pve.php文件107行
-                    goto yp;
-                }
+//                if (($djid == 1 && $lvc >= 5) && !($djid == 1 && $guaiwu->glv >= 46 && $player->ulv >= 50)) { //道具id 1是强化石，这里意思是强化石在人物比怪物等级高10级后不会爆,看pve.php文件107行
+//                    goto yp;
+//                }
                 $djsum = mt_rand(1, 2); //Nhận ngẫu nhiên 1 hoặc 2 đạo cụ
+                if ($djid == 1) {
+                    $djsum = mt_rand(1, 2);
+                }
+
                 \player\adddj($sid, $djid, $djsum, $dblj);
                 $huode .= "Thu hoạch: <div class='djys'>$djname x$djsum</div>";
 

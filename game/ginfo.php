@@ -43,6 +43,7 @@ HTML;
 
         if ($yguaiwu->gdj != '') {
             $djarr = explode(',', $yguaiwu->gdj);
+
             foreach ($djarr as $newstr) {
                 $dj = \player\getdaoju($newstr, $dblj);
                 $djinfo = $encode->encode("cmd=djinfo&djid=$dj->djid&sid=$sid");

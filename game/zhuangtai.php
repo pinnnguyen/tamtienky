@@ -103,29 +103,86 @@ if ($player->tool6 != 0) {
 }
 
 $html = <<<HTML
-==Tu Tiên Hội trạng thái==<br/>
-Nickname: $player->uname<br/>
+<div class="bg-[#8ba6ab] w-full h-full">
 
-Cảnh giới: $player->jingjie$player->cengci<br/>
-Đẳng cấp: $player->ulv<br/>
-Tu vị: $player->uexp/$player->umaxexp<br/>
-Linh thạch: $player->uyxb<br/>
-Cực phẩm linh thạch: $player->uczb<br/>
-Khí huyết: $player->uhp/$player->umaxhp<br/>
-Công Kích: $player->ugj<br/>
-Phòng Ngự: $player->ufy<br/>
-Bạo kích: $player->ubj%<br/>
-Hút máu: $player->uxx%<br/>
-=========<br/>
-Vũ khí: $tool1<br/>
-Ngọc Bội: $tool2<br/>
-Quần áo: $tool3<br/>
-Đai lưng: $tool4<br/>
-Nhẫn: $tool5<br/>
-Giày: $tool6<br/><br/>
-<a href="?cmd=$getbagzbcmd">Trang bị</a>
+<h3>
+Thông tin thuộc tính
+</h3>
+<div>
+Nickname1: $player->uname
+
+</div>
+<div>
+Cảnh giới: $player->jingjie$player->cengci
+
+</div>
+<div>
+Đẳng cấp: $player->ulv
+
+</div>
+<div>
+Tu vị: $player->uexp/$player->umaxexp
+
+</div>
+<div>
+Linh thạch: $player->uyxb
+
+</div>
+<div>
+Cực phẩm linh thạch: $player->uczb
+
+</div>
+<div>
+Khí huyết: $player->uhp/$player->umaxhp
+
+</div>
+<div>
+Công Kích: $player->ugj
+
+</div>
+<div>
+Phòng Ngự: $player->ufy
+
+</div>
+<div>
+Bạo kích: $player->ubj%
+
+</div>
+<div>
+Hút máu: $player->uxx%
+
+</div>
+<div>
+<div>
+Vũ khí: $tool1
+
+</div>
+<div>
+Ngọc Bội: $tool2
+
+</div>
+<div>
+Quần áo: $tool3
+
+</div>
+<div>
+Đai lưng: $tool4
+
+</div>
+<div>
+Nhẫn: $tool5
+
+</div>
+<div>
+Giày: $tool6
+
+</div>
+</div>
+
 <br/><br/>
 <button onClick="javascript :history.back(-1);">Trở về</button> <a href="?cmd=$gonowmid">Trở về trò chơi</a>
+</div>
+
 HTML;
 echo $html;
 /**

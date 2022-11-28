@@ -339,13 +339,22 @@ $fangshi = $encode->encode("cmd=fangshi&fangshi=daoju&sid=$sid");
 $clubcmd = $encode->encode("cmd=club&sid=$sid");
 $duihuancmd = $encode->encode("cmd=duihuan&sid=$sid");
 $imcmd = $encode->encode("cmd=im&sid=$sid");
+$remainingplayerexp = ($player->uexp / $player->umaxexp) * 100;
+$remainingplayerexp .= 'px';
 
 $nowhtml = <<<HTML
 <div class="absolute top-0 left-0 w-full h-full opacity-80" style="background: url('images/bg.jpg'); background-size: cover"></div>
 <div class="h-full w-full absolute">
     <div class="flex items-end bg-[#36445a] text-white p-1">
+   
         <a class="border-none p-0" href="?cmd=$ztcmd"><img class="h-[40px]" src="images/pve/player-avatar.png"></a>
-        <span class="pb-[2px]">$player->uname [lv:$player->ulv]</span>
+        <div>
+          <div class="h-[10px] w-[105px] rounded-full bg-[#212121cc] flex items-center p-[2px]">
+                        <div class="h-[5px] w-20 rounded-full bg-[#ffcf3e]" style="width: $remainingplayerexp"></div>
+                    </div>
+                            <span class="pb-[2px]">$player->uname [lv:$player->ulv]</span>
+</div>
+
     </div>
     <div class="flex items-center justify-end">
         <a style="background: radial-gradient(black, transparent)" class="text-white inline-block flex items-center" href="?cmd=$fangshi" ><img class="w-[30px]" src="images/menu/market.png" /><span style="font-size: 10px">Chợ</span></a> 

@@ -135,7 +135,7 @@ $html = <<<HTML
                 </div>
                 <div>
                     <div>
-                        Nickname1: $player->uname
+                        Tên: $player->uname
                     </div>
                     <div>
                         Cảnh giới: $player->jingjie$player->cengci

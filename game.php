@@ -362,7 +362,7 @@ if (isset($cmd)) {
 </head>
 <body>
 <div class="main max-w-[678px] h-[100vh]">
-    <div class="h-full relative">
+    <div class="h-full relative" style="background: linear-gradient(to bottom right, #36445a, #90a7a9, #b2c5c4)">
         <?php
         if (!$ym == '') {
             echo $tpts;

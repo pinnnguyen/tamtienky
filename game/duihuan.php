@@ -64,7 +64,7 @@ if (isset($dhm)) {
             }
 
             if ($duihuan->dhczb) {
-                \player\changeczb(1, $duihuan->dhczb, $sid, $dblj);
+                \player\change_cuc_pham_nguyen_thach(1, $duihuan->dhczb, $sid, $dblj);
                 $tishi .= "Cực phẩm linh thạch: $duihuan->dhczb<br/>";
             }
 

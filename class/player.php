@@ -782,8 +782,9 @@ function changeyxb($lx, $gaibian, $sid, $dblj)
     }
 }
 
-function changeczb($lx, $gaibian, $sid, $dblj)
-{//改变货币
+//thay đổi tiền tệ
+function change_cuc_pham_nguyen_thach($lx, $gaibian, $sid, $dblj)
+{
     $player = getplayer($sid, $dblj);
     if ($lx == 1) {
         $sql = "update game1 set uczb = uczb + $gaibian WHERE sid='$sid'";

@@ -8,7 +8,7 @@ $chouqucmd = $encode->encode("cmd=chongwu&canshu=chouqu&sid=$sid");
 if (isset($canshu)) {
     switch ($canshu) {
         case 'chouqu':
-            if (\player\changeczb(2, 50, $sid, $dblj)) {
+            if (\player\change_cuc_pham_nguyen_thach(2, 50, $sid, $dblj)) {
                 \player\addchongwu($sid, $dblj);
             } else {
                 echo "Không đủ Đá Thần linh Tối cao<br/>";

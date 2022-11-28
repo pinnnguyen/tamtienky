@@ -19,7 +19,7 @@ if ($cmd == 'startxiulian'){
         if ($canshu == 1){
             $ret = \player\changeyxb(2,$xiaohao,$sid,$dblj);
         }else{
-            $ret = \player\changeczb(2,$jpxiaohao,$sid,$dblj);
+            $ret = \player\change_cuc_pham_nguyen_thach(2,$jpxiaohao,$sid,$dblj);
         }
         if ($ret){
             \player\changeplayersx('xiuliantime',$nowdate,$sid,$dblj);

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/gamecss.css">
 </head>
 <body>
-<div class="main" style="max-width: 400px">
+<div class="main" style="max-width: 678px">
     <img src="images/11.jpg" width="300" height="200" style="width: 100%"><br/>
     <div id="mainfont">
         Nguyệt lãnh thiên sơn giang tự bích, băng nhai vạn trượng vô lưu ý.<br/>

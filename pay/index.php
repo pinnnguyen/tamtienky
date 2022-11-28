@@ -11,5 +11,5 @@ require_once "../class/player.php";
 $uid = $_GET['user_id'];
 $amount = $_GET['amount'];
 $player = \player\getplayer1($uid,$dblj);
-\player\changeczb(1,$amount*10,$player->sid,$dblj);
+\player\change_cuc_pham_nguyen_thach(1,$amount*10,$player->sid,$dblj);
 echo "充值成功".$amount*10;

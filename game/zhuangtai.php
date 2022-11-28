@@ -65,7 +65,7 @@ if ($player->tool1 != 0) {
     $isTool1 = '<span class="absolute left-[10px] top-[7px] rounded-full bg-white w-[10px] h-[10px]"></span>';
 
 //    $xxzb1 = '<a href="?cmd=' . $encode->encode("cmd=xxzb&zbwz=1&sid=$sid") . '">Dỡ xuống</a>';
-    $tool1 = '<a class="absolute opacity-0 left-0 top-0 w-[60px] h-[55px]" href="?cmd=' . $encode->encode("cmd=chakanzb&zbnowid=$player->tool1&uid=$player->uid&sid=$sid") . '">' . $zhuangbei->zbname . $qhs . '</a>' . $xxzb1;
+    $tool1 = '<a class="absolute opacity-0 left-0 top-0 w-[60px] h-[55px]" href="?cmd=' . $encode->encode("cmd=chakanzb&zbnowid=$player->tool1&uid=$player->uid&sid=$sid") . '"></a>';
 }
 if ($player->tool2 != 0) {
     $zhuangbei = player\getzb($player->tool2, $dblj);
@@ -128,10 +128,10 @@ $html = <<<HTML
         <h3 class="text-xl text-center pt-2 bg-[#88b3b9] font-semibold">
             Thông tin thuộc tính
         </h3>
-        <div class="m-3 rounded-md pt-2" style="background-image: linear-gradient(to bottom right, #7a989e, #a5bfbc, #d6e4e0); height: calc(100% - 60px)">
+        <div class="m-3 rounded-md pt-2" style="background-image: linear-gradient(to bottom right, #7a989e, #a5bfbc, #d6e4e0); height: calc(100% - 60px);">
             <div class="h-[60px] bg-[#b5c7c7] justify-between flex items-center mx-3">
                 <div>
-                    <img class="h-[50px]" src="images/pve/player-avatar.png">
+                    <img class="h-[50px]" src="images/pve/player-avatar.png" />
                 </div>
                 <div>
                     <div>
@@ -141,13 +141,13 @@ $html = <<<HTML
                         Cảnh giới: $player->jingjie$player->cengci
                     </div>
                     <div>
-                    Đẳng cấp: $player->ulv
+                        Đẳng cấp: $player->ulv
                     </div>
                 </div>
-                 <a style="background: radial-gradient(black, transparent)" class="text-white" href="?cmd=$duihuancmd">Giftcode</a>
+                <a style="background: radial-gradient(black, transparent);" class="text-white" href="?cmd=$duihuancmd">Giftcode</a>
             </div>
             <div class="m-3">
-             <div class="border border-[#80999d] bg-[#9ab1b0] my-1 px-2">
+                <div class="border border-[#80999d] bg-[#9ab1b0] my-1 px-2">
                     Linh thạch: $player->uyxb
                 </div>
                 <div class="border border-[#80999d] bg-[#9ab1b0] my-1 px-2">
@@ -172,66 +172,57 @@ $html = <<<HTML
                     Hút máu: $player->uxx%
                 </div>
                 <div>
-                 <div class="text-sm text-center font-semibold mb-2">Trang bị</div>
+                    <div class="text-sm text-center font-semibold mb-2">Trang bị</div>
 
-                <div class="grid grid-cols-4 gap-2">
-                    <div class="relative">
-                    <img class="w-[60px] h-[55px]" src="images/trangbi/vukhi.png" />
-<!--                        Vũ khí: -->
-                            $isTool1
-                            $tool1
-                    </div>
-                    <div>
-                    <img class="w-[60px] h-[55px]" src="images/trangbi/ngocboi.png" />
-<!--                        Ngọc Bội: -->
-                            $isTool2
-                            $tool2
-                    </div>
-                    <div>
-                    <img class="w-[60px] h-[55px]" src="images/trangbi/giap.png" />
-<!--                        áo: -->
-                        $isTool3
-                        $tool3
-                    </div>
-                    <div>
-                    <img class="w-[60px] h-[55px]" src="images/trangbi/baotay.png" />
-<!--                        Bao tay: -->
-                        $isTool4
-                        $tool4
-                    </div>
-                    <div>
-                    <img class="w-[60px] h-[55px]" src="images/trangbi/rinh.png" />
-<!--                        Nhẫn: -->
-                        $isTool5
-                        $tool5
-                    </div>
-                    <div>
-                    <img class="w-[60px] h-[55px]" src="images/trangbi/giay.png" />
-<!--                        Giày:-->
-                        $isTool6
-                        $tool6
-                    </div>
-                     <div>
-                    <img class="w-[60px] h-[55px]" src="images/trangbi/ngoc.png" />
-<!--                        Giày:-->
-                    </div>
-                     <div>
-                    <img class="w-[60px] h-[55px]" src="images/trangbi/mu.png" />
-<!--                        Giày:-->
+                    <div class="grid grid-cols-4 gap-2">
+                        <div class="relative">
+                            <img class="w-[60px] h-[55px]" src="images/trangbi/vukhi.png" />
+                            <!--                        Vũ khí: -->
+                            $isTool1 $tool1
+                        </div>
+                        <div class="relative">
+                            <img class="w-[60px] h-[55px]" src="images/trangbi/ngocboi.png" />
+                            <!--                        Ngọc Bội: -->
+                            $isTool2 $tool2
+                        </div>
+                        <div class="relative">
+                            <img class="w-[60px] h-[55px]" src="images/trangbi/giap.png" />
+                            <!--                        áo: -->
+                            $isTool3 $tool3
+                        </div>
+                        <div class="relative">
+                            <img class="w-[60px] h-[55px]" src="images/trangbi/baotay.png" />
+                            <!--                        Bao tay: -->
+                            $isTool4 $tool4
+                        </div>
+                        <div class="relative">
+                            <img class="w-[60px] h-[55px]" src="images/trangbi/rinh.png" />
+                            <!--                        Nhẫn: -->
+                            $isTool5 $tool5
+                        </div>
+                        <div class="relative">
+                            <img class="w-[60px] h-[55px]" src="images/trangbi/giay.png" />
+                            <!--                        Giày:-->
+                            $isTool6 $tool6
+                        </div>
+                        <div class="relative">
+                            <img class="w-[60px] h-[55px]" src="images/trangbi/ngoc.png" />
+                            <!--                        Giày:-->
+                        </div>
+                        <div class="relative">
+                            <img class="w-[60px] h-[55px]" src="images/trangbi/mu.png" />
+                            <!--                        Giày:-->
+                        </div>
                     </div>
                 </div>
-
-                </div>
-
             </div>
         </div>
         <div class="absolute bottom-0 h-[50px] ml-6">
-            <a style="background: radial-gradient(black, transparent)" class="text-white" onClick="javascript :history.back(-1);">Trở về</a> 
-            <a style="background: radial-gradient(black, transparent)" class="text-white" href="?cmd=$gonowmid">Trở về trò chơi</a>
+            <a style="background: radial-gradient(black, transparent);" class="text-white" onClick="javascript :history.back(-1);">Trở về</a>
+            <a style="background: radial-gradient(black, transparent);" class="text-white" href="?cmd=$gonowmid">Trở về trò chơi</a>
         </div>
     </div>
 </div>
-
 HTML;
 echo $html;
 /**

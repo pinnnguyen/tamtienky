@@ -356,8 +356,24 @@ if (isset($cmd)) {
     <link rel="stylesheet" href="css/gamecss.css">
     <link rel="icon" href="images/logo.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
+<!--    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>-->
+
+    <script src="app.js" type="module"></script>
+<!--    <style>-->
+<!--        .draggable {-->
+<!--            width: 25%;-->
+<!--            min-height: 6.5em;-->
+<!--            margin: 1rem 0 0 1rem;-->
+<!--            background-color: #29e;-->
+<!--            color: white;-->
+<!--            border-radius: 0.75em;-->
+<!--            padding: 4%;-->
+<!--            touch-action: none;-->
+<!--            user-select: none;-->
+<!--        }-->
+<!--    </style>-->
 <!--    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
-    <link rel="manifest" href="manifest.json" />
+<!--    <link rel="manifest" href="manifest.json" />-->
 
 </head>
 <body>

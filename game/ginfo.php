@@ -106,9 +106,9 @@ HTML;
 
 
 </script>
-<div class="fixed bottom-0 h-[40px]">
-        <a href="?cmd=$backcmd" class="!flex items-center justify-center bg-[#621e1f] !text-white h-[34px]">Bỏ chạy</a>
+<div class="fixed bottom-0 h-[40px] flex mb-5 ml-2">
         <a href="?cmd=$pvecmd" class="!flex items-center justify-center bg-[#621e1f] !text-white h-[34px]">Công kích</a>
+        <a href="?cmd=$backcmd" class="!flex items-center justify-center bg-[#621e1f] !text-white h-[34px]">Bỏ chạy</a>
 </div>
 
 HTML;

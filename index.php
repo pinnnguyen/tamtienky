@@ -14,7 +14,7 @@ if (isset($_POST['submit']) && $_POST['submit']) {
 
     $username = $_POST['username'];
     $userpass = $_POST['userpass'];
-    $username = htmlspecialchars($username);
+    $username = strtolower(htmlspecialchars($username));
     $userpass = htmlspecialchars($userpass);
     $sql = "select * from userinfo where username = ? and userpass = ?";
     $stmt = $dblj->prepare($sql);

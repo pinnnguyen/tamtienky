@@ -25,7 +25,7 @@ if (isset($_POST['submit']) && $_POST['submit']) {
         $token = md5("$username.$userpass" . strtotime(date('Y-m-d H:i:s')));
         $sql = "insert into userinfo(username,userpass,token) values(?,?,?)";
         $stmt = $dblj->prepare($sql);
-        $cxjg = $stmt->execute([$username, $userpass, $token]);
+        $cxjg = $stmt->execute([strtolower($username), $userpass, $token]);
         $a = 'đăng ký thành công';
         echo $a;
         header("refresh:1;url=index.php");

@@ -357,9 +357,9 @@ $nowhtml = <<<HTML
 
     </div>
     <div class="flex items-center justify-end">
-        <a style="background: radial-gradient(black, transparent)" class="text-white inline-block flex items-center" href="?cmd=$fangshi" ><img class="w-[30px]" src="images/menu/market.png" /><span style="font-size: 10px">Chợ</span></a> 
-        <a style="background: radial-gradient(black, transparent)" class="text-white inline-block flex items-center" href="?cmd=$imcmd"><img class="w-[30px]" src="images/menu/party.png" /><span  style="font-size: 10px">H.Hữu</span></a> 
-        <a style="background: radial-gradient(black, transparent)" class="text-white inline-block flex items-center" href="?cmd=$phcmd"><img class="w-[30px]" src="images/menu/xephang.png" /><span  style="font-size: 10px">X.hạng</span></a>
+        <a style="background: radial-gradient(black, transparent)" class="text-white inline-block flex items-center" href="?cmd=$fangshi" ><img class="w-[30px]" src="images/menu/XJHomescreenButton_20.png" /><span style="font-size: 10px">Chợ</span></a> 
+        <a style="background: radial-gradient(black, transparent)" class="text-white inline-block flex items-center" href="?cmd=$imcmd"><img class="w-[30px]" src="images/menu/XJHomescreenButton_44.png" /><span  style="font-size: 10px">H.Hữu</span></a> 
+        <a style="background: radial-gradient(black, transparent)" class="text-white inline-block flex items-center" href="?cmd=$phcmd"><img class="w-[30px]" src="images/menu/XJCalendar_47.png" /><span  style="font-size: 10px">X.hạng</span></a>
     </div>
     <div class="p-2">
         <div class="uppercase font-semibold text-xs">$clmid->mname$pvphtml</div>
@@ -402,8 +402,8 @@ $nowhtml = <<<HTML
 
     <div class="text-white overflow-scroll border border-t-b-white mx-2">    
         <div class="flex">
-        <a class="!flex items-center border-none justify-center !text-white" href="?cmd=$goliaotian">
-            <svg class="w-[24px]" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="comments" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M416 192c0-88.4-93.1-160-208-160S0 103.6 0 192c0 34.3 14.1 65.9 38 92-13.4 30.2-35.5 54.2-35.8 54.5-2.2 2.3-2.8 5.7-1.5 8.7S4.8 352 8 352c36.6 0 66.9-12.3 88.7-25 32.2 15.7 70.3 25 111.3 25 114.9 0 208-71.6 208-160zm122 220c23.9-26 38-57.7 38-92 0-66.9-53.5-124.2-129.3-148.1.9 6.6 1.3 13.3 1.3 20.1 0 105.9-107.7 192-240 192-10.8 0-21.3-.8-31.7-1.9C207.8 439.6 281.8 480 368 480c41 0 79.1-9.2 111.3-25 21.8 12.7 52.1 25 88.7 25 3.2 0 6.1-1.9 7.3-4.8 1.3-2.9.7-6.3-1.5-8.7-.3-.3-22.4-24.2-35.8-54.5z"></path></svg>
+        <a class="!flex items-center justify-center border-none !text-white" href="?cmd=$goliaotian">
+            <img class="w-[45px]" src="images/menu/XJShare_07.png" />
         </a>
         <div>$lthtml</div>
         <a class="w-[110px] !flex justify-center items-center !text-white" href="?cmd=$mapcmd">Bản đồ</a>
@@ -411,11 +411,11 @@ $nowhtml = <<<HTML
     </div>
 
     <div class="flex items-center justify-center h-[60px] bg-[#36445a]">
-        <a class="border-none p-0" href="?cmd=$ztcmd"><img class="w-[60px]" src="images/menu/player.png"></a>
-        <a href="?cmd=$getbagcmd"><img class="w-[60px]" src="images/menu/bag.png" /></a>  
-        <a href="?cmd=$cwcmd" ><img class="w-[60px]" src="images/menu/pet.png" /></a>
-        <a href="?cmd=$clubcmd"><img class="w-[60px]" src="images/menu/club.png" /></a>
-        <a href="?cmd=$mytask"><img class="w-[60px]" src="images/menu/nhiem_vu.png" /></a>
+        <a class="border-none p-0" href="?cmd=$ztcmd"><img class="w-[45px]" src="images/menu/XJHomescreenButton_29.png"></a>
+        <a class="border-none" href="?cmd=$getbagcmd"><img class="w-[45px]" src="images/menu/XJDengxiandao_15.png" /></a>  
+        <a class="border-none" href="?cmd=$cwcmd" ><img class="w-[45px]" src="images/menu/XJHomescreenTop_42.png" /></a>
+        <a class="border-none" href="?cmd=$clubcmd"><img class="w-[45px]" src="images/menu/XJHomescreenButton_10.png" /></a>
+        <a class="border-none" href="?cmd=$mytask"><img class="w-[45px]" src="images/menu/XJDengxiandao_14.png" /></a>
     </div>
 </div>
 </div>

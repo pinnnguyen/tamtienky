@@ -51,14 +51,11 @@ if ($tupo != 0) {
                             break;
                         }
 
-                        var_dump($player->uhp);
-                        var_dump(4 + round($player->uhp / 16));
                         $uphp = 4 + round($player->uhp / 16);
                         $upgj = 2 + round($player->ugj / 8);
                         $upfy = 3 + round($player->ufy / 6);
                     }
 
-//                    var_dump($tupo);
                     \player\upplayerlv($sid, $dblj);
                     \player\addplayersx("umaxhp", $uphp, $sid, $dblj);
                     \player\addplayersx("ugj", $upgj, $sid, $dblj);

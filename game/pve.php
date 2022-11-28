@@ -72,6 +72,7 @@ if ($cmd == 'pve' && $guaiwu->sid == '') {
         $dblj->exec($sql);
         $cw = \player\getchongwu($player->cw, $dblj);
         \player\changecwsx('cwhp', $cw->cwmaxhp, $player->cw, $dblj);
+
         if ($player->ulv <= 10) {
             \player\changeplayersx('uhp', $player->umaxhp, $sid, $dblj);
             $player = player\getplayer($sid, $dblj);
@@ -232,13 +233,14 @@ if ($cmd == 'pve' && $guaiwu->sid == '') {
             $huode .= "Thu hoạch: <div class='ypys'>$ypname x$ypsum</div>";
         }
 
-        if ($lvc < 0) { //Giải thích nhân vật vượt ải đánh quái nên được hoa hồng
-            $guaiwu->gexp = round($guaiwu->gexp + 5 * abs($lvc), 0);//tính toán theo kinh nghiệm
-        } elseif ($lvc >= 0) {//Giải thích rằng cấp độ nhân vật cao hơn cấp độ quái vật và nên giảm kinh nghiệm
-            $guaiwu->gexp = round($guaiwu->gexp / ($lvc + 1), 0);//tính toán theo kinh nghiệm
+        if ($lvc < 0) { // Giải thích nhân vật vượt ải đánh quái nên được hoa hồng
+            $guaiwu->gexp = round($guaiwu->gexp + 5 * abs($lvc), 0);// tính toán theo kinh nghiệm
+        } else {//Giải thích rằng cấp độ nhân vật cao hơn cấp độ quái vật và nên giảm kinh nghiệm
+            $guaiwu->gexp = round($guaiwu->gexp / ($lvc + 1), 0);// tính toán theo kinh nghiệm
         }
-        if ($guaiwu->gexp < 3) {// Nếu nhân vật cao hơn nhiều so với quái vật, hãy cho 3 điểm kinh nghiệm tượng trưng
-            $guaiwu->gexp = 3;
+
+        if ($player->ulv > ($guaiwu->glv + 10)) {// Nếu nhân vật cao hơn nhiều so với quái vật, hãy cho 3 điểm kinh nghiệm tượng trưng
+            $guaiwu->gexp = $guaiwu->gexp * 50;
         }
 
         $zdjg = 1;

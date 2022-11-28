@@ -80,7 +80,7 @@ if ($allcw) {
 $cwhtml = <<<HTML
 $cwnamehtml
 <br/>
-<a href="?cmd=$chouqucmd">Thu hồi sủng vật[Cực phẩm linh thạch 50]</a>
+<a href="?cmd=$chouqucmd">Triệu hồi sủng vật[Cực phẩm linh thạch 50]</a>
 <br/><br/>
 <button onClick="javascript :history.back(-1);">Trang trước</button> <a href="game.php?cmd=$gonowmid">Trở về trò chơi</a>
 HTML;

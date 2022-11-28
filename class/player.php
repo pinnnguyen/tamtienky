@@ -739,30 +739,32 @@ function deleyaopin($sid, $ypid, $ypsum, $dblj)
 
 function changeplayersx($sx, $gaibian, $sid, $dblj)
 {
-    $sql = "update game1 set $sx = '$gaibian' WHERE sid='$sid'";//改变玩家属性
+    var_dump($gaibian);
+    var_dump($sx);
+    $sql = "update game1 set $sx = '$gaibian' WHERE sid='$sid'";//Thay đổi thuộc tính người chơi
     $ret = $dblj->exec($sql);
 }
 
 function changecwsx($sx, $gaibian, $cwid, $dblj)
 {
-    $sql = "update playerchongwu set $sx = '$gaibian' WHERE cwid='$cwid'";//改变宠物属性
+    $sql = "update playerchongwu set $sx = '$gaibian' WHERE cwid='$cwid'";//Thay đổi thuộc tính thú cưng
     $ret = $dblj->exec($sql);
 }
 
 function addplayersx($sx, $gaibian, $sid, $dblj)
 {
-    $sql = "update game1 set $sx = $sx + '$gaibian' WHERE sid='$sid'";//增加玩家属性
+    $sql = "update game1 set $sx = $sx + '$gaibian' WHERE sid='$sid'";//Tăng thuộc tính người chơi
     $ret = $dblj->exec($sql);
 }
 
 function addcwsx($sx, $gaibian, $cwid, $dblj)
 {
-    $sql = "update playerchongwu set $sx = $sx + '$gaibian' WHERE cwid='$cwid'";//增加cw属性
+    $sql = "update playerchongwu set $sx = $sx + '$gaibian' WHERE cwid='$cwid'";//Thêm thuộc tính cw
     $ret = $dblj->exec($sql);
 }
 
 function changeyxb($lx, $gaibian, $sid, $dblj)
-{//改变货币
+{//thay đổi tiền tệ
     $player = getplayer($sid, $dblj);
     if ($lx == 1) {
         $sql = "update game1 set uyxb = uyxb + $gaibian WHERE sid='$sid'";
@@ -988,6 +990,7 @@ function getchongwu($cwid, $dblj)
     $rangesfy = array(2.5, 5, 7.5, 10, 12.5, 15, 17.5);
     $rangeshp = array(30, 50, 70, 90, 110, 130, 170);
     $rangesexp = array(2, 4, 6, 9, 12.5, 15, 17.5);
+
     $sql = "select * from playerchongwu WHERE cwid = $cwid ";
     $cxjg = $dblj->query($sql);
     $cxjg->bindColumn("cwname", $chongwu->cwname);

@@ -1,8 +1,3 @@
-#ltmsg2 {
-    float: left;
-    resize: none;
-}
-
 #btn {
     display: inline-block;
     background: #fff;
@@ -17,57 +12,30 @@
     max-width: 98%;
 }
 
-#mainfont {
-    font-size: 10px;
-    width: 500px;
-    text-align: left;
-    margin-top: 15px;
-    font-family: "楷体", sans-serif;
-}
-
-.zbys {
-    color: #9f008c;
-}
-
-.zbys a:link, .zbys a:visited {
-    color: #9f008c;
-}
-
-.djys {
-    color: #2a409f;
-}
-
-.djys a:link, .djys a:visited {
-    color: #2a409f;
-}
-
-.djys a:hover {
-    color: #2a409f;
-    background-color: #81799f;
-}
-
-.hpys {
-    color: #9f182a;
-}
-
-.ypys {
-    color: #9f7211;
-}
-
-.ypys a:link, .ypys a:visited {
-    color: #9f7211;
-}
-
 body {
-    margin: 0px;
-    font-size: 14px;
-    line-height: 22px;
-    font-family: auto;
+    zoom: 1;
+    background-color: #333;
+    font-family: monospace;
+    font-size: 12px;
+    color: #333;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
 }
 
-a:link {
-    margin: 4px 3px 2px 4px;
+body::after {
+    content: '';
+    filter: blur(12px);
+    background: url(../images/bg.jpg);
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
 }
+
 
 ul {
     position: absolute;
@@ -80,18 +48,15 @@ ul {
 }
 
 a {
-    color: #fffff !important;
     padding: 1px 10px;
     border-radius: 3px;
-    text-decoration: none;
-    margin-right: 3px;
-    /*background: radial-gradient(black, transparent);*/
-    border: 1px solid gray;
+}
+
+a:link {
+    margin: 4px 3px 2px 4px;
 }
 
 
-/*new样式*/
-/*footer样式*/
 .footer {
     margin: 10px auto;
     background: #fff;
@@ -100,25 +65,9 @@ a {
     border-radius: 10px;
 }
 
-/*main样式*/
 .main {
     margin: 0 auto;
-    background: #fff;
-}
-
-.xinxi {
-    font-size: 14px;
-    color: #666;
-}
-
-.xinxi2 {
-    font-size: 16px;
-    color: #9f182a;
-}
-
-.xinxi3 {
-    font-size: 16px;
-    color: #006600;
+    overflow: hidden;
 }
 
 .main button {
@@ -130,7 +79,6 @@ a {
     font-size: 16px;
 }
 
-/*注册登录样式*/
 .login {
     margin: 10px auto;
     text-align: center;
@@ -163,23 +111,6 @@ a {
     padding: 10px;
     margin-top: 15px;
     border: 1px solid;
-}
-
-/*登录页修复内容*/
-.fix {
-    font-size: 12px;
-    color: #666;
-    padding-left: 15px;
-}
-
-.fix h2 {
-    font-size: 14px;
-    color: red;
-}
-
-.fix p {
-    line-height: 18px;
-    margin: 0;
 }
 
 .fix button {

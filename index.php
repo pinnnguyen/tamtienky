@@ -56,16 +56,9 @@ if (isset($_POST['submit']) && $_POST['submit']) {
     <link rel="stylesheet" href="css/gamecss.css">
 </head>
 <body>
-<div class="main" style="max-width: 678px">
+<div class="main">
    <div class="overflow-hidden" style="overflow: hidden">
        <img src="images/11.jpg" height="200" style="width: 100%"><br/>
-       <div id="mainfont" style="padding: 8px">
-           Nguyệt lãnh thiên sơn giang tự bích, băng nhai vạn trượng vô lưu ý.<br/>
-           Tầm đạo chích ảnh liên hoa lạc, trúc âm liêu lạc thính tân khúc.<br/>
-           Tiên nhân thính thùy túy minh nguyệt, đạp lãng đạp phong tùy yến khứ.<br/>
-           Kỷ cương nhân luân tâm như tang, nhất túy hồng trần tiêu bách tự.<br/>
-           Ma tiền khấu thủ tam thiên niên, hồi thủ hồng trần bất tố tiên.<br/>
-       </div>
        <div class="login">
            <form action=<?php echo $_SERVER['PHP_SELF']; ?> method="post">
 

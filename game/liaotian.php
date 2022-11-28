@@ -30,7 +30,7 @@ if ($ltlx == "all") {
 <input type="hidden" name="cmd" value="sendliaotian">
 <input type="hidden" name="ltlx" value="all">
 <input type="hidden" name="sid" value="$sid">
-<input type="button" class="gamesubmit" id="btnsub" value="发送">
+<input type="button" class="gamesubmit" id="btnsub" value="Nhập">
 </form>
 <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
 <script>
@@ -40,10 +40,10 @@ $(document).ready(function(){
      console.log(ltmsg);
 if (ltmsg.length<2){
      if($("span#liaotianerror").length==0){
-            $("form").append("</br><span style='font-size:14px' id='liaotianerror'>"+ltmsg+"发送失败!长度必须大于2</span>");
+            $("form").append("</br><span style='font-size:14px' id='liaotianerror'>"+ltmsg+"Nhập失败!长度必须大于2</span>");
             }
             else{
-                $("span#liaotianerror").text(ltmsg+"发送失败!长度必须>=2");
+                $("span#liaotianerror").text(ltmsg+"Nhập失败!长度必须>=2");
             }
 }else{
     $("#sendmsg").submit();

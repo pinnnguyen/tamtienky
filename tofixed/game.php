@@ -550,7 +550,7 @@ class game{
 
     }
 
-    function liaotian_send_all($msg ,$uname , $uid){//发送公共聊天
+    function liaotian_send_all($msg ,$uname , $uid){//Nhập公共聊天
 
         $nowdate = date('Y-m-d H:i:s');
         $ltmsg = htmlspecialchars($msg);

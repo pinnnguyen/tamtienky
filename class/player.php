@@ -739,8 +739,6 @@ function deleyaopin($sid, $ypid, $ypsum, $dblj)
 
 function changeplayersx($sx, $gaibian, $sid, $dblj)
 {
-    var_dump($gaibian);
-    var_dump($sx);
     $sql = "update game1 set $sx = '$gaibian' WHERE sid='$sid'";//Thay đổi thuộc tính người chơi
     $ret = $dblj->exec($sql);
 }

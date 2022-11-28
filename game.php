@@ -361,7 +361,7 @@ if (isset($cmd)) {
 
 </head>
 <body>
-<div class="main max-w-[400px] h-[100vh]">
+<div class="main max-w-[678px] h-[100vh]">
     <div class="h-full relative">
         <?php
         if (!$ym == '') {

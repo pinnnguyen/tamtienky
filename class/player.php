@@ -311,11 +311,11 @@ function istupo($sid, $dblj)
     $rangeslv = array(0, 30, 50, 70, 80, 90, 100, 110);
     $playernextlv = $player->ulv + 1;
     $rangesjj = array('Luyện khí', 'Trúc Cơ', 'Kim đan', 'Nguyên anh', 'Hóa thần', 'Luyện Hư', 'Hợp thể', 'Đại thừa');
-    for ($i = 0; $i < count($playernextlv); $i++) {
+    for ($i = 0; $i < count($rangeslv); $i++) {
         if ($playernextlv >= $rangeslv[$i] && $playernextlv < $rangeslv[$i + 1]) {
-
             if ($player->jingjie != $rangesjj[$i]) {
-                return 1;//bước đột phá
+                #bước đột phá
+                return 1;
             }
 
             $rangesjd = array('1', '2', '3', '4', '5', '6', '7', '8', '9', '10');

@@ -1,7 +1,20 @@
 <?php
-$player = player\getplayer($sid, $dblj);
+//require_once($_SERVER['DOCUMENT_ROOT']."/pdo.php");
+//require_once($_SERVER['DOCUMENT_ROOT']."/class/encode.php");
+//require_once($_SERVER['DOCUMENT_ROOT']."/class/player.php");
+//require ($_SERVER['DOCUMENT_ROOT']."/stores/query.php");
+//$Dcmd = $_SERVER['QUERY_STRING'];
+
+$player = \player\getplayer($sid, $dblj);
+$nowmid = $player->nowmid;
+
+//$encode = new \encode\encode();
 $backcmd = $encode->encode("cmd=gomid&newmid=$player->nowmid&sid=$sid");
 
+
+//parse_str($Dcmd);
+//var_dump($Dcmd);
+//echo $Dcmd;
 if ($nowmid != $player->nowmid) {
     $html = <<<HTML
         Hãy chơi game bình thường!<br/>
@@ -36,7 +49,7 @@ HTML;
             foreach ($zbarr as $newstr) {
                 $zbkzb = \player\getzbkzb($newstr, $dblj);
                 $zbcmd = $encode->encode("cmd=zbinfo_sys&zbid=$zbkzb->zbid&sid=$sid");
-                $zbhtml .= "<div class=\"zbys\"><a href='?cmd=$zbcmd'>$zbkzb->zbname</a> </div>";
+                $zbhtml .= "<div><a class='text-white' href='?cmd=$zbcmd'>$zbkzb->zbname</a></div>";
             }
             $dlhtml .= $zbhtml;
         }
@@ -47,7 +60,7 @@ HTML;
             foreach ($djarr as $newstr) {
                 $dj = \player\getdaoju($newstr, $dblj);
                 $djinfo = $encode->encode("cmd=djinfo&djid=$dj->djid&sid=$sid");
-                $djhtml .= "<div class='djys'><a href='?cmd=$djinfo'>$dj->djname</a></div>";
+                $djhtml .= "<div class='text-white'><a href='?cmd=$djinfo'>$dj->djname</a></div>";
             }
             $dlhtml .= $djhtml;
         }
@@ -65,25 +78,41 @@ HTML;
         if ($dlhtml == '') {
             $dlhtml = 'Quái vật không có vật phẩm rớt ra<br/>';
         }
+
         $html = <<<HTML
-        [$yguaiwu->gname]<br/>
-        Cấp:$yguaiwu->glv<br/>
-        Giới tính:$yguaiwu->gsex<br/>
-        Thông tin:$yguaiwu->ginfo<br/>
-        Cảnh giới:$guaiwu->jingjie<br/>
+        <div class="text-white p-2">
+        
+        <div>
+        [$yguaiwu->gname]
+</div>
+
+<div>
+        Cấp: $yguaiwu->glv
+
+</div>
+
+<div>
+        Cảnh giới: $guaiwu->jingjie
+
+</div>
+<div>
+        Thông tin: $yguaiwu->ginfo
+
+</div>
         <br/>
         Rơi xuống:
-        $dlhtml<br/>
-        <a href="?cmd=$pvecmd">Công kích</a><a href="?cmd=$backcmd">Trở về trò chơi</a>
+        $dlhtml
+        </div>
+
+
+</script>
+<div class="fixed bottom-0 h-[40px]">
+        <a href="?cmd=$backcmd" class="!flex items-center justify-center bg-[#621e1f] !text-white h-[34px]">Bỏ chạy</a>
+        <a href="?cmd=$pvecmd" class="!flex items-center justify-center bg-[#621e1f] !text-white h-[34px]">Công kích</a>
+</div>
+
 HTML;
     }
 }
-echo $html;
-/**
- * Created by PhpStorm.
- * User: Administrator
- * Date: 2016/6/11
- * Time: 10:08
- */
-?>
 
+echo $html;

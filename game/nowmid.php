@@ -1,7 +1,9 @@
 <?php
-
+require ($_SERVER['DOCUMENT_ROOT']."/stores/query.php");
 $player = player\getplayer($sid, $dblj);//获取玩家信息
 $lastmid = $player->nowmid;
+
+$sid_str = $sid;
 
 if (isset($newmid)) {
     if ($player->nowmid != $newmid) {
@@ -34,10 +36,17 @@ if ($player->nowmid == '' || $player->nowmid == 0) {//判断角色是否出现�
     $dblj->exec($sql);
     $player->nowmid = $gameconfig->firstmid;
 }
-$clmid = player\getmid($player->nowmid, $dblj); //获取地图信息
+
+if (\player\istupo($sid, $dblj) != 0 && $player->uexp >= $player->umaxexp) {
+    $tupocmd = $encode->encode("cmd=tupo&sid=$sid");
+    $tupocmd = "<a class='border-none absolute bottom-[50px] left-[60px]' href='?cmd=$tupocmd'><img class='w-[47px]' src='images/dotpha.png' /></a>";
+}
+
+$clmid = player\getmid($player->nowmid, $dblj); // Nhận thông tin bản đồ
 if ($clmid->playerinfo != '') {
     $clmid->playerinfo .= '<br/>';
 }
+
 $pvphtml = "[Vùng an toàn]";
 if ($clmid->ispvp) {
     $pvphtml = "[PVP]";
@@ -160,10 +169,10 @@ $cxallguaiwu = $cxjg->fetchAll(PDO::FETCH_ASSOC);
 $gwhtml = '';
 for ($i = 0; $i < count($cxallguaiwu); $i++) {
     $gwcmd = $encode->encode("cmd=getginfo&gid=" . $cxallguaiwu[$i]['id'] . "&gyid=" . $cxallguaiwu[$i]['gyid'] . "&sid=$sid&nowmid=$player->nowmid");
-    $gwhtml .= "<a style='font-size: 10px' class='!flex flex-col justify-center bg-[#8b0808] !text-white font-medium text-center w-[70px] overflow-hidden h-[55px] overflow-hidden rounded' href='?cmd=$gwcmd'><span>[lv" . $cxallguaiwu[$i]['glv'] . "]</span>" . $cxallguaiwu[$i]['gname'] . "</a> ";
+    $gwhtml .= "<a style='font-size: 10px' class='!flex flex-col bg-[#8b0808] !text-white font-medium text-center w-[50px] overflow-hidden h-[50px] overflow-hidden rounded' href='?cmd=$gwcmd'><span>[lv" . $cxallguaiwu[$i]['glv'] . "]</span>" . $cxallguaiwu[$i]['gname'] . "</a> ";
 }
 
-$sql = "select * from game1 where nowmid='$player->nowmid' AND sfzx = 1";//获取当前地图玩家
+$sql = "select * from game1 where nowmid='$player->nowmid' AND sfzx = 1";//Tải trình phát bản đồ hiện tại
 $cxjg = $dblj->query($sql);
 $playerhtml = '';
 if ($cxjg) {
@@ -176,7 +185,8 @@ if ($cxjg) {
             $cxsid = $cxallplayer[$i]['sid'];
             $cxuname = $cxallplayer[$i]['uname'];
             $cxuname = $cxallplayer[$i]['uname'];
-            $second = floor((strtotime($nowdate) - strtotime($cxtime)) % 86400);//获取刷新间隔
+            $second = floor((strtotime($nowdate) - strtotime($cxtime)) % 86400);
+            //Nhận khoảng thời gian làm mới
             if ($second > 300) {
                 $sql = "update game1 set sfzx=0 WHERE sid='$cxsid'";
                 $dblj->exec($sql);
@@ -190,7 +200,7 @@ if ($cxjg) {
                     $club->clubname = "";
                 }
                 $playercmd = $encode->encode("cmd=getplayerinfo&uid=$cxuid&sid=$sid");
-                $playerhtml .= "<a style='font-size: 10px' class='!flex flex-col justify-center bg-[#342df2] !text-white font-medium text-center w-[70px] overflow-hidden h-[55px] overflow-hidden rounded' href='?cmd=$playercmd'>
+                $playerhtml .= "<a style='font-size: 10px' class='!flex flex-col justify-center bg-[#342df2] !text-white font-medium text-center w-[50px] overflow-hidden h-[50px] overflow-hidden rounded' href='?cmd=$playercmd'>
 <span>$club->clubname</span>
 <span>$cxuname</span></a>";
             }
@@ -302,7 +312,7 @@ HTML;
 }
 
 
-$sql = 'SELECT * FROM ggliaotian ORDER BY id DESC LIMIT 2';//聊天列表获取
+$sql = 'SELECT * FROM ggliaotian ORDER BY id DESC LIMIT 1';//聊天列表获取
 $ltcxjg = $dblj->query($sql);
 $lthtml = '';
 if ($ltcxjg) {
@@ -331,16 +341,16 @@ $duihuancmd = $encode->encode("cmd=duihuan&sid=$sid");
 $imcmd = $encode->encode("cmd=im&sid=$sid");
 
 $nowhtml = <<<HTML
-<!--<div class="absolute top-0 left-0 w-full h-full opacity-90" style="background: url('images/bg.jpg'); background-size: cover"></div>-->
+<div class="absolute top-0 left-0 w-full h-full opacity-80" style="background: url('images/bg.jpg'); background-size: cover"></div>
 <div class="h-full w-full absolute">
-    <div class="flex items-end bg-[#36445a] text-white p-2 border border-t-white">
+    <div class="flex items-end bg-[#36445a] text-white p-1">
         <a class="border-none p-0" href="?cmd=$ztcmd"><img class="h-[40px]" src="images/pve/player-avatar.png"></a>
         <span class="pb-[2px]">$player->uname [lv:$player->ulv]</span>
     </div>
-    <div class="text-right">
-        <a class="inline-block" href="?cmd=$fangshi" ><img class="w-[30px]" src="images/menu/market.png" /></span>Chợ</span></a> 
-        <a class="inline-block" href="?cmd=$imcmd"><img class="w-[30px]" src="images/menu/party.png" /><span>H.Hữu</span></a> 
-        <a class="inline-block" href="?cmd=$phcmd"><img class="w-[30px]" src="images/menu/xephang.png" /><span>X.hạng</span></a>
+    <div class="flex items-center justify-end">
+        <a style="background: radial-gradient(black, transparent)" class="text-white inline-block flex items-center" href="?cmd=$fangshi" ><img class="w-[30px]" src="images/menu/market.png" /><span style="font-size: 10px">Chợ</span></a> 
+        <a style="background: radial-gradient(black, transparent)" class="text-white inline-block flex items-center" href="?cmd=$imcmd"><img class="w-[30px]" src="images/menu/party.png" /><span  style="font-size: 10px">H.Hữu</span></a> 
+        <a style="background: radial-gradient(black, transparent)" class="text-white inline-block flex items-center" href="?cmd=$phcmd"><img class="w-[30px]" src="images/menu/xephang.png" /><span  style="font-size: 10px">X.hạng</span></a>
     </div>
     <div class="p-2">
         <div class="uppercase font-semibold text-xs">$clmid->mname$pvphtml</div>
@@ -355,7 +365,23 @@ $nowhtml = <<<HTML
 <div class="p-2">
     $npchtml
 </div>
-<div class="absolute bottom-0 bg-[#36445a] overflow-scroll border border-t-white">
+<div>
+    <div class="flex items-center justify-center">
+        <div class="relative">
+                $tupocmd
+        <img src="images/main.png" class="w-[200px]" alt="">
+        <div class="absolute bottom-[-21px] left-[34px] w-[145px]">
+        <img src="images/danhhieu.png">
+        </div>
+       <span class="absolute bottom-[-8px] left-[67px] text-white text-xs">
+        $player->jingjie $player->cengci
+</span>
+
+</div>
+
+    </div>
+</div>
+<div class="absolute bottom-0 bg-[#36445a] overflow-scroll">
 <div class="p-2">
 <div class="flex text-white text-xs">
     $lukouhtml
@@ -384,6 +410,11 @@ $nowhtml = <<<HTML
     </div>
 </div>
 </div>
+<script>
+$.get("/game/ginfo.php", (res) => {
+    console.log("res", res)
+})
+</script>
 
 <!--<a href="index.php" >Quay lại trang chủ</a><br/>-->
 HTML;

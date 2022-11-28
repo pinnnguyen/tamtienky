@@ -102,7 +102,7 @@ switch ($fangshi) {
         }
         $zhuangbei = $encode->encode("cmd=fangshi&fangshi=zhuangbei&sid=$sid");
         $payhtml = <<<HTML
-            【 Đạo cụ|<a href="?cmd=$zhuangbei">Trang bị</a>】<br/>
+            【 Đạo cụ2|<a href="?cmd=$zhuangbei">Trang bị</a>】<br/>
             $payhtml
             <br/><a href='?cmd=$gonowmid'>Trở về trò chơi</a><br/>
 HTML;

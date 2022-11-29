@@ -343,7 +343,7 @@ $remainingplayerexp = ($player->uexp / $player->umaxexp) * 100;
 $remainingplayerexp .= 'px';
 
 $nowhtml = <<<HTML
-<div class="absolute top-0 left-0 w-full h-full opacity-80" style="background: url('images/Img_Zhuxian_Shichenxidong.png'); background-size: cover;"></div>
+<!--<div class="absolute top-0 left-0 w-full h-full opacity-80" style="background: url('images/Img_Zhuxian_Shichenxidong.png'); background-size: cover;"></div>-->
 <div class="h-full w-full absolute">
     <div class="flex items-end bg-[#36445a] text-white p-1">
         <a class="border-none p-0" href="?cmd=$ztcmd">

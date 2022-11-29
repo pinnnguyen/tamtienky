@@ -25,7 +25,7 @@ if ($tupo == 1) {
     $tpls = $player->ulv * ($player->ulv + 1) * 4;
 }
 if ($tupo != 0) {
-    $tplshtml = "Đột phá cần linh thạch:$tpls/$player->uyxb<a href='?cmd=$tupocmd'>Đột phá</a> <br/>";
+    $tplshtml = "<span>Đột phá cần linh thạch</span>:$tpls/$player->uyxb<a href='?cmd=$tupocmd'>Đột phá</a>";
     $upgj = 0;
     $upfy = 0;
     $uphp = 0;
@@ -36,7 +36,7 @@ if ($tupo != 0) {
                 if ($ret) {
                     $sjs = mt_rand(1, 10);
                     if ($sjs <= 5) {
-                        echo "Đột phá thất bại<br/>";
+                        echo "<div class='text-white text-center'>Đột phá thất bại</div>";
                         break;
                     }
 
@@ -47,7 +47,7 @@ if ($tupo != 0) {
 
                     } elseif ($tupo == 1) {
                         if ($sjs < 8) {
-                            echo "Đột phá thất bại<br/>";
+                            echo "<div class='text-white text-center'>Đột phá thất bại</div>";
                             break;
                         }
 
@@ -62,7 +62,7 @@ if ($tupo != 0) {
                     \player\addplayersx("ufy", $upfy, $sid, $dblj);
                     $player = \player\getplayer($sid, $dblj);
 
-                    echo "Đột phá thành công thu hoạch được thuộc tính: <br/>Công kích +$upgj<br/>Phòng ngự +$upfy<br/>Khí huyết +$uphp<br/>";
+                    echo "<div class='text-center text-white'>Đột phá thành công thu hoạch được thuộc tính: <div>Công kích +$upgj</div> <div> Phòng ngự +$upfy</div> <div>Khí huyết +$uphp</div></div>";
                 } else {
                     echo "Linh thạch không đủ<br/>Đột phá cần linh thạch:$tpls<br/>";
                 }
@@ -72,11 +72,18 @@ if ($tupo != 0) {
 }
 
 $tupohtml = <<<HTML
-======Đột phá======<br/>
-Trước mắt cảnh giới: $player->jingjie$player->cengci<br/>
+<div class="p-2">
+<div class="text-center text-white">======Đột phá======</div>
+<div class="text-center text-white">
+<div>
+Trước mắt cảnh giới: $player->jingjie$player->cengci
+</div>
 $tplshtml
+</div>
 <br/>
-<button onClick="javascript:history.back(-1);">Trở về</button> <a href="?cmd=$gonowmid">Trở về trò chơi</a>
+<a class="!text-white h-[34px] !flex items-center" onClick="javascript:history.back(-1);" style="background: radial-gradient(black, transparent)">Trở về</a> <a style="background: radial-gradient(black, transparent)" class="!text-white h-[34px] !flex items-center" href="?cmd=$gonowmid">Trở về trò chơi</a>
+</div>
+
 HTML;
 echo $tupohtml;
 

@@ -169,16 +169,19 @@ $cxallguaiwu = $cxjg->fetchAll(PDO::FETCH_ASSOC);
 $gwhtml = '';
 for ($i = 0; $i < count($cxallguaiwu); $i++) {
     $gwcmd = $encode->encode("cmd=getginfo&gid=" . $cxallguaiwu[$i]['id'] . "&gyid=" . $cxallguaiwu[$i]['gyid'] . "&sid=$sid&nowmid=$player->nowmid");
-    $gwhtml .= "<a 
-    style='font-size: 10px' 
-    gid=". $cxallguaiwu[$i]['id'] ." 
-    gyid=". $cxallguaiwu[$i]['gyid'] ." 
-    sid='$sid' 
-    nowmid='$player->nowmid'  
-    class='rounded-full m-2 !flex flex-col bg-[#8b0808] !text-white font-medium text-center w-[50px] overflow-hidden h-[50px] overflow-hidden attach-monster'>
-    <span>
-    [lv" . $cxallguaiwu[$i]['glv'] . "]
-    </span>" . $cxallguaiwu[$i]['gname'] . "</a> ";
+    $gwhtml .= "<div>
+        <a 
+        style='font-size: 10px' 
+        gid=". $cxallguaiwu[$i]['id'] ." 
+        gyid=". $cxallguaiwu[$i]['gyid'] ." 
+        sid='$sid' 
+        nowmid='$player->nowmid'  
+        class='rounded-full m-2 !flex flex-col bg-[#8b0808] !text-white font-medium text-center w-[50px] overflow-hidden h-[50px] overflow-hidden attach-monster'>
+        <span>
+        [lv" . $cxallguaiwu[$i]['glv'] . "]
+        </span>" . $cxallguaiwu[$i]['gname'] . "</a> 
+    </div>
+    ";
 }
 
 $sql = "select * from game1 where nowmid='$player->nowmid' AND sfzx = 1";//Tải trình phát bản đồ hiện tại
@@ -404,7 +407,7 @@ $nowhtml = <<<HTML
                     <img class="w-[50px]" src="images/menu/XJShare_07.png" />
                 </a>
                 <div>$lthtml</div>
-                <a class="w-[110px] !flex justify-center items-center !text-white" href="?cmd=$mapcmd">Bản đồ</a>
+                <a class="w-[110px] !flex justify-center items-center !text-white all-map" sid="$sid">Bản đồ</a>
             </div>
         </div>
 
@@ -418,7 +421,7 @@ $nowhtml = <<<HTML
                     <img class="w-[50px]" src="images/menu/XJDengxiandao_15.png" />
                     <!--            <div>B.Lô</div>-->
                 </a>
-                <a class="w-[20%] flex flex-col items-center" href="?cmd=$cwcmd">
+                <a class="w-[20%] flex flex-col items-center pet" sid="$sid">
                     <img class="w-[50px]" src="images/menu/XJHomescreenTop_42.png" />
                     <!--            <div>T.Cưng</div>-->
                 </a>

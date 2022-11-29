@@ -13,9 +13,9 @@ $('.attach-monster').unbind('click').bind('click', function () {
     })
 })
 
-$('.giftcode').unbind('click').bind('click', function () {
+$('.all-map').unbind('click').bind('click', function () {
     const sid = $(this).attr('sid')
-    $.post(`game/duihuan.php?gid=${sid}`, (response) => {
+    $.post(`game/allmap.php?sid=${sid}`, (response) => {
         console.log('response', response)
         $('.teleport').html(response)
         $(".teleport").modal({
@@ -24,4 +24,28 @@ $('.giftcode').unbind('click').bind('click', function () {
     })
 })
 
-console.log('$', $)
+$('.pet').unbind('click').bind('click', function () {
+    const sid = $(this).attr('sid')
+    $.post(`pet/pet.php?sid=${sid}`, (response) => {
+        $('.teleport').html(response)
+        $(".teleport").modal({
+            fadeDuration: 100
+        });
+    })
+})
+
+// $('.pet-handle').unbind('click').bind('click', function () {
+//     console.log("click")
+//     const sid = $(this).attr('sid')
+//     const canshu = $(this).attr('canshu')
+//     const cwid = $(this).attr('cwid')
+//
+//     $.get(`pet/pet.php?sid=${sid}&canshu=${cansu}&cwid=${cwid}`, (response) => {
+//         console.log('response', response)
+//         $('.teleport').html(response)
+//         // $(".teleport").modal({
+//         //     fadeDuration: 100
+//         // });
+//     })
+// })
+

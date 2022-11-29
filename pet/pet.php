@@ -1,0 +1,132 @@
+<?php
+require_once($_SERVER['DOCUMENT_ROOT'] . "/pdo.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/class/encode.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/class/player.php");
+
+$sid = $_GET['sid'];
+$canshu = $_GET['canshu'];
+$cwid = $_GET['cwid'];
+
+$encode = new \encode\encode();
+$player = \player\getplayer($sid, $dblj);
+$gonowmid = $encode->encode("cmd=gomid&newmid=$player->nowmid&sid=$sid");
+$cwhtml = '';
+$cwnamehtml = '';
+$chouqucmd = $encode->encode("cmd=chongwu&canshu=chouqu&sid=$sid");
+
+if (isset($canshu)) {
+    switch ($canshu) {
+        case 'chouqu':
+            #Trieu hoi
+            if (\player\change_cuc_pham_nguyen_thach(2, 50, $sid, $dblj)) {
+                \player\addchongwu($sid, $dblj);
+            } else {
+                echo "Không đủ Cực phẩm linh thạch<br/>";
+            }
+            break;
+        case 'chuzhan':
+//            # Ra tran
+//            \player\changeplayerusepet($cwid, $sid, $dblj);
+            \player\changeplayersx('cw', $cwid, $sid, $dblj);
+            $player = \player\getplayer($sid, $dblj);
+            break;
+        case 'shouhui':
+            \player\changeplayersx('cw', 0, $sid, $dblj);
+            $player = \player\getplayer($sid, $dblj);
+            break;
+        case 'fangsheng':
+            # Phong thich
+            \player\delechongwu($cwid, $sid, $dblj);
+            break;
+        case 'cwinfo':
+            $chongwu = \player\getchongwu($cwid, $dblj);
+            $pzarr = array('Phổ thông', 'Ưu tú', 'Trác tuyệt', 'Phi phàm', 'Hoàn mỹ', 'Nghịch thiên');
+            $cwpz = $pzarr[$chongwu->cwpz];
+            $chongwu->cwpz = $chongwu->cwpz * 10;
+            $cwhtml = <<<HTML
+            Tên: [$chongwu->cwname]<br/>
+            Class: $chongwu->cwlv<br/>
+            Phẩm: $cwpz<br/>
+            K.nghiệm: $chongwu->cwexp/$chongwu->cwmaxexp<br/>
+            K.huyết: ($chongwu->cwhp/$chongwu->cwmaxhp)<br/>
+            C.kích: $chongwu->cwgj<br/>
+            P.ngự: $chongwu->cwfy<br/>
+            B.kích: $chongwu->cwbj<br/>
+            H.máu: $chongwu->cwxx<br/>
+            <br/>
+            K.huyết trưởng thành: $chongwu->uphp<br/>
+            C.kích trưởng thành: $chongwu->upgj<br/>
+            P.ngự trưởng thành: $chongwu->upfy<br/>
+            Phẩm chất [$cwpz] thưởng khi nâng cấp $chongwu->cwpz%<br/>
+            <br/><br/>
+            <button onClick="javascript :history.back(-1);">Trở về</button> <a href="game.php?cmd=$gonowmid">Trở về trò chơi</a>
+HTML;
+            echo $cwhtml;
+            exit();
+            break;
+    }
+}
+
+$allcw = \player\getchongwuall($sid, $dblj);
+if ($allcw) {
+    foreach ($allcw as $cw) {
+        $cwid = $cw['cwid'];
+        $czcmd = '';
+        if ($cwid != $player->cw) {
+            $czcmd = $encode->encode("cmd=chongwu&canshu=chuzhan&cwid=$cwid&sid=$sid");
+            $fscmd = $encode->encode("cmd=chongwu&canshu=fangsheng&cwid=$cwid&sid=$sid");
+            $czcmd = <<<HTML
+            <a class="flex items-center pet-handle mr-2 h-[22px] bg-[#cf3917] text-xs"
+            onclick="handlePet('$sid', 'chuzhan', '$cwid')">
+                Ra trận
+            </a>
+HTML;
+            $fscmd = <<<HTML
+            <a class="bg-[#333333] flex items-center h-[22px] text-xs" onclick="handlePet('$sid', 'fangsheng', '$cwid')">Phóng thích</a>
+HTML;
+            $gncmd = $czcmd . $fscmd;
+        } else {
+            $shcmd = $encode->encode("cmd=chongwu&canshu=shouhui&cwid=$cwid&sid=$sid");
+            $shcmd = <<<HTML
+                <a class="h-[30px] bg-[#333333] flex items-center pet-handle mr-2 h-[22px] bg-[#cf3917] text-xs" onclick="handlePet('$sid', 'shouhui', '$cwid')">Triệu hồi</a>
+HTML;
+            $gncmd = '<span class="mr-4">(Đã xuất chiến)</span>' . $shcmd;
+        }
+        $cwinfo = $encode->encode("cmd=chongwu&cwid=$cwid&canshu=cwinfo&sid=$sid");
+        $cwnamehtml .= "<div class='p-4 flex border border-2 m-5 rounded-sm relative flex-col'>
+            <div class=''>
+            <img src='images/gif/pet.gif' class='w-[120px]' />
+            <div class='absolute top-[6px] right-[6px] flex'>$gncmd</div>
+            </div>
+            " . '<a class="w-[120px]" href="?cmd=' . $cwinfo . '">' . $cw['cwname'] . '</a>
+            </div>';
+    }
+} else {
+    $cwnamehtml = <<<HTML
+<div class="h-[100px] text-center mt-10">
+Bạn hiện không có vật nuôi
+</div>
+HTML;
+}
+
+
+$cwhtml = <<<HTML
+<div>
+    $cwnamehtml
+    <div class="flex items-center justify-center mb-4" onclick="handlePet('$sid', 'chouqu', '')"><span class="flex items-center pet-handle mr-2 h-[22px] bg-[#cf3917] text-xs">Triệu hồi</span>[50 Cực phẩm linh thạch]</div>
+</div>
+<script>
+function handlePet(_sid, _canshu, _cwid) {
+    const url = 'pet/pet.php?sid=' + _sid + '&canshu=' + _canshu + '&cwid=' + _cwid
+    console.log("click", url)
+      $.get(url, (response) => {
+         console.log('response', response)
+         $('.teleport').html(response)
+         // $(".teleport").modal({
+         //     fadeDuration: 100
+         // });
+     })
+}
+</script>
+HTML;
+echo $cwhtml;

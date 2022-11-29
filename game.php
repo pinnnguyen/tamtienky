@@ -362,29 +362,10 @@ if (isset($cmd)) {
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Remember to include jQuery :) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-
     <!-- jQuery Modal -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-
-
-    <!--    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>-->
-
-<!--    <style>-->
-<!--        .draggable {-->
-<!--            width: 25%;-->
-<!--            min-height: 6.5em;-->
-<!--            margin: 1rem 0 0 1rem;-->
-<!--            background-color: #29e;-->
-<!--            color: white;-->
-<!--            border-radius: 0.75em;-->
-<!--            padding: 4%;-->
-<!--            touch-action: none;-->
-<!--            user-select: none;-->
-<!--        }-->
-<!--    </style>-->
-<!--    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
-<!--    <link rel="manifest" href="manifest.json" />-->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
 
 </head>
 <body>

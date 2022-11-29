@@ -2,7 +2,6 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . "/pdo.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/class/encode.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/class/player.php");
-require($_SERVER['DOCUMENT_ROOT'] . "/stores/query.php");
 
 $sid = $_GET['sid'];
 $gid = $_GET['gid'];

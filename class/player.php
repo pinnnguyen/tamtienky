@@ -139,6 +139,20 @@ function getplayer($sid, $dblj)
         $player->umaxhp = $player->umaxhp + $zhuangbei->zbhp;
     }
 
+    if ($player->cw != 0) {
+        #cwmaxhp khi huyet
+        #cwgj cong kich
+        #cwfy phong ngu
+        #cwbj bao kich
+        # hut mau
+        $chongwu = \player\getchongwu($player->cw, $dblj);
+        $player->ugj = $player->ugj + $chongwu->cwgj;
+        $player->ufy = $player->ufy + $chongwu->cwfy;
+        $player->ubj = $player->ubj + $chongwu->cwbj;
+        $player->uxx = $player->uxx + $chongwu->cwxx;
+        $player->umaxhp = $player->umaxhp + $chongwu->cwmaxhp;
+    }
+
     $rangeslv = array(0, 30, 50, 70, 80, 90, 100, 110);
     $rangesexp = array(2.5, 5, 7.5, 10, 12.5, 15, 17.5);
     $playernextlv = $player->ulv + 1;
@@ -743,6 +757,19 @@ function changeplayersx($sx, $gaibian, $sid, $dblj)
     $ret = $dblj->exec($sql);
 }
 
+function changeplayerusepet($cwid, $sid, $dblj)
+{
+    $chongwu = \player\getchongwu($cwid, $dblj);
+    #cwmaxhp khi huyet
+    #cwgj cong kich
+    #cwfy phong ngu
+    #cwbj bao kich
+    # hut mau
+    var_dump($chongwu);
+    $sql = "update game1 set $sx = '$gaibian' WHERE sid='$sid'";//Thay đổi thuộc tính người chơi
+    $ret = $dblj->exec($sql);
+}
+
 function changecwsx($sx, $gaibian, $cwid, $dblj)
 {
     $sql = "update playerchongwu set $sx = '$gaibian' WHERE cwid='$cwid'";//Thay đổi thuộc tính thú cưng
@@ -1021,6 +1048,7 @@ function getchongwu($cwid, $dblj)
         $chongwu->uxx = $chongwu->cwxx + $zhuangbei->zbxx;
         $chongwu->umaxhp = $chongwu->cwmaxhp + $zhuangbei->zbhp;
     }
+
     if ($chongwu->tool2 != 0) {
         $zhuangbei = getzb($chongwu->tool2, $dblj);
         $chongwu->ugj = $chongwu->cwgj + $zhuangbei->zbgj;
@@ -1029,6 +1057,7 @@ function getchongwu($cwid, $dblj)
         $chongwu->uxx = $chongwu->cwxx + $zhuangbei->zbxx;
         $chongwu->umaxhp = $chongwu->cwmaxhp + $zhuangbei->zbhp;
     }
+
     if ($chongwu->tool3 != 0) {
         $zhuangbei = getzb($chongwu->tool3, $dblj);
         $chongwu->ugj = $chongwu->cwgj + $zhuangbei->zbgj;
@@ -1037,6 +1066,7 @@ function getchongwu($cwid, $dblj)
         $chongwu->uxx = $chongwu->cwxx + $zhuangbei->zbxx;
         $chongwu->umaxhp = $chongwu->cwmaxhp + $zhuangbei->zbhp;
     }
+
     if ($chongwu->tool4 != 0) {
         $zhuangbei = getzb($chongwu->tool4, $dblj);
         $chongwu->ugj = $chongwu->cwgj + $zhuangbei->zbgj;
@@ -1045,6 +1075,7 @@ function getchongwu($cwid, $dblj)
         $chongwu->uxx = $chongwu->cwxx + $zhuangbei->zbxx;
         $chongwu->umaxhp = $chongwu->cwmaxhp + $zhuangbei->zbhp;
     }
+
     if ($chongwu->tool5 != 0) {
         $zhuangbei = getzb($chongwu->tool5, $dblj);
         $chongwu->ugj = $chongwu->cwgj + $zhuangbei->zbgj;
@@ -1053,6 +1084,7 @@ function getchongwu($cwid, $dblj)
         $chongwu->uxx = $chongwu->cwxx + $zhuangbei->zbxx;
         $chongwu->umaxhp = $chongwu->cwmaxhp + $zhuangbei->zbhp;
     }
+
     if ($chongwu->tool6 != 0) {
         $zhuangbei = getzb($chongwu->tool6, $dblj);
         $chongwu->ugj = $chongwu->cwgj + $zhuangbei->zbgj;
@@ -1087,10 +1119,18 @@ function getchongwuall($sid, $dblj)
 
 function addchongwu($sid, $dblj)
 {
-//    $cw1 = array('句芒', '禺疆', '神荼', '烛龙', '白泽');
-//    $cw2 = array('青龙', '白虎', '朱雀', '玄武');
-//    $cw3 = array('饕餮', '寿杌', '混沌', '穷奇');
-    $cw4 = array('Linh lỵ thử', 'Suất suất hầu', 'Khốc khốc long', 'Đản đản kê', 'Suất suất hầu', 'Đản đản kê', 'yo ngựa', 'cừu kêu be be', 'khỉ đẹp trai');
+    $cw4 = array('Linh-Đế Kim Phi Thử',
+        'Linh Hư Uyển Thuỷ Hư',
+        'Yêu Hồ Lực Đại Tiên',
+        'Đản đản kê',
+        'Quỷ-Lực Lộc Đại Tiên',
+        'Yêu Đà Ngột',
+        'Linh-Hư Yền Minh',
+        'Yêu Ngưu Ma Vương',
+        'Quỷ Liệt Giới Minh Lang',
+        'Linh Ma Băng Cực Địa',
+        'Yêu Chấn Hôi Ưng Liên');
+
     $uphp = mt_rand(8, 25);
     $upgj = mt_rand(2, 5);
     $upfy = mt_rand(3, 8);

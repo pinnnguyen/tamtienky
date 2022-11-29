@@ -15,12 +15,10 @@
 body {
     zoom: 1;
     background-color: #333;
-    font-family: monospace;
+    font-family: "Sora", sans-serif;
     font-size: 12px;
     color: #333;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
+    margin: 0 auto;
 }
 
 body::after {
@@ -66,8 +64,8 @@ a:link {
 }
 
 .main {
-    margin: 0 auto;
     overflow: hidden;
+    margin: auto;
 }
 
 .main button {

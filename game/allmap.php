@@ -23,7 +23,7 @@ for ($i = 0; $i < count($cxallmap); $i++) {
         $br++;
         $gomid = $encode->encode("cmd=gomid&newmid=$mid&sid=$sid");
         $map .= <<<HTML
-        <a href="?cmd=$gomid" >[$qyame]$mname</a>
+        <a class="text-white p-2" style="background: radial-gradient(black, transparent)" href="?cmd=$gomid" >[$qyame]$mname</a>
 HTML;
 
         if ($cxmid->ispvp === "1") {
@@ -41,10 +41,17 @@ HTML;
 
 $gonowmid = $encode->encode("cmd=gomid&newmid=$player->nowmid&sid=$sid");
 $allmap = <<<HTML
-Danh sách bản đồ:<br/>
-$map<br>
-<br>
-<button onClick="javascript:history.back(-1);">Trở về</button> <a href="?cmd=$gonowmid">Trở về trò chơi</a>
+<div class="">
+    <div class="text-center text-sm text-white">Danh sách bản đồ</div>
+    <div class="flex flex-col h-[90vh] overflow-scroll">
+    $map
+</div>
+<div class="fixed bottom-0 h-[40px] flex items-center p-2">
+    <a style="background: radial-gradient(black, transparent)" class="!text-white h-[34px] !flex items-center" onClick="javascript:history.back(-1);">Trở về</a>
+    <a style="background: radial-gradient(black, transparent)" class="!text-white h-[34px] !flex items-center" href="?cmd=$gonowmid">Trở về trò chơi</a>
+</div>
+</div>
+
 HTML;
 echo $allmap;
 ?>

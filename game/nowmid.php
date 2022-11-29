@@ -343,106 +343,91 @@ $remainingplayerexp = ($player->uexp / $player->umaxexp) * 100;
 $remainingplayerexp .= 'px';
 
 $nowhtml = <<<HTML
-<div class="absolute top-0 left-0 w-full h-full opacity-80" style="background: url('images/Img_Zhuxian_Shichenxidong.png'); background-size: cover"></div>
+<div class="absolute top-0 left-0 w-full h-full opacity-80" style="background: url('images/Img_Zhuxian_Shichenxidong.png'); background-size: cover;"></div>
 <div class="h-full w-full absolute">
     <div class="flex items-end bg-[#36445a] text-white p-1">
-   
         <a class="border-none p-0" href="?cmd=$ztcmd">
-        <img class="h-[40px] mr-2" src="images/pve/player-avatar.png">
+            <img class="h-[40px] mr-2" src="images/pve/player-avatar.png" />
         </a>
         <div>
-          <div class="h-[10px] w-[105px] rounded-full bg-[#212121cc] flex items-center p-[2px]">
-                        <div class="h-[5px] w-20 rounded-full bg-[#ffcf3e]" style="width: $remainingplayerexp"></div>
-                    </div>
-                            <span class="pb-[2px]">$player->uname [lv:$player->ulv]</span>
-</div>
-
+            <div class="h-[10px] w-[105px] rounded-full bg-[#212121cc] flex items-center p-[2px]">
+                <div class="h-[5px] w-20 rounded-full bg-[#ffcf3e]" style="width: $remainingplayerexp;"></div>
+            </div>
+            <span class="pb-[2px]">$player->uname [lv:$player->ulv]</span>
+        </div>
     </div>
     <div class="flex items-center justify-end">
-        <a style="background: radial-gradient(black, transparent)" class="text-white inline-block flex items-center" href="?cmd=$fangshi" ><img class="w-[30px]" src="images/menu/XJHomescreenButton_20.png" /><span style="font-size: 10px">Chợ</span></a> 
-        <a style="background: radial-gradient(black, transparent)" class="text-white inline-block flex items-center" href="?cmd=$imcmd"><img class="w-[30px]" src="images/menu/XJHomescreenButton_44.png" /><span  style="font-size: 10px">H.Hữu</span></a> 
-        <a style="background: radial-gradient(black, transparent)" class="text-white inline-block flex items-center" href="?cmd=$phcmd"><img class="w-[30px]" src="images/menu/XJHomescreenButton_15.png" /><span  style="font-size: 10px">X.hạng</span></a>
+        <a style="background: radial-gradient(black, transparent);" class="text-white inline-block flex items-center" href="?cmd=$fangshi">
+            <img class="w-[30px]" src="images/menu/XJHomescreenButton_20.png" /><span style="font-size: 10px;">Chợ</span>
+        </a>
+        <a style="background: radial-gradient(black, transparent);" class="text-white inline-block flex items-center" href="?cmd=$imcmd">
+            <img class="w-[30px]" src="images/menu/XJHomescreenButton_44.png" /><span style="font-size: 10px;">H.Hữu</span>
+        </a>
+        <a style="background: radial-gradient(black, transparent);" class="text-white inline-block flex items-center" href="?cmd=$phcmd">
+            <img class="w-[30px]" src="images/menu/XJHomescreenButton_15.png" /><span style="font-size: 10px;">X.hạng</span>
+        </a>
     </div>
     <div class="p-2">
         <div class="uppercase font-semibold text-xs">$clmid->mname$pvphtml</div>
         <span class="text-xs mb-2 text-[#ff380b]">Chú ý: $clmid->playerinfo</span>
         <div class="flex flex-wrap">
-            $playerhtml
-            $gwhtml
+            $playerhtml $gwhtml
         </div>
     </div>
-<div>
-</div>
-<div class="p-2">
-    $npchtml
-</div>
-<div>
-    <div class="flex items-center justify-center">
-        <div class="relative">
-                $tupocmd
-        <img src="images/main.png" class="w-[200px]" alt="">
-        <div class="absolute bottom-[-21px] left-[34px] w-[145px]">
-        <img src="images/danhhieu.png">
+    <div></div>
+    <div class="p-2">
+        $npchtml
+    </div>
+    <div class="absolute bottom-0 bg-[#36445a]">
+        <div class="p-2">
+            <div class="flex text-white text-xs">
+                $lukouhtml
+            </div>
+            <div class="flex items-end">
+                $bosshtml
+            </div>
         </div>
-       <span class="absolute bottom-[-8px] left-[67px] text-white text-xs">
-        $player->jingjie $player->cengci
-</span>
 
-</div>
+        <div class="text-white mx-2">
+            <div class="flex mb-2">
+                <a class="!flex items-center justify-center border-none !text-white" href="?cmd=$goliaotian">
+                    <img class="w-[50px]" src="images/menu/XJShare_07.png" />
+                </a>
+                <div>$lthtml</div>
+                <a class="w-[110px] !flex justify-center items-center !text-white" href="?cmd=$mapcmd">Bản đồ</a>
+            </div>
+        </div>
 
+        <div class="h-[62px] bg-[#36445a]">
+            <div class="flex items-center justify-center bg-white pt-1 font-semibold" style="border-radius: 30px 30px 0 0;">
+                <a class="border-none p-0 flex flex-col items-center" href="?cmd=$ztcmd">
+                    <img class="w-[50px]" src="images/menu/XJHomescreenButton_29.png" />
+                    <!--            <div>N.Vật</div>-->
+                </a>
+                <a class="w-[20%] flex flex-col items-center" href="?cmd=$getbagcmd">
+                    <img class="w-[50px]" src="images/menu/XJDengxiandao_15.png" />
+                    <!--            <div>B.Lô</div>-->
+                </a>
+                <a class="w-[20%] flex flex-col items-center" href="?cmd=$cwcmd">
+                    <img class="w-[50px]" src="images/menu/XJHomescreenTop_42.png" />
+                    <!--            <div>T.Cưng</div>-->
+                </a>
+                <a class="w-[20%] flex flex-col items-center" href="?cmd=$clubcmd">
+                    <img class="w-[50px]" src="images/menu/XJHomescreenButton_10.png" />
+                    <!--            <div>T.Môn</div>-->
+                </a>
+                <a class="w-[20%] flex flex-col items-center" href="?cmd=$mytask">
+                    <img class="w-[50px]" src="images/menu/XJDengxiandao_14.png" />
+                    <!--            <div>N.Vụ</div>-->
+                </a>
+            </div>
+        </div>
     </div>
-</div>
-<div class="absolute bottom-0 bg-[#36445a]">
-<div class="p-2">
-<div class="flex text-white text-xs">
-    $lukouhtml
-    </div>
-    <div class="flex items-end">
-    $bosshtml
-</div>
-</div>
-
-    <div class="text-white mx-2">    
-        <div class="flex mb-2">
-        <a class="!flex items-center justify-center border-none !text-white" href="?cmd=$goliaotian">
-            <img class="w-[50px]" src="images/menu/XJShare_07.png" />
-        </a>
-        <div>$lthtml</div>
-        <a class="w-[110px] !flex justify-center items-center !text-white" href="?cmd=$mapcmd">Bản đồ</a>
-    </div>
-    </div>
-
-    <div class="h-[64px] bg-[#36445a]">
-    <div class="flex items-center justify-center bg-white pt-1 font-semibold" style="border-radius: 30px 30px 0 0">
-        <a class="border-none p-0 flex flex-col items-center" href="?cmd=$ztcmd">
-        <img class="w-[50px]" src="images/menu/XJHomescreenButton_29.png">
-<!--            <div>N.Vật</div>-->
-        </a>
-        <a class="w-[20%] flex flex-col items-center" href="?cmd=$getbagcmd">
-            <img class="w-[50px]" src="images/menu/XJDengxiandao_15.png" />
-<!--            <div>B.Lô</div>-->
-        </a>  
-        <a class="w-[20%] flex flex-col items-center" href="?cmd=$cwcmd" >
-            <img class="w-[50px]" src="images/menu/XJHomescreenTop_42.png" />
-<!--            <div>T.Cưng</div>-->
-        </a>
-        <a class="w-[20%] flex flex-col items-center" href="?cmd=$clubcmd">
-            <img class="w-[50px]"  src="images/menu/XJHomescreenButton_10.png" />
-<!--            <div>T.Môn</div>-->
-        </a>
-        <a class="w-[20%] flex flex-col items-center" href="?cmd=$mytask">
-        <img class="w-[50px]" src="images/menu/XJDengxiandao_14.png" />
-<!--            <div>N.Vụ</div>-->
-        </a>
-</div>
-      
-    </div>
-</div>
 </div>
 <script>
-$.get("/game/ginfo.php", (res) => {
-    console.log("res", res)
-})
+    $.get("/game/ginfo.php", (res) => {
+        console.log("res", res);
+    });
 </script>
 
 <!--<a href="index.php" >Quay lại trang chủ</a><br/>-->
@@ -459,3 +444,18 @@ echo $nowhtml;
 //     <a href="?cmd=$fangshi" >Chợ</a>
 //    <a href="?cmd=$clubcmd" >Tông môn</a>
 //    <a href="?cmd=$cwcmd" >Pet</a> <a href="?cmd=$bugreportcmd" >G.lỗi</a>
+
+//<div>
+////        <div class="flex items-center justify-center">
+////            <div class="relative">
+////                $tupocmd
+////                <img src="images/main.png" class="w-[200px]" alt="" />
+////                <div class="absolute bottom-[-21px] left-[34px] w-[145px]">
+////                    <img src="images/danhhieu.png" />
+////                </div>
+////                <span class="absolute bottom-[-8px] left-[67px] text-white text-xs">
+////                    $player->jingjie $player->cengci
+////                </span>
+////            </div>
+////        </div>
+//    </div>

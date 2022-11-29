@@ -239,8 +239,9 @@ if ($cmd == 'pve' && $guaiwu->sid == '') {
             $guaiwu->gexp = round($guaiwu->gexp / ($lvc + 1), 0);// tính toán theo kinh nghiệm
         }
 
-        if ($player->ulv > ($guaiwu->glv + 10)) {// Nếu nhân vật cao hơn nhiều so với quái vật, hãy cho 3 điểm kinh nghiệm tượng trưng
-            $guaiwu->gexp = $guaiwu->gexp * 50;
+        if ($player->ulv > ($guaiwu->glv + 10)) {
+            // Nếu nhân vật cao hơn nhiều so với quái vật, hãy cho 3 điểm kinh nghiệm tượng trưng
+            $guaiwu->gexp = $guaiwu->gexp * 25;
         }
 
         $zdjg = 1;

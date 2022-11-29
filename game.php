@@ -20,6 +20,7 @@ $npc = new \player\npc();
 
 $ym = 'game/nowmid.php';
 $Dcmd = $_SERVER['QUERY_STRING'];
+$tpts = '';
 $pvpts = '';
 session_start();
 //$allow_sep = "220";
@@ -325,6 +326,13 @@ if (isset($cmd)) {
             $pvpts = "$pvper->uname Đang tấn công bạn: $pvpcmd<br/>";
         }
 
+
+        if (\player\istupo($sid, $dblj) != 0 && $player->uexp >= $player->umaxexp) {
+            $tupocmd = $encode->encode("cmd=tupo&sid=$sid");
+            $tupocmd = "<a href='?cmd=$tupocmd'>Đột phá</a>";
+            $tpts = "<p class='p-2 text-white bg-black text-xs'><strong>Tip: </strong>Bạn cần đột phá, nếu không sẽ không thể tích lũy được kinh nghiệm:$tupocmd</p>";
+        }
+
         $nowdate = date('Y-m-d H:i:s');
         $second = floor((strtotime($nowdate) - strtotime($player->endtime)) % 86400);//Nhận khoảng thời gian làm mới
         if ($second >= 900) {
@@ -349,6 +357,7 @@ if (isset($cmd)) {
     <meta charset="utf-8" content="width=device-width,user-scalable=no" name="viewport">
     <title>Tu Tiên Hội</title>
     <link rel="stylesheet" href="css/gamecss.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sora">
     <link rel="icon" href="images/logo.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Remember to include jQuery :) -->
@@ -383,6 +392,8 @@ if (isset($cmd)) {
     <div class="h-full relative" style="background: linear-gradient(to bottom right, #36445a, #90a7a9, #b2c5c4)">
         <?php
         if (!$ym == '') {
+            echo $tpts;
+
             if ($ym != "game/pvp.php") {
                 echo $pvpts;
             }

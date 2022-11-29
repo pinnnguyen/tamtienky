@@ -10,7 +10,17 @@ $('.attach-monster').unbind('click').bind('click', function () {
         $(".teleport").modal({
             fadeDuration: 100
         });
+    })
+})
 
+$('.giftcode').unbind('click').bind('click', function () {
+    const sid = $(this).attr('sid')
+    $.post(`game/duihuan.php?gid=${sid}`, (response) => {
+        console.log('response', response)
+        $('.teleport').html(response)
+        $(".teleport").modal({
+            fadeDuration: 100
+        });
     })
 })
 

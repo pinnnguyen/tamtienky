@@ -335,7 +335,7 @@ if (isset($cmd)) {
 
         $nowdate = date('Y-m-d H:i:s');
         $second = floor((strtotime($nowdate) - strtotime($player->endtime)) % 86400);//Nhận khoảng thời gian làm mới
-        if ($second >= 900) {
+        if ($second >= 9000) {
             echo '<meta charset="utf-8" content="width=device-width,user-scalable=no" name="viewport">';
             echo $player->uname . "Thời gian ngoại tuyến quá lâu, vui lòng đăng nhập lại-";
             header("refresh:1;url=index.php");
@@ -401,7 +401,7 @@ if (isset($cmd)) {
             include "$ym";
         } ?>
     </div>
-    <div class="teleport relative bg-[#36445a] border border-2 rounded-md p-0"></div>
+    <div class="teleport relative bg-[#e1ddd2] border border-2 rounded-md p-0"></div>
 </div>
 </body>
 

@@ -5,8 +5,16 @@
  * Date: 2016/8/20
  * Time: 18:39
  */
+//require_once($_SERVER['DOCUMENT_ROOT'] . "/pdo.php");
+//require_once($_SERVER['DOCUMENT_ROOT'] . "/class/encode.php");
+//require_once($_SERVER['DOCUMENT_ROOT'] . "/class/player.php");
+
+//$sid = $_GET['sid'];
+//$encode = new \encode\encode();
 $player = \player\getplayer($sid, $dblj);
 $gonowmid = $encode->encode("cmd=gomid&newmid=$player->nowmid&sid=$sid");
+//$duihuancmd = $encode->encode("cmd=duihuan&sid=$sid");
+
 $tishi = '';
 
 if (isset($dhm)) {
@@ -81,19 +89,20 @@ if (isset($dhm)) {
 
 
 $dhhtml = <<<HTML
-=========Trang đổi thưởng=========
-<form>
-    <input type="hidden" name="cmd" value="duihuan">
-    <input type="hidden" name="sid" value="$sid">
-    Mã đổi thưởng:<br/>
-    <input name="dhm" class="border border-1"> 
-    <button type="submit" class="gamesubmit" value="Đổi thưởng">
-    Đổi thưởng
-</button>
-</form>
-$tishi
-<button onClick="javascript :history.back(-1);">Trở về</button> <a href='?cmd=$gonowmid'>Trở về trò chơi</a>
+<div class="p-4">
+    <form>
+        <input type="hidden" name="cmd" value="duihuan">
+        <input type="hidden" name="sid" value="$sid">
+        Mã đổi thưởng:<br/>
+        <input name="dhm" class="dhm shadow appearance-none border w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"> 
+        <button class="use-giftcode bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4" value="Đổi thưởng">
+        Đổi thưởng
+    </button>
+    </form>
+    $tishi
+</div>
+
 HTML;
+
 echo $dhhtml;
-?>
 

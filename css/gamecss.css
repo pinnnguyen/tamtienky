@@ -123,3 +123,21 @@ a:link {
     max-width: 98%;
     border: none;;
 }
+
+.teleport {
+    border-radius: 0;
+}
+
+.btn-confirm {
+    width: 210px;
+    line-height: 50px;
+    border: none;
+    margin-top: 20px;
+    text-align: center;
+    background-color: #ffd400;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #333;
+    font-weight: 600;
+    border-radius: 150px;
+}

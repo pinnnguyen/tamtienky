@@ -144,7 +144,7 @@ $html = <<<HTML
                         Đẳng cấp: $player->ulv
                     </div>
                 </div>
-                <a style="background: radial-gradient(black, transparent);" class="text-white" href="?cmd=$duihuancmd">Giftcode</a>
+                <a style="background: radial-gradient(black, transparent);" class="text-white giftcode" href="?cmd=$duihuancmd">Giftcode</a>
             </div>
             <div class="m-3">
                 <div class="border border-[#80999d] bg-[#9ab1b0] my-1 px-2">

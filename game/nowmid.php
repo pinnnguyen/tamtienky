@@ -175,7 +175,7 @@ for ($i = 0; $i < count($cxallguaiwu); $i++) {
     gyid=". $cxallguaiwu[$i]['gyid'] ." 
     sid='$sid' 
     nowmid='$player->nowmid'  
-    class='!flex flex-col bg-[#8b0808] !text-white font-medium text-center w-[50px] overflow-hidden h-[50px] overflow-hidden rounded attach-monster'>
+    class='rounded-full m-2 !flex flex-col bg-[#8b0808] !text-white font-medium text-center w-[50px] overflow-hidden h-[50px] overflow-hidden attach-monster'>
     <span>
     [lv" . $cxallguaiwu[$i]['glv'] . "]
     </span>" . $cxallguaiwu[$i]['gname'] . "</a> ";
@@ -210,7 +210,7 @@ if ($cxjg) {
                     $club->clubname = "";
                 }
                 $playercmd = $encode->encode("cmd=getplayerinfo&uid=$cxuid&sid=$sid");
-                $playerhtml .= "<a style='font-size: 10px' class='!flex flex-col justify-center bg-[#342df2] !text-white font-medium text-center w-[50px] overflow-hidden h-[50px] overflow-hidden rounded' href='?cmd=$playercmd'>
+                $playerhtml .= "<a style='font-size: 10px' class='!flex flex-col justify-center bg-[#342df2] !text-white font-medium text-center w-[50px] overflow-hidden h-[50px] overflow-hidden rounded-full' href='?cmd=$playercmd'>
 <span>$club->clubname</span>
 <span>$cxuname</span></a>";
             }

@@ -2,6 +2,8 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . "/pdo.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/class/encode.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/class/player.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/pet/rule.php");
+
 
 $sid = $_GET['sid'];
 $canshu = $_GET['canshu'];
@@ -13,6 +15,8 @@ $gonowmid = $encode->encode("cmd=gomid&newmid=$player->nowmid&sid=$sid");
 $cwhtml = '';
 $cwnamehtml = '';
 $chouqucmd = $encode->encode("cmd=chongwu&canshu=chouqu&sid=$sid");
+
+$current_pet_info = "";
 
 if (isset($canshu)) {
     switch ($canshu) {
@@ -40,26 +44,52 @@ if (isset($canshu)) {
             break;
         case 'cwinfo':
             $chongwu = \player\getchongwu($cwid, $dblj);
-            $pzarr = array('Phổ thông', 'Ưu tú', 'Trác tuyệt', 'Phi phàm', 'Hoàn mỹ', 'Nghịch thiên');
             $cwpz = $pzarr[$chongwu->cwpz];
             $chongwu->cwpz = $chongwu->cwpz * 10;
+
             $cwhtml = <<<HTML
-            Tên: [$chongwu->cwname]<br/>
-            Class: $chongwu->cwlv<br/>
-            Phẩm: $cwpz<br/>
-            K.nghiệm: $chongwu->cwexp/$chongwu->cwmaxexp<br/>
-            K.huyết: ($chongwu->cwhp/$chongwu->cwmaxhp)<br/>
-            C.kích: $chongwu->cwgj<br/>
-            P.ngự: $chongwu->cwfy<br/>
-            B.kích: $chongwu->cwbj<br/>
-            H.máu: $chongwu->cwxx<br/>
-            <br/>
-            K.huyết trưởng thành: $chongwu->uphp<br/>
-            C.kích trưởng thành: $chongwu->upgj<br/>
-            P.ngự trưởng thành: $chongwu->upfy<br/>
-            Phẩm chất [$cwpz] thưởng khi nâng cấp $chongwu->cwpz%<br/>
-            <br/><br/>
-            <button onClick="javascript :history.back(-1);">Trở về</button> <a href="game.php?cmd=$gonowmid">Trở về trò chơi</a>
+<div class="p-4 leading-6">
+            <div>
+            Tên: [$chongwu->cwname]
+</div>
+            <div>
+            Class: $chongwu->cwlv
+</div>
+            <div>
+            Phẩm: $cwpz
+</div>
+            <div>
+            K.nghiệm: $chongwu->cwexp/$chongwu->cwmaxexp
+</div>
+           <div>
+            K.huyết: ($chongwu->cwhp/$chongwu->cwmaxhp)
+</div>
+           <div>
+            C.kích: $chongwu->cwgj
+</div>
+           <div>
+            P.ngự: $chongwu->cwfy
+</div>
+            <div>
+            B.kích: $chongwu->cwbj
+</div>
+            <div>
+            H.máu: $chongwu->cwxx
+</div>
+            <div>
+            K.huyết trưởng thành: $chongwu->uphp
+</div>
+           <div>
+            C.kích trưởng thành: $chongwu->upgj
+</div>
+           <div>
+            P.ngự trưởng thành: $chongwu->upfy
+</div>
+            <div>
+            Phẩm chất [$cwpz] thưởng khi nâng cấp $chongwu->cwpz%
+</div>
+</div>
+
 HTML;
             echo $cwhtml;
             exit();
@@ -71,6 +101,31 @@ $allcw = \player\getchongwuall($sid, $dblj);
 if ($allcw) {
     foreach ($allcw as $cw) {
         $cwid = $cw['cwid'];
+        if ($cwid != 0) {
+            $chongwu = \player\getchongwu($cwid, $dblj);
+            $cwpz = $pzarr[$chongwu->cwpz];
+
+            $current_pet_info = <<<HTML
+            <div class="p-2">
+            
+                       <div>
+                        K.huyết trưởng thành: $chongwu->uphp
+            </div>
+                       <div>
+                        C.kích trưởng thành: $chongwu->upgj
+            </div>
+                       <div>
+                        P.ngự trưởng thành: $chongwu->upfy
+            </div>
+                        <div>
+                        Phẩm chất [$cwpz] thưởng khi nâng cấp $chongwu->cwpz%
+            </div>
+            </div>
+
+HTML;
+
+        }
+
         $czcmd = '';
         if ($cwid != $player->cw) {
             $czcmd = $encode->encode("cmd=chongwu&canshu=chuzhan&cwid=$cwid&sid=$sid");
@@ -92,14 +147,19 @@ HTML;
 HTML;
             $gncmd = '<span class="mr-4">(Đã xuất chiến)</span>' . $shcmd;
         }
+
         $cwinfo = $encode->encode("cmd=chongwu&cwid=$cwid&canshu=cwinfo&sid=$sid");
-        $cwnamehtml .= "<div class='p-4 flex border border-2 m-5 rounded-sm relative flex-col'>
-            <div class=''>
+        $petname = $cw['cwname'];
+        $cwnamehtml .= <<<HTML
+            <div class='p-4 flex border border-2 m-5 rounded-sm relative flex-col' onclick="handlePet('$sid', 'cwinfo', '$cwid')">
+            <div class='flex items-center mt-3'>
             <img src='images/gif/pet.gif' class='w-[120px]' />
+            $current_pet_info
             <div class='absolute top-[6px] right-[6px] flex'>$gncmd</div>
             </div>
-            " . '<a class="w-[120px]" href="?cmd=' . $cwinfo . '">' . $cw['cwname'] . '</a>
-            </div>';
+            <a>$petname</a>
+            </div>
+HTML;
     }
 } else {
     $cwnamehtml = <<<HTML
@@ -122,9 +182,6 @@ function handlePet(_sid, _canshu, _cwid) {
       $.get(url, (response) => {
          console.log('response', response)
          $('.teleport').html(response)
-         // $(".teleport").modal({
-         //     fadeDuration: 100
-         // });
      })
 }
 </script>

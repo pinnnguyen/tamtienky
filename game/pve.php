@@ -146,12 +146,13 @@ if ($cmd == 'pve' && $guaiwu->sid == '') {
     $sql = "update midguaiwu set ghp = ghp - {$gphurt} WHERE id='$gid'";
     $dblj->exec($sql);
     $guaiwu = player\getguaiwu($gid, $dblj);
-    if ($guaiwu->ghp <= 0) {//怪物死亡
+    if ($guaiwu->ghp <= 0) {//quái vật chết
         $sql = "delete from midguaiwu where id = $gid AND sid='$player->sid'";
         $dblj->exec($sql);
 
         $yxb = round($guaiwu->glv * 3);
-        if (($hurt || $lvc >= 5) && !($guaiwu->glv >= 46 && $player->ulv >= 50)) {  //没有进行伤害或者人物比怪物高5级,并且不在怪物大于46级，人物大于50的情况下，才不爆灵石
+        if (($hurt || $lvc >= 5) && !($guaiwu->glv >= 46 && $player->ulv >= 50)) {
+            //Không có sát thương hoặc nhân vật cao hơn quái vật 5 cấp, quái vật không lớn hơn 46, nhân vật lớn hơn 50, linh thạch sẽ không phát nổ
             $yxb = 0;
         }
 

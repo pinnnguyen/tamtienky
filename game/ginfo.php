@@ -50,7 +50,10 @@ HTML;
             foreach ($zbarr as $newstr) {
                 $zbkzb = \player\getzbkzb($newstr, $dblj);
                 $zbcmd = $encode->encode("cmd=zbinfo_sys&zbid=$zbkzb->zbid&sid=$sid");
-                $zbhtml .= "<div><a class='text-white' href='?cmd=$zbcmd'>$zbkzb->zbname</a></div>";
+                $zbhtml .= "<div class='flex mt-2'>
+<div class='border rounded-full w-[45px] h-[45px] flex items-center justify-center'><img class='w-10 rounded-full' src='images/XJICON_Treasure_03_12.png' /></div>
+<a class='' href='?cmd=$zbcmd'>$zbkzb->zbname</a>
+</div>";
             }
             $dlhtml .= $zbhtml;
         }
@@ -61,7 +64,9 @@ HTML;
             foreach ($djarr as $newstr) {
                 $dj = \player\getdaoju($newstr, $dblj);
                 $djinfo = $encode->encode("cmd=djinfo&djid=$dj->djid&sid=$sid");
-                $djhtml .= "<div class='text-white'><a href='?cmd=$djinfo'>$dj->djname</a></div>";
+                $djhtml .= "<div class='flex mt-2'>
+<div class='border rounded-full w-[45px] h-[45px] flex items-center justify-center'><img class='rounded-full w-[16px]' src='images/XJICON_Treasure_03_17.png' /></div>
+<a class='' href='?cmd=$djinfo'>$dj->djname</a></div>";
             }
             $dlhtml .= $djhtml;
         }
@@ -83,7 +88,7 @@ HTML;
         $html = <<<HTML
 <div>
 
-        <div class="text-white p-2 p-6">
+        <div class="text-white p-2 p-6 leading-6">
         
             <div>
             [$yguaiwu->gname]: Cấp: $yguaiwu->glv
@@ -105,9 +110,9 @@ HTML;
 
 
 </script>
-<div class="h-[55px] flex items-center justify-end bg-[#dfded8]">
-        <a href="?cmd=$backcmd" class="!flex items-center justify-center bg-[#76a3a2] !text-white h-[28px]">Rút lui</a>
-        <a href="?cmd=$pvecmd" class="!flex items-center justify-center bg-[#f8c37e] !text-white h-[28px]">Công kích</a>
+<div class="h-[55px] flex items-center justify-end pr-3">
+        <a href="?cmd=$backcmd" class="!flex items-center justify-center bg-[#333333] !text-white h-[28px]">Rút lui</a>
+        <a href="?cmd=$pvecmd" class="!flex items-center justify-center bg-[#ff613d] !text-white h-[28px]">Công kích</a>
 </div>
 </div>
 

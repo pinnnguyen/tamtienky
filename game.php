@@ -401,7 +401,7 @@ if (isset($cmd)) {
             include "$ym";
         } ?>
     </div>
-    <div class="teleport relative bg-[#e1ddd2] border border-2 rounded-md p-0"></div>
+    <div class="teleport relative bg-[#36445a] p-0"></div>
 </div>
 </body>
 

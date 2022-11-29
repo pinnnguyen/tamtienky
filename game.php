@@ -401,7 +401,7 @@ if (isset($cmd)) {
             include "$ym";
         } ?>
     </div>
-    <div class="teleport" style="background: url('images/pve/modal.png')"></div>
+    <div class="teleport relative bg-[#36445a] border border-2 rounded-md p-0"></div>
 </div>
 </body>
 

@@ -169,12 +169,22 @@ $cxallguaiwu = $cxjg->fetchAll(PDO::FETCH_ASSOC);
 $gwhtml = '';
 for ($i = 0; $i < count($cxallguaiwu); $i++) {
     $gwcmd = $encode->encode("cmd=getginfo&gid=" . $cxallguaiwu[$i]['id'] . "&gyid=" . $cxallguaiwu[$i]['gyid'] . "&sid=$sid&nowmid=$player->nowmid");
-    $gwhtml .= "<a style='font-size: 10px' class='!flex flex-col bg-[#8b0808] !text-white font-medium text-center w-[50px] overflow-hidden h-[50px] overflow-hidden rounded' href='?cmd=$gwcmd'><span>[lv" . $cxallguaiwu[$i]['glv'] . "]</span>" . $cxallguaiwu[$i]['gname'] . "</a> ";
+    $gwhtml .= "<a 
+    style='font-size: 10px' 
+    gid=". $cxallguaiwu[$i]['id'] ." 
+    gyid=". $cxallguaiwu[$i]['gyid'] ." 
+    sid='$sid' 
+    nowmid='$player->nowmid'  
+    class='!flex flex-col bg-[#8b0808] !text-white font-medium text-center w-[50px] overflow-hidden h-[50px] overflow-hidden rounded attach-monster'>
+    <span>
+    [lv" . $cxallguaiwu[$i]['glv'] . "]
+    </span>" . $cxallguaiwu[$i]['gname'] . "</a> ";
 }
 
 $sql = "select * from game1 where nowmid='$player->nowmid' AND sfzx = 1";//Tải trình phát bản đồ hiện tại
 $cxjg = $dblj->query($sql);
 $playerhtml = '';
+
 if ($cxjg) {
     $cxallplayer = $cxjg->fetchAll(PDO::FETCH_ASSOC);
     $nowdate = date('Y-m-d H:i:s');
@@ -425,9 +435,17 @@ $nowhtml = <<<HTML
     </div>
 </div>
 <script>
-    $.get("/game/ginfo.php", (res) => {
-        console.log("res", res);
-    });
+    $('.attach-monster').unbind('click').bind('click', function () {
+        console.log('click')
+        const gid = $(this).attr('gid')
+        const gyid = $(this).attr('gyid')
+        const sid = $(this).attr('sid')
+        const nowmid = $(this).attr('nowmid')
+    
+        $.get(`/game/ginfo/php?gid=${gid}&gyid=${gyid}&sid=${sid}&nowmid=${nowmid}`, (response) => {
+            console.log('response', response)
+        })
+    })
 </script>
 
 <!--<a href="index.php" >Quay lại trang chủ</a><br/>-->

@@ -1,20 +1,20 @@
 <?php
-//require_once($_SERVER['DOCUMENT_ROOT']."/pdo.php");
-//require_once($_SERVER['DOCUMENT_ROOT']."/class/encode.php");
-//require_once($_SERVER['DOCUMENT_ROOT']."/class/player.php");
-//require ($_SERVER['DOCUMENT_ROOT']."/stores/query.php");
-//$Dcmd = $_SERVER['QUERY_STRING'];
+require_once($_SERVER['DOCUMENT_ROOT'] . "/pdo.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/class/encode.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/class/player.php");
+require($_SERVER['DOCUMENT_ROOT'] . "/stores/query.php");
+
+$sid = $_GET['sid'];
+$gid = $_GET['gid'];
+$gyid = $_GET['gyid'];
 
 $player = \player\getplayer($sid, $dblj);
 $nowmid = $player->nowmid;
 
-//$encode = new \encode\encode();
+$encode = new \encode\encode();
 $backcmd = $encode->encode("cmd=gomid&newmid=$player->nowmid&sid=$sid");
 
 
-//parse_str($Dcmd);
-//var_dump($Dcmd);
-//echo $Dcmd;
 if ($nowmid != $player->nowmid) {
     $html = <<<HTML
         Hãy chơi game bình thường!<br/>
@@ -24,6 +24,7 @@ HTML;
     echo $html;
     exit();
 }
+
 if (isset($gid)) {
     $guaiwu = player\getguaiwu($gid, $dblj);
     $yguaiwu = \player\getyguaiwu($gyid, $dblj);
@@ -80,16 +81,14 @@ HTML;
         }
 
         $html = <<<HTML
-        <div class="text-white p-2">
-        
-        <div>
-        [$yguaiwu->gname]
-</div>
-
 <div>
-        Cấp: $yguaiwu->glv
 
-</div>
+        <div class="text-white p-2 p-6">
+        
+            <div>
+            [$yguaiwu->gname]: Cấp: $yguaiwu->glv
+    </div>
+
 
 <div>
         Cảnh giới: $guaiwu->jingjie
@@ -106,10 +105,12 @@ HTML;
 
 
 </script>
-<div class="fixed bottom-0 h-[40px] flex mb-5 ml-2">
-        <a href="?cmd=$pvecmd" class="!flex items-center justify-center bg-[#621e1f] !text-white h-[34px]">Công kích</a>
-        <a href="?cmd=$backcmd" class="!flex items-center justify-center bg-[#621e1f] !text-white h-[34px]">Bỏ chạy</a>
+<div class="h-[55px] flex items-center justify-end bg-[#dfded8]">
+        <a href="?cmd=$backcmd" class="!flex items-center justify-center bg-[#76a3a2] !text-white h-[28px]">Rút lui</a>
+        <a href="?cmd=$pvecmd" class="!flex items-center justify-center bg-[#f8c37e] !text-white h-[28px]">Công kích</a>
 </div>
+</div>
+
 
 HTML;
     }

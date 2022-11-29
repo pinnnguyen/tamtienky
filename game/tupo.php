@@ -24,6 +24,7 @@ if ($tupo == 1) {
 } elseif ($tupo == 2) {
     $tpls = $player->ulv * ($player->ulv + 1) * 4;
 }
+
 if ($tupo != 0) {
     $tplshtml = "<span>Đột phá cần linh thạch</span>:$tpls/$player->uyxb<a href='?cmd=$tupocmd'>Đột phá</a>";
     $upgj = 0;

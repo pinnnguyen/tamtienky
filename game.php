@@ -365,12 +365,15 @@ if (isset($cmd)) {
     <!-- jQuery Modal -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+<!--    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>-->
+    <link rel="stylesheet" href="plugins/notify/notify.css" />
+    <script src="plugins/notify/notify.min.js"></script>
+    <script src="plugins/notify/notify.setting.js"></script>
 
 </head>
 <body>
 <div class="main h-[100vh] sm:w-[640px] md:w-[640px] lg:w-[640px]">
-    <div class="h-full relative" style="background: linear-gradient(to bottom right, #36445a, #90a7a9, #b2c5c4)">
+    <div class="h-full relative bg-black">
         <?php
         if (!$ym == '') {
             echo $tpts;
@@ -383,6 +386,7 @@ if (isset($cmd)) {
         } ?>
     </div>
     <div class="teleport relative bg-[#36445a] p-0"></div>
+    <div class="alert relative p-0 bg-black"></div>
 </div>
 </body>
 

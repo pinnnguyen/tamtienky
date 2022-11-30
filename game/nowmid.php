@@ -1,5 +1,5 @@
 <?php
-require ($_SERVER['DOCUMENT_ROOT']."/stores/query.php");
+//require($_SERVER['DOCUMENT_ROOT'] . "/stores/query.php");
 $player = player\getplayer($sid, $dblj);//获取玩家信息
 $lastmid = $player->nowmid;
 
@@ -168,26 +168,42 @@ $cxallguaiwu = $cxjg->fetchAll(PDO::FETCH_ASSOC);
 
 $gwhtml = '';
 for ($i = 0; $i < count($cxallguaiwu); $i++) {
+    $monster_lv = $cxallguaiwu[$i]['glv'];
+    $monster_name = $cxallguaiwu[$i]['gname'];
+    $monster_id = $cxallguaiwu[$i]['id'];
+    $gyid = $cxallguaiwu[$i]['gyid'];
+
     $gwcmd = $encode->encode("cmd=getginfo&gid=" . $cxallguaiwu[$i]['id'] . "&gyid=" . $cxallguaiwu[$i]['gyid'] . "&sid=$sid&nowmid=$player->nowmid");
-    $gwhtml .= "<div>
-        <a 
-        style='font-size: 10px' 
-        gid=". $cxallguaiwu[$i]['id'] ." 
-        gyid=". $cxallguaiwu[$i]['gyid'] ." 
-        sid='$sid' 
-        nowmid='$player->nowmid'  
-        class='rounded-full m-2 !flex flex-col bg-[#8b0808] !text-white font-medium text-center w-[50px] overflow-hidden h-[50px] overflow-hidden attach-monster'>
-        <span>
-        [lv" . $cxallguaiwu[$i]['glv'] . "]
-        </span>" . $cxallguaiwu[$i]['gname'] . "</a> 
-    </div>
-    ";
+    $gwhtml .= <<<HTML
+    <div class="absolute monster"
+     gid="$monster_id" 
+            gyid="$gyid" 
+            sid='$sid' 
+            nowmid='$player->nowmid'>
+            <a 
+            style="font-size: 9px"
+            class='rounded-full m-2 !flex flex-col bg-[#8b0808] !text-white font-medium text-center w-[50px] overflow-hidden h-[50px] overflow-hidden attach-monster'>
+            <span>
+            [lv$monster_lv]
+            </span>$monster_name</a> 
+        </div>
+HTML;
 }
 
-$sql = "select * from game1 where nowmid='$player->nowmid' AND sfzx = 1";//Tải trình phát bản đồ hiện tại
-$cxjg = $dblj->query($sql);
-$playerhtml = '';
+//$my_self_sql  = "select * from game1 where sid = '$sid' AND nowmid='$player->nowmid' AND sfzx = 1";
+//$my_self_sql_query = $dblj->query($my_self_sql);
+//$my_player = $my_self_sql_query->fetch(\PDO::FETCH_ASSOC);
+//var_dump($my_player['uname']);
+$player_html = <<<HTML
+                 <a style='font-size: 9px' 
+                 class='!flex flex-col justify-center bg-[#342df2] !text-white font-medium text-center w-[50px] overflow-hidden h-[50px] overflow-hidden rounded-full' 
+                <span>Bản thân</span>
+                </a>
+HTML;
 
+$sql = "select * from game1 where sid != '$sid' AND nowmid='$player->nowmid' AND sfzx = 1";//Tải trình phát bản đồ hiện tại
+$cxjg = $dblj->query($sql);
+$player_around = '';
 if ($cxjg) {
     $cxallplayer = $cxjg->fetchAll(PDO::FETCH_ASSOC);
     $nowdate = date('Y-m-d H:i:s');
@@ -212,10 +228,16 @@ if ($cxjg) {
                     $club = new \player\club();
                     $club->clubname = "";
                 }
+
                 $playercmd = $encode->encode("cmd=getplayerinfo&uid=$cxuid&sid=$sid");
-                $playerhtml .= "<a style='font-size: 10px' class='!flex flex-col justify-center bg-[#342df2] !text-white font-medium text-center w-[50px] overflow-hidden h-[50px] overflow-hidden rounded-full' href='?cmd=$playercmd'>
-<span>$club->clubname</span>
-<span>$cxuname</span></a>";
+                $player_around .= <<<HTML
+                 <a style='font-size: 10px' 
+                 class='!flex flex-col justify-center bg-[#342df2] !text-white font-medium text-center w-[50px] overflow-hidden h-[50px] overflow-hidden rounded-full' 
+                 href='?cmd=$playercmd'>
+                <span>$club->clubname</span>
+                <span>$cxuname</span>
+                </a>
+HTML;
             }
 
         }
@@ -380,18 +402,31 @@ $nowhtml = <<<HTML
             <img class="w-[30px]" src="images/menu/XJHomescreenButton_15.png" /><span style="font-size: 10px;">X.hạng</span>
         </a>
     </div>
-    <div class="p-2">
+    <div class="p-2 h-[300px] relative" id="monster-container">
         <div class="uppercase font-semibold text-xs">$clmid->mname$pvphtml</div>
         <span class="text-xs mb-2 text-[#ff380b]">Chú ý: $clmid->playerinfo</span>
         <div class="flex flex-wrap">
-            $playerhtml $gwhtml
+            <div class="absolute" sid="$sid" id="box-player">
+                $player_html
+            </div>
+            <div>
+                $player_around
+            </div>
+            <div id="box-monster">
+                $gwhtml
+            </div>
         </div>
     </div>
     <div></div>
     <div class="p-2">
         $npchtml
     </div>
+<div>
+</div>
     <div class="absolute bottom-0 bg-[#36445a]">
+    <div id="auto-attach" class="bg-[#ff5722] flex items-center justify-center text-white">
+Tự động đánh
+</div>
         <div class="p-2">
             <div class="flex text-white text-xs">
                 $lukouhtml
@@ -451,7 +486,7 @@ $nowhtml = <<<HTML
     })
 </script>
 
-<!--<a href="index.php" >Quay lại trang chủ</a><br/>-->
+<script src="pve/pve.js"></script>
 HTML;
 
 echo $nowhtml;

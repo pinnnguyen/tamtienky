@@ -1,13 +1,25 @@
 <?php
+require_once($_SERVER['DOCUMENT_ROOT'] . "/pdo.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/class/encode.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/class/player.php");
+
+$sid = $_GET['sid'];
+$gid = $_GET['gid'];
+$gyid = $_GET['gyid'];
+$nowmid = $_GET['nowmid'];
+$cmd = $_GET['cmd'];
+
+$encode = new \encode\encode();
 $player = \player\getplayer($sid, $dblj);
-$gonowmid = $encode->encode("cmd=gomid&newmid=$player->nowmid&sid=$player->sid");
 $cxmid = \player\getmid($player->nowmid, $dblj);
 $cxqy = \player\getqy($cxmid->mqy, $dblj);
 
+$gonowmid = $encode->encode("cmd=gomid&newmid=$player->nowmid&sid=$player->sid");
 $gorehpmid = $encode->encode("cmd=gomid&newmid=$cxqy->mid&sid=$player->sid");
+$pgjcmd = $encode->encode("cmd=pvegj&gid=$gid&sid=$player->sid&nowmid=$nowmid");
+
 $rwts = '';
 $cwhtml = '';
-$pgjcmd = $encode->encode("cmd=pvegj&gid=$gid&sid=$player->sid&nowmid=$nowmid");
 $guaiwu = player\getguaiwu($gid, $dblj);
 $yguaiwu = new \player\guaiwu();
 
@@ -53,11 +65,11 @@ if (($guaiwu->sid != $player->sid && $guaiwu->sid != '') || ($guaiwu->gid == '')
 HTML;
     exit($html);
 }
+
 $pvebj = '';
 $pvexx = '';
 
 if (isset($canshu)) {
-
     if ($canshu == 'useyp') {
         $ret = \player\useyaopin($ypid, 1, $sid, $dblj);
         $player = player\getplayer($sid, $dblj);
@@ -79,9 +91,10 @@ if ($cmd == 'pve' && $guaiwu->sid == '') {
         }
     }
 
-} elseif ($cmd == 'pvegj' && $gid != 0) {
+}
+
+if ($cmd == 'pvegj' && $gid != 0) {
     // echo "Bạn công kích quái nè";
-    //普通Công kích
     $hurt = false;
     $ghurt = 0;
     $jineng = new \player\jineng();
@@ -106,14 +119,12 @@ if ($cmd == 'pve' && $guaiwu->sid == '') {
     $player->ubj += $jineng->jnbj;
     $player->uxx += $jineng->jnxx;
 
-    //如果是负数会影响获取不到修为
-    $lvc = $player->ulv - $guaiwu->glv; //Cấp độ nhân vật-Cấp quái vật Nếu cấp độ nhân vật thấp hơn cấp độ quái vật, đá cường hóa sẽ không phát nổ. Đổi thành quái vật có cấp độ nhân vật cao sẽ không phát nổ sau cấp 10, và nếu thấp hơn quái vật, nó sẽ là ngẫu nhiên
-    // if ($lvc >= 10){ //如果人物等级大怪物等级十级，返回0.改掉，只要这个差值
-    // $lvc = 0;
-    // }
-
+    #Nếu là số âm sẽ ảnh hưởng đến việc thiếu tu dưỡng
+    $lvc = $player->ulv - $guaiwu->glv; //
+    #Cấp độ nhân vật-Cấp quái vật Nếu cấp độ nhân vật thấp hơn cấp độ quái vật,
+    # đá cường hóa sẽ không phát nổ.
+    # Đổi thành quái vật có cấp độ nhân vật cao sẽ không phát nổ sau cấp 10, và nếu thấp hơn quái vật, nó sẽ là ngẫu nhiên
     $phurt = 0;
-
     $phurt = round($guaiwu->ggj - ($player->ufy * 0.75), 0);
     if ($phurt < $guaiwu->ggj * 0.15) {
         $phurt = round($guaiwu->ggj * 0.15);
@@ -146,7 +157,8 @@ if ($cmd == 'pve' && $guaiwu->sid == '') {
     $sql = "update midguaiwu set ghp = ghp - {$gphurt} WHERE id='$gid'";
     $dblj->exec($sql);
     $guaiwu = player\getguaiwu($gid, $dblj);
-    if ($guaiwu->ghp <= 0) {//quái vật chết
+    if ($guaiwu->ghp <= 0) {
+        #quái vật chết
         $sql = "delete from midguaiwu where id = $gid AND sid='$player->sid'";
         $dblj->exec($sql);
 
@@ -158,7 +170,9 @@ if ($cmd == 'pve' && $guaiwu->sid == '') {
 
         $ret = \player\changeyxb(1, $yxb, $sid, $dblj);
         if ($ret) {
-            $huode .= "Thu hoạch linh thạch:$yxb<br/>";
+            $huode .= <<<HTML
+            <div>Linh thạch: +$yxb</div>
+HTML;
         }
         $taskarr = \player\getplayerrenwu($sid, $dblj);
         \player\changerwyq1(2, $guaiwu->gyid, 1, $sid, $dblj);
@@ -186,7 +200,12 @@ if ($cmd == 'pve' && $guaiwu->sid == '') {
                 $zbid = $retzb[$sjdl]['zbid'];
                 $zbnowid = player\addzb($sid, $zbid, $dblj);
                 $chakanzb = $encode->encode("cmd=chakanzb&zbnowid=$zbnowid&uid=$player->uid&sid=$sid");
-                $huode .= "Thu hoạch: <div class='zbys'>" . '<a href="?cmd=' . $chakanzb . '">' . $zbname . '</a></div>';
+//                <a href="?cmd=' . $chakanzb . '">' . $zbname . '</a
+                $huode .= <<<HTML
+ <div>
+  Thu hoạch: <div class='zbys'>$zbname</a></div>
+</div>
+HTML;
             }
         }
 
@@ -302,21 +321,29 @@ if (isset($zdjg)) {
                 $expPlayer = $guaiwu->gexp / 2;
                 $expPet = $guaiwu->gexp / 2;
                 player\changecwexp($player->cw, $expPet, $dblj);
-                $huode .= 'Pet nhận được được tu vị:' . $guaiwu->gexp . '<br/>';
+                $huode .= 'Pet nhận tu vị:' . $expPet . '<br/>';
             } else {
                 $expPlayer = $guaiwu->gexp;
             }
 
             player\changeexp($sid, $dblj, $expPlayer);
-            $huode .= 'Thu hoạch được tu vị:' . $guaiwu->gexp . '<br/>';
+            $huode .= <<<HTML
+<div>
+<span>
+Tu vi +
+</span>$guaiwu->gexp</div>
+HTML;
 
             $html = <<<HTML
-            Kết quả:<br/>
-            Ngươi giết $guaiwu->gname<br/>
-            Chiến đấu thắng lợi!<br/>
-            $huode
-            $rwts<br/>
-            <a href="?cmd=$gonowmid">Trở về trò chơi</a>
+            <div class="p-3 leading-6 text-white text-center">
+                <span>Đánh bại $guaiwu->gname</span> 
+<!--                <span>$guaiwu->gexp</span>-->
+                <div>
+                $huode
+                $rwts
+</div>
+            </div>
+
 HTML;
             break;
         case 0:
@@ -371,91 +398,117 @@ HTML;
 
     $html = <<<HTML
 <div class="h-full">
-<div style="background: url('images/bg-pve.jpg');">
-    <div class="flex justify-between p-2">
-        <div>
-            <div class="flex items-end">
-                <img class="h-[40px]" src="images/pve/player-avatar.png" />
-                <span class="pb-[2px]">$player->uname [lv:$player->ulv]</span>
-            </div>
-            <div class="mt-2">
-                <div class="flex items-center justify-start">
-                    <span class="pr-2">
-                        HP
-                    </span>
-                    <div class="h-3 w-24 rounded-full bg-[#212121] flex items-center p-[2px]">
-                        <div class="h-2 w-20 rounded-full bg-red-600" style="width: $remainingPlayerHp;"></div>
+    <div style="background: url('images/bg-pve.jpg');">
+        <div class="flex justify-between p-2">
+            <div>
+                <div class="flex items-end">
+                    <img class="h-[40px]" src="images/pve/player-avatar.png" />
+                    <span class="pb-[2px]">$player->uname [lv:$player->ulv]</span>
+                </div>
+                <div class="mt-2">
+                    <div class="flex items-center justify-start">
+                        <span class="pr-2">
+                            HP
+                        </span>
+                        <div class="h-3 w-24 rounded-full bg-[#212121] flex items-center p-[2px]">
+                            <div class="h-2 w-20 rounded-full bg-red-600" style="width: $remainingPlayerHp;"></div>
+                        </div>
                     </div>
                 </div>
+                <div class="flex justify-start">
+                    Công kích:($player->ugj)<br />
+                    Phòng ngự:($player->ufy)<br />
+                </div>
             </div>
-            <div class="flex justify-start">
-              Công kích:($player->ugj)<br />
-              Phòng ngự:($player->ufy)<br />
+            <div>
+                <div class="flex items-end">
+                    <span class="pb-[2px]">$guaiwu->gname [lv:$guaiwu->glv]</span>
+                    <img class="h-[40px]" src="images/pve/monter-avatar.png" />
+                </div>
+                <div class="mt-2">
+                    <div class="flex items-center justify-end">
+                        <div class="h-3 w-24 rounded-full bg-[#212121] flex items-center p-[2px]">
+                            <div class="h-2 w-12 rounded-full bg-red-600" style="width: $remainingGuaiwuHp;"></div>
+                        </div>
+                        <span class="pl-2">
+                            HP
+                        </span>
+                    </div>
+                </div>
+                <div class="flex justify-end">
+                    Công kích:($guaiwu->ggj)<br />
+                    Phòng ngự:($guaiwu->gfy)<br />
+                </div>
             </div>
         </div>
-        <div>
-            <div class="flex items-end">
-                <span class="pb-[2px]">$guaiwu->gname [lv:$guaiwu->glv]</span>
-                <img class="h-[40px]" src="images/pve/monter-avatar.png" />
+        <div class="flex justify-around mt-3">
+            <div class="relative">
+                <span class="absolute top-0 right-0 font-semibold text-2xl text-red-500">$phurt$pvexx</span>
+                <img class="h-[185px]" src="images/pve/player.png" />
             </div>
-            <div class="mt-2">
-                <div class="flex items-center justify-end">
-                    <div class="h-3 w-24 rounded-full bg-[#212121] flex items-center p-[2px]">
-                        <div class="h-2 w-12 rounded-full bg-red-600" style="width: $remainingGuaiwuHp;"></div>
-                    </div>
-                    <span class="pl-2">
-                        HP
-                    </span>
-                </div>
-            </div>
-            <div class="flex justify-end">
-                Công kích:($guaiwu->ggj)<br />
-                Phòng ngự:($guaiwu->gfy)<br />
+            <div class="relative">
+                <span class="absolute top-0 right-0 font-semibold text-2xl text-red-500">$pvebj$ghurt</span>
+                <img class="h-[185px]" src="images/pve/monter.png" />
             </div>
         </div>
     </div>
-    <div class="flex justify-around mt-3">
-        <div class="relative">
-            <span class="absolute top-0 right-0 font-semibold text-2xl text-red-500">$phurt$pvexx</span>
-            <img class="h-[185px]" src="images/pve/player.png" />
-        </div>
-        <div class="relative">
-            <span class="absolute top-0 right-0 font-semibold text-2xl text-red-500">$pvebj$ghurt</span>
-            <img class="h-[185px]" src="images/pve/monter.png" />
-        </div>
-    </div>
-</div>
 
- <div class="p2">
-     <div>
-       <span>Kỹ năng:  </span>
-       <a class="!flex items-center bg-[#000000] !text-white" href="?cmd=$usejn1"><img class="w-[30px]" src="images/skill/skill1.png" /><span>$jnname1</span></a> 
-       <a class="!flex items-center bg-[#000000] !text-white" href="?cmd=$usejn2"><img class="w-[30px]" src="images/skill/skill1.png" /><span>$jnname2</span></a> 
-       <a class="!flex items-center bg-[#000000] !text-white" href="?cmd=$usejn3"><img class="w-[30px]" src="images/skill/skill1.png" /><span>$jnname3</span></a>
+    <div class="p2">
+        <div class="flex">
+            <span>Kỹ năng: </span>
+            <div class="flex">
+                <a class="!flex items-center bg-[#000000] !text-white text-xs" href="?cmd=$usejn1"><img class="w-[30px]" src="images/skill/skill1.png" /><span>$jnname1</span></a>
+                <a class="!flex items-center bg-[#000000] !text-white text-xs" href="?cmd=$usejn2"><img class="w-[30px]" src="images/skill/skill1.png" /><span>$jnname2</span></a>
+                <a class="!flex items-center bg-[#000000] !text-white text-xs" href="?cmd=$usejn3"><img class="w-[30px]" src="images/skill/skill1.png" /><span>$jnname3</span></a>
+            </div>
+        </div>
+        <div>
+            <span>Vật phẩm: </span>
+            <div class="flex">
+                <a class="!flex items-center bg-[#000000] !text-white text-xs" href="?cmd=$useyp1"><img class="w-[30px]" src="images/daocu/hp.png" /><span>$ypname1</span></a>
+                <a class="!flex items-center bg-[#000000] !text-white text-xs" href="?cmd=$useyp2"><img class="w-[30px]" src="images/daocu/hp.png" /><span>$ypname2</span></a>
+                <a class="!flex items-center bg-[#000000] !text-white text-xs" href="?cmd=$useyp3"><img class="w-[30px]" src="images/daocu/hp.png" /><span>$ypname3</span></a>
+            </div>
+        </div>
     </div>
-    <div>
-    <span>Vật phẩm: </span>
-            <a class="!flex items-center bg-[#000000] !text-white" href="?cmd=$useyp1"><img class="w-[30px]" src="images/daocu/hp.png" /><span>$ypname1</span></a> 
-            <a class="!flex items-center bg-[#000000] !text-white" href="?cmd=$useyp2"><img class="w-[30px]" src="images/daocu/hp.png" /><span>$ypname2</span></a> 
-            <a class="!flex items-center bg-[#000000] !text-white" href="?cmd=$useyp3"><img class="w-[30px]" src="images/daocu/hp.png" /><span>$ypname3</span></a>
-</div>
-           
-        </div>
-<div class="flex">
-           <a class="!flex items-center justify-center bg-[#621e1f] !text-white h-[34px]" href="?cmd=$pgjcmd">
-               <svg class="svg-inline--fa fa-sword fa-w-16 w-[12px] mr-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sword" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M110.11 227.59c-6.25-6.25-16.38-6.25-22.63 0l-18.79 18.8a16.005 16.005 0 0 0-2 20.19l53.39 80.09-53.43 53.43-29.26-14.63a13.902 13.902 0 0 0-16.04 2.6L4.07 405.36c-5.42 5.43-5.42 14.22 0 19.64L87 507.93c5.42 5.42 14.22 5.42 19.64 0l17.29-17.29a13.873 13.873 0 0 0 2.6-16.03l-14.63-29.26 53.43-53.43 80.09 53.39c6.35 4.23 14.8 3.39 20.19-2l18.8-18.79c6.25-6.25 6.25-16.38 0-22.63l-174.3-174.3zM493.73.16L400 16 171.89 244.11l96 96L496 112l15.83-93.73c1.51-10.56-7.54-19.61-18.1-18.11z"></path></svg>
-               <div>Công kích</div>
-           </a>
-           <a class="bg-[#621e1f] !text-white h-[34px] !flex items-center" href="?cmd=$gonowmid">Chạy trốn</a>
-        </div>
+    <div class="flex">
+        <a 
+        class="!flex items-center justify-center bg-[#621e1f] !text-white h-[34px] on-attach" 
+        cmd="pvegj" 
+        gid="$gid" 
+        sid="$player->sid" 
+        nowmid="$nowmid">
+            <svg class="svg-inline--fa fa-sword fa-w-16 w-[12px] mr-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sword" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                <path
+                    fill="currentColor"
+                    d="M110.11 227.59c-6.25-6.25-16.38-6.25-22.63 0l-18.79 18.8a16.005 16.005 0 0 0-2 20.19l53.39 80.09-53.43 53.43-29.26-14.63a13.902 13.902 0 0 0-16.04 2.6L4.07 405.36c-5.42 5.43-5.42 14.22 0 19.64L87 507.93c5.42 5.42 14.22 5.42 19.64 0l17.29-17.29a13.873 13.873 0 0 0 2.6-16.03l-14.63-29.26 53.43-53.43 80.09 53.39c6.35 4.23 14.8 3.39 20.19-2l18.8-18.79c6.25-6.25 6.25-16.38 0-22.63l-174.3-174.3zM493.73.16L400 16 171.89 244.11l96 96L496 112l15.83-93.73c1.51-10.56-7.54-19.61-18.1-18.11z"
+                ></path>
+            </svg>
+            <div>Công kích</div>
+        </a>
+        <a class="bg-[#621e1f] !text-white h-[34px] !flex items-center" href="?cmd=$gonowmid">Chạy trốn</a>
+    </div>
     <div class="bg-[#efebe0]">
         $tishihtml
         <div class="text-center">[Bắt đầu chiến đấu]</div>
-         
     </div>
 </div>
 
-
+<script>
+$('.on-attach').unbind('click').bind('click', function () {
+    // const _gid = $(this).attr('gid')
+    // const _cmd = $(this).attr('cmd')
+    // const _sid = $(this).attr('sid')
+    // const _nowmid = $(this).attr('nowmid')
+    
+    $.get(`game/pve.php?gid=$gid&cmd=pvegj&sid=$sid&nowmid=$nowmid`, (response) => {
+        $('.teleport').html(response)
+        $(".teleport").modal({
+            fadeDuration: 100
+        });
+    })
+});
+</script>
 HTML;
 }
 echo $html;

@@ -24,17 +24,19 @@ for ($i = 0; $i < count($cxallguaiwu); $i++) {
     $left = $ran_left . 'px';
 
     $gwhtml .= <<<HTML
-    <div class="absolute monster"
+    <div class="absolute monster flex flex-col items-center"
         style="top: $top; left: $left"
         gid="$monster_id" 
         gyid="$gyid" 
         sid='$sid' 
         nowmid='$player->nowmid'>
         <a 
-        class='rounded-full m-2 !flex flex-col bg-[#8b0808] !text-white font-medium text-center w-[50px] overflow-hidden h-[50px] overflow-hidden attach-monster'>
-        <span>
-        [lv$monster_lv]
-        </span>$monster_name</a> 
+        class='relative rounded-full m-2 !flex flex-col bg-white !text-white font-medium text-center w-[50px] h-[50px] overflow-hidden attach-monster'>
+        <img class="absolute top-[50%] left-[50%] w-[45px] h-[45px]" src="pve/image/fs_007_421.png" style="transform: translate(-50%, -50%);">
+        <span class="text-white">
+        [lv$monster_lv] $monster_name
+        </span>
+        </a> 
     </div>
 HTML;
 }

@@ -175,17 +175,19 @@ for ($i = 0; $i < count($cxallguaiwu); $i++) {
 
     $gwcmd = $encode->encode("cmd=getginfo&gid=" . $cxallguaiwu[$i]['id'] . "&gyid=" . $cxallguaiwu[$i]['gyid'] . "&sid=$sid&nowmid=$player->nowmid");
     $gwhtml .= <<<HTML
-    <div class="absolute monster"
+    <div class="absolute monster flex flex-col items-center"
      gid="$monster_id" 
             gyid="$gyid" 
             sid='$sid' 
             nowmid='$player->nowmid'>
             <a 
             style="font-size: 9px"
-            class='rounded-full m-2 !flex flex-col bg-[#8b0808] !text-white font-medium text-center w-[50px] overflow-hidden h-[50px] overflow-hidden attach-monster'>
-            <span>
-            [lv$monster_lv]
-            </span>$monster_name</a> 
+            class='relative rounded-full m-2 !flex flex-col bg-white !text-white font-medium text-center w-[50px] overflow-hidden h-[50px] overflow-hidden attach-monster'>
+             <img class="absolute top-[50%] left-[50%] w-[45px] h-[45px]" src="pve/image/fs_007_421.png" style="transform: translate(-50%, -50%);">
+            </a> 
+              <span class="text-white">
+            [lv$monster_lv] $monster_name
+            </span>
         </div>
 HTML;
 }
@@ -196,8 +198,10 @@ HTML;
 //var_dump($my_player['uname']);
 $player_html = <<<HTML
                  <a style='font-size: 9px' 
-                 class='!flex flex-col justify-center bg-[#342df2] !text-white font-medium text-center w-[50px] overflow-hidden h-[50px] overflow-hidden rounded-full' 
-                <span>Bản thân</span>
+                 class='!flex flex-col bg-white !text-white font-medium relative w-[50px] h-[50px] rounded-full'>
+                 <img class="absolute top-[50%] left-[50%] w-[45px] h-[45px]" src="pve/image/fs_007.png" style="transform: translate(-50%, -50%);">
+                  <span class="text-white">
+                </span>
                 </a>
 HTML;
 
@@ -403,8 +407,6 @@ $nowhtml = <<<HTML
         </a>
     </div>
     <div class="p-2 h-[300px] relative" id="monster-container">
-        <div class="uppercase font-semibold text-xs">$clmid->mname$pvphtml</div>
-        <span class="text-xs mb-2 text-[#ff380b]">Chú ý: $clmid->playerinfo</span>
         <div class="flex flex-wrap">
             <div class="absolute" sid="$sid" id="box-player">
                 $player_html
@@ -424,9 +426,14 @@ $nowhtml = <<<HTML
 <div>
 </div>
     <div class="absolute bottom-0 bg-[#36445a]">
-    <div id="auto-attach" class="bg-[#ff5722] flex items-center justify-center text-white">
+      <div class="bg-[#ff5722] flex items-center justify-center text-white">
+<div id="auto-attach">
 Tự động đánh
 </div>
+</div>
+         <div class="uppercase font-semibold text-xs text-white p-2">$clmid->mname$pvphtml</div>
+       <span class="text-xs mb-2 text-[#ff9800] p-2">Chú ý: $clmid->playerinfo</span>
+  
         <div class="p-2">
             <div class="flex text-white text-xs">
                 $lukouhtml

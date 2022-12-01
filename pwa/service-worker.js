@@ -1,27 +1,32 @@
-self.addEventListener("install", function(event) {
-	event.waitUntil(
-		caches.open("pwa").then(function(cache) {
-			return cache.addAll([
-				"/",
-				"/css/game.css",
-				"/js/game.js"
-			]);
+const staticDevCoffee = "dev-coffee-site-v1"
+const assets = [
+	"/",
+	"/index.html",
+	"/css/style.css",
+	"/js/app.js",
+	"/images/coffee1.jpg",
+	"/images/coffee2.jpg",
+	"/images/coffee3.jpg",
+	"/images/coffee4.jpg",
+	"/images/coffee5.jpg",
+	"/images/coffee6.jpg",
+	"/images/coffee7.jpg",
+	"/images/coffee8.jpg",
+	"/images/coffee9.jpg",
+]
+
+self.addEventListener("install", installEvent => {
+	installEvent.waitUntil(
+		caches.open(staticDevCoffee).then(cache => {
+			cache.addAll(assets)
 		})
-	);
-});
+	)
+})
 
-self.addEventListener("fetch", function(event) {
-	event.respondWith(
-		caches.open("pwa").then(function(cache) {
-			return cache.match(event.request).then(function(response) {
-				cache.addAll([event.request.url]);
-
-				if(response) {
-					return response;
-				}
-
-				return fetch(event.request);
-			});
+self.addEventListener("fetch", fetchEvent => {
+	fetchEvent.respondWith(
+		caches.match(fetchEvent.request).then(res => {
+			return res || fetch(fetchEvent.request)
 		})
-	);
-});
+	)
+})

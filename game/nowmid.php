@@ -1,6 +1,6 @@
 <?php
 //require($_SERVER['DOCUMENT_ROOT'] . "/stores/query.php");
-$player = player\getplayer($sid, $dblj);//获取玩家信息
+$player = player\getplayer($sid, $dblj); //获取玩家信息
 $lastmid = $player->nowmid;
 
 $sid_str = $sid;
@@ -10,8 +10,9 @@ if (isset($newmid)) {
         $clmid = player\getmid($newmid, $dblj); //获取即将走的地图信息
         $ucmd = $encode->encode("cmd=getplayerinfo&uid=$uid&sid=$player->sid");
         //$playerinfo .="<a href='?cmd=$ucmd'>$player->uname</a>"." Hướng $clmid->mname đi đến";
-        $playerinfo = $player->uname . " Hướng $clmid->mname đi đến";//当前位置更新最后一条行走记录
-        if ($playerinfo != $clmid->playerinfo) { //更新自己走过的记录
+        $playerinfo = $player->uname . " Hướng $clmid->mname đi đến"; //当前位置更新最后一条行走记录
+        if ($playerinfo != $clmid->playerinfo) {
+            //更新自己走过的记录
             $sql = "update mid set playerinfo='$playerinfo' WHERE mid='$lastmid'";
             $dblj->exec($sql);
         }
@@ -22,15 +23,14 @@ if (isset($newmid)) {
             if ($newmid != $retqy->mid) {
                 exit("Bạn đã bị thương nặng, xin vui lòng điều trị <br/>" . '<a href="?cmd=' . $gonowmid . '">Trở lại trò chơi</a>');
             }
-
         }
         \player\changeplayersx('nowmid', $newmid, $sid, $dblj);
-        $player = player\getplayer($sid, $dblj);//获取玩家信息
+        $player = player\getplayer($sid, $dblj); //获取玩家信息
     }
-
 }
 
-if ($player->nowmid == '' || $player->nowmid == 0) {//判断角色是否出现在非法地图
+if ($player->nowmid == '' || $player->nowmid == 0) {
+    //判断角色是否出现在非法地图
     $gameconfig = \player\getgameconfig($dblj);
     $sql = "update game1 set nowmid='$gameconfig->firstmid' WHERE sid='$sid'";
     $dblj->exec($sql);
@@ -52,7 +52,6 @@ if ($clmid->ispvp) {
     $pvphtml = "[PVP]";
 }
 
-
 $ztcmd = $encode->encode("cmd=zhuangtai&sid=$sid");
 $goliaotian = $encode->encode("cmd=liaotian&ltlx=all&sid=$sid");
 $gonowmid = $encode->encode("cmd=gomid&newmid=$clmid->mid&sid=$sid");
@@ -63,7 +62,7 @@ $bugreportcmd = $encode->encode("cmd=bugreport&canshu=info&sid=$sid");
 $buginfocmd = $encode->encode("cmd=buginfo&canshu=info&sid=$sid");
 $cxall = '';
 
-$upmidlj = $encode->encode("cmd=gomid&newmid=$clmid->upmid&sid=$sid");//上地图
+$upmidlj = $encode->encode("cmd=gomid&newmid=$clmid->upmid&sid=$sid"); //上地图
 $downmidlj = $encode->encode("cmd=gomid&newmid=$clmid->downmid&sid=$sid");
 $leftmidlj = $encode->encode("cmd=gomid&newmid=$clmid->leftmid&sid=$sid");
 $rightmidlj = $encode->encode("cmd=gomid&newmid=$clmid->rightmid&sid=$sid");
@@ -125,13 +124,14 @@ if ($downmid->mname != '') {
 HTML;
 }
 
-$sql = "select * from midguaiwu where mid='$player->nowmid' AND sid = ''";//Nhận quái vật bản đồ hiện tại
+$sql = "select * from midguaiwu where mid='$player->nowmid' AND sid = ''"; //Nhận quái vật bản đồ hiện tại
 $cxjg = $dblj->query($sql);
 $cxallguaiwu = $cxjg->rowCount();
 $nowdate = date('Y-m-d H:i:s');
-$second = floor((strtotime($nowdate) - strtotime($clmid->mgtime)) % 86400);//Nhận khoảng thời gian làm mới
+$second = floor((strtotime($nowdate) - strtotime($clmid->mgtime)) % 86400); //Nhận khoảng thời gian làm mới
 
-if ($second > $clmid->ms && $cxallguaiwu == 0 && $clmid->mgid != '') {//làm mới quái vật
+if ($second > $clmid->ms && $cxallguaiwu == 0 && $clmid->mgid != '') {
+    //làm mới quái vật
     $sql = "update mid set mgtime='$nowdate' WHERE mid='$player->nowmid'";
     $dblj->exec($sql);
     $retgw = explode(",", $clmid->mgid);
@@ -158,10 +158,9 @@ if ($second > $clmid->ms && $cxallguaiwu == 0 && $clmid->mgid != '') {//làm m�
                     '$guaiwu->ghp')";
             $cxjg = $dblj->exec($sql);
         }
-
     }
 }
-$sql = "select * from midguaiwu where mid='$player->nowmid' AND sid = ''";//Nhận quái vật bản đồ hiện tại
+$sql = "select * from midguaiwu where mid='$player->nowmid' AND sid = ''"; //Nhận quái vật bản đồ hiện tại
 $cxjg = $dblj->query($sql);
 
 $cxallguaiwu = $cxjg->fetchAll(PDO::FETCH_ASSOC);
@@ -173,14 +172,17 @@ for ($i = 0; $i < count($cxallguaiwu); $i++) {
     $monster_id = $cxallguaiwu[$i]['id'];
     $gyid = $cxallguaiwu[$i]['gyid'];
 
-    $gwcmd = $encode->encode("cmd=getginfo&gid=" . $cxallguaiwu[$i]['id'] . "&gyid=" . $cxallguaiwu[$i]['gyid'] . "&sid=$sid&nowmid=$player->nowmid");
     $gwhtml .= <<<HTML
     <div class="absolute monster flex flex-col items-center"
-     gid="$monster_id" 
+            gid="$monster_id" 
             gyid="$gyid" 
             sid='$sid' 
             nowmid='$player->nowmid'>
             <a 
+            gid="$monster_id" 
+            gyid="$gyid" 
+            sid='$sid' 
+            nowmid='$player->nowmid'
             style="font-size: 9px"
             class='relative rounded-full m-2 !flex flex-col bg-white !text-white font-medium text-center w-[50px] overflow-hidden h-[50px] overflow-hidden attach-monster'>
              <img class="absolute top-[50%] left-[50%] w-[45px] h-[45px]" src="pve/image/fs_007_421.png" style="transform: translate(-50%, -50%);">
@@ -205,7 +207,7 @@ $player_html = <<<HTML
                 </a>
 HTML;
 
-$sql = "select * from game1 where sid != '$sid' AND nowmid='$player->nowmid' AND sfzx = 1";//Tải trình phát bản đồ hiện tại
+$sql = "select * from game1 where sid != '$sid' AND nowmid='$player->nowmid' AND sfzx = 1"; //Tải trình phát bản đồ hiện tại
 $cxjg = $dblj->query($sql);
 $player_around = '';
 if ($cxjg) {
@@ -235,7 +237,7 @@ if ($cxjg) {
 
                 $playercmd = $encode->encode("cmd=getplayerinfo&uid=$cxuid&sid=$sid");
                 $player_around .= <<<HTML
-                 <a style='font-size: 10px' 
+                 <a class="text-span"
                  class='!flex flex-col justify-center bg-[#342df2] !text-white font-medium text-center w-[50px] overflow-hidden h-[50px] overflow-hidden rounded-full' 
                  href='?cmd=$playercmd'>
                 <span>$club->clubname</span>
@@ -243,14 +245,12 @@ if ($cxjg) {
                 </a>
 HTML;
             }
-
         }
     }
 }
 
-
 $npchtml = '';
-$task = \player\getplayerrenwu($sid, $dblj);//玩家任务数组
+$task = \player\getplayerrenwu($sid, $dblj); //玩家任务数组
 
 $sql = "select * from playerrenwu WHERE sid='$sid' AND rwlx = 2";
 $cxjg = $dblj->query($sql);
@@ -269,7 +269,7 @@ $wtjrw = $cxjg->fetchAll(PDO::FETCH_ASSOC);
 $taskcount = count($wtjrw);
 
 if ($clmid->mnpc != "") {
-    $sql = "select * from npc where id in ($clmid->mnpc)";//获取npc
+    $sql = "select * from npc where id in ($clmid->mnpc)"; //获取npc
     $cxjg = $dblj->query($sql);
     $cxnpcall = $cxjg->fetchAll(PDO::FETCH_ASSOC);
 
@@ -279,70 +279,70 @@ if ($clmid->mnpc != "") {
         $taskid = $cxnpcall[$i]['taskid'];
         $taskarr = explode(',', $taskid);
         $yrw = false;
-//        if ($taskid != '') {
-//            for ($l = 0; $l < count($taskarr); $l++) {
-//                $nowrw = \player\gettask($taskarr[$l], $dblj);
-//                $rwret = \player\getplayerrenwuonce($sid, $taskarr[$l], $dblj);
-//                $lastrwid = $nowrw->lastrwid;
-//
-//                if ($nowrw->rwlx == 1 || $nowrw->rwlx == 2) {
-//                    if (!$rwret) {
-//                        if ($nowrw->rwzl != 3) {
-//                            $npchtml .= '<img src="images/wen.gif" />';
-//                        } elseif ($nowrw->rwyq == $nid) {
-//                            $npchtml .= '<img src="images/wen.gif" />';
-//                        } else {
-//                            continue;
-//                        }
-//                    } elseif ($rwret->rwzt == 2) {
-//                        if ($nowrw->rwzl != 3) {
-//                            $npchtml .= '<img src="images/tan.gif" />';
-//                        } elseif ($nowrw->rwcount == $nid) {
-//                            $npchtml .= '<img src="images/tan.gif" />';
-//                        } else {
-//                            continue;
-//                        }
-//
-//                    }
-//                }
-//                if ($nowrw->rwlx == 3) {
-//                    if ($rwret) {
-//                        if ($rwret->rwzt == 2) {
-//                            if ($nowrw->rwzl != 3) {
-//                                $npchtml .= '<img src="images/tan.gif" />';
-//                            } elseif ($nowrw->rwcount == $nid) {
-//                                $npchtml .= '<img src="images/tan.gif" />';
-//                            } else {
-//                                continue;
-//                            }
-//                        }
-//                    } else {
-//                        if ($lastrwid <= 0) {
-//                            if ($nowrw->rwzl != 3) {
-//                                $npchtml .= '<img src="images/wen.gif" />';
-//                            } elseif ($nowrw->rwyq == $nid) {
-//                                $npchtml .= '<img src="images/wen.gif" />';
-//                            } else {
-//                                continue;
-//                            }
-//                        } else {
-//                            $rwret = \player\getplayerrenwuonce($sid, $lastrwid, $dblj);
-//                            if ($rwret) {
-//                                if ($rwret->rwzt == 3) {
-//                                    if ($nowrw->rwzl != 3) {
-//                                        $npchtml .= '<img src="images/wen.gif" />';
-//                                    } elseif ($nowrw->rwyq == $nid) {
-//                                        $npchtml .= '<img src="images/wen.gif" />';
-//                                    } else {
-//                                        continue;
-//                                    }
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
+        //        if ($taskid != '') {
+        //            for ($l = 0; $l < count($taskarr); $l++) {
+        //                $nowrw = \player\gettask($taskarr[$l], $dblj);
+        //                $rwret = \player\getplayerrenwuonce($sid, $taskarr[$l], $dblj);
+        //                $lastrwid = $nowrw->lastrwid;
+        //
+        //                if ($nowrw->rwlx == 1 || $nowrw->rwlx == 2) {
+        //                    if (!$rwret) {
+        //                        if ($nowrw->rwzl != 3) {
+        //                            $npchtml .= '<img src="images/wen.gif" />';
+        //                        } elseif ($nowrw->rwyq == $nid) {
+        //                            $npchtml .= '<img src="images/wen.gif" />';
+        //                        } else {
+        //                            continue;
+        //                        }
+        //                    } elseif ($rwret->rwzt == 2) {
+        //                        if ($nowrw->rwzl != 3) {
+        //                            $npchtml .= '<img src="images/tan.gif" />';
+        //                        } elseif ($nowrw->rwcount == $nid) {
+        //                            $npchtml .= '<img src="images/tan.gif" />';
+        //                        } else {
+        //                            continue;
+        //                        }
+        //
+        //                    }
+        //                }
+        //                if ($nowrw->rwlx == 3) {
+        //                    if ($rwret) {
+        //                        if ($rwret->rwzt == 2) {
+        //                            if ($nowrw->rwzl != 3) {
+        //                                $npchtml .= '<img src="images/tan.gif" />';
+        //                            } elseif ($nowrw->rwcount == $nid) {
+        //                                $npchtml .= '<img src="images/tan.gif" />';
+        //                            } else {
+        //                                continue;
+        //                            }
+        //                        }
+        //                    } else {
+        //                        if ($lastrwid <= 0) {
+        //                            if ($nowrw->rwzl != 3) {
+        //                                $npchtml .= '<img src="images/wen.gif" />';
+        //                            } elseif ($nowrw->rwyq == $nid) {
+        //                                $npchtml .= '<img src="images/wen.gif" />';
+        //                            } else {
+        //                                continue;
+        //                            }
+        //                        } else {
+        //                            $rwret = \player\getplayerrenwuonce($sid, $lastrwid, $dblj);
+        //                            if ($rwret) {
+        //                                if ($rwret->rwzt == 3) {
+        //                                    if ($nowrw->rwzl != 3) {
+        //                                        $npchtml .= '<img src="images/wen.gif" />';
+        //                                    } elseif ($nowrw->rwyq == $nid) {
+        //                                        $npchtml .= '<img src="images/wen.gif" />';
+        //                                    } else {
+        //                                        continue;
+        //                                    }
+        //                                }
+        //                            }
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //        }
         $npccmd = $encode->encode("cmd=npc&nid=$nid&sid=$player->sid");
         $npchtml .= <<<HTML
         <a style="background: radial-gradient(black, transparent); color: white" href="?cmd=$npccmd">$nname</a>
@@ -350,8 +350,7 @@ HTML;
     }
 }
 
-
-$sql = 'SELECT * FROM ggliaotian ORDER BY id DESC LIMIT 1';//聊天列表获取
+$sql = 'SELECT * FROM ggliaotian ORDER BY id DESC LIMIT 1'; //聊天列表获取
 $ltcxjg = $dblj->query($sql);
 $lthtml = '';
 if ($ltcxjg) {
@@ -362,11 +361,10 @@ if ($ltcxjg) {
         $uid = $ret[count($ret) - $i - 1]['uid'];
         $ucmd = $encode->encode("cmd=getplayerinfo&uid=$uid&sid=$player->sid");
         if ($uid) {
-            $lthtml .= "<div class='text-red-600'><a href='?cmd=$ucmd''>[$uname]: </a><span class='text-white' style='font-size: 10px'>$umsg</span></div>";
+            $lthtml .= "<div class='text-red-600'><a href='?cmd=$ucmd''>[$uname]: </a><span class='text-white text-span'>$umsg</span></div>";
         } else {
-            $lthtml .= "<div class='text-red-600'><span>[$uname]: </span><span class='text-white' style='font-size: 10px'>$umsg</span></div>";
+            $lthtml .= "<div class='text-red-600'><span>[$uname]: </span><span class='text-white text-span'>$umsg</span></div>";
         }
-
     }
 }
 
@@ -397,13 +395,13 @@ $nowhtml = <<<HTML
     </div>
     <div class="flex items-center justify-end">
         <a style="background: radial-gradient(black, transparent);" class="text-white inline-block flex items-center" href="?cmd=$fangshi">
-            <img class="w-[30px]" src="images/menu/XJHomescreenButton_20.png" /><span style="font-size: 10px;">Chợ</span>
+            <img class="w-[30px]" src="images/menu/XJHomescreenButton_20.png" /><span class="text-span">Chợ</span>
         </a>
         <a style="background: radial-gradient(black, transparent);" class="text-white inline-block flex items-center" href="?cmd=$imcmd">
-            <img class="w-[30px]" src="images/menu/XJHomescreenButton_44.png" /><span style="font-size: 10px;">H.Hữu</span>
+            <img class="w-[30px]" src="images/menu/XJHomescreenButton_44.png" /><span class="text-span">H.Hữu</span>
         </a>
         <a style="background: radial-gradient(black, transparent);" class="text-white inline-block flex items-center" href="?cmd=$phcmd">
-            <img class="w-[30px]" src="images/menu/XJHomescreenButton_15.png" /><span style="font-size: 10px;">X.hạng</span>
+            <img class="w-[30px]" src="images/menu/XJHomescreenButton_15.png" /><span class="text-span">X.hạng</span>
         </a>
     </div>
     <div class="p-2 h-[300px] relative" id="monster-container">
@@ -423,33 +421,26 @@ $nowhtml = <<<HTML
     <div class="p-2">
         $npchtml
     </div>
-<div>
-</div>
-    <div class="absolute bottom-0 bg-[#36445a]">
-      <div class="bg-[#ff5722] flex items-center justify-center text-white">
-<div id="auto-attach">
-Tự động đánh
-</div>
-</div>
-         <div class="uppercase font-semibold text-xs text-white p-2">$clmid->mname$pvphtml</div>
-       <span class="text-xs mb-2 text-[#ff9800] p-2">Chú ý: $clmid->playerinfo</span>
-  
+    <div></div>
+    <div class="absolute bottom-0 bg-[#36445a] w-full">
+        <div id="auto-attach" class="relative">
+            <button class="absolute top-[-10px] w-[70px] h-[70px] left-[50%] rounded-full text-white" style="transform: translate(-50%, -39px); background: linear-gradient(to left, #58031e, #550370);">Tự động đánh</button>
+        </div>
+        <div class="flex items-center justify-between font-semibold text-xs text-white p-2 h-[40px] text-center" style="background: linear-gradient(to left, #58031e, #550370);">
+            $clmid->mname$pvphtml
+            <a class="w-[110px] !flex justify-center items-center !text-white all-map h-[30px] w-[70px] bg-[#009688]" sid="$sid">Bản đồ</a>
+        </div>
+        $lthtml
+
+        <span class="text-xs mb-2 text-[#ff9800] pb-2"> <span class="text-red-600">[Chú ý]</span>: <span class="text-white text-span">$clmid->playerinfo</span> </span>
+        <div class="bg-[#ff5722] flex items-center justify-center text-white"></div>
+
         <div class="p-2">
             <div class="flex text-white text-xs">
                 $lukouhtml
             </div>
             <div class="flex items-end">
                 $bosshtml
-            </div>
-        </div>
-
-        <div class="text-white mx-2">
-            <div class="flex mb-2">
-                <a class="!flex items-center justify-center border-none !text-white" href="?cmd=$goliaotian">
-                    <img class="w-[50px]" src="images/menu/XJShare_07.png" />
-                </a>
-                <div>$lthtml</div>
-                <a class="w-[110px] !flex justify-center items-center !text-white all-map" sid="$sid">Bản đồ</a>
             </div>
         </div>
 
@@ -479,25 +470,12 @@ Tự động đánh
         </div>
     </div>
 </div>
-<script>
-    $('.attach-monster').unbind('click').bind('click', function () {
-        console.log('click')
-        const gid = $(this).attr('gid')
-        const gyid = $(this).attr('gyid')
-        const sid = $(this).attr('sid')
-        const nowmid = $(this).attr('nowmid')
-    
-        $.get(`/game/ginfo/php?gid=${gid}&gyid=${gyid}&sid=${sid}&nowmid=${nowmid}`, (response) => {
-            console.log('response', response)
-        })
-    })
-</script>
-
+<script src="map/map.js"></script>
 <script src="pve/pve.js"></script>
+
 HTML;
 
 echo $nowhtml;
-
 
 //<a href="?cmd=$getbagcmd" >B.lô</a>
 //    <a href="?cmd=$getbagjncmd" >Phù lục</a>
@@ -522,3 +500,13 @@ echo $nowhtml;
 ////            </div>
 ////        </div>
 //    </div>
+
+//        <div class="text-white mx-2">
+//            <div class="flex mb-2">
+//                <a class="!flex items-center justify-center border-none !text-white" href="?cmd=$goliaotian">
+//                    <img class="w-[50px]" src="images/menu/XJShare_07.png" />
+//                </a>
+//                <div>$lthtml</div>
+//                <a class="w-[110px] !flex justify-center items-center !text-white all-map" sid="$sid">Bản đồ</a>
+//            </div>
+//        </div>

@@ -4,23 +4,11 @@ function refreshMonster(player) {
 
     if (boxMonsters.length === 0) {
         const sid = player.attr('sid')
+        if (!sid) return
         $.get(`pve/refresh_monster.php?sid=${sid}`, (response) => {
             $('#box-monster').append(response)
             prevAttach()
         })
-
-        // function refresh () {
-        //     return new Promise(resolve => {
-        //         $.get(`pve/refresh_monster.php?sid=${sid}`, (response) => {
-        //             resolve(resolve);
-        //         })
-        //     })
-        // }
-        //
-        // refresh().then(rs => {
-        //     $('#box-monster').append(rs)
-        //     $('#box-player').trigger('click')
-        // })
     }
 
     if (boxMonsters.length > 0) {
@@ -41,12 +29,12 @@ function refreshMonster(player) {
 
 $('#auto-attach').unbind('click').bind('click', function () {
     console.log("click auto attach")
-
     // GANE_STATE.autoAttach = true
     prevAttach()
 })
 
-function prevAttach () {
+
+function prevAttach() {
     const player = $("#box-player")
     const playerPosition = player.position()
     const boxMonsters = $(".monster")
@@ -169,11 +157,6 @@ function doAttach($this) {
 
     $.get(`game/pve.php?gid=${gid}&cmd=pvegj&sid=${sid}&nowmid=${nowmid}`, (response) => {
         $('.alert').html(response)
-        // $(".alert").modal({
-        //     fadeDuration: 100,
-        //     autoHide: 200
-        // });
-
         $this.remove();
         prevAttach()
     })

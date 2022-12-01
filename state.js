@@ -15,8 +15,8 @@ const GANE_STATE = {
 
 // variable holding your data
 const PVE_STATE = {
-    speedUp: 15,
-    speedLeft: 15,
+    speedUp: 5,
+    speedLeft: 10,
     upFinish: false,
     leftFinish: false,
     monsterCurrently: '',

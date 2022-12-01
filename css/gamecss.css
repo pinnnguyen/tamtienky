@@ -67,15 +67,6 @@ a:link {
     margin: auto;
 }
 
-.main button {
-    background: #fff;
-    border: 1px solid #e3e3e3;
-    border-radius: 3px;
-    padding: 1px 10px;
-    color: #0093E8;
-    font-size: 16px;
-}
-
 .login {
     margin: 10px auto;
     text-align: center;
@@ -98,7 +89,7 @@ a:link {
     width: 75px;
     font-size: 0.8em;
     line-height: 30px;
-    border-radius: 5px;
+    border-radius: 2px;
     height: 30px;
     max-width: 98%;
     border: none;
@@ -141,4 +132,47 @@ a:link {
     color: #333;
     font-weight: 600;
     border-radius: 150px;
+}
+
+.monster a {
+    animation: fadein 2s;
+    -moz-animation: fadein 2s; /* Firefox */
+    -webkit-animation: fadein 2s; /* Safari and Chrome */
+    -o-animation: fadein 2s; /* Opera */
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }

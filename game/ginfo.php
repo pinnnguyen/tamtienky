@@ -13,7 +13,6 @@ $nowmid = $player->nowmid;
 $encode = new \encode\encode();
 $backcmd = $encode->encode("cmd=gomid&newmid=$player->nowmid&sid=$sid");
 
-
 if ($nowmid != $player->nowmid) {
     $html = <<<HTML
         Hãy chơi game bình thường!<br/>
@@ -85,37 +84,38 @@ HTML;
         }
 
         $html = <<<HTML
-<div>
-
+        <div>
         <div class="text-white p-2 p-6 leading-6">
-        
             <div>
             [$yguaiwu->gname]: Cấp: $yguaiwu->glv
-    </div>
-
-
+        </div>
 <div>
         Cảnh giới: $guaiwu->jingjie
-
 </div>
 <div>
         Thông tin: $yguaiwu->ginfo
-
 </div>
         <br/>
         Rơi xuống:
         $dlhtml
-        </div>
-
-
-</script>
+   </div>
 <div class="h-[55px] flex items-center justify-end pr-3">
-        <a href="?cmd=$backcmd" class="!flex items-center justify-center bg-[#333333] !text-white h-[28px]">Rút lui</a>
-        <a href="?cmd=$pvecmd" class="!flex items-center justify-center bg-[#ff613d] !text-white h-[28px]">Công kích</a>
+<!--        <a href="?cmd=$backcmd" class="!flex items-center justify-center bg-[#333333] !text-white h-[28px]">Rút lui</a>-->
+        <a cmd="pve" gid=$gid sid=$sid nowmid=$nowmid class="on-attach !flex items-center justify-center bg-[#ff613d] !text-white h-[28px]">Công kích</a>
 </div>
 </div>
 
-
+<script>
+$('.on-attach').unbind('click').bind('click', function () {
+    console.log("on-attach")
+    $.get(`game/pve.php?gid=$gid&cmd=pvegj&sid=$sid&nowmid=$nowmid`, (response) => {
+        $('.teleport').html(response)
+        $(".teleport").modal({
+            fadeDuration: 100
+        });
+    })
+});
+</script>
 HTML;
     }
 }

@@ -83,13 +83,13 @@ if (isset($cmd)) {
         //exit();
     }
     $Dcmd = $encode->decode($cmd);
-//    var_dump($Dcmd);
+    //    var_dump($Dcmd);
     parse_str($Dcmd);
     switch ($cmd) {
         case 'cj':
             $ym = 'game/cj.php';
             break;
-        case 'login';
+        case 'login':
             $player = \player\getplayer($sid, $dblj);
             $gonowmid = $encode->encode("cmd=gomid&newmid=$player->nowmid&sid=$sid");
             $nowdate = date('Y-m-d H:i:s');
@@ -98,13 +98,13 @@ if (isset($cmd)) {
             header("refresh:1;url=?cmd=$gonowmid");
             exit();
             break;
-        case 'zhuangtai';
+        case 'zhuangtai':
             $ym = 'game/zhuangtai.php';
             break;
         case 'cjplayer':
             if (isset($token) && isset($username) && isset($sex)) {
                 $username = htmlspecialchars($username);
-                $sql = "SELECT * FROM game1 where uname = '" . $username . "'";//昵称查询
+                $sql = "SELECT * FROM game1 where uname = '" . $username . "'"; //昵称查询
                 $ltcxjg = $dblj->query($sql);
                 if ($ltcxjg) {
                     $ret = $ltcxjg->fetchAll(PDO::FETCH_ASSOC);
@@ -136,7 +136,7 @@ if (isset($cmd)) {
 
                     $query = "insert into game1(token, sid, uname, ulv, uyxb, uczb, uexp, uhp, umaxhp, ugj, ufy, uwx, usex, vip, nowmid, endtime, sfzx) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                     $stmt = $dblj->prepare($query);
-                    $stmt->execute([$token, $sid, $username, '1', '2000', '100', '0', '35', '35', '12', '5', '0', $sex, '0', $firstmid, $nowdate, 1]) or die(print_r($dblj->errorInfo()));;
+                    $stmt->execute([$token, $sid, $username, '1', '2000', '100', '0', '35', '35', '12', '5', '0', $sex, '0', $firstmid, $nowdate, 1]) or die(print_r($dblj->errorInfo()));
 
                     $gonowmid = $encode->encode("cmd=gomid&newmid=$gameconfig->firstmid&sid=$sid");
 
@@ -146,7 +146,7 @@ if (isset($cmd)) {
                     $sql2 = "insert into ggliaotian(name,msg,uid) values(?,?,?)";
                     $stmt2 = $dblj->prepare($sql2);
 
-                    $stmt2->execute(array('Hệ thống', " Vạn người không được một người chơi {$username} Bước lên Tiên đồ", '0'));
+                    $stmt2->execute(['Hệ thống', " Vạn người không được một người chơi {$username} Bước lên Tiên đồ", '0']);
                     header("refresh:1;url=?cmd=$gonowmid");
                 }
                 exit();
@@ -167,7 +167,7 @@ if (isset($cmd)) {
         case 'pvegj':
             $ym = 'game/pve.php';
             break;
-        case 'pvbgj':// công kích boss
+        case 'pvbgj': // công kích boss
             $ym = 'game/boss.php';
             break;
         case 'sendliaotian':
@@ -179,7 +179,7 @@ if (isset($cmd)) {
                             $ltmsg = htmlspecialchars($ltmsg);
                             $sql = "insert into ggliaotian(name,msg,uid) values(?,?,?)";
                             $stmt = $dblj->prepare($sql);
-                            $exeres = $stmt->execute(array($player->uname, $ltmsg, $player->uid));
+                            $exeres = $stmt->execute([$player->uname, $ltmsg, $player->uid]);
                         }
                         $ym = 'game/liaotian.php';
                         break;
@@ -195,7 +195,7 @@ if (isset($cmd)) {
                         break;
                 }
             } elseif (isset($ltlx) && isset($ltmsg) && mb_strlen($ltmsg) < 2) {
-                echo('Gửi thất bại! Vui lòng đảm bảo rằng nội dung của cuộc trò chuyện có nhiều hơn 2 chữ số');
+                echo 'Gửi thất bại! Vui lòng đảm bảo rằng nội dung của cuộc trò chuyện có nhiều hơn 2 chữ số';
             }
             break;
         case 'liaotian':
@@ -213,7 +213,7 @@ if (isset($cmd)) {
         case 'npc':
             $ym = "npc/npc.php";
             break;
-        case 'paihang';
+        case 'paihang':
             $ym = 'game/paihang.php';
             break;
         case 'chakanzb':
@@ -314,7 +314,7 @@ if (isset($cmd)) {
         }
     } else {
         if ($cmd != 'pve' && $cmd != 'pvegj') {
-            $sql = "delete from midguaiwu where sid='$sid'";//Xóa bản đồ và người chơi đã bị quái vật tấn công
+            $sql = "delete from midguaiwu where sid='$sid'"; //Xóa bản đồ và người chơi đã bị quái vật tấn công
             $dblj->exec($sql);
         }
 
@@ -326,15 +326,14 @@ if (isset($cmd)) {
             $pvpts = "$pvper->uname Đang tấn công bạn: $pvpcmd<br/>";
         }
 
-
         if (\player\istupo($sid, $dblj) != 0 && $player->uexp >= $player->umaxexp) {
             $tupocmd = $encode->encode("cmd=tupo&sid=$sid");
             $tupocmd = "<a class='bg-[#d62700]' href='?cmd=$tupocmd'>Đột phá</a>";
-            $tpts = "<p class='p-2 text-white bg-black text-xs '><strong>Tip: </strong>Bạn cần đột phá, nếu không sẽ không thể tích lũy được kinh nghiệm:$tupocmd</p>";
+            $tpts = "<p class='p-2 text-white text-xs bg-[#161818] absolute z-[999]'><strong>Tip: </strong>Bạn cần đột phá, nếu không sẽ không thể tích lũy được kinh nghiệm:$tupocmd</p>";
         }
 
         $nowdate = date('Y-m-d H:i:s');
-        $second = floor((strtotime($nowdate) - strtotime($player->endtime)) % 86400);//Nhận khoảng thời gian làm mới
+        $second = floor((strtotime($nowdate) - strtotime($player->endtime)) % 86400); //Nhận khoảng thời gian làm mới
         if ($second >= 9000) {
             echo '<meta charset="utf-8" content="width=device-width,user-scalable=no" name="viewport">';
             echo $player->uname . "Thời gian ngoại tuyến quá lâu, vui lòng đăng nhập lại-";
@@ -356,6 +355,14 @@ if (isset($cmd)) {
 <head>
     <meta charset="utf-8" content="width=device-width,user-scalable=no" name="viewport">
     <title>Tu Tiên Hội</title>
+
+    <link rel="manifest" href="manifest.json" />
+    <!-- ios support -->
+    <link rel="apple-touch-icon" href="images/logo.png" />
+    <meta name="apple-mobile-web-app-status-bar" content="#db4938" />
+    <meta name="theme-color" content="#db4938" />
+
+
     <link rel="stylesheet" href="css/gamecss.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sora">
     <link rel="icon" href="images/logo.ico" type="image/x-icon">
@@ -365,17 +372,16 @@ if (isset($cmd)) {
     <!-- jQuery Modal -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-<!--    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>-->
+    <!--    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>-->
     <link rel="stylesheet" href="plugins/notify/notify.css" />
     <script src="plugins/notify/notify.min.js"></script>
     <script src="plugins/notify/notify.setting.js"></script>
 
 </head>
 <body>
-<div class="main h-[100vh] sm:w-[640px] md:w-[640px] lg:w-[640px]">
+<div class="main h-[100vh] sm:w-[640px] md:w-[640px] lg:w-[640px] overflow-hidden">
     <div class="h-full relative bg-black">
-        <?php
-        if (!$ym == '') {
+        <?php if (!$ym == '') {
             echo $tpts;
 
             if ($ym != "game/pvp.php") {
@@ -401,6 +407,10 @@ if (isset($cmd)) {
             'btn': 'font-medium focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 focus:ring-offset-white dark:focus:ring-offset-black text-xs px-2.5 py-1.5 border border-transparent text-gray-700 bg-gray-100 hover:bg-gray-200 disabled:bg-gray-100 focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 inline-flex items-center rounded-lg'
         },
         theme: {
+            fontSize: {
+                span: '10px',
+                paragraph: `1.2rem;`
+            },
             extend: {
                 colors: {
                     clifford: '#da373d',

@@ -1,7 +1,7 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . "/pdo.php");
-require_once($_SERVER['DOCUMENT_ROOT'] . "/class/encode.php");
-require_once($_SERVER['DOCUMENT_ROOT'] . "/class/player.php");
+require_once $_SERVER['DOCUMENT_ROOT'] . "/pdo.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/class/encode.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/class/player.php";
 
 $sid = $_GET['sid'];
 $gid = $_GET['gid'];
@@ -56,7 +56,7 @@ HTML;
     exit();
 }
 
-if (($guaiwu->sid != $player->sid && $guaiwu->sid != '') || ($guaiwu->gid == '')) {
+if (($guaiwu->sid != $player->sid && $guaiwu->sid != '') || $guaiwu->gid == '') {
     $html = <<<HTML
         Quái vật đã bị những người khác công kích!<br/>
         Mời Thiếu Hiệp luyện tập nhanh hơn nha
@@ -90,7 +90,6 @@ if ($cmd == 'pve' && $guaiwu->sid == '') {
             $player = player\getplayer($sid, $dblj);
         }
     }
-
 }
 
 if ($cmd == 'pvegj' && $gid != 0) {
@@ -125,7 +124,7 @@ if ($cmd == 'pvegj' && $gid != 0) {
     # đá cường hóa sẽ không phát nổ.
     # Đổi thành quái vật có cấp độ nhân vật cao sẽ không phát nổ sau cấp 10, và nếu thấp hơn quái vật, nó sẽ là ngẫu nhiên
     $phurt = 0;
-    $phurt = round($guaiwu->ggj - ($player->ufy * 0.75), 0);
+    $phurt = round($guaiwu->ggj - $player->ufy * 0.75, 0);
     if ($phurt < $guaiwu->ggj * 0.15) {
         $phurt = round($guaiwu->ggj * 0.15);
     }
@@ -136,7 +135,7 @@ if ($cmd == 'pvegj' && $gid != 0) {
         $pvebj = 'Bạo kích';
     }
 
-    $gphurt = round($player->ugj - ($guaiwu->gfy * 0.75), 0);
+    $gphurt = round($player->ugj - $guaiwu->gfy * 0.75, 0);
     if ($gphurt < $player->ugj * 0.15) {
         $gphurt = round($player->ugj * 0.15);
     }
@@ -208,7 +207,7 @@ HTML;
                 $zbid = $retzb[$sjdl]['zbid'];
                 $zbnowid = player\addzb($sid, $zbid, $dblj);
                 $chakanzb = $encode->encode("cmd=chakanzb&zbnowid=$zbnowid&uid=$player->uid&sid=$sid");
-//                <a href="?cmd=' . $chakanzb . '">' . $zbname . '</a
+                //                <a href="?cmd=' . $chakanzb . '">' . $zbname . '</a
                 $huode .= <<<HTML
             <script>
             $.notify('Thu hoạch x $zbname', {
@@ -223,7 +222,7 @@ HTML;
             }
         }
 
-        $sjjv = mt_rand(1, 100);//xác suất đạo cụ djjv 1-100 gdj là id mục đạo cụ, được phân tách bằng dấu phẩy
+        $sjjv = mt_rand(1, 100); //xác suất đạo cụ djjv 1-100 gdj là id mục đạo cụ, được phân tách bằng dấu phẩy
         if ($yguaiwu->djjv >= $sjjv && $yguaiwu->gdj != '') {
             $sql = "select * from daoju WHERE djid in ($yguaiwu->gdj)";
             $cxdljg = $dblj->query($sql);
@@ -232,9 +231,9 @@ HTML;
                 $sjdj = mt_rand(0, count($retdj) - 1);
                 $djname = $retdj[$sjdj]['djname'];
                 $djid = $retdj[$sjdj]['djid'];
-//                if (($djid == 1 && $lvc >= 5) && !($djid == 1 && $guaiwu->glv >= 46 && $player->ulv >= 50)) { //道具id 1是强化石，这里意思是强化石在人物比怪物等级高10级后不会爆,看pve.php文件107行
-//                    goto yp;
-//                }
+                //                if (($djid == 1 && $lvc >= 5) && !($djid == 1 && $guaiwu->glv >= 46 && $player->ulv >= 50)) { //道具id 1是强化石，这里意思是强化石在人物比怪物等级高10级后不会爆,看pve.php文件107行
+                //                    goto yp;
+                //                }
                 $djsum = mt_rand(1, 2); //Nhận ngẫu nhiên 1 hoặc 2 đạo cụ
                 \player\adddj($sid, $djid, $djsum, $dblj);
                 $huode .= <<<HTML
@@ -260,7 +259,6 @@ HTML;
                         break;
                     }
                 }
-
             }
         }
         yp:
@@ -277,13 +275,15 @@ HTML;
             $huode .= "Thu hoạch: <div class='ypys'>$ypname x$ypsum</div>";
         }
 
-        if ($lvc < 0) { // Giải thích nhân vật vượt ải đánh quái nên được hoa hồng
-            $guaiwu->gexp = round($guaiwu->gexp + 5 * abs($lvc), 0);// tính toán theo kinh nghiệm
-        } else {//Giải thích rằng cấp độ nhân vật cao hơn cấp độ quái vật và nên giảm kinh nghiệm
-            $guaiwu->gexp = round($guaiwu->gexp / ($lvc + 1), 0);// tính toán theo kinh nghiệm
+        if ($lvc < 0) {
+            // Giải thích nhân vật vượt ải đánh quái nên được hoa hồng
+            $guaiwu->gexp = round($guaiwu->gexp + 5 * abs($lvc), 0); // tính toán theo kinh nghiệm
+        } else {
+            //Giải thích rằng cấp độ nhân vật cao hơn cấp độ quái vật và nên giảm kinh nghiệm
+            $guaiwu->gexp = round($guaiwu->gexp / ($lvc + 1), 0); // tính toán theo kinh nghiệm
         }
 
-        if ($player->ulv > ($guaiwu->glv + 10)) {
+        if ($player->ulv > $guaiwu->glv + 10) {
             // Nếu nhân vật cao hơn nhiều so với quái vật, hãy cho 3 điểm kinh nghiệm tượng trưng
             $guaiwu->gexp = $guaiwu->gexp * 25;
         }
@@ -330,7 +330,7 @@ if ($player->jn2 != 0) {
     }
 }
 if ($player->jn3 != 0) {
-    $jineng = \player\getplayerjineng($player->jn3, $sid, $dblj);;
+    $jineng = \player\getplayerjineng($player->jn3, $sid, $dblj);
     if ($jineng) {
         $jnname3 = $jineng->jnname . '(' . $jineng->jncount . ')';
     }
@@ -423,7 +423,6 @@ HTML;
 
     $remainingPlayerHp = ($player->uhp / $player->umaxhp) * 100;
     $remainingPlayerHp .= 'px';
-
 
     $html = <<<HTML
 <div class="h-full">
@@ -525,11 +524,7 @@ HTML;
 
 <script>
 $('.on-attach').unbind('click').bind('click', function () {
-    // const _gid = $(this).attr('gid')
-    // const _cmd = $(this).attr('cmd')
-    // const _sid = $(this).attr('sid')
-    // const _nowmid = $(this).attr('nowmid')
-    
+    console.log("on-attach")
     $.get(`game/pve.php?gid=$gid&cmd=pvegj&sid=$sid&nowmid=$nowmid`, (response) => {
         $('.teleport').html(response)
         $(".teleport").modal({

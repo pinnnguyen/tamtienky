@@ -450,7 +450,7 @@ $nowhtml = <<<HTML
                     <img class="w-[50px]" src="images/menu/XJHomescreenButton_29.png" />
                     <!--            <div>N.Vật</div>-->
                 </a>
-                <a class="w-[20%] flex flex-col items-center" href="?cmd=$getbagcmd">
+                <a sid="$sid" cmd="getbagzb" class="w-[20%] flex flex-col items-center" id="bag">
                     <img class="w-[50px]" src="images/menu/XJDengxiandao_15.png" />
                     <!--            <div>B.Lô</div>-->
                 </a>
@@ -472,6 +472,7 @@ $nowhtml = <<<HTML
 </div>
 <script src="map/map.js"></script>
 <script src="pve/pve.js"></script>
+<script src="bag/bag.js"></script>
 
 HTML;
 

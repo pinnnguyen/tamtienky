@@ -223,7 +223,7 @@ if (isset($cmd)) {
             $ym = 'game/djinfo.php';
             break;
         case 'getbagzb':
-            $ym = 'game/bagzb.php';
+            $ym = 'bag/bagzb.php';
             break;
         case 'getbagyp':
             $ym = 'game/bagyp.php';
@@ -391,6 +391,7 @@ if (isset($cmd)) {
             include "$ym";
         } ?>
     </div>
+    <div class="teleport-full relative bg-[#36445a] p-0 w-[100%]"></div>
     <div class="teleport relative bg-[#36445a] p-0"></div>
     <div class="alert relative p-0 bg-black hidden"></div>
 </div>
@@ -399,25 +400,6 @@ if (isset($cmd)) {
 <script src="state.js"></script>
 <script src="game.box.js"></script>
 <script src="app.js"></script>
-<script>
-    tailwind.config = {
-        shortcuts: {
-            'light-img': 'block dark:hidden',
-            'dark-img': 'hidden dark:block',
-            'btn': 'font-medium focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 focus:ring-offset-white dark:focus:ring-offset-black text-xs px-2.5 py-1.5 border border-transparent text-gray-700 bg-gray-100 hover:bg-gray-200 disabled:bg-gray-100 focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 inline-flex items-center rounded-lg'
-        },
-        theme: {
-            fontSize: {
-                span: '10px',
-                paragraph: `1.2rem;`
-            },
-            extend: {
-                colors: {
-                    clifford: '#da373d',
-                }
-            }
-        }
-    }
-</script>
+<script src="tailwind.config.js"></script>
 
 </html>

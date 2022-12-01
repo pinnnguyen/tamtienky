@@ -1,5 +1,11 @@
 <?php
+require_once($_SERVER['DOCUMENT_ROOT'] . "/pdo.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/class/player.php");
+require_once $_SERVER['DOCUMENT_ROOT'] . "/class/encode.php";
+
+$sid = $_GET['sid'];
 $player = player\getplayer($sid, $dblj);
+$encode = new \encode\encode();
 $tishi = '';
 if (isset($canshu)) {
     if ($canshu == 'maichu') {
@@ -23,7 +29,7 @@ if ($cmd == 'delezb') {
     $fjls = $zhuangbei->qianghua * 20 + 20;
     $ret = \player\changeyxb(2, $fjls, $sid, $dblj);
     if ($ret) {
-        $sql = "delete from playerzhuangbei where zbnowid =$zbnowid AND sid='$sid'"; //删除装备
+        $sql = "delete from playerzhuangbei where zbnowid =$zbnowid AND sid='$sid'"; //xóa thiết bị
         $dblj->exec($sql);
         $qhs = round($zhuangbei->qianghua * $zhuangbei->qianghua);
         $sjs = mt_rand(1, 100);
@@ -71,11 +77,9 @@ if ($yeshu + 10 < $zbcount) {
 if ($fanye != '') {
     $fanye = '<br/>' . $fanye . '<br/>';
 }
-$hangshu = 0;
 for ($i = 0; $i < count($retzb); $i++) {
     $zbnowid = $retzb[$i]['zbnowid'];
     $arr = [$player->tool1, $player->tool2, $player->tool3, $player->tool4, $player->tool5, $player->tool6];
-    $hangshu = $hangshu + 1;
 
     $zbname = $retzb[$i]['zbname'];
     $zbnowid = $retzb[$i]['zbnowid'];
@@ -84,30 +88,43 @@ for ($i = 0; $i < count($retzb); $i++) {
     if ($zbqh > 0) {
         $qhhtml = "+" . $zbqh;
     }
+
     $chakanzb = $encode->encode("cmd=chakanzb&zbnowid=$zbnowid&uid=$player->uid&sid=$sid");
     if (!in_array($zbnowid, $arr)) {
         $mczb = $encode->encode("cmd=getbagzb&canshu=maichu&yeshu=$yeshu&zbnowid=$zbnowid&sid=$sid");
         $delezb = $encode->encode("cmd=delezb&zbnowid=$zbnowid&sid=$sid");
         $zbhtml .= <<<HTML
-        [$hangshu].<a href="?cmd=$chakanzb">$zbname$qhhtml</a><a href="?cmd=$mczb">Bán</a><a href="?cmd=$delezb">Phân giải</a><br/>
+        <div class="w-[100px] h-[100px] relative m-2 border border-white">
+        <img class="w-[65px] absolute top-[50%] left-[50%]" style="transform: translate(-50%, -50%);" src="bag/images/itembig_1000101008.png" alt="">
+        <a class="absolute bottom-0 text-span" href="?cmd=$chakanzb">
+            $zbname$qhhtml
+        </a>
+        <a href="?cmd=$mczb">Bán</a>
+        <a href="?cmd=$delezb">Phân giải</a>
+</div>
+
 HTML;
     } else {
         $zbhtml .= <<<HTML
-        [$hangshu].<a href="?cmd=$chakanzb">$zbname$qhhtml</a>(Đã trang bị)<br/>
+        <a href="?cmd=$chakanzb">$zbname$qhhtml</a>(Đã trang bị)<br/>
 HTML;
     }
 }
 $getbagdjcmd = $encode->encode("cmd=getbagdj&sid=$sid");
 $getbagypcmd = $encode->encode("cmd=getbagyp&sid=$sid");
 $getbagjncmd = $encode->encode("cmd=getbagjn&sid=$sid");
+
 $toolhtml = <<<HTML
-$tishi
-【Trang thiết bị|<a href="?cmd=$getbagdjcmd">Đạo cụ</a>|<a href="?cmd=$getbagypcmd">Dược phẩm</a>|<a href="?cmd=$getbagjncmd">Phù lục</a>】<br/>
-<br/>
-$zbhtml
-$fanye
-<br/>
-<button onClick="javascript:history.back(-1);">Trở về</button> <a href="?cmd=$gonowmid">Trở về trò chơi</a>
+<div class="text-white p-2 flex flex-wrap justify-center">
+    $tishi
+    <div>
+    【Trang thiết bị|<a href="?cmd=$getbagdjcmd">Đạo cụ</a>|<a href="?cmd=$getbagypcmd">Dược phẩm</a>|<a href="?cmd=$getbagjncmd">Phù lục</a>
+</div>
+    <br/>
+    $zbhtml
+    $fanye
+</div>
+
 HTML;
 echo $toolhtml;
 

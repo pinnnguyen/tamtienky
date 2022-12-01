@@ -1,8 +1,7 @@
-.notifyjs-happyblue-base {
-    width: 200px;
-    background: #ffe1d8;
-}
-.notifyjs-happyblue-superblue {
+.notifyjs-pve-base {
     color: white;
-    background-color: blue;
+}
+
+.notifyjs-corner {
+    top: 50% !important;
 }

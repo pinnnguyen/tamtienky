@@ -171,7 +171,15 @@ if ($cmd == 'pvegj' && $gid != 0) {
         $ret = \player\changeyxb(1, $yxb, $sid, $dblj);
         if ($ret) {
             $huode .= <<<HTML
-            <div>Linh thạch: +$yxb</div>
+            <script>
+            $.notify('Linh thạch x $yxb', {
+                autoHideDelay: 1500,
+                style: 'pve',
+                elementPosition: 'bottom left',
+                arrowShow: false,
+                showDuration: 200,
+            })
+            </script>
 HTML;
         }
         $taskarr = \player\getplayerrenwu($sid, $dblj);
@@ -202,9 +210,15 @@ HTML;
                 $chakanzb = $encode->encode("cmd=chakanzb&zbnowid=$zbnowid&uid=$player->uid&sid=$sid");
 //                <a href="?cmd=' . $chakanzb . '">' . $zbname . '</a
                 $huode .= <<<HTML
- <div>
-  Thu hoạch: <div class='zbys'>$zbname</a></div>
-</div>
+            <script>
+            $.notify('Thu hoạch x $zbname', {
+                autoHideDelay: 1500,
+                style: 'pve',
+                elementPosition: 'bottom left',
+                arrowShow: false,
+                showDuration: 400,
+            })
+            </script>
 HTML;
             }
         }
@@ -223,7 +237,17 @@ HTML;
 //                }
                 $djsum = mt_rand(1, 2); //Nhận ngẫu nhiên 1 hoặc 2 đạo cụ
                 \player\adddj($sid, $djid, $djsum, $dblj);
-                $huode .= "Thu hoạch: <div class='djys'>$djname x$djsum</div>";
+                $huode .= <<<HTML
+            <script>
+            $.notify('Thu hoạch  $djname x $djsum', {
+                autoHideDelay: 1500,
+                style: 'pve',
+                elementPosition: 'bottom left',
+                arrowShow: false,
+                showDuration: 600,
+            })
+            </script>
+HTML;
 
                 for ($i = 0; $i < count($taskarr); $i++) {
                     $rwyq = $taskarr[$i]['rwyq'];
@@ -328,10 +352,15 @@ if (isset($zdjg)) {
 
             player\changeexp($sid, $dblj, $expPlayer);
             $huode .= <<<HTML
-<div>
-<span>
-Tu vi +
-</span>$guaiwu->gexp</div>
+            <script>
+            $.notify('Tu vi x $guaiwu->gexp', {
+                autoHideDelay: 1500,
+                style: 'pve',
+                elementPosition: 'bottom left',
+                arrowShow: false,
+                showDuration: 600,
+            })
+            </script>
 HTML;
 
             $html = <<<HTML

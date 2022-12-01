@@ -6,21 +6,21 @@ function refreshMonster(player) {
         const sid = player.attr('sid')
         $.get(`pve/refresh_monster.php?sid=${sid}`, (response) => {
             $('#box-monster').append(response)
-            $('#auto-attach').trigger('click');
+            prevAttach()
         })
 
-        function refresh () {
-            return new Promise(resolve => {
-                $.get(`pve/refresh_monster.php?sid=${sid}`, (response) => {
-                    resolve(resolve);
-                })
-            })
-        }
-
-        refresh().then(rs => {
-            $('#box-monster').append(rs)
-            $('#box-player').trigger('click')
-        })
+        // function refresh () {
+        //     return new Promise(resolve => {
+        //         $.get(`pve/refresh_monster.php?sid=${sid}`, (response) => {
+        //             resolve(resolve);
+        //         })
+        //     })
+        // }
+        //
+        // refresh().then(rs => {
+        //     $('#box-monster').append(rs)
+        //     $('#box-player').trigger('click')
+        // })
     }
 
     if (boxMonsters.length > 0) {
@@ -38,82 +38,15 @@ function refreshMonster(player) {
     }
 }
 
-refreshMonster()
-
-class box {
-    constructor() {
-        this.box = $("#box-player");
-        this.y = 1;
-        this.x = 1;
-    }
-
-    setPosition(y, x) {
-        this.y = y;
-        this.x = x;
-    }
-
-    draw() {
-        this.box.css({
-            top: this.y + "px",
-            left: this.x + "px"
-        })
-    }
-
-    up(i) {
-        this.y += -i;
-        this.draw()
-    }
-
-    right(i) {
-        this.x += i;
-        this.draw()
-    }
-
-    left(i) {
-        this.x += -i;
-        this.draw()
-    }
-
-    down(i) {
-        this.y += i;
-        this.draw()
-    }
-}
-
-var box2 = new box();
-box2.draw()
-
-// variable holding your data
-const trainState = {
-    speedUp: 15,
-    speedLeft: 15,
-    upFinish: false,
-    leftFinish: false,
-    monsterCurrently: '',
-    update() {
-        if (this.upFinish && this.leftFinish) {
-            doAttach($(this.monsterCurrently));
-            this.upFinish = false
-            this.leftFinish = false
-        }
-    },
-    get doUpFinish() {
-        return this.upFinish;
-    },
-    set doUpFinish(done) {
-        this.upFinish = done;
-        this.update(this.upFinish);
-    },
-    get doLeftFinish() {
-        return this.leftFinish;
-    },
-    set doLeftFinish(done) {
-        this.leftFinish = done;
-        this.update(this.leftFinish);
-    }
-};
 
 $('#auto-attach').unbind('click').bind('click', function () {
+    console.log("click auto attach")
+
+    // GANE_STATE.autoAttach = true
+    prevAttach()
+})
+
+function prevAttach () {
     const player = $("#box-player")
     const playerPosition = player.position()
     const boxMonsters = $(".monster")
@@ -126,7 +59,7 @@ $('#auto-attach').unbind('click').bind('click', function () {
     const ranI = random(boxMonsters.length)
 
     const monster = boxMonsters[ranI]
-    trainState.monsterCurrently = monster
+    PVE_STATE.monsterCurrently = monster
     const monsterPosition = $(monster).position();
 
     if (monsterPosition.left === playerPosition.left
@@ -138,16 +71,15 @@ $('#auto-attach').unbind('click').bind('click', function () {
     moveUp(monsterPosition, playerPosition, (top) => {
         if (!top) return
         playerPosition.top = top
-        trainState.doUpFinish = true;
+        PVE_STATE.doUpFinish = true;
     })
 
     moveLeft(monsterPosition, playerPosition, (left) => {
         if (!left) return
         playerPosition.left = left
-        trainState.doLeftFinish = true;
+        PVE_STATE.doLeftFinish = true;
     })
-
-})
+}
 
 function moveLeft(monsterPosition, playerPosition, fn) {
     let distance = 0,
@@ -184,7 +116,7 @@ function moveLeft(monsterPosition, playerPosition, fn) {
             fn(distance)
             clearInterval(run)
         }
-    }, trainState.speedLeft)
+    }, PVE_STATE.speedLeft)
 }
 
 function moveUp(monsterPosition, playerPosition, fn) {
@@ -222,7 +154,7 @@ function moveUp(monsterPosition, playerPosition, fn) {
             fn(distance)
             clearInterval(run)
         }
-    }, trainState.speedUp)
+    }, PVE_STATE.speedUp)
 }
 
 function random(number) {
@@ -237,12 +169,14 @@ function doAttach($this) {
 
     $.get(`game/pve.php?gid=${gid}&cmd=pvegj&sid=${sid}&nowmid=${nowmid}`, (response) => {
         $('.alert').html(response)
-        $(".alert").modal({
-            fadeDuration: 100,
-            autoHide: 200
-        });
+        // $(".alert").modal({
+        //     fadeDuration: 100,
+        //     autoHide: 200
+        // });
 
         $this.remove();
-        $('#auto-attach').trigger('click');
+        prevAttach()
     })
 }
+
+refreshMonster()

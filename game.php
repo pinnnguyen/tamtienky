@@ -386,10 +386,12 @@ if (isset($cmd)) {
         } ?>
     </div>
     <div class="teleport relative bg-[#36445a] p-0"></div>
-    <div class="alert relative p-0 bg-black"></div>
+    <div class="alert relative p-0 bg-black hidden"></div>
 </div>
 </body>
 
+<script src="state.js"></script>
+<script src="game.box.js"></script>
 <script src="app.js"></script>
 <script>
     tailwind.config = {

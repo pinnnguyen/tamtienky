@@ -1,14 +1,10 @@
-$.notify.addStyle('happyblue', {
-    html: "<div>☺<span data-notify-text/>☺</div>",
+$.notify.addStyle('pve', {
+    html: "<span data-notify-text/>",
     classes: {
         base: {
             "white-space": "nowrap",
-            "background-color": "lightblue",
+            "background-color": "transparent",
             "padding": "5px"
         },
-        superblue: {
-            "color": "white",
-            "background-color": "blue"
-        }
     }
 });

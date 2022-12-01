@@ -59,7 +59,7 @@ if (isset($_POST['submit']) && $_POST['submit']) {
 </head>
 <body>
 <div class="main">
-    <div style="overflow: hidden; background: white; height: 100%">
+    <div style="overflow: hidden; background: white; height: 100%; max-width: 678px; margin: auto">
         <img src="images/11.jpg" height="200" style="width: 100%"><br/>
         <div id="mainfont" style="padding: 8px">
             Nguyệt lãnh thiên sơn giang tự bích, băng nhai vạn trượng vô lưu ý.<br/>

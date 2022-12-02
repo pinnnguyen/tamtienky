@@ -4,7 +4,9 @@ $.notify.addStyle('pve', {
         base: {
             "white-space": "nowrap",
             "background-color": "transparent",
-            "padding": "5px"
+            "padding": "5px",
+            "right": "-7px",
+            "bottom": "300px"
         },
     }
 });

@@ -396,10 +396,10 @@ if (isset($cmd)) {
 </div>
 </body>
 
-<script src="state.js"></script>
-<script src="game.box.js"></script>
-<script src="app.js"></script>
-<script src="upgrade/index.js"></script>
-<script src="tailwind.config.js"></script>
+<script src="state.js" async></script>
+<script src="game.box.js" async></script>
+<script src="app.js" async></script>
+<script src="upgrade/index.js" async></script>
+<script src="tailwind.config.js" async></script>
 
 </html>

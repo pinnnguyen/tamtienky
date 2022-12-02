@@ -174,8 +174,7 @@ if ($cmd == 'pvegj' && $gid != 0) {
             $.notify('Linh thạch x $yxb', {
                 autoHideDelay: 1500,
                 style: 'pve',
-                elementPosition: 'bottom left',
-                arrowShow: false,
+                globalPosition: 'bottom right',
                 showDuration: 200,
             })
             </script>
@@ -213,7 +212,7 @@ HTML;
             $.notify('Thu hoạch x $zbname', {
                 autoHideDelay: 1500,
                 style: 'pve',
-                elementPosition: 'bottom left',
+                globalPosition: 'bottom right',
                 arrowShow: false,
                 showDuration: 400,
             })
@@ -241,7 +240,7 @@ HTML;
             $.notify('Thu hoạch  $djname x $djsum', {
                 autoHideDelay: 1500,
                 style: 'pve',
-                elementPosition: 'bottom left',
+                globalPosition: 'bottom right',
                 arrowShow: false,
                 showDuration: 600,
             })
@@ -356,8 +355,7 @@ if (isset($zdjg)) {
             $.notify('Tu vi x $guaiwu->gexp', {
                 autoHideDelay: 1500,
                 style: 'pve',
-                elementPosition: 'bottom left',
-                arrowShow: false,
+                globalPosition: 'bottom right',
                 showDuration: 600,
             })
             </script>
@@ -377,12 +375,14 @@ HTML;
             break;
         case 0:
             $html = <<<HTML
-            Kết quả:<br/>
-            Ngươi bị $guaiwu->gname đánh bại<br/>
-            Chiến đấu thất bại!<br/>
-            Mời Thiếu Hiệp thử lại<br/>
-            <br/>
-            <a href="?cmd=$gorehpmid">Trở về trò chơi</a>
+            <script>
+            $.notify('Ngươi bị $guaiwu->gname đánh bại', {
+                autoHideDelay: 1500,
+                style: 'pve',
+                globalPosition: 'bottom right',
+                showDuration: 200,
+            })
+</script>
 HTML;
             break;
         case -1:

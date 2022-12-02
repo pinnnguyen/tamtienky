@@ -234,7 +234,7 @@ $html = <<<HTML
 <div class="p-3">
 <div class="flex items-center justify-center mb-4">
 <div class="w-[75px]">
-    <img src="bag/images/itembig_1000101008.png" alt="">
+    <img src="$$zhuangbei->preview_url" alt="">
 </div>
 <div class="border-l border-white pl-2">
     <div>

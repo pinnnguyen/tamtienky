@@ -435,6 +435,7 @@ class zhuangbei
     var $zbhp;
     var $zblv;
     var $tool;
+    var $preview_url;
 }
 
 function getzb($zbnowid, $dblj)
@@ -455,6 +456,7 @@ function getzb($zbnowid, $dblj)
     $cxjg->bindColumn('qianghua', $zhuangbei->qianghua);
     $cxjg->bindColumn('zblv', $zhuangbei->zblv);
     $cxjg->bindColumn('zbtool', $zhuangbei->tool);
+    $cxjg->bindColumn('preview_url', $zhuangbei->preview_url);
     $cxjg->fetch(\PDO::FETCH_ASSOC);
     return $zhuangbei;
 }
@@ -473,6 +475,7 @@ function getzbkzb($zbid, $dblj)
     $cxjg->bindColumn('zbxx', $zb->zbxx);
     $cxjg->bindColumn('zbid', $zb->zbid);
     $cxjg->bindColumn('zbtool', $zb->tool);
+    $cxjg->bindColumn('preview_url', $zb->preview_url);
     $cxjg->fetch(\PDO::FETCH_ASSOC);
     return $zb;
 }
@@ -481,7 +484,7 @@ function addzb($sid, $zbid, $dblj)
 {
     $player = getplayer($sid, $dblj);
     $zb = getzbkzb($zbid, $dblj);
-    $sql = "insert into playerzhuangbei(zbname,zbinfo,zbgj,zbfy,zbhp,zbbj,zbxx,zbid,uid,sid,zbtool) VALUES ('$zb->zbname','$zb->zbinfo','$zb->zbgj','$zb->zbfy','$zb->zbhp','$zb->zbbj','$zb->zbxx','$zb->zbid','$player->uid','$sid',$zb->tool);";
+    $sql = "insert into playerzhuangbei(zbname,zbinfo,zbgj,zbfy,zbhp,zbbj,zbxx,zbid,uid,sid,zbtool,preview_url) VALUES ('$zb->zbname','$zb->zbinfo','$zb->zbgj','$zb->zbfy','$zb->zbhp','$zb->zbbj','$zb->zbxx','$zb->zbid','$player->uid','$sid',$zb->tool,$zb->preview_url);";
     //echo "xxx: $sql";
     $dblj->exec($sql);
     $ret = $dblj->lastInsertId();

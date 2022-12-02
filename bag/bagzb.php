@@ -88,6 +88,8 @@ for ($i = 0; $i < count($retzb); $i++) {
     $zbname = $retzb[$i]['zbname'];
     $zbnowid = $retzb[$i]['zbnowid'];
     $zbqh = $retzb[$i]['qianghua'];
+    $preview_img = $retzb[$i]['preview_url'];
+
     $qhhtml = '';
     if ($zbqh > 0) {
         $qhhtml = "+" . $zbqh;
@@ -105,7 +107,7 @@ for ($i = 0; $i < count($retzb); $i++) {
         sid="$sid">
         <div class="w-[60px] h-[60px] relative p-1 m-2 border border-white bg-[#bbbbbb]">
             <div class="border-2 border-white w-full h-full">
-            <img class="w-[65px] absolute top-[50%] left-[50%]" style="transform: translate(-50%, -50%);" src="bag/images/itembig_1000101008.png" alt="">
+            <img class="w-[65px] absolute top-[50%] left-[50%]" style="transform: translate(-50%, -50%);" src="$preview_img" alt="">
         </div>
        
         </div>
@@ -123,7 +125,7 @@ HTML;
         <div class="w-[60px] h-[60px] relative p-1 m-2 border border-white bg-[#bbbbbb]">
         <span class="absolute right-[-25px] top-[3px] font-bold font-size-7" style="font-size: 7px">(Đang trang bị)</span>
             <div class="border-2 border-white w-full h-full">
-            <img class="w-[65px] absolute top-[50%] left-[50%]" style="transform: translate(-50%, -50%);" src="bag/images/itembig_1000101008.png" alt="">
+            <img class="w-[65px] absolute top-[50%] left-[50%]" style="transform: translate(-50%, -50%);" src="$preview_img" alt="">
         </div>
        
         </div>

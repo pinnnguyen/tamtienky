@@ -289,7 +289,7 @@ if (isset($cmd)) {
             $ym = 'game/zbinfo_sys.php';
             break;
         case "tupo":
-            $ym = 'game/tupo.php';
+            $ym = 'upgrade/index.php';
             break;
         case "fangshi":
             $ym = "game/fangshi.php";
@@ -327,8 +327,8 @@ if (isset($cmd)) {
         }
 
         if (\player\istupo($sid, $dblj) != 0 && $player->uexp >= $player->umaxexp) {
-            $tupocmd = $encode->encode("cmd=tupo&sid=$sid");
-            $tupocmd = "<a class='bg-[#d62700]' href='?cmd=$tupocmd'>Đột phá</a>";
+//            $tupocmd = $encode->encode("cmd=tupo&sid=$sid");
+            $tupocmd = "<a id='upgrade-level' class='bg-[#d62700]' cmd='tupo' sid='$sid'>Đột phá</a>";
             $tpts = "<p class='p-2 text-white text-xs bg-[#161818] absolute z-[999]'><strong>Tip: </strong>Bạn cần đột phá, nếu không sẽ không thể tích lũy được kinh nghiệm:$tupocmd</p>";
         }
 
@@ -400,6 +400,7 @@ if (isset($cmd)) {
 <script src="state.js"></script>
 <script src="game.box.js"></script>
 <script src="app.js"></script>
+<script src="upgrade/index.js"></script>
 <script src="tailwind.config.js"></script>
 
 </html>

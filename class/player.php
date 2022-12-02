@@ -1,6 +1,7 @@
 <?php
-
 namespace player;
+require_once $_SERVER['DOCUMENT_ROOT'] . "/rules/upgrade.php";
+
 class player
 {
     var $uname;//nick
@@ -153,14 +154,14 @@ function getplayer($sid, $dblj)
         $player->umaxhp = $player->umaxhp + $chongwu->cwmaxhp;
     }
 
-    $rangeslv = array(0, 30, 50, 70, 80, 90, 100, 110);
-    $rangesexp = array(2.5, 5, 7.5, 10, 12.5, 15, 17.5);
+    $rangeslv = \upgrade_rule\Rule::getRangesLevel();
+    $rangesexp = \upgrade_rule\Rule::getRangesExp();
     $playernextlv = $player->ulv + 1;
+    $rangesjj = \upgrade_rule\Rule::getLevel();
 
-    $rangesjj = array('Luyện khí', 'Trúc Cơ', 'Kim đan', 'Nguyên anh', 'Hóa thần', 'Luyện Hư', 'Hợp thể', 'Đại thừa');
     for ($i = 0; $i < count($rangeslv); $i++) {
         if ($player->ulv >= $rangeslv[$i] && $player->ulv < $rangeslv[$i + 1]) {
-            $rangesjd = array('1', '2', '3', '4', '5', '6', '7', '8', '9', '10');
+            $rangesjd = \upgrade_rule\Rule::getRangesId();
             $djc = $player->ulv - $rangeslv[$i];
             $jds = ($rangeslv[$i + 1] - $rangeslv[$i]) / 10;
             $jieduan = floor($djc / $jds);
@@ -212,7 +213,8 @@ class guaiwu
 }
 
 function getguaiwu($gid, $dblj)
-{//获取怪物
+{
+    //lấy quái vật
     $guaiwu = new guaiwu();
 
     $sql = "select * from midguaiwu where id = $gid";
@@ -222,7 +224,7 @@ function getguaiwu($gid, $dblj)
     $cxjg->bindColumn('id', $guaiwu->gid);
     $cxjg->bindColumn('sid', $guaiwu->sid);
     $cxjg->bindColumn('glv', $guaiwu->glv);
-    $cxjg->bindColumn('gexp', $guaiwu->gexp); //打怪经验
+    $cxjg->bindColumn('gexp', $guaiwu->gexp); //kinh nghiệm quái vật
     $cxjg->bindColumn('ghp', $guaiwu->ghp);
     $cxjg->bindColumn('gmaxhp', $guaiwu->gmaxhp);
     $cxjg->bindColumn('ggj', $guaiwu->ggj);
@@ -232,16 +234,18 @@ function getguaiwu($gid, $dblj)
     $cxjg->bindColumn('gyid', $guaiwu->gyid);
     $cxjg->fetch(\PDO::FETCH_ASSOC);
 
-    $rangeslv = array(0, 30, 50, 70, 80, 90, 100, 110);
-    $rangesjj = array('Luyện khí', 'Trúc Cơ', 'Kim đan', 'Nguyên anh', 'Hóa thần', 'Luyện Hư', 'Hợp thể', 'Đại thừa');
+    $rangeslv = \upgrade_rule\Rule::getRangesLevel();
+    $rangesjj = \upgrade_rule\Rule::getLevel();
+
     for ($i = 0; $i < count($rangeslv); $i++) {
-        if ($guaiwu->glv >= $rangeslv[$i] && $guaiwu->glv < $rangeslv[$i + 1]) { //怪物等级再0-30之间属于练气
-            $rangesjd = array('1', '2', '3', '4', '5', '6', '7', '8', '9', '10');
-            $djc = $guaiwu->glv - $rangeslv[$i]; //怪物等级减去数字 比如20级的怪减去0
-            $jds = ($rangeslv[$i + 1] - $rangeslv[$i]) / 10; //比如第一次(30-0)/10 得3
-            $jieduan = floor($djc / $jds); //计算怪物属于什么层  20/3约等于7层
+        if ($guaiwu->glv >= $rangeslv[$i] && $guaiwu->glv < $rangeslv[$i + 1]) {
+//            Cấp độ quái vật từ 0-30 thuộc về luyện Khí
+            $rangesjd = \upgrade_rule\Rule::getRangesId();
+            $djc = $guaiwu->glv - $rangeslv[$i]; //Cấp quái vật trừ số, ví dụ quái vật cấp 20 trừ 0
+            $jds = ($rangeslv[$i + 1] - $rangeslv[$i]) / 10; //Ví dụ: lần đầu tiên (30-0)/10 là 3
+            $jieduan = floor($djc / $jds); //Tính xem quái vật thuộc lớp nào, 20/3 xấp xỉ bằng 7 lớp
             $jd = $rangesjd[$jieduan];
-            $guaiwu->jingjie = $rangesjj[$i] . $jd . 'Tầng'; //练气期7层
+            $guaiwu->jingjie = $rangesjj[$i] . $jd . 'Tầng'; //Giai đoạn luyện khí tầng 7
             break;
         }
     }
@@ -322,9 +326,9 @@ function getmid($mid, $dblj)
 function istupo($sid, $dblj)
 {
     $player = getplayer($sid, $dblj);
-    $rangeslv = array(0, 30, 50, 70, 80, 90, 100, 110);
+    $rangeslv = \upgrade_rule\Rule::getRangesLevel();
     $playernextlv = $player->ulv + 1;
-    $rangesjj = array('Luyện khí', 'Trúc Cơ', 'Kim đan', 'Nguyên anh', 'Hóa thần', 'Luyện Hư', 'Hợp thể', 'Đại thừa');
+    $rangesjj = \upgrade_rule\Rule::getLevel();
     for ($i = 0; $i < count($rangeslv); $i++) {
         if ($playernextlv >= $rangeslv[$i] && $playernextlv < $rangeslv[$i + 1]) {
             if ($player->jingjie != $rangesjj[$i]) {
@@ -332,7 +336,7 @@ function istupo($sid, $dblj)
                 return 1;
             }
 
-            $rangesjd = array('1', '2', '3', '4', '5', '6', '7', '8', '9', '10');
+            $rangesjd = \upgrade_rule\Rule::getRangesId();
             $djc = $playernextlv - $rangeslv[$i];
             $jds = ($rangeslv[$i + 1] - $rangeslv[$i]) / 10;
             $jieduan = floor($djc / $jds);

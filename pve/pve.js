@@ -28,6 +28,7 @@ function refreshMonster(player) {
 
 
 $('#auto-attach').unbind('click').bind('click', function () {
+    // $(this).find('button').text('Đang treo máy ...')
     console.log("click auto attach")
     // GANE_STATE.autoAttach = true
     prevAttach()
@@ -76,6 +77,7 @@ function moveLeft(monsterPosition, playerPosition, fn) {
 
     if (monsterPosition.left === playerPosition.left) {
         fn()
+        return
     }
 
     if (monsterPosition.left > playerPosition.left) {
@@ -87,7 +89,6 @@ function moveLeft(monsterPosition, playerPosition, fn) {
 
     if (distance <= 0) {
         fn()
-        return
     }
 
     const run = setInterval(() => {
@@ -115,11 +116,11 @@ function moveUp(monsterPosition, playerPosition, fn) {
 
     if (monsterPosition.top === playerPosition.top) {
         fn()
+        return
     }
 
     if (distance <= 0) {
         fn()
-        return
     }
 
     if (monsterPosition.top > playerPosition.top) {

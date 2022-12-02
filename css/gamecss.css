@@ -134,7 +134,7 @@ a:link {
     border-radius: 150px;
 }
 
-.monster a {
+.monster-hide a {
     animation: fadein 2s;
     -moz-animation: fadein 2s; /* Firefox */
     -webkit-animation: fadein 2s; /* Safari and Chrome */

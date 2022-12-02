@@ -1,6 +1,6 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . "/pdo.php");
-require_once($_SERVER['DOCUMENT_ROOT'] . "/class/player.php");
+require_once $_SERVER['DOCUMENT_ROOT'] . "/pdo.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/class/player.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/class/encode.php";
 
 $sid = $_GET['sid'];
@@ -14,6 +14,7 @@ $gonowmid = $encode->encode("cmd=gomid&newmid=$player->nowmid&sid=$sid");
 
 $tupo = \player\istupo($sid, $dblj);
 $tplshtml = "";
+$upgrade_success = '';
 $tpls = 0;
 
 if ($player->uexp < $player->umaxexp) {
@@ -33,17 +34,7 @@ if ($tupo == 1) {
 
 if ($tupo != 0) {
     $tplshtml = <<<HTML
-    <span>Đột phá cần linh thạch</span>:$tpls/$player->uyxb
-    <div class="flex justify-center p-2" href='?cmd=$tupocmd'>
-    <button 
-        id="upgrade-now" 
-        cmd="tupo" 
-        canshu="tupo" 
-        sid="$sid" 
-        class="!text-white rounded-sm h-[30px] bg-[#009688]">
-        Đột phá
-    </button>
-</div>
+    <span>Đột phá cần linh thạch</span>: $tpls/$player->uyxb
 HTML;
 
     $upgj = 0;
@@ -51,40 +42,55 @@ HTML;
     $uphp = 0;
     if (isset($canshu)) {
         switch ($canshu) {
-            case"tupo":
+            case "tupo":
                 $ret = \player\changeyxb(2, $tpls, $sid, $dblj);
                 if ($ret) {
                     $sjs = mt_rand(1, 10);
                     if ($sjs <= 5) {
-                        echo "<div class='text-white text-center'>Đột phá thất bại</div>";
+                        echo "<div class='text-white text-center mt-2 text-base'>Đột phá thất bại</div>";
                         break;
                     }
 
                     if ($tupo == 2) {
-                        $uphp = 2 + round($player->uhp / 20);
-                        $upgj = 1 + round($player->ugj / 12);
+                        $uphp = 2 + round($player->umaxhp / 20);
+                        $upgj = 1 + round($player->ugj / 10);
                         $upfy = 1 + round($player->ufy / 10);
-
                     } elseif ($tupo == 1) {
                         if ($sjs < 8) {
-                            echo "<div class='text-white text-center'>Đột phá thất bại</div>";
+                            echo "<div class='text-white text-center mt-2 text-base'>Đột phá thất bại</div>";
                             break;
                         }
 
-                        $uphp = 4 + round($player->uhp / 16);
+                        $uphp = 4 + round($player->umaxhp / 16);
                         $upgj = 2 + round($player->ugj / 8);
-                        $upfy = 3 + round($player->ufy / 6);
+                        $upfy = 2 + round($player->ufy / 6);
                     }
 
                     \player\upplayerlv($sid, $dblj);
                     \player\addplayersx("umaxhp", $uphp, $sid, $dblj);
                     \player\addplayersx("ugj", $upgj, $sid, $dblj);
                     \player\addplayersx("ufy", $upfy, $sid, $dblj);
-                    $player = \player\getplayer($sid, $dblj);
 
-                    echo "<div class='text-center text-white'>Đột phá thành công thu hoạch được thuộc tính: <div>Công kích +$upgj</div> <div> Phòng ngự +$upfy</div> <div>Khí huyết +$uphp</div></div>";
+                    $player = \player\getplayer($sid, $dblj);
+                    $upgrade_success = <<<HTML
+ <div class='text-white'>
+<div class="text-center">Đột phá thành công</div>
+    <div>
+    Công kích +$upgj
+    </div> 
+    <div>
+    Phòng ngự +$upfy
+    </div> 
+    <div>
+    Khí huyết +$uphp
+    </div>
+</div>
+HTML;
                 } else {
-                    echo "Linh thạch không đủ<br/>Đột phá cần linh thạch:$tpls<br/>";
+                    echo "<script>$.notify('Linh thạch của bạn không đủ', {
+    style: 'normal',
+    globalPosition: 'bottom right',
+})</script>";
                 }
                 break;
         }
@@ -92,17 +98,28 @@ HTML;
 }
 
 $tupohtml = <<<HTML
-<div class="p-2 leading-6">
-    <div class="text-center text-white">======Đột phá======</div>
-    <div class="text-center text-white">
+<div class="p-3 leading-6 h-[230px] relative">
+$upgrade_success
+<div>
+    <div class="text-white">
     <div>
-    Trước mắt cảnh giới: $player->jingjie$player->cengci
+    Trước mắt cảnh giới: $player->jingjie $player->cengci
     </div>
     $tplshtml
     </div>
 </div>
+    <div class="flex justify-end absolute bottom-0 right-0 p-3" href='?cmd=$tupocmd'>
+    <button 
+        id="upgrade-now" 
+        cmd="tupo" 
+        canshu="tupo" 
+        sid="$sid" 
+        class="!text-white rounded-sm h-[30px] bg-[#009688] p-2 flex items-center">
+        Đột phá
+    </button>
+</div>
 <script src="upgrade/index.js"></script>
+</div>
 HTML;
 
 echo $tupohtml;
-

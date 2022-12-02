@@ -329,6 +329,7 @@ function istupo($sid, $dblj)
     $rangeslv = \upgrade_rule\Rule::getRangesLevel();
     $playernextlv = $player->ulv + 1;
     $rangesjj = \upgrade_rule\Rule::getLevel();
+
     for ($i = 0; $i < count($rangeslv); $i++) {
         if ($playernextlv >= $rangeslv[$i] && $playernextlv < $rangeslv[$i + 1]) {
             if ($player->jingjie != $rangesjj[$i]) {

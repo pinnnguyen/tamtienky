@@ -156,6 +156,7 @@ function doAttach($this) {
     const nowmid = $this.attr('nowmid')
 
     $.get(`game/pve.php?gid=${gid}&cmd=pvegj&sid=${sid}&nowmid=${nowmid}`, (response) => {
+        $(this).addClass('monster-hide')
         $('.alert').html(response)
         $this.remove();
         prevAttach()

@@ -47,9 +47,10 @@ HTML;
             $zbarr = explode(',', $yguaiwu->gzb);
             foreach ($zbarr as $newstr) {
                 $zbkzb = \player\getzbkzb($newstr, $dblj);
+                $img = substr($zbkzb->preview_url, 1, -1);
                 $zbcmd = $encode->encode("cmd=zbinfo_sys&zbid=$zbkzb->zbid&sid=$sid");
                 $zbhtml .= "<div class='flex mt-2'>
-<div class='border rounded-full w-[45px] h-[45px] flex items-center justify-center'><img class='w-10 rounded-full' src='images/XJICON_Treasure_03_12.png' /></div>
+<div class='border rounded-full w-[45px] h-[45px] flex items-center justify-center'><img class='w-10 rounded-full' src='$img' /></div>
 <a class='' href='?cmd=$zbcmd'>$zbkzb->zbname</a>
 </div>";
             }

@@ -72,7 +72,7 @@ function prevAttach() {
 function moveLeft(monsterPosition, playerPosition, fn) {
     let distance = 0,
         isLeft = false,
-        timeSkip = 0
+        timeSkip = 0;
 
     if (monsterPosition.left === playerPosition.left) {
         fn()
@@ -87,6 +87,7 @@ function moveLeft(monsterPosition, playerPosition, fn) {
 
     if (distance <= 0) {
         fn()
+        return
     }
 
     const run = setInterval(() => {
@@ -110,7 +111,7 @@ function moveLeft(monsterPosition, playerPosition, fn) {
 function moveUp(monsterPosition, playerPosition, fn) {
     let isLeft = false,
         distance = 0,
-        timeSkip = 0
+        timeSkip = 0;
 
     if (monsterPosition.top === playerPosition.top) {
         fn()
@@ -118,6 +119,7 @@ function moveUp(monsterPosition, playerPosition, fn) {
 
     if (distance <= 0) {
         fn()
+        return
     }
 
     if (monsterPosition.top > playerPosition.top) {

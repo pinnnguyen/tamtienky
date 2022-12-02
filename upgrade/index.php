@@ -4,6 +4,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/class/player.php");
 require_once $_SERVER['DOCUMENT_ROOT'] . "/class/encode.php";
 
 $sid = $_GET['sid'];
+$canshu = $_GET['canshu'];
 
 $player = \player\getplayer($sid, $dblj);
 $encode = new \encode\encode();
@@ -17,7 +18,9 @@ $tpls = 0;
 
 if ($player->uexp < $player->umaxexp) {
     echo <<<HTML
+<div>
  Tu vi chưa đủ để đột phá<a href="?cmd=$gonowmid">Trở về trò chơi</a>
+</div>
 HTML;
     exit();
 }
@@ -31,8 +34,15 @@ if ($tupo == 1) {
 if ($tupo != 0) {
     $tplshtml = <<<HTML
     <span>Đột phá cần linh thạch</span>:$tpls/$player->uyxb
-    <div class="text-center" href='?cmd=$tupocmd'>
-    <button class="h-[50px] w-[50px] rounded-full">Đột phá</button>
+    <div class="flex justify-center p-2" href='?cmd=$tupocmd'>
+    <button 
+        id="upgrade-now" 
+        cmd="tupo" 
+        canshu="tupo" 
+        sid="$sid" 
+        class="!text-white rounded-sm h-[30px] bg-[#009688]">
+        Đột phá
+    </button>
 </div>
 HTML;
 
@@ -83,15 +93,16 @@ HTML;
 
 $tupohtml = <<<HTML
 <div class="p-2 leading-6">
-<div class="text-center text-white">======Đột phá======</div>
-<div class="text-center text-white">
-<div>
-Trước mắt cảnh giới: $player->jingjie$player->cengci
+    <div class="text-center text-white">======Đột phá======</div>
+    <div class="text-center text-white">
+    <div>
+    Trước mắt cảnh giới: $player->jingjie$player->cengci
+    </div>
+    $tplshtml
+    </div>
 </div>
-$tplshtml
-</div>
-</div>
-
+<script src="upgrade/index.js"></script>
 HTML;
+
 echo $tupohtml;
 

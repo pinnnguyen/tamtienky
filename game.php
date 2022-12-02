@@ -359,9 +359,8 @@ if (isset($cmd)) {
     <link rel="manifest" href="manifest.json" />
     <!-- ios support -->
     <link rel="apple-touch-icon" href="images/logo.png" />
-    <meta name="apple-mobile-web-app-status-bar" content="#db4938" />
-    <meta name="theme-color" content="#db4938" />
-
+    <meta name="apple-mobile-web-app-status-bar" content="#000" />
+    <meta name="theme-color" content="#000" />
 
     <link rel="stylesheet" href="css/gamecss.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sora">

@@ -379,7 +379,7 @@ if (isset($cmd)) {
 </head>
 <body>
 <div class="main h-[100vh] sm:w-[640px] md:w-[640px] lg:w-[640px] overflow-hidden">
-    <div class="h-full relative bg-black">
+    <div class="h-full relative bg-black the-game">
         <?php if (!$ym == '') {
             echo $tpts;
 
@@ -390,6 +390,7 @@ if (isset($cmd)) {
             include "$ym";
         } ?>
     </div>
+    <div class="the-bag h-full bg-[#e3e2d6] px-2 py-2 relative"></div>
     <div class="teleport-full relative bg-[#36445a] p-0 w-[100%]"></div>
     <div class="teleport relative bg-[#36445a] p-0"></div>
     <div class="alert relative p-0 bg-black hidden"></div>

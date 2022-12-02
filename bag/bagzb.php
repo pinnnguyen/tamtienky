@@ -4,6 +4,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/class/player.php");
 require_once $_SERVER['DOCUMENT_ROOT'] . "/class/encode.php";
 
 $sid = $_GET['sid'];
+$cmd = $_GET['cmd'];
+
 $player = player\getplayer($sid, $dblj);
 $encode = new \encode\encode();
 $tishi = '';
@@ -53,30 +55,32 @@ if ($cmd == 'delezb') {
     }
 }
 
-$sql = "select * from playerzhuangbei  WHERE sid = '$sid' ORDER BY zbid DESC LIMIT $yeshu,10";
+$sql = "select * from playerzhuangbei  WHERE sid = '$sid' ORDER BY zbid DESC LIMIT $yeshu, 30";
 $cxjg = $dblj->query($sql);
 $retzb = $cxjg->fetchAll(PDO::FETCH_ASSOC);
 
 $sql = "select count(*) from playerzhuangbei where sid = '$sid'";
 $cxjg = $dblj->query($sql);
 $zbcount = $cxjg->fetchColumn();
-
-$gonowmid = $encode->encode("cmd=gomid&newmid=$player->nowmid&sid=$sid");
+//$gonowmid = $encode->encode("cmd=gomid&newmid=$player->nowmid&sid=$sid");
 $zbhtml = '';
-$fanye = '';
-if ($yeshu != 0) {
-    $shangcanshu = $yeshu - 10;
-    $shangyiye = $encode->encode("cmd=getbagzb&yeshu=$shangcanshu&sid=$sid");
-    $fanye = '<a href="?cmd=' . $shangyiye . '">Trang trước</a>';
-}
-if ($yeshu + 10 < $zbcount) {
-    $xiacanshu = $yeshu + 10;
-    $xiayiye = $encode->encode("cmd=getbagzb&yeshu=$xiacanshu&sid=$sid");
-    $fanye .= '<a href="?cmd=' . $xiayiye . '">Trang sau</a>';
-}
-if ($fanye != '') {
-    $fanye = '<br/>' . $fanye . '<br/>';
-}
+//$fanye = '';
+//if ($yeshu != 0) {
+//    $shangcanshu = $yeshu - 10;
+//    $shangyiye = $encode->encode("cmd=getbagzb&yeshu=$shangcanshu&sid=$sid");
+//    $fanye = '<a href="?cmd=' . $shangyiye . '">Trang trước</a>';
+//}
+//if ($yeshu + 10 < $zbcount) {
+//    $xiacanshu = $yeshu + 10;
+//    $xiayiye = $encode->encode("cmd=getbagzb&yeshu=$xiacanshu&sid=$sid");
+////    $fanye .= <<<HTML
+////<div class="absolute bottom-0 right-0 p-2" href="?cmd=' . $xiayiye . '">Trang sau</div>
+////HTML;
+//
+//}
+//if ($fanye != '') {
+//    $fanye = '<br/>' . $fanye . '<br/>';
+//}
 for ($i = 0; $i < count($retzb); $i++) {
     $zbnowid = $retzb[$i]['zbnowid'];
     $arr = [$player->tool1, $player->tool2, $player->tool3, $player->tool4, $player->tool5, $player->tool6];
@@ -94,19 +98,37 @@ for ($i = 0; $i < count($retzb); $i++) {
         $mczb = $encode->encode("cmd=getbagzb&canshu=maichu&yeshu=$yeshu&zbnowid=$zbnowid&sid=$sid");
         $delezb = $encode->encode("cmd=delezb&zbnowid=$zbnowid&sid=$sid");
         $zbhtml .= <<<HTML
-        <div class="w-[100px] h-[100px] relative m-2 border border-white">
-        <img class="w-[65px] absolute top-[50%] left-[50%]" style="transform: translate(-50%, -50%);" src="bag/images/itembig_1000101008.png" alt="">
-        <a class="absolute bottom-0 text-span" href="?cmd=$chakanzb">
-            $zbname$qhhtml
-        </a>
-        <a href="?cmd=$mczb">Bán</a>
-        <a href="?cmd=$delezb">Phân giải</a>
+        <div class="trangbi-defail flex flex-col max-h-[120px]" 
+        cmd="chakanzb"
+        zbnowid="$zbnowid"
+        uid="$player->uid"
+        sid="$sid">
+        <div class="w-[60px] h-[60px] relative p-1 m-2 border border-white bg-[#bbbbbb]">
+            <div class="border-2 border-white w-full h-full">
+            <img class="w-[65px] absolute top-[50%] left-[50%]" style="transform: translate(-50%, -50%);" src="bag/images/itembig_1000101008.png" alt="">
+        </div>
+       
+        </div>
+    <span class="p-1">$zbname$qhhtml</span>
 </div>
-
 HTML;
+
     } else {
         $zbhtml .= <<<HTML
-        <a href="?cmd=$chakanzb">$zbname$qhhtml</a>(Đã trang bị)<br/>
+        <div class="trangbi-defail flex flex-col max-h-[120px]" 
+        cmd="chakanzb"
+        zbnowid="$zbnowid"
+        uid="$player->uid"
+        sid="$sid">
+        <div class="w-[60px] h-[60px] relative p-1 m-2 border border-white bg-[#bbbbbb]">
+        <span class="absolute right-[-25px] top-[3px] font-bold font-size-7" style="font-size: 7px">(Đang trang bị)</span>
+            <div class="border-2 border-white w-full h-full">
+            <img class="w-[65px] absolute top-[50%] left-[50%]" style="transform: translate(-50%, -50%);" src="bag/images/itembig_1000101008.png" alt="">
+        </div>
+       
+        </div>
+    <span class="p-1">$zbname$qhhtml</span>
+</div>
 HTML;
     }
 }
@@ -115,15 +137,25 @@ $getbagypcmd = $encode->encode("cmd=getbagyp&sid=$sid");
 $getbagjncmd = $encode->encode("cmd=getbagjn&sid=$sid");
 
 $toolhtml = <<<HTML
-<div class="text-white p-2 flex flex-wrap justify-center">
+<img src="bag/images/back.png" class="w-[35px] h-[35px] absolute z-[99] top-[2px] left-0" id="close-bag">
+<div class="border-2 border-[#e0c49d] font-bold px-2 py-2 relative h-full">
+<div class="h-full border-2 border-black overflow-y-scroll">
+
+<div class="">
     $tishi
-    <div>
-    【Trang thiết bị|<a href="?cmd=$getbagdjcmd">Đạo cụ</a>|<a href="?cmd=$getbagypcmd">Dược phẩm</a>|<a href="?cmd=$getbagjncmd">Phù lục</a>
+    <div class="h-[35px] flex items-center justify-center">
+    <a id="bag-daocu" cmd="getbagdj" sid="$sid">Đạo cụ</a>
+    <a id="bag-duocpham" sid="$sid" cmd="getbagyp">Dược phẩm</a>|
+    <a id="bag-skill" sid="$sid" cmd="getbagjn">Kỹ năng</a>
 </div>
-    <br/>
+    <div class="text-black bg-[#efeeec] grid grid-cols-4" style="height: calc(100% - 75px)">
     $zbhtml
-    $fanye
+    </div>
 </div>
+</div>
+</div>
+
+<script src="bag/bag.js"></script>
 
 HTML;
 echo $toolhtml;

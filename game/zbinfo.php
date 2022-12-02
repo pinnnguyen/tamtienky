@@ -4,6 +4,7 @@ $player = \player\getplayer($sid, $dblj);
 $gonowmid = $encode->encode("cmd=gomid&newmid=$player->nowmid&sid=$sid");
 $gotrangbi = $encode->encode("cmd=xxzb&zbwz=1&sid=$sid");
 $zhuangbei = new \player\zhuangbei();
+
 if ($zbnowid != 0) {
     $zhuangbei = player\getzb($zbnowid, $dblj);
 }

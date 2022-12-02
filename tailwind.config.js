@@ -6,6 +6,15 @@ tailwind.config = {
     },
     theme: {
         fontSize: {
+            "font-size-1": '1px',
+            "font-size-2": '2px',
+            "font-size-3": '3px',
+            "font-size-4": '4px',
+            "font-size-5": '5px',
+            "font-size-5": '6px',
+            "font-size-7": '7px',
+            "font-size-8": '8px',
+            "font-size-9": '9px',
             span: '10px',
             paragraph: `1.2rem;`
         },

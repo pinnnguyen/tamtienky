@@ -166,6 +166,7 @@ function getplayer($sid, $dblj)
             $jds = ($rangeslv[$i + 1] - $rangeslv[$i]) / 10;
             $jieduan = floor($djc / $jds);
             $jd = $rangesjd[$jieduan];
+
             $player->jingjie = $rangesjj[$i];
             $player->cengci = ' Tầng ' . $jd;
             $player->umaxexp = $playernextlv * ($playernextlv + round($playernextlv / 2)) * 12 * $rangesexp[$i] + $playernextlv;
@@ -173,6 +174,7 @@ function getplayer($sid, $dblj)
         }
 
     }
+
     return $player;
 }
 
@@ -373,11 +375,12 @@ function upplayerlv($sid, $dblj)
         $sql = "update game1 set uexp = uexp - $player->umaxexp where sid='$sid'";
         $dblj->exec($sql);
 
-        $rangeslv = array(1, 30, 50, 70, 80, 90, 100, 110);
-        $rangesgj = array(2.5, 5, 7.5, 10, 12.5, 15, 17.5);
-        $rangesfy = array(2.5, 5, 7.5, 10, 12.5, 15, 17.5);
-        $rangeswx = array(2, 4, 6, 8, 10, 12, 14);
-        $rangeshp = array(30, 50, 70, 90, 110, 130, 170);
+        $rangeslv = \upgrade_rule\Rule::getRangesLevel();
+        $rangesgj = \upgrade_rule\Rule::$rangesAttach;
+        $rangesfy = \upgrade_rule\Rule::$rangesDef;
+        $rangeshp = \upgrade_rule\Rule::$rangesHp;
+        $rangeswx = \upgrade_rule\Rule::$rangesSwx;
+
         $playernextlv = $player->ulv + 1;
 
         for ($i = 0; $i < count($rangeslv) - 1; $i++) {
@@ -773,7 +776,6 @@ function changeplayerusepet($cwid, $sid, $dblj)
     #cwfy phong ngu
     #cwbj bao kich
     # hut mau
-    var_dump($chongwu);
     $sql = "update game1 set $sx = '$gaibian' WHERE sid='$sid'";//Thay đổi thuộc tính người chơi
     $ret = $dblj->exec($sql);
 }

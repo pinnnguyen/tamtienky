@@ -8,6 +8,57 @@ function loadBag($this, sidBackup) {
     })
 }
 
+function loadDaoCu($this) {
+    const sid = $this.attr('sid')
+    const cmd = $this.attr('cmd')
+
+    $.get(`/bag/daocu.php?sid=${sid}&cmd=${cmd}`, function (response) {
+        $(".the-game").addClass('hidden')
+        $(".the-bag").html(response)
+    })
+
+    return
+}
+
+$('#for-sale').unbind('click').bind('click', function () {
+    const sid = $(this).attr('sid')
+    if (!sid) {
+        $.notify('Hành động không hơp lệ', {
+            style: 'normal',
+            globalPosition: 'bottom right',
+        })
+
+        return
+    }
+
+    const zbnowid = $(this).attr('zbnowid')
+
+    if (!zbnowid) {
+        $.notify('Hành động không hơp lệ', {
+            style: 'normal',
+            globalPosition: 'bottom right',
+        })
+
+        return;
+    }
+
+    const pay = $(this).prev().val();
+    if (pay <= 0) {
+        $.notify('Giá không hợp lệ', {
+            style: 'normal',
+            globalPosition: 'bottom right',
+        })
+
+        return;
+    }
+
+    $.post('/bag/hangforsale.php', { sid: sid, zbnowid: zbnowid, pay: pay }, function (response) {
+        $.modal.close()
+        $('.alert').html(response)
+        loadBag($(this), sid)
+    });
+})
+
 $('.delete-item').unbind('click').bind('click', function () {
     const sid = $(this).attr('sid')
     const zbnowid = $(this).attr('zbnowid')
@@ -41,18 +92,6 @@ $('#close-bag').unbind('click').bind('click', function () {
 
     return;
 })
-
-function loadDaoCu($this) {
-    const sid = $this.attr('sid')
-    const cmd = $this.attr('cmd')
-
-    $.get(`/bag/daocu.php?sid=${sid}&cmd=${cmd}`, function (response) {
-        $(".the-game").addClass('hidden')
-        $(".the-bag").html(response)
-    })
-
-    return
-}
 
 // Show detail item
 $('.trangbi-defail').unbind('click').bind('click', function () {

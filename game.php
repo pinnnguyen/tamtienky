@@ -366,6 +366,8 @@ if (isset($cmd)) {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sora">
     <link rel="icon" href="images/logo.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+
     <!-- Remember to include jQuery :) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
     <!-- jQuery Modal -->
@@ -392,7 +394,7 @@ if (isset($cmd)) {
     </div>
     <div class="the-bag h-full bg-[#e3e2d6] px-2 py-2 relative"></div>
     <div class="teleport-full relative bg-[#36445a] p-0 w-[100%]"></div>
-    <div class="teleport relative bg-[#36445a] p-0"></div>
+    <div class="teleport relative bg-[#e3e2d6] p-0 text-black"></div>
     <div class="alert relative p-0 bg-black hidden"></div>
 </div>
 </body>

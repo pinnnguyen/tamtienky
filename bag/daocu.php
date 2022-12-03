@@ -58,11 +58,11 @@ for ($i = 0; $i < count($retdj); $i++) {
  <div class="flex flex-col max-h-[120px]" cmd="djinfo" djid="$djid" uid="$player->uid" sid="$sid">
     <div class="w-[60px] h-[60px] relative p-1 m-2 border border-white bg-[#bbbbbb]">
         <div class="border-2 border-white w-full h-full">
-            <img class="w-[70%] absolute top-[50%] left-[50%]" style="transform: translate(-50%, -50%);" src="bag/images/00600.png" alt="" />
+            <img class="w-[70%] absolute top-[50%] left-[50%]" loading="lazy" style="transform: translate(-50%, -50%);" src="bag/images/00600.png" alt="" />
             <span class="absolute bottom-0 right-0 font-bold bg-[#ffc107d1]" style="font-size: 8px; padding: 2px">X $djsum</span>
         </div>
     </div>
-    <span class="p-1">$djname</span>
+    <span class="pl-2 line-clamp-1">$djname</span>
  </div>
 HTML;
     }
@@ -72,7 +72,7 @@ $getbagypcmd = $encode->encode("cmd=getbagyp&sid=$sid");
 $getbagjncmd = $encode->encode("cmd=getbagjn&sid=$sid");
 
 $bagdjhtml = <<<HTML
-<img src="bag/images/back.png" class="w-[35px] h-[35px] absolute z-[99] top-[2px] left-0" id="close-bag">
+<img src="bag/images/back.png" class="w-[35px] h-[35px] absolute z-[1] top-[2px] left-0" id="close-bag">
 <div class="border-2 border-[#e0c49d] font-bold px-2 py-2 relative h-full">
     <div class="h-full border-2 border-black overflow-y-scroll">
         <div class="">

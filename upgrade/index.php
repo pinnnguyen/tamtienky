@@ -12,7 +12,6 @@ $encode = new \encode\encode();
 $tupocmd = $encode->encode("cmd=tupo&canshu=tupo&sid=$sid");
 $gonowmid = $encode->encode("cmd=gomid&newmid=$player->nowmid&sid=$sid");
 
-$tupo = \player\istupo($sid, $dblj);
 $tplshtml = "";
 $upgrade_success = '';
 $tpls = 0;
@@ -26,6 +25,7 @@ HTML;
     exit();
 }
 
+$tupo = \player\istupo($sid, $dblj);
 if ($tupo == 1) {
     $tpls = $player->ulv * $player->ulv * $player->ulv * 6;
 } elseif ($tupo == 2) {
@@ -47,7 +47,14 @@ HTML;
                 if ($ret) {
                     $sjs = mt_rand(1, 10);
                     if ($sjs <= 5) {
-                        echo "<div class='text-white text-center mt-2 text-base'>Đột phá thất bại</div>";
+                        echo <<<HTML
+<script>
+$.notify('Đột phá thất bại', {
+            style: 'normal',
+            globalPosition: 'bottom right',
+        })
+</script>
+HTML;
                         break;
                     }
 
@@ -57,7 +64,14 @@ HTML;
                         $upfy = 1 + round($player->ufy / 10);
                     } elseif ($tupo == 1) {
                         if ($sjs < 8) {
-                            echo "<div class='text-white text-center mt-2 text-base'>Đột phá thất bại</div>";
+                            echo <<<HTML
+<script>
+$.notify('Đột phá thất bại', {
+            style: 'normal',
+            globalPosition: 'bottom right',
+        })
+</script>
+HTML;
                             break;
                         }
 
@@ -74,7 +88,6 @@ HTML;
                     $player = \player\getplayer($sid, $dblj);
                     $upgrade_success = <<<HTML
  <div class='text-white'>
-<div class="text-center">Đột phá thành công</div>
     <div>
     Công kích +$upgj
     </div> 
@@ -85,6 +98,12 @@ HTML;
     Khí huyết +$uphp
     </div>
 </div>
+<script>
+$.notify('Đột phá thành công', {
+            style: 'normal',
+            globalPosition: 'bottom right',
+        })
+</script>
 HTML;
                 } else {
                     echo "<script>$.notify('Linh thạch của bạn không đủ', {

@@ -1,8 +1,6 @@
 <?php
-//require($_SERVER['DOCUMENT_ROOT'] . "/stores/query.php");
-$player = player\getplayer($sid, $dblj); //获取玩家信息
+$player = player\getplayer($sid, $dblj);
 $lastmid = $player->nowmid;
-
 $sid_str = $sid;
 
 if (isset($newmid)) {
@@ -162,10 +160,9 @@ if ($second > $clmid->ms && $cxallguaiwu == 0 && $clmid->mgid != '') {
 }
 $sql = "select * from midguaiwu where mid='$player->nowmid' AND sid = ''"; //Nhận quái vật bản đồ hiện tại
 $cxjg = $dblj->query($sql);
-
 $cxallguaiwu = $cxjg->fetchAll(PDO::FETCH_ASSOC);
-
 $gwhtml = '';
+
 for ($i = 0; $i < count($cxallguaiwu); $i++) {
     $monster_lv = $cxallguaiwu[$i]['glv'];
     $monster_name = $cxallguaiwu[$i]['gname'];
@@ -185,9 +182,9 @@ for ($i = 0; $i < count($cxallguaiwu); $i++) {
             nowmid='$player->nowmid'
             style="font-size: 9px"
             class='relative rounded-full m-2 !flex flex-col bg-white !text-white font-medium text-center w-[50px] overflow-hidden h-[50px] overflow-hidden attach-monster'>
-             <img class="absolute top-[50%] left-[50%] w-[45px] h-[45px]" src="pve/image/fs_007_421.png" style="transform: translate(-50%, -50%);">
+             <img loading="lazy" class="absolute top-[50%] left-[50%] w-[45px] h-[45px]" src="pve/image/fs_007_421.png" style="transform: translate(-50%, -50%);">
             </a> 
-              <span class="text-white">
+              <span class="text-white font-size-7">
             [lv$monster_lv] $monster_name
             </span>
         </div>

@@ -176,5 +176,10 @@ a:link {
 }
 
 .bg-button {
-    background: radial-gradient(black, transparent) !important;
+    background: radial-gradient(#efd2a0, #fff6be) !important;
+    font-weight: 500;
+}
+
+.modal {
+    width: 100% !important;
 }

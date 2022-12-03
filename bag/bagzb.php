@@ -107,11 +107,11 @@ for ($i = 0; $i < count($retzb); $i++) {
         sid="$sid">
         <div class="w-[60px] h-[60px] relative p-1 m-2 border border-white bg-[#bbbbbb]">
             <div class="border-2 border-white w-full h-full">
-            <img class="w-[65px] absolute top-[50%] left-[50%]" style="transform: translate(-50%, -50%);" src="$preview_img" alt="">
+            <img class="w-[75%] absolute top-[50%] left-[50%]" style="transform: translate(-50%, -50%);" src="$preview_img" alt="">
         </div>
        
         </div>
-    <span class="p-1">$zbname$qhhtml</span>
+    <span class="pl-2 line-clamp-1">$zbname$qhhtml</span>
 </div>
 HTML;
 
@@ -123,13 +123,13 @@ HTML;
         uid="$player->uid"
         sid="$sid">
         <div class="w-[60px] h-[60px] relative p-1 m-2 border border-white bg-[#bbbbbb]">
-        <span class="absolute right-[-25px] top-[3px] font-bold font-size-7" style="font-size: 7px">(Đang trang bị)</span>
+        <span class="absolute right-[-25px] top-[3px] font-bold font-size-7 bg-[#9e9e9e] text-white z-[1]" style="font-size: 7px">(Đang trang bị)</span>
             <div class="border-2 border-white w-full h-full">
-            <img class="w-[65px] absolute top-[50%] left-[50%]" style="transform: translate(-50%, -50%);" src="$preview_img" alt="">
+            <img loading="lazy" class="w-[75%] absolute top-[50%] left-[50%]" style="transform: translate(-50%, -50%);" src="$preview_img" alt="">
         </div>
        
         </div>
-    <span class="p-1">$zbname$qhhtml</span>
+    <span class="pl-2 line-clamp-1">$zbname$qhhtml</span>
 </div>
 HTML;
     }

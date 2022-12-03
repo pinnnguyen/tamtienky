@@ -56,11 +56,13 @@ if (isset($canshu)) {
             if (!$affected_rows) {
                 throw new PDOException("Trang bị treo bán thất bại<br/>"); //Lỗi đó ném ngoại lệ
             }
+
             $sql = "UPDATE `playerzhuangbei` SET uid=0,sid='' WHERE zbnowid = $zbnowid";
             $affected_rows = $dblj->exec($sql);
             if (!$affected_rows) {
                 throw new PDOException("Trang bị truyền tống thất bại<br/>"); //Lỗi đó ném ngoại lệ
             }
+
             echo "Treo bán thành công!<br/>";
             $dblj->commit(); // Gửi khi giao dịch thành công
         } catch (PDOException $e) {
@@ -204,15 +206,10 @@ HTML;
     }
 
     $setzbwz .= <<<HTML
-    <form action="$self" class="flex items-center justify-between">
-    <input class="border border-1" type="hidden" name="cmd" value="chakanzb">
-    <input class="border border-1" type="hidden" name="canshu" value="chushou">
-    <input class="border border-1" type="hidden" name="sid" value='$sid'>
-    <input class="border border-1" type="hidden" name="zbnowid" value="$zhuangbei->zbnowid">
-    <span>Treo lên chợ</span>
-    <input class="w-[45%] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" type="number" name="pay"> 
-    <button type="submit" class="bg-button h-[30px] flex items-center justify-center rounded-sm p-1" value="Treo bán">Treo bán</button>
-    </form>
+    <div class="flex items-center justify-end my-4">
+        <input class="w-[45%] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg h-[30px] bg-[#36445a] text-xs" type="number" name="pay"> 
+        <button id="for-sale" zbnowid="$zhuangbei->zbnowid" sid="$sid" class="bg-button h-[30px] flex items-center justify-center rounded-sm p-1" value="Treo bán">Treo bán</button>
+    </div>
 HTML;
 }
 
@@ -232,9 +229,11 @@ $tool = $tools[$zhuangbei->tool];
 
 $html = <<<HTML
 <div class="p-3">
-<div class="flex items-center justify-center mb-4">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center justify-center">
 <div class="w-[75px]">
     <img src="$zhuangbei->preview_url" alt="">
+</div>
 </div>
 <div class="border-l border-white pl-2">
     <div>
@@ -246,11 +245,27 @@ $html = <<<HTML
     <div>
     Đăng cấp: $zhuangbei->zblv
     </div>
-    <div><span>Công khích</span>: $zhuangbei->zbgj$upgj</div>
-    <div><span>Phòng ngự</span>: $zhuangbei->zbfy$upfy</div>
-    <div><span>Khí huyết</span>: $zhuangbei->zbhp$uphp</div>
-    <div><span>Bạo kích</span>: $zhuangbei->zbbj%</div>
-    <div><span>Hút máu</span>: $zhuangbei->zbxx%</div>
+    <div class="flex justify-between">
+        <span>
+            Công khích: $zhuangbei->zbgj
+        </span>
+        <span>|</span>
+        $upgj
+    </div>
+    
+    <div class="flex justify-between">
+    <span>Phòng ngự: $zhuangbei->zbfy</span>
+    <span>|</span>
+$upfy
+</div>
+    <div class="flex justify-between">
+    <span>Khí huyết: $zhuangbei->zbhp</span>
+    <span>|</span>
+$uphp
+</div>
+    <div class="flex justify-between">
+    <span>Bạo kích: $zhuangbei->zbbj%</span></div>
+    <div class="flex justify-between"><span>Hút máu: $zhuangbei->zbxx%</span></div>
 </div>
 </div>
 

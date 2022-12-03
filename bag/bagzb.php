@@ -5,10 +5,12 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/class/encode.php";
 
 $sid = $_GET['sid'];
 $cmd = $_GET['cmd'];
+$limit = $_GET['limit'];
 
 $player = player\getplayer($sid, $dblj);
 $encode = new \encode\encode();
 $tishi = '';
+
 if (isset($canshu)) {
     if ($canshu == 'maichu') {
         $mczb = \player\getzb($zbnowid, $dblj);
@@ -22,41 +24,42 @@ if (isset($canshu)) {
         }
     }
 }
-if (!isset($yeshu)) {
-    $yeshu = 0;
+
+if (!isset($limit)) {
+    $limit = 0;
 }
 
-$limit_bag_slot = 15;
-if ($cmd == 'delezb') {
-    $zhuangbei = \player\getzb($zbnowid, $dblj);
-    $fjls = $zhuangbei->qianghua * 20 + 20;
-    $ret = \player\changeyxb(2, $fjls, $sid, $dblj);
-    if ($ret) {
-        $sql = "delete from playerzhuangbei where zbnowid =$zbnowid AND sid='$sid'"; //xóa thiết bị
-        $dblj->exec($sql);
-        $qhs = round($zhuangbei->qianghua * $zhuangbei->qianghua);
-        $sjs = mt_rand(1, 100);
-        if ($sjs <= 30) {
-            $sjs = mt_rand(1, 100);
-            if ($sjs > 90) {
-                $qhs = $qhs + 3;
-            } elseif ($sjs > 80) {
-                $qhs = $qhs + 2;
-            } elseif ($sjs > 70) {
-                $qhs = $qhs + 1;
-            }
-        }
-        \player\adddj($sid, 1, $qhs, $dblj);
-        $tishi = 'Đã phân rã thành công!<br/>';
-        if ($qhs > 0) {
-            $tishi .= "Nhận được một viên đá cường hóa:" . $qhs . "!<br/>";
-        }
-    } else {
-        $tishi = "Không đủ linh thạch!<br/>";
-    }
-}
+$limit_bag_slot = 25;
+//if ($cmd == 'delezb') {
+//    $zhuangbei = \player\getzb($zbnowid, $dblj);
+//    $fjls = $zhuangbei->qianghua * 20 + 20;
+//    $ret = \player\changeyxb(2, $fjls, $sid, $dblj);
+//    if ($ret) {
+//        $sql = "delete from playerzhuangbei where zbnowid =$zbnowid AND sid='$sid'"; //xóa thiết bị
+//        $dblj->exec($sql);
+//        $qhs = round($zhuangbei->qianghua * $zhuangbei->qianghua);
+//        $sjs = mt_rand(1, 100);
+//        if ($sjs <= 30) {
+//            $sjs = mt_rand(1, 100);
+//            if ($sjs > 90) {
+//                $qhs = $qhs + 3;
+//            } elseif ($sjs > 80) {
+//                $qhs = $qhs + 2;
+//            } elseif ($sjs > 70) {
+//                $qhs = $qhs + 1;
+//            }
+//        }
+//        \player\adddj($sid, 1, $qhs, $dblj);
+//        $tishi = 'Đã phân rã thành công!<br/>';
+//        if ($qhs > 0) {
+//            $tishi .= "Nhận được một viên đá cường hóa:" . $qhs . "!<br/>";
+//        }
+//    } else {
+//        $tishi = "Không đủ linh thạch!<br/>";
+//    }
+//}
 
-$sql = "select * from playerzhuangbei  WHERE sid = '$sid' ORDER BY zbid DESC LIMIT $yeshu, $limit_bag_slot";
+$sql = "select * from playerzhuangbei  WHERE sid = '$sid' ORDER BY zbnowid in ($player->tool1, $player->tool2, $player->tool3, $player->tool4, $player->tool5, $player->tool6) DESC LIMIT $limit, $limit_bag_slot";
 $cxjg = $dblj->query($sql);
 $retzb = $cxjg->fetchAll(PDO::FETCH_ASSOC);
 
@@ -66,17 +69,19 @@ $zbcount = $cxjg->fetchColumn();
 //$gonowmid = $encode->encode("cmd=gomid&newmid=$player->nowmid&sid=$sid");
 $zbhtml = '';
 $fanye = '';
-if ($yeshu != 0) {
-    $shangcanshu = $yeshu - $limit_bag_slot;
-    $shangyiye = $encode->encode("cmd=getbagzb&yeshu=$shangcanshu&sid=$sid");
-    $fanye = '<a href="?cmd=' . $shangyiye . '">Trang trước</a>';
+
+if ($limit != 0) {
+    $page_num = $limit - $limit_bag_slot;
+//    $shangyiye = $encode->encode("cmd=getbagzb&yeshu=$shangcanshu&sid=$sid");
+    $fanye .= <<<HTML
+<div id="next-bag" class="absolute bottom-[25px] z-1 right-[25px] p-2 bg-button" cmd="getbagzb" limit="$page_num" sid="$sid">Trang trước</div>
+HTML;
 }
 
-if ($yeshu + $limit_bag_slot < $zbcount) {
-    $xiacanshu = $yeshu + $limit_bag_slot;
-    $xiayiye = $encode->encode("cmd=getbagzb&yeshu=$xiacanshu&sid=$sid");
+if ($limit + $limit_bag_slot < $zbcount) {
+    $page_num = $limit + $limit_bag_slot;
     $fanye .= <<<HTML
-<div class="absolute bottom-0 right-0 p-2" href="?cmd=' . $xiayiye . '">Trang sau</div>
+<div id="next-bag" class="absolute bottom-[25px] z-1 right-[25px] p-2 bg-button" cmd="getbagzb" limit="$page_num" sid="$sid">Trang sau</div>
 HTML;
 
 }
@@ -84,9 +89,11 @@ HTML;
 if ($fanye != '') {
     $fanye = '<br/>' . $fanye . '<br/>';
 }
+
+$in_equip = [$player->tool1, $player->tool2, $player->tool3, $player->tool4, $player->tool5, $player->tool6];
 for ($i = 0; $i < count($retzb); $i++) {
     $zbnowid = $retzb[$i]['zbnowid'];
-    $arr = [$player->tool1, $player->tool2, $player->tool3, $player->tool4, $player->tool5, $player->tool6];
+//    $arr = [$player->tool1, $player->tool2, $player->tool3, $player->tool4, $player->tool5, $player->tool6];
 
     $zbname = $retzb[$i]['zbname'];
     $zbnowid = $retzb[$i]['zbnowid'];
@@ -98,10 +105,10 @@ for ($i = 0; $i < count($retzb); $i++) {
         $qhhtml = "+" . $zbqh;
     }
 
-    $chakanzb = $encode->encode("cmd=chakanzb&zbnowid=$zbnowid&uid=$player->uid&sid=$sid");
-    if (!in_array($zbnowid, $arr)) {
-        $mczb = $encode->encode("cmd=getbagzb&canshu=maichu&yeshu=$yeshu&zbnowid=$zbnowid&sid=$sid");
-        $delezb = $encode->encode("cmd=delezb&zbnowid=$zbnowid&sid=$sid");
+//    $chakanzb = $encode->encode("cmd=chakanzb&zbnowid=$zbnowid&uid=$player->uid&sid=$sid");
+    if (!in_array($zbnowid, $in_equip)) {
+//        $mczb = $encode->encode("cmd=getbagzb&canshu=maichu&yeshu=$yeshu&zbnowid=$zbnowid&sid=$sid");
+//        $delezb = $encode->encode("cmd=delezb&zbnowid=$zbnowid&sid=$sid");
         $zbhtml .= <<<HTML
         <div class="trangbi-defail flex flex-col max-h-[120px]" 
         cmd="chakanzb"

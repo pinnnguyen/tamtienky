@@ -20,6 +20,17 @@ function loadDaoCu($this) {
     return
 }
 
+$('#next-bag').unbind('click').bind('click', function () {
+    const sid = $(this).attr('sid')
+    const cmd = $(this).attr('cmd')
+    const limit = $(this).attr('limit')
+
+    $.get(`/bag/bagzb.php?sid=${sid}&cmd=${cmd}&limit=${limit}`, function (response) {
+        $(".the-game").addClass('hidden')
+        $(".the-bag").html(response)
+    })
+})
+
 $('#for-sale').unbind('click').bind('click', function () {
     const sid = $(this).attr('sid')
     if (!sid) {

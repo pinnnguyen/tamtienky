@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="38b48ee1-61e9-457e-9f97-926f62136350" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/bag/daocuinfo.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bag/images/00578.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bag/images/00725.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/animation.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/00578.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/00725.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/market/images/bg-item.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/market/market.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/helper.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/thebag.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/xunxianji.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bag/bag.js" beforeDir="false" afterPath="$PROJECT_DIR$/bag/bag.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bag/bagzb.php" beforeDir="false" afterPath="$PROJECT_DIR$/bag/bagzb.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bag/daocu.php" beforeDir="false" afterPath="$PROJECT_DIR$/bag/daocu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bag/hangforsale.php" beforeDir="false" afterPath="$PROJECT_DIR$/bag/hangforsale.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bag/trangbiinfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/bag/trangbiinfo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/player.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/player.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/gamecss.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/gamecss.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/banghoi.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/code.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/daocu.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/db.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/game1.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/game_real.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/giap.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/kynang.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/map.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/mapquaivat.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/nhiemvu.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/npc.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/playertrangbi.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/quaivat.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/thucung.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/thuoc.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/trotruyen.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/userinfo.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/error" beforeDir="false" afterPath="$PROJECT_DIR$/error" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.box.js" beforeDir="false" afterPath="$PROJECT_DIR$/game.box.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.php" beforeDir="false" afterPath="$PROJECT_DIR$/game.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game/fangshi.php" beforeDir="false" afterPath="$PROJECT_DIR$/game/fangshi.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game/nowmid.php" beforeDir="false" afterPath="$PROJECT_DIR$/game/nowmid.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@interactjs/types/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@interactjs/types/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@interactjs/types/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@interactjs/types/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@interactjs/types/index.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@interactjs/types/index.prod.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@interactjs/types/index.prod.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@interactjs/types/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@interactjs/types/typings.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/bower.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/DropEvent_DropEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/InteractEvent_InteractEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/Interactable.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/Interaction_Interaction.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/doclets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/fonts/OpenSans-Bold-webfont.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/fonts/OpenSans-Bold-webfont.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/fonts/OpenSans-Bold-webfont.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/fonts/OpenSans-BoldItalic-webfont.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/fonts/OpenSans-BoldItalic-webfont.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/fonts/OpenSans-BoldItalic-webfont.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/fonts/OpenSans-Italic-webfont.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/fonts/OpenSans-Italic-webfont.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/fonts/OpenSans-Italic-webfont.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/fonts/OpenSans-Light-webfont.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/fonts/OpenSans-Light-webfont.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/fonts/OpenSans-Light-webfont.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/fonts/OpenSans-LightItalic-webfont.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/fonts/OpenSans-LightItalic-webfont.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/fonts/OpenSans-LightItalic-webfont.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/fonts/OpenSans-Regular-webfont.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/fonts/OpenSans-Regular-webfont.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/fonts/OpenSans-Regular-webfont.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/fonts/OpenSans-Semibold-webfont.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/fonts/OpenSans-Semibold-webfont.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/fonts/OpenSans-Semibold-webfont.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/fonts/OpenSans-Semibold-webfont.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/fonts/OpenSans-SemiboldItalic-webfont.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/fonts/OpenSans-SemiboldItalic-webfont.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/fonts/OpenSans-SemiboldItalic-webfont.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/fonts/OpenSans-SemiboldItalic-webfont.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/global.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/img/ijs-32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/img/ijs-64.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/img/ijs-anim-short.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/img/ijs-anim.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/img/ijs-icon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/img/ijs.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/jsdoc_index.md.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/module-interact.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/module-modifiers_aspectRatio.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/module-modifiers_snapEdges.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/module.exports_module.exports.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/packages_@interactjs_actions_drag_plugin.ts.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/packages_@interactjs_actions_drop_DropEvent.ts.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/packages_@interactjs_actions_drop_plugin.ts.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/packages_@interactjs_actions_gesture_plugin.ts.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/packages_@interactjs_actions_resize_plugin.ts.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/packages_@interactjs_auto-start_InteractableMethods.ts.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/packages_@interactjs_auto-start_base.ts.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/packages_@interactjs_core_BaseEvent.ts.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/packages_@interactjs_core_InteractEvent.ts.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/packages_@interactjs_core_InteractStatic.ts.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/packages_@interactjs_core_Interactable.ts.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/packages_@interactjs_core_Interaction.ts.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/packages_@interactjs_core_interactablePreventDefault.ts.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/packages_@interactjs_modifiers_aspectRatio.ts.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/packages_@interactjs_modifiers_snap_edges.ts.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/packages_@interactjs_pointer-events_PointerEvent.ts.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/packages_@interactjs_reflow_plugin.ts.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/scripts/linenumber.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/scripts/prettify/Apache-License-2.0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/scripts/prettify/lang-css.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/scripts/prettify/prettify.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/styles/jsdoc-default.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/styles/prettify-jsdoc.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/api/styles/prettify.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/interact.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/interact.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/interact.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/dist/interact.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/index.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/index.prod.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/index.prod.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/interactjs/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state.js" beforeDir="false" afterPath="$PROJECT_DIR$/state.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tofixed/game.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/upgrade/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/upgrade/index.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2IOgKznScz3GjLwKUCm7uqByE4g" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Applications/phpstudy/WWW/bag/images",
+    "nodejs_package_manager_path": "yarn",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bag/images" />
+      <recent name="$PROJECT_DIR$/images" />
+      <recent name="$PROJECT_DIR$/market/images" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="38b48ee1-61e9-457e-9f97-926f62136350" name="Changes" comment="" />
+      <created>1670057985250</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1670057985250</updated>
+      <workItem from="1670057986581" duration="22838000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

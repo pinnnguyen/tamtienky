@@ -97,11 +97,10 @@ $('.upgrade-trangbi').unbind('click').bind('click', function () {
     })
 })
 
-$('#close-bag').unbind('click').bind('click', function () {
+$('.close-bag').unbind('click').bind('click', function () {
+    console.log('close-bag')
     $('.the-bag').empty()
     $(".the-game").removeClass('hidden')
-
-    return;
 })
 
 // Show detail item
@@ -119,6 +118,34 @@ $('.trangbi-defail').unbind('click').bind('click', function () {
     })
 
     return
+})
+
+$('.daocu-detail').unbind('click').bind('click', function () {
+    const sid = $(this).attr('sid')
+    const djid = $(this).attr('djid')
+
+    $.get(`/bag/daocuinfo.php?sid=${sid}&djid=${djid}`, function (response) {
+        $('.teleport').html(response)
+        $(".teleport").modal({
+            fadeDuration: 100
+        });
+    })
+
+    return
+})
+
+$('.buy-daocu').unbind('click').bind('click', function () {
+    const _pay = $('.daocu-from').find('.pay').val()
+    const _djcount = $('.daocu-from').find('.djcount').val()
+    const sid = $(this).attr('sid')
+    const djid = $(this).attr('djid')
+
+    const url = `/bag/daocuinfo.php?sid=${sid}&djid=${djid}&pay=${_pay}&djcount=${_djcount}&action=pay`
+
+    $.get(url, function (response) {
+        $('.teleport').html(response)
+        $.modal.close()
+    })
 })
 
 // $('#use-trang-bi').unbind('click').bind('click', function () {

@@ -356,13 +356,14 @@ if (isset($cmd)) {
     <meta charset="utf-8" content="width=device-width,user-scalable=no" name="viewport">
     <title>Tu Tiên Hội</title>
 
-    <link rel="manifest" href="manifest.json" />
+    <link rel="manifest" href="manifest.json"/>
     <!-- ios support -->
-    <link rel="apple-touch-icon" href="images/logo.png" />
-    <meta name="apple-mobile-web-app-status-bar" content="#000" />
-    <meta name="theme-color" content="#000" />
+    <link rel="apple-touch-icon" href="images/logo.png"/>
+    <meta name="apple-mobile-web-app-status-bar" content="#000"/>
+    <meta name="theme-color" content="#000"/>
 
     <link rel="stylesheet" href="css/gamecss.css">
+    <!--    <link rel="stylesheet/scss" href="css/animation.scss">-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sora">
     <link rel="icon" href="images/logo.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -372,36 +373,41 @@ if (isset($cmd)) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
     <!-- jQuery Modal -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"/>
     <!--    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>-->
-    <link rel="stylesheet" href="plugins/notify/notify.css" />
+    <link rel="stylesheet" href="plugins/notify/notify.css"/>
     <script src="plugins/notify/notify.min.js"></script>
     <script src="plugins/notify/notify.setting.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.41/vue.global.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/4.1.6/vue-router.global.js"></script>
+
+    <!--    <script src="https://unpkg.com/vuex@4.0.0/dist/vuex.global.js"></script>-->
 
 </head>
 <body>
-<div class="main h-[100vh] sm:w-[640px] md:w-[640px] lg:w-[640px] overflow-hidden">
-    <div class="h-full relative bg-black the-game">
-        <?php if (!$ym == '') {
-            echo $tpts;
+<div id="app" class="bg-white"></div>
+    <div id="the-main" class="main h-[100vh] sm:w-[640px] md:w-[640px] lg:w-[640px] overflow-hidden">
+        <div class="h-full relative bg-black the-game">
+            <?php if (!$ym == '') {
+                echo $tpts;
 
-            if ($ym != "game/pvp.php") {
-                echo $pvpts;
-            }
+                if ($ym != "game/pvp.php") {
+                    echo $pvpts;
+                }
 
-            include "$ym";
-        } ?>
+                include "$ym";
+            } ?>
+        </div>
+        <div class="the-bag h-full bg-[#e3e2d6] relative"></div>
+        <div class="teleport-full relative text-white bg-[#1d160e] p-0 w-[100%]"></div>
+        <div class="teleport relative text-white bg-[#1d160e] p-0 border border-[#795548]"></div>
+        <div class="alert relative p-0 bg-black hidden"></div>
     </div>
-    <div class="the-bag h-full bg-[#e3e2d6] px-2 py-2 relative"></div>
-    <div class="teleport-full relative bg-[#36445a] p-0 w-[100%]"></div>
-    <div class="teleport relative bg-[#e3e2d6] p-0 text-black"></div>
-    <div class="alert relative p-0 bg-black hidden"></div>
-</div>
 </body>
-
+<script src="src/app.js" async type="module"></script>
 <script src="state.js" async></script>
 <script src="game.box.js" async></script>
-<script src="app.js" async></script>
 <script src="upgrade/index.js" async></script>
 <script src="tailwind.config.js" async></script>
 

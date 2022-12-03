@@ -149,7 +149,7 @@ $getbagypcmd = $encode->encode("cmd=getbagyp&sid=$sid");
 $getbagjncmd = $encode->encode("cmd=getbagjn&sid=$sid");
 
 $toolhtml = <<<HTML
-<img src="bag/images/back.png" class="w-[35px] h-[35px] absolute z-[99] top-[2px] left-0" id="close-bag">
+<img src="bag/images/back.png" class="w-[35px] h-[35px] absolute z-[99] top-[2px] left-0 close-bag">
 <div class="border-2 border-[#e0c49d] font-bold px-2 py-2 relative h-full">
 <div class="h-full border-2 border-black overflow-y-scroll">
 

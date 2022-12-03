@@ -370,6 +370,7 @@ $xiuliancmd = $encode->encode("cmd=goxiulian&sid=$sid");
 $mytask = $encode->encode("cmd=mytask&sid=$sid");
 $getbagjncmd = $encode->encode("cmd=getbagjn&sid=$sid");
 $fangshi = $encode->encode("cmd=fangshi&fangshi=daoju&sid=$sid");
+
 $clubcmd = $encode->encode("cmd=club&sid=$sid");
 $duihuancmd = $encode->encode("cmd=duihuan&sid=$sid");
 $imcmd = $encode->encode("cmd=im&sid=$sid");
@@ -391,7 +392,7 @@ $nowhtml = <<<HTML
         </div>
     </div>
     <div class="flex items-center justify-end">
-        <a style="background: radial-gradient(black, transparent);" class="text-white inline-block flex items-center" href="?cmd=$fangshi">
+        <a id="thebag" cmd="fangshi" fangshi="zhuangbei" sid="$sid" class="text-white inline-block flex items-center">
             <img class="w-[30px]" src="images/menu/XJHomescreenButton_20.png" /><span class="text-span">Chợ</span>
         </a>
         <a style="background: radial-gradient(black, transparent);" class="text-white inline-block flex items-center" href="?cmd=$imcmd">
@@ -441,26 +442,26 @@ $nowhtml = <<<HTML
             </div>
         </div>
 
-        <div class="h-[62px] bg-[#36445a]">
+        <div class="h-[54px] bg-[#36445a]">
             <div class="flex items-center justify-center bg-white pt-1 font-semibold" style="border-radius: 30px 30px 0 0;">
                 <a class="border-none p-0 flex flex-col items-center" href="?cmd=$ztcmd">
-                    <img class="w-[50px]" src="images/menu/XJHomescreenButton_29.png" />
+                    <img class="w-[40px]" src="images/menu/XJHomescreenButton_29.png" />
                     <!--            <div>N.Vật</div>-->
                 </a>
                 <a sid="$sid" cmd="getbagzb" class="w-[20%] flex flex-col items-center" id="bag">
-                    <img class="w-[50px]" src="images/menu/XJDengxiandao_15.png" />
+                    <img class="w-[40px]" src="images/menu/XJDengxiandao_15.png" />
                     <!--            <div>B.Lô</div>-->
                 </a>
                 <a class="w-[20%] flex flex-col items-center pet" sid="$sid">
-                    <img class="w-[50px]" src="images/menu/XJHomescreenTop_42.png" />
+                    <img class="w-[40px]" src="images/menu/XJHomescreenTop_42.png" />
                     <!--            <div>T.Cưng</div>-->
                 </a>
                 <a class="w-[20%] flex flex-col items-center" href="?cmd=$clubcmd">
-                    <img class="w-[50px]" src="images/menu/XJHomescreenButton_10.png" />
+                    <img class="w-[40px]" src="images/menu/XJHomescreenButton_10.png" />
                     <!--            <div>T.Môn</div>-->
                 </a>
                 <a class="w-[20%] flex flex-col items-center" href="?cmd=$mytask">
-                    <img class="w-[50px]" src="images/menu/XJDengxiandao_14.png" />
+                    <img class="w-[40px]" src="images/menu/XJDengxiandao_14.png" />
                     <!--            <div>N.Vụ</div>-->
                 </a>
             </div>

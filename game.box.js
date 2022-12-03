@@ -1,4 +1,3 @@
-
 class box {
     constructor() {
         this.box = $("#box-player");

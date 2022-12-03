@@ -33,16 +33,6 @@ body {
 /*}*/
 
 
-ul {
-    position: absolute;
-    list-style-type: none;
-    margin: 0;
-    margin-left: 160px;;
-    margin-top: -110px;;
-    float: right;
-
-}
-
 a {
     padding: 1px 10px;
     border-radius: 3px;
@@ -177,9 +167,124 @@ a:link {
 
 .bg-button {
     background: radial-gradient(#efd2a0, #fff6be) !important;
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 12px;
+    padding: 2px;
+    margin: 2px;
+    color: #0e0e0e;
 }
 
 .modal {
     width: 100% !important;
+}
+
+.transform-center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.market .li {
+    /*background: url(../img/background/shop_item.png);*/
+    background-size: cover;
+    float: left;
+    width: 30%;
+    margin: 0 1.65%;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.market .item  {
+    width: 100%;
+    padding-top: 120%;
+    text-shadow: 1px 1px 1px black;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    border-radius: 5px;
+    background-size: cover !important;
+}
+
+.market .item .price {
+    width: calc(100% - 4px);
+}
+
+.market .item .image {
+    position: absolute;
+    top: 50%;
+    height: 80px;
+    width: 100%;
+    transform: translate(0,-50%);
+}
+
+.market-menu {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.market-menu ul li:first-child {
+    border-radius: 10px 0px 0px 10px;
+}
+
+.market-menu ul li:nth-child(2) {
+    border-left: none;
+    border-radius: 0 10px 10px 0;
+}
+
+.market-menu ul li.active {
+    background-color: #093461;
+}
+
+.market-menu ul li {
+    left: 50%;
+    float: left;
+    line-height: 35px;
+    width: calc(33% - 2px);
+    text-align: center;
+    border: 2px solid #093461;
+    color: white;
+    font-weight: 700;
+    font-size: 12px;
+    cursor: pointer;
+    text-transform: uppercase;
+    text-shadow: 2px 1px 1px black;
+}
+
+.font-10 {
+    font-size: 10px;
+}
+
+.font-8 {
+    font-size: 8px;
+}
+
+body .button_yes{
+    width: 175px;
+    line-height: 35px;
+    border: none;
+    margin-top: 20px;
+    text-align: center;
+    background-color: #ffd400;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #333;
+    font-weight: 600;
+    border-radius: 150px;
+}
+
+body .button_no {
+    width: 175px;
+    line-height: 35px;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: white;
+    background-color: transparent;
+    border: 3px solid #ffffff;
+    color: #ffffff;
+    border-radius: 25px;
+    margin-left: 10px;
+    font-weight: 600;
 }

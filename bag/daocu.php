@@ -55,7 +55,7 @@ for ($i = 0; $i < count($retdj); $i++) {
         $maichu5 = $encode->encode("cmd=getbagdj&canshu=maichu5&djid=$djid&uid=$player->uid&sid=$sid");
         $maichu10 = $encode->encode("cmd=getbagdj&canshu=maichu10&djid=$djid&uid=$player->uid&sid=$sid");
         $djhtml .= <<<HTML
- <div class="flex flex-col max-h-[120px]" cmd="djinfo" djid="$djid" uid="$player->uid" sid="$sid">
+ <div class="flex flex-col max-h-[120px] daocu-detail" canshu="chushou" cmd="djinfo" djid="$djid" uid="$player->uid" sid="$sid">
     <div class="w-[60px] h-[60px] relative p-1 m-2 border border-white bg-[#bbbbbb]">
         <div class="border-2 border-white w-full h-full">
             <img class="w-[70%] absolute top-[50%] left-[50%]" loading="lazy" style="transform: translate(-50%, -50%);" src="bag/images/00600.png" alt="" />
@@ -72,7 +72,7 @@ $getbagypcmd = $encode->encode("cmd=getbagyp&sid=$sid");
 $getbagjncmd = $encode->encode("cmd=getbagjn&sid=$sid");
 
 $bagdjhtml = <<<HTML
-<img src="bag/images/back.png" class="w-[35px] h-[35px] absolute z-[1] top-[2px] left-0" id="close-bag">
+<img src="bag/images/back.png" class="w-[35px] h-[35px] absolute z-[1] top-[2px] left-0 close-bag">
 <div class="border-2 border-[#e0c49d] font-bold px-2 py-2 relative h-full">
     <div class="h-full border-2 border-black overflow-y-scroll">
         <div class="">

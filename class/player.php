@@ -1386,6 +1386,7 @@ function getfangshi_once($lx, $payid, $dblj)
             if ($dj) {
                 return $fsdj;
             }
+
             return $dj;
         case "zhuangbei":
             $fszb = new fangshi_zb();
@@ -1409,7 +1410,7 @@ function getfangshi_once($lx, $payid, $dblj)
  * @param $dblj
  * @return mixed
  */
-function getfangshi_all($lx, $dblj)
+function gettrangbi_in_market($lx, $dblj)
 {
     switch ($lx) {
         case "daoju":

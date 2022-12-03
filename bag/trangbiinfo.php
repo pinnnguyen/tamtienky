@@ -8,6 +8,7 @@ $uid = $_GET['uid'];
 $cmd = $_GET['cmd'];
 $upsx = $_GET['upsx'];
 $zbnowid = $_GET['zbnowid'];
+$canshu = $_GET['canshu'];
 
 $encode = new \encode\encode();
 $player = \player\getplayer($sid, $dblj);
@@ -277,10 +278,10 @@ $uphp
         <span>Cường hóa cần CH thạch</span>: <img class="w-5 h-5" src="bag/images/00600.png" alt=""><span>$updjsl$qhssum</span>
     </div>
     <div class="flex">
-        <span>Cường hóa cần</span>: <img class="w-5 h-5" src="bag/images/00534.png" alt=""> <span>$upls$uyxb</span>
+        <span>Cường hóa cần</span>: <img class="w-5 h-5" src="bag/images/00578.png" alt=""> <span>$upls$uyxb</span>
     </div>
     <div class="flex">
-        <span>Phân giải cần</span>: <img class="w-5 h-5" src="bag/images/00534.png" alt=""> <span>$fjls$uyxb</span>
+        <span>Phân giải cần</span>: <img class="w-5 h-5" src="bag/images/00578.png" alt=""> <span>$fjls$uyxb</span>
     </div>
 </div>
 $upts

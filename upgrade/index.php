@@ -137,7 +137,7 @@ $upgrade_success
         Đột phá
     </button>
 </div>
-<script src="upgrade/index.js"></script>
+<script src="upgrade/bag.js"></script>
 </div>
 HTML;
 

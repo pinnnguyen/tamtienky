@@ -2,7 +2,8 @@
   "name": "www",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "src/app.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/pinnnguyen/tamtienky#readme",
   "dependencies": {
-    "interactjs": "^1.10.17"
+    "interactjs": "^1.10.17",
+    "pinia": "^2.0.27"
   }
 }

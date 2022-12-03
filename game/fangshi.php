@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Administrator
- * Date: 2016/8/24 0024
- * Time: 12:59
- */
+
 $player = \player\getplayer($sid, $dblj);
 $gonowmid = $encode->encode("cmd=gomid&newmid=$player->nowmid&sid=$sid");
 $payhtml = '';
@@ -87,7 +82,7 @@ switch ($fangshi) {
                 \player\changerwyq1(1, $fsdj->djid, 1, $sid, $dblj);
             }
         }
-        $fsdjall = \player\getfangshi_all($fangshi, $dblj);
+        $fsdjall = \player\gettrangbi_in_market($fangshi, $dblj);
         foreach ($fsdjall as $fsdj) {
             $djid = $fsdj['djid'];
             $djname = $fsdj['djname'];
@@ -159,7 +154,7 @@ HTML;
             }
         }
         fszblist:
-        $fsdjall = \player\getfangshi_all($fangshi, $dblj);
+        $fsdjall = \player\gettrangbi_in_market($fangshi, $dblj);
         foreach ($fsdjall as $fsdj) {
             $zbnowid = $fsdj['zbnowid'];
             $zbname = $fsdj['zbname'];

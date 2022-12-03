@@ -26,6 +26,7 @@ if (!isset($yeshu)) {
     $yeshu = 0;
 }
 
+$limit_bag_slot = 15;
 if ($cmd == 'delezb') {
     $zhuangbei = \player\getzb($zbnowid, $dblj);
     $fjls = $zhuangbei->qianghua * 20 + 20;
@@ -55,7 +56,7 @@ if ($cmd == 'delezb') {
     }
 }
 
-$sql = "select * from playerzhuangbei  WHERE sid = '$sid' ORDER BY zbid DESC LIMIT $yeshu, 30";
+$sql = "select * from playerzhuangbei  WHERE sid = '$sid' ORDER BY zbid DESC LIMIT $yeshu, $limit_bag_slot";
 $cxjg = $dblj->query($sql);
 $retzb = $cxjg->fetchAll(PDO::FETCH_ASSOC);
 
@@ -64,23 +65,25 @@ $cxjg = $dblj->query($sql);
 $zbcount = $cxjg->fetchColumn();
 //$gonowmid = $encode->encode("cmd=gomid&newmid=$player->nowmid&sid=$sid");
 $zbhtml = '';
-//$fanye = '';
-//if ($yeshu != 0) {
-//    $shangcanshu = $yeshu - 10;
-//    $shangyiye = $encode->encode("cmd=getbagzb&yeshu=$shangcanshu&sid=$sid");
-//    $fanye = '<a href="?cmd=' . $shangyiye . '">Trang trước</a>';
-//}
-//if ($yeshu + 10 < $zbcount) {
-//    $xiacanshu = $yeshu + 10;
-//    $xiayiye = $encode->encode("cmd=getbagzb&yeshu=$xiacanshu&sid=$sid");
-////    $fanye .= <<<HTML
-////<div class="absolute bottom-0 right-0 p-2" href="?cmd=' . $xiayiye . '">Trang sau</div>
-////HTML;
-//
-//}
-//if ($fanye != '') {
-//    $fanye = '<br/>' . $fanye . '<br/>';
-//}
+$fanye = '';
+if ($yeshu != 0) {
+    $shangcanshu = $yeshu - $limit_bag_slot;
+    $shangyiye = $encode->encode("cmd=getbagzb&yeshu=$shangcanshu&sid=$sid");
+    $fanye = '<a href="?cmd=' . $shangyiye . '">Trang trước</a>';
+}
+
+if ($yeshu + $limit_bag_slot < $zbcount) {
+    $xiacanshu = $yeshu + $limit_bag_slot;
+    $xiayiye = $encode->encode("cmd=getbagzb&yeshu=$xiacanshu&sid=$sid");
+    $fanye .= <<<HTML
+<div class="absolute bottom-0 right-0 p-2" href="?cmd=' . $xiayiye . '">Trang sau</div>
+HTML;
+
+}
+
+if ($fanye != '') {
+    $fanye = '<br/>' . $fanye . '<br/>';
+}
 for ($i = 0; $i < count($retzb); $i++) {
     $zbnowid = $retzb[$i]['zbnowid'];
     $arr = [$player->tool1, $player->tool2, $player->tool3, $player->tool4, $player->tool5, $player->tool6];
@@ -157,6 +160,7 @@ $toolhtml = <<<HTML
 </div>
 </div>
 
+<div>$fanye</div>
 <script src="bag/bag.js"></script>
 
 HTML;

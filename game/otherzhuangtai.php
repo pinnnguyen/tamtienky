@@ -76,6 +76,17 @@ $isTool4 = false;
 $isTool5 = false;
 $isTool6 = false;
 
+$img_tool_1 = 'images/trangbi/vukhi.png';
+$img_tool_2 = 'images/trangbi/ngocboi.png';
+$img_tool_3 = 'images/trangbi/giap.png';
+
+$img_tool_4 = 'images/trangbi/baotay.png';
+$img_tool_5 = 'images/trangbi/rinh.png';
+$img_tool_6 = 'images/trangbi/giay.png';
+
+$img_tool_7 = 'images/trangbi/ngoc.png';
+$img_tool_8 = 'images/trangbi/mu.png';
+
 if ($player1->tool1 != 0) {
     $zhuangbei = player\getzb($player1->tool1, $dblj);
     $qhs = '';
@@ -83,6 +94,7 @@ if ($player1->tool1 != 0) {
         $qhs = '+' . $zhuangbei->qianghua;
     }
 
+    $img_tool_1 = $zhuangbei->preview_url;
     $isTool1 = '<span class="absolute left-[10px] top-[7px] rounded-full bg-white w-[10px] h-[10px]"></span>';
     $zbcmd = $encode->encode("cmd=chakanzb&zbnowid=$player1->tool1&uid=$player1->uid&sid=$sid");
     $tool1 = "<a class='absolute opacity-0 left-0 top-0 w-[60px] h-[55px]' href='?cmd=$zbcmd'>{$zhuangbei->zbname}{$qhs}</a><br/>";
@@ -95,6 +107,7 @@ if ($player1->tool2 != 0) {
         $qhs = '+' . $zhuangbei->qianghua;
     }
 
+    $img_tool_2 = $zhuangbei->preview_url;
     $isTool2 = '<span class="absolute left-[10px] top-[7px] rounded-full bg-white w-[10px] h-[10px]"></span>';
     $zbcmd = $encode->encode("cmd=chakanzb&zbnowid=$player1->tool2&uid=$player1->uid&sid=$sid");
     $tool2 = "<a class='absolute opacity-0 left-0 top-0 w-[60px] h-[55px]' href='?cmd=$zbcmd'>{$zhuangbei->zbname}{$qhs}</a><br/>";
@@ -106,6 +119,7 @@ if ($player1->tool3 != 0) {
         $qhs = '+' . $zhuangbei->qianghua;
     }
 
+    $img_tool_3 = $zhuangbei->preview_url;
     $isTool3 = '<span class="absolute left-[10px] top-[7px] rounded-full bg-white w-[10px] h-[10px]"></span>';
     $zbcmd = $encode->encode("cmd=chakanzb&zbnowid=$player1->tool3&uid=$player1->uid&sid=$sid");
     $tool3 = "<a class='absolute opacity-0 left-0 top-0 w-[60px] h-[55px]' href='?cmd=$zbcmd'>{$zhuangbei->zbname}{$qhs}</a><br/>";
@@ -117,6 +131,7 @@ if ($player1->tool4 != 0) {
         $qhs = '+' . $zhuangbei->qianghua;
     }
 
+    $img_tool_4 = $zhuangbei->preview_url;
     $isTool4 = '<span class="absolute left-[10px] top-[7px] rounded-full bg-white w-[10px] h-[10px]"></span>';
     $zbcmd = $encode->encode("cmd=chakanzb&zbnowid=$player1->tool4&uid=$player1->uid&sid=$sid");
     $tool4 = "<a class='absolute opacity-0 left-0 top-0 w-[60px] h-[55px]' href='?cmd=$zbcmd'>{$zhuangbei->zbname}{$qhs}</a><br/>";
@@ -128,6 +143,7 @@ if ($player1->tool5 != 0) {
         $qhs = '+' . $zhuangbei->qianghua;
     }
 
+    $img_tool_5 = $zhuangbei->preview_url;
     $isTool5 = '<span class="absolute left-[10px] top-[7px] rounded-full bg-white w-[10px] h-[10px]"></span>';
     $zbcmd = $encode->encode("cmd=chakanzb&zbnowid=$player1->tool5&uid=$player1->uid&sid=$sid");
     $tool5 = "<a class='absolute opacity-0 left-0 top-0 w-[60px] h-[55px]' href='?cmd=$zbcmd'>{$zhuangbei->zbname}{$qhs}</a><br/>";;
@@ -139,6 +155,7 @@ if ($player1->tool6 != 0) {
         $qhs = '+' . $zhuangbei->qianghua;
     }
 
+    $img_tool_6 = $zhuangbei->preview_url;
     $isTool6 = '<span class="absolute left-[10px] top-[7px] rounded-full bg-white w-[10px] h-[10px]"></span>';
     $zbcmd = $encode->encode("cmd=chakanzb&zbnowid=$player1->tool6&uid=$player1->uid&sid=$sid");
     $tool6 = "<a class='absolute opacity-0 left-0 top-0 w-[60px] h-[55px]' href='?cmd=$zbcmd'>{$zhuangbei->zbname}{$qhs}</a><br/>";;
@@ -198,32 +215,32 @@ $html = <<<HTML
 
                     <div class="grid grid-cols-4 gap-2">
                         <div class="relative">
-                            <img class="w-[60px] h-[55px]" src="images/trangbi/vukhi.png" />
+                            <img class="w-[60px] h-[55px]" src="$img_tool_1" />
                             <!--                        Vũ khí: -->
                             $isTool1 $tool1
                         </div>
                         <div class="relative">
-                            <img class="w-[60px] h-[55px]" src="images/trangbi/ngocboi.png" />
+                            <img class="w-[60px] h-[55px]" src="$img_tool_2" />
                             <!--                        Ngọc Bội: -->
                             $isTool2 $tool2
                         </div>
                         <div class="relative">
-                            <img class="w-[60px] h-[55px]" src="images/trangbi/giap.png" />
+                            <img class="w-[60px] h-[55px]" src="$img_tool_3" />
                             <!--                        áo: -->
                             $isTool3 $tool3
                         </div>
                         <div class="relative">
-                            <img class="w-[60px] h-[55px]" src="images/trangbi/baotay.png" />
+                            <img class="w-[60px] h-[55px]" src="$img_tool_4" />
                             <!--                        Bao tay: -->
                             $isTool4 $tool4
                         </div>
                         <div class="relative">
-                            <img class="w-[60px] h-[55px]" src="images/trangbi/rinh.png" />
+                            <img class="w-[60px] h-[55px]" src="$img_tool_5" />
                             <!--                        Nhẫn: -->
                             $isTool5 $tool5
                         </div>
                         <div class="relative">
-                            <img class="w-[60px] h-[55px]" src="images/trangbi/giay.png" />
+                            <img class="w-[60px] h-[55px]" src="$img_tool_6" />
                             <!--                        Giày:-->
                             $isTool6 $tool6
                         </div>

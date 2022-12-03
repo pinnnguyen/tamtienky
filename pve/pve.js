@@ -70,7 +70,7 @@ function prevAttach() {
     })
 }
 
-function moveLeft(monsterPosition, playerPosition, fn) {
+async function moveLeft(monsterPosition, playerPosition, fn) {
     let distance = 0,
         isLeft = false,
         timeSkip = 0;
@@ -91,25 +91,66 @@ function moveLeft(monsterPosition, playerPosition, fn) {
         fn()
     }
 
-    const run = setInterval(() => {
+    let run = null
+    let startInterval = null
+
+    startInterval = setInterval(() => {
         timeSkip += 1
-
-        if (!isLeft) {
-            box2.right(1)
-        }
-
-        if (isLeft) {
-            box2.left(1)
-        }
-
         if (timeSkip == distance) {
             fn(distance)
-            clearInterval(run)
+            // window.cancelAnimationFrame(run)
+            clearInterval(startInterval)
         }
-    }, PVE_STATE.speedLeft)
+
+        run = window.requestAnimationFrame(() => {
+            if (!isLeft) {
+                box2.right(1)
+            }
+
+            if (isLeft) {
+                box2.left(1)
+            }
+        })
+
+    }, 10)
+    // for (let i = 0; i < distance; i++) {
+    //     timeSkip += 1
+    //     if (timeSkip == distance) {
+    //         fn(distance)
+    //         window.cancelAnimationFrame(run)
+    //         // clearInterval(run)
+    //     }
+    //
+    //     run = window.requestAnimationFrame(() => {
+    //         if (!isLeft) {
+    //             box2.right(1)
+    //         }
+    //
+    //         if (isLeft) {
+    //             box2.left(1)
+    //         }
+    //     })
+    // }
+    // const run = requestAnimationFrame(() => {
+    //     timeSkip += 1
+    //
+    //     if (!isLeft) {
+    //         box2.right(1)
+    //     }
+    //
+    //     if (isLeft) {
+    //         box2.left(1)
+    //     }
+    //
+    //     if (timeSkip == distance) {
+    //         fn(distance)
+    //         cancelAnimationFrame(run)
+    //         // clearInterval(run)
+    //     }
+    // })
 }
 
-function moveUp(monsterPosition, playerPosition, fn) {
+async function moveUp(monsterPosition, playerPosition, fn) {
     let isLeft = false,
         distance = 0,
         timeSkip = 0;
@@ -130,22 +171,82 @@ function moveUp(monsterPosition, playerPosition, fn) {
         isLeft = true
     }
 
-    const run = setInterval(() => {
+    let run = null
+    let startInterval = null
+
+    startInterval = setInterval(() => {
         timeSkip += 1
 
-        if (!isLeft) {
-            box2.down(1)
-        }
-
-        if (isLeft) {
-            box2.up(1)
-        }
+        // if (!isLeft) {
+        //     box2.down(1)
+        // }
+        //
+        // if (isLeft) {
+        //     box2.up(1)
+        // }
 
         if (timeSkip == distance) {
             fn(distance)
-            clearInterval(run)
+            // window.cancelAnimationFrame(run)
+            clearInterval(startInterval)
         }
-    }, PVE_STATE.speedUp)
+
+        run = window.requestAnimationFrame(() => {
+            if (!isLeft) {
+                box2.down(1)
+            }
+
+            if (isLeft) {
+                box2.up(1)
+            }
+        })
+    }, 10)
+
+    // for (let i = 0; i < distance; i++) {
+    //     timeSkip += 1
+    //
+    //     if (!isLeft) {
+    //         box2.down(1)
+    //     }
+    //
+    //     if (isLeft) {
+    //         box2.up(1)
+    //     }
+    //
+    //     if (timeSkip == distance) {
+    //         fn(distance)
+    //         // clearInterval(run)
+    //         window.cancelAnimationFrame(run)
+    //     }
+    //
+    //     run = window.requestAnimationFrame(() => {
+    //         if (!isLeft) {
+    //             box2.down(1)
+    //         }
+    //
+    //         if (isLeft) {
+    //             box2.up(1)
+    //         }
+    //     })
+    // }
+
+    // const run = requestAnimationFrame(() => {
+    //     timeSkip += 1
+    //
+    //     if (!isLeft) {
+    //         box2.down(1)
+    //     }
+    //
+    //     if (isLeft) {
+    //         box2.up(1)
+    //     }
+    //
+    //     if (timeSkip == distance) {
+    //         fn(distance)
+    //         // clearInterval(run)
+    //         cancelAnimationFrame(run)
+    //     }
+    // })
 }
 
 function random(number) {

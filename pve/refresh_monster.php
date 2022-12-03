@@ -33,7 +33,7 @@ for ($i = 0; $i < count($cxallguaiwu); $i++) {
         <a 
         class='relative rounded-full m-2 !flex flex-col bg-white !text-white font-medium text-center w-[50px] h-[50px] overflow-hidden attach-monster'>
         <img class="absolute top-[50%] left-[50%] w-[45px] h-[45px]" loading="lazy" src="pve/image/fs_007_421.png" style="transform: translate(-50%, -50%);">
-        <span class="text-white font-size-7">
+        <span class="text-white font-size-7" style="font-size: 6px">
         [lv$monster_lv] $monster_name
         </span>
         </a> 

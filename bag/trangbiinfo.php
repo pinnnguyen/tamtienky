@@ -36,7 +36,7 @@ $cup_trang_bi = '';
 
 if (in_array($zhuangbei->zbnowid, $arr)) {
     $equip = <<<HTML
-<button class="bg-[#9e9e9e] h-[30px] flex items-center justify-center rounded-sm p-1" style="background: radial-gradient(black, transparent)">Tháo trang bị</button>
+<button class="h-[30px] flex items-center justify-center rounded-sm p-1 bg-button">Tháo trang bị</button>
 HTML;
 } else {
     $cup_trang_bi = <<<HTML

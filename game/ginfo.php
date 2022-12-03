@@ -86,7 +86,7 @@ HTML;
 
         $html = <<<HTML
         <div>
-        <div class="text-white p-2 p-6 leading-6">
+        <div class="p-2 p-6 leading-6">
             <div>
             [$yguaiwu->gname]: Cấp: $yguaiwu->glv
         </div>

@@ -455,6 +455,7 @@ function changeexp($sid, $dblj, $exp)
     }
     $sql = "update game1 set uexp = uexp + $exp where sid='$sid'";
     $ret = $dblj->exec($sql);
+
     if (istupo($sid, $dblj) == 0) {
         upplayerlv($sid, $dblj);
     }

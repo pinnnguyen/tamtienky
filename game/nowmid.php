@@ -199,7 +199,8 @@ $player_html = <<<HTML
                  <a style='font-size: 9px' 
                  class='!flex flex-col bg-white !text-white font-medium relative w-[50px] h-[50px] rounded-full'>
                  <img class="absolute top-[50%] left-[50%] w-[45px] h-[45px]" src="pve/image/fs_007.png" style="transform: translate(-50%, -50%);">
-                  <span class="text-white">
+                  <span class="text-white left-[50%] bottom-[-8px] absolute" style="transform: translate(-50%, 50%); font-size: 6px">
+                  $player->uname
                 </span>
                 </a>
 HTML;

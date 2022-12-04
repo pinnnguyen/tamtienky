@@ -110,10 +110,11 @@ HTML;
 $('.on-attach').unbind('click').bind('click', function () {
     console.log("on-attach")
     $.get(`game/pve.php?gid=$gid&cmd=pvegj&sid=$sid&nowmid=$nowmid`, (response) => {
+        // $.modal.close();
         $('.teleport').html(response)
-        $(".teleport").modal({
-            fadeDuration: 100
-        });
+        // $(".teleport").modal({
+        //     fadeDuration: 100
+        // });
     })
 });
 </script>

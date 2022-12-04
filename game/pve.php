@@ -140,8 +140,8 @@ if ($cmd == 'pvegj' && $gid != 0) {
     if ($gphurt < $player->ugj * 0.15) {
         $gphurt = round($player->ugj * 0.15);
     }
-    $pvexx = ceil($gphurt * ($player->uxx / 100));
 
+    $pvexx = ceil($gphurt * ($player->uxx / 100));
     if ($phurt <= 0) {
         $hurt = true;
     }
@@ -157,16 +157,18 @@ if ($cmd == 'pvegj' && $gid != 0) {
     $sql = "update midguaiwu set ghp = ghp - {$gphurt} WHERE id='$gid'";
     $dblj->exec($sql);
     $guaiwu = player\getguaiwu($gid, $dblj);
+
+    var_dump($guaiwu->ghp);
     if ($guaiwu->ghp <= 0) {
         #quái vật chết
         $sql = "delete from midguaiwu where id = $gid AND sid='$player->sid'";
         $dblj->exec($sql);
 
         $yxb = round($guaiwu->glv * 3);
-//        if (($hurt || $lvc >= 5) && !($guaiwu->glv >= 46 && $player->ulv >= 50)) {
-//            //Không có sát thương hoặc nhân vật cao hơn quái vật 5 cấp, quái vật không lớn hơn 46, nhân vật lớn hơn 50, linh thạch sẽ không phát nổ
-//            $yxb = 0;
-//        }
+        //        if (($hurt || $lvc >= 5) && !($guaiwu->glv >= 46 && $player->ulv >= 50)) {
+        //            //Không có sát thương hoặc nhân vật cao hơn quái vật 5 cấp, quái vật không lớn hơn 46, nhân vật lớn hơn 50, linh thạch sẽ không phát nổ
+        //            $yxb = 0;
+        //        }
 
         $ret = \player\changeyxb(1, $yxb, $sid, $dblj);
         if ($ret) {
@@ -261,6 +263,7 @@ HTML;
                 }
             }
         }
+
         yp:
         $sjjv = mt_rand(1, 100);
         if ($yguaiwu->ypjv >= $sjjv && $yguaiwu->gyp != '') {
@@ -290,6 +293,7 @@ HTML;
 
         $zdjg = 1;
     }
+
     $pzssh = $phurt - $pvexx;
     $sql = "update game1 set uhp = uhp - $pzssh  WHERE sid = '$sid'";
     $dblj->exec($sql);
@@ -299,6 +303,7 @@ HTML;
         $dblj->exec($sql);
         $player->uhp = $player->umaxhp;
     }
+
     if ($player->uhp <= 0) {
         $zdjg = 0;
     }
@@ -336,6 +341,7 @@ if ($player->jn3 != 0) {
     }
 }
 
+var_dump($zdjg);
 if (isset($zdjg)) {
     switch ($zdjg) {
         case 1:
@@ -396,7 +402,9 @@ HTML;
 HTML;
             break;
     }
-} else {
+}
+
+if (empty($zdjg)) {
     if (isset($gphurt) && $gphurt > 0) {
         $ghurt = '-' . $gphurt;
     } else {
@@ -482,24 +490,7 @@ HTML;
         </div>
     </div>
 
-    <div class="p2">
-        <div class="flex">
-            <span>Kỹ năng: </span>
-            <div class="flex">
-                <a class="!flex items-center bg-[#000000] !text-white text-xs" href="?cmd=$usejn1"><img class="w-[30px]" src="images/skill/skill1.png" /><span>$jnname1</span></a>
-                <a class="!flex items-center bg-[#000000] !text-white text-xs" href="?cmd=$usejn2"><img class="w-[30px]" src="images/skill/skill1.png" /><span>$jnname2</span></a>
-                <a class="!flex items-center bg-[#000000] !text-white text-xs" href="?cmd=$usejn3"><img class="w-[30px]" src="images/skill/skill1.png" /><span>$jnname3</span></a>
-            </div>
-        </div>
-        <div>
-            <span>Vật phẩm: </span>
-            <div class="flex">
-                <a class="!flex items-center bg-[#000000] !text-white text-xs" href="?cmd=$useyp1"><img class="w-[30px]" src="images/daocu/hp.png" /><span>$ypname1</span></a>
-                <a class="!flex items-center bg-[#000000] !text-white text-xs" href="?cmd=$useyp2"><img class="w-[30px]" src="images/daocu/hp.png" /><span>$ypname2</span></a>
-                <a class="!flex items-center bg-[#000000] !text-white text-xs" href="?cmd=$useyp3"><img class="w-[30px]" src="images/daocu/hp.png" /><span>$ypname3</span></a>
-            </div>
-        </div>
-    </div>
+    
     <div class="flex">
         <a 
         class="!flex items-center justify-center bg-[#621e1f] !text-white h-[34px] on-attach" 
@@ -528,19 +519,33 @@ $('.on-attach').unbind('click').bind('click', function () {
     console.log("on-attach")
     $.get(`game/pve.php?gid=$gid&cmd=pvegj&sid=$sid&nowmid=$nowmid`, (response) => {
         $('.teleport').html(response)
-        $(".teleport").modal({
-            fadeDuration: 100
-        });
+        // $(".teleport").modal({
+        //     fadeDuration: 100
+        // });
     })
 });
 </script>
 HTML;
 }
+
 echo $html;
-/**
- * Created by PhpStorm.
- * User: Administrator
- * Date: 2016/6/11
- * Time: 12:09
- */
-?>
+
+
+//<div class="p2">
+//        <div class="flex">
+//            <span>Kỹ năng: </span>
+//            <div class="flex">
+//                <a class="!flex items-center bg-[#000000] !text-white text-xs" href="?cmd=$usejn1"><img class="w-[30px]" src="images/skill/skill1.png" /><span>$jnname1</span></a>
+//                <a class="!flex items-center bg-[#000000] !text-white text-xs" href="?cmd=$usejn2"><img class="w-[30px]" src="images/skill/skill1.png" /><span>$jnname2</span></a>
+//                <a class="!flex items-center bg-[#000000] !text-white text-xs" href="?cmd=$usejn3"><img class="w-[30px]" src="images/skill/skill1.png" /><span>$jnname3</span></a>
+//            </div>
+//        </div>
+//        <div>
+//            <span>Vật phẩm: </span>
+//            <div class="flex">
+//                <a class="!flex items-center bg-[#000000] !text-white text-xs" href="?cmd=$useyp1"><img class="w-[30px]" src="images/daocu/hp.png" /><span>$ypname1</span></a>
+//                <a class="!flex items-center bg-[#000000] !text-white text-xs" href="?cmd=$useyp2"><img class="w-[30px]" src="images/daocu/hp.png" /><span>$ypname2</span></a>
+//                <a class="!flex items-center bg-[#000000] !text-white text-xs" href="?cmd=$useyp3"><img class="w-[30px]" src="images/daocu/hp.png" /><span>$ypname3</span></a>
+//            </div>
+//        </div>
+//    </div>

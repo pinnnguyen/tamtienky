@@ -402,7 +402,7 @@ $nowhtml = <<<HTML
             <img class="w-[30px]" src="images/menu/XJHomescreenButton_15.png" /><span class="text-span">X.hạng</span>
         </a>
     </div>
-    <div class="p-2     relative" id="monster-container">
+    <div class="p-2 relative" id="monster-container">
         <div class="flex flex-wrap">
             <div class="absolute" sid="$sid" id="box-player">
                 $player_html

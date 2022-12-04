@@ -178,9 +178,7 @@ $cwhtml = <<<HTML
 <script>
 function handlePet(_sid, _canshu, _cwid) {
     const url = 'pet/pet.php?sid=' + _sid + '&canshu=' + _canshu + '&cwid=' + _cwid
-    console.log("click", url)
       $.get(url, (response) => {
-         console.log('response', response)
          $('.teleport').html(response)
      })
 }

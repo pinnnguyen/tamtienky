@@ -1,13 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Administrator
- * Date: 2016/6/21
- * Time: 22:22
- */
-//if (!isset($uid)){
-//
-//}
+
 $cxmid = \player\getmid($player->nowmid,$dblj);
 $cxqy = \player\getqy($cxmid->mqy,$dblj);
 $gorehpmid = $encode->encode("cmd=gomid&newmid=$cxqy->mid&sid=$player->sid");
@@ -71,7 +63,7 @@ if (isset($canshu)){
 
             $ran = mt_rand(1,100);
             if ($player->ubj >= $ran){
-                $player->ugj = round($player->ugj * 1.82);
+                $player->ugj = round($player->ugj * $player->perViolentDamage);
                 $pvpbj = 'Bạo kích';
             }
 

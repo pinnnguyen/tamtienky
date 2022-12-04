@@ -13,7 +13,8 @@ $.notify.addStyle('pve', {
 
 $.notify.addStyle('normal', {
     html: "<span data-notify-text/>",
-    autoHideDelay: 800,
+    autoHideDelay: 500,
+    globalPosition: 'bottom right',
     classes: {
         base: {
             "white-space": "nowrap",

@@ -137,7 +137,7 @@ HTML;
 
     $ran = mt_rand(1, 100);
     if ($player->ubj >= $ran) {
-        $player->ugj = round($player->ugj * 1.72);
+        $player->ugj = round($player->ugj * $player->perViolentDamage);
         $pvebj = 'Bạo kích';
     }
 

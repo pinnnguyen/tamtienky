@@ -141,6 +141,7 @@ if ($player->tool6 != 0) {
 
 }
 
+$perViolentDamage = $player->perViolentDamage * 100;
 $html = <<<HTML
 <div class="bg-[#395661] w-full h-full">
     <div class="h-full">
@@ -149,10 +150,9 @@ $html = <<<HTML
         </h3>
         <div class="m-3 rounded-md pt-2" style="background-image: linear-gradient(to bottom right, #7a989e, #a5bfbc, #d6e4e0); height: calc(100% - 60px);">
             <div class="h-[60px] bg-[#b5c7c7] justify-between flex items-center mx-3">
-                <div>
-                    <img class="h-[50px]" src="images/pve/player-avatar.png" />
-                </div>
-                <div>
+                <div class="flex items-center">
+                    <img class="h-[50px] mr-2" src="images/pve/player-avatar.png" />
+                                    <div>
                     <div>
                         Tên: $player->uname
                     </div>
@@ -163,9 +163,13 @@ $html = <<<HTML
                         Đẳng cấp: $player->ulv
                     </div>
                 </div>
+                </div>
                 <a style="background: radial-gradient(black, transparent);" class="text-white giftcode" href="?cmd=$duihuancmd">Giftcode</a>
             </div>
             <div class="m-3">
+                <div class="border border-[#80999d] bg-[#9ab1b0] my-1 px-2">
+                    Hệ: $player->className
+                </div>
                 <div class="border border-[#80999d] bg-[#9ab1b0] my-1 px-2">
                     Linh thạch: $player->uyxb
                 </div>
@@ -186,6 +190,9 @@ $html = <<<HTML
                 </div>
                 <div class="border border-[#80999d] bg-[#9ab1b0] my-1 px-2">
                     Bạo kích: $player->ubj%
+                </div>
+                 <div class="border border-[#80999d] bg-[#9ab1b0] my-1 px-2">
+                    Sát thương bạo kích: $perViolentDamage%
                 </div>
                 <div class="border border-[#80999d] bg-[#9ab1b0] my-1 px-2">
                     Hút máu: $player->uxx%

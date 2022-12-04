@@ -1,6 +1,7 @@
 <?php
 namespace player;
 require_once $_SERVER['DOCUMENT_ROOT'] . "/rules/upgrade.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/figure/constant.php";
 
 class player
 {
@@ -42,6 +43,9 @@ class player
     var $jn3;
     var $ispvp;
     var $cengci;
+    var $class;
+    var $className;
+    var $perViolentDamage;
 }
 
 function getplayer($sid, $dblj)
@@ -84,7 +88,95 @@ function getplayer($sid, $dblj)
     $cxjg->bindColumn('cw', $player->cw);
     $cxjg->bindColumn('sfzx', $player->sfzx);
     $cxjg->bindColumn('ispvp', $player->ispvp);
+    $cxjg->bindColumn('class', $player->class);
     $cxjg->fetch(\PDO::FETCH_ASSOC);
+
+//    'perDamage' => 5,
+//        'perViolentDamage' => 0,
+//        'perVitality' => 5,
+//        'perDefense' => 5
+//
+//        ugj -> damage
+//        ufy -> defense
+//        ubj -> bao kich
+//        Umaxhp -> hp
+//        uxx -> hut mau
+
+    if ($player->class == \figure_constant\constant::$TU_MA) {
+        $perDamage = \figure_constant\constant::$TU_MA_ATTRIBUTE['perDamage'];
+        $perViolentDamage = \figure_constant\constant::$TU_MA_ATTRIBUTE['perViolentDamage'];
+        $perVitality = \figure_constant\constant::$TU_MA_ATTRIBUTE['perVitality'];
+        $perDefense = \figure_constant\constant::$TU_MA_ATTRIBUTE['perDefense'];
+
+        $damagePlus = ($player->ugj * $perDamage) / 100;
+        $player->ugj = $player->ugj + $damagePlus;
+
+        $defensePlus = ($player->ufy * $perDefense) / 100;
+        $player->ufy = $player->ufy + $defensePlus;
+
+        $vitalityPlus = ($player->ufy * $perVitality) / 100;
+        $player->umaxhp = $player->umaxhp + $vitalityPlus;
+
+        $player->perViolentDamage = \figure_constant\constant::$PER_VIOLENT_DAMAGE_DEFAULT + $perViolentDamage;
+        $player->className = 'Tu ma';
+    }
+
+    if ($player->class == \figure_constant\constant::$NHAN_TOC) {
+        $perDamage = \figure_constant\constant::$TU_NHAN_TOC_ATTRIBUTE['perDamage'];
+        $perViolentDamage = \figure_constant\constant::$TU_NHAN_TOC_ATTRIBUTE['perViolentDamage'];
+        $perVitality = \figure_constant\constant::$TU_NHAN_TOC_ATTRIBUTE['perVitality'];
+        $perDefense = \figure_constant\constant::$TU_NHAN_TOC_ATTRIBUTE['perDefense'];
+
+        $damagePlus = ($player->ugj * $perDamage) / 100;
+        $player->ugj = $player->ugj + $damagePlus;
+
+        $defensePlus = ($player->ufy * $perDefense) / 100;
+        $player->ufy = $player->ufy + $defensePlus;
+
+        $vitalityPlus = ($player->ufy * $perVitality) / 100;
+        $player->umaxhp = ($player->umaxhp + $vitalityPlus) / 100;
+
+        $player->perViolentDamage = \figure_constant\constant::$PER_VIOLENT_DAMAGE_DEFAULT + $perViolentDamage;
+        $player->className = 'Nhân tộc';
+    }
+
+    if ($player->class == \figure_constant\constant::$TU_TIEN) {
+        $perDamage = \figure_constant\constant::$TU_TIEN_ATTRIBUTE['perDamage'];
+        $perViolentDamage = \figure_constant\constant::$TU_TIEN_ATTRIBUTE['perViolentDamage'];
+        $perVitality = \figure_constant\constant::$TU_TIEN_ATTRIBUTE['perVitality'];
+        $perDefense = \figure_constant\constant::$TU_TIEN_ATTRIBUTE['perDefense'];
+
+        $damagePlus = ($player->ugj * $perDamage) / 100;
+        $player->ugj = $player->ugj + $damagePlus;
+
+        $defensePlus = ($player->ufy * $perDefense) / 100;
+        $player->ufy = $player->ufy + $defensePlus;
+
+        $vitalityPlus = ($player->ufy * $perVitality) / 100;
+        $player->umaxhp = ($player->umaxhp + $vitalityPlus) / 100;
+
+        $player->perViolentDamage = \figure_constant\constant::$PER_VIOLENT_DAMAGE_DEFAULT + $perViolentDamage;
+        $player->className = 'Tu tiên';
+    }
+
+    if ($player->class == \figure_constant\constant::$TU_YEU) {
+        $perDamage = \figure_constant\constant::$TU_YEU_ATTRIBUTE['perDamage'];
+        $perViolentDamage = \figure_constant\constant::$TU_YEU_ATTRIBUTE['perViolentDamage'];
+        $perVitality = \figure_constant\constant::$TU_YEU_ATTRIBUTE['perVitality'];
+        $perDefense = \figure_constant\constant::$TU_YEU_ATTRIBUTE['perDefense'];
+
+        $damagePlus = ($player->ugj * $perDamage) / 100;
+        $player->ugj = $player->ugj + $damagePlus;
+
+        $defensePlus = ($player->ufy * $perDefense) / 100;
+        $player->ufy = $player->ufy + $defensePlus;
+
+        $vitalityPlus = ($player->ufy * $perVitality) / 100;
+        $player->umaxhp = ($player->umaxhp + $vitalityPlus) / 100;
+
+        $player->perViolentDamage = \figure_constant\constant::$PER_VIOLENT_DAMAGE_DEFAULT + $perViolentDamage;
+        $player->className = 'Tu yêu';
+    }
 
     if ($player->tool1 != 0) {
         $zhuangbei = getzb($player->tool1, $dblj);

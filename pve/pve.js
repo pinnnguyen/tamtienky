@@ -3,6 +3,7 @@ function refreshMonster(player) {
     const container = $('#monster-container');
 
     if (boxMonsters.length === 0) {
+        if (!player) return;
         const sid = player.attr('sid')
         if (!sid) return
         $.get(`pve/refresh_monster.php?sid=${sid}`, (response) => {

@@ -1,8 +1,8 @@
 class box {
     constructor() {
         this.box = $("#box-player");
-        this.y = 1;
-        this.x = 1;
+        this.y = 80;
+        this.x = 25;
     }
 
     setPosition(y, x) {

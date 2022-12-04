@@ -2,6 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . "/pdo.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/class/encode.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/class/player.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/figure/constant.php";
 
 $sid = $_GET['sid'];
 $gid = $_GET['gid'];
@@ -131,7 +132,7 @@ if ($cmd == 'pvegj' && $gid != 0) {
 
     $ran = mt_rand(1, 100);
     if ($player->ubj >= $ran) {
-        $player->ugj = round($player->ugj * 1.72);
+        $player->ugj = round($player->ugj * $player->perViolentDamage);
         $pvebj = 'Bạo kích';
     }
 

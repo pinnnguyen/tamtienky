@@ -34,7 +34,7 @@ session_start();
 //    if (getMillisecond() - $_SESSION["post_sep"] < $allow_sep)
 //    {
 //
-//        $msg = '<meta charset="utf-8" content="width=device-width,user-scalable=no" name="viewport">你点击太快了^_^!<br/><a href="?'.$Dcmd.'">继续</a>';
+//        $msg = '<meta charset="utf-8" content="text/html; charset=utf-8" name="viewport">你点击太快了^_^!<br/><a href="?'.$Dcmd.'">继续</a>';
 //        exit($msg);
 //    }
 //    else
@@ -104,19 +104,24 @@ if (isset($cmd)) {
         case 'cjplayer':
             if (isset($token) && isset($username) && isset($sex)) {
                 $username = htmlspecialchars($username);
-                $sql = "SELECT * FROM game1 where uname = '" . $username . "'"; //昵称查询
+                $sql = "SELECT * FROM game1 where uname = '" . $username . "'";
                 $ltcxjg = $dblj->query($sql);
                 if ($ltcxjg) {
                     $ret = $ltcxjg->fetchAll(PDO::FETCH_ASSOC);
                     if (count($ret) > 0) {
-                        echo "Biệt hiệu này đã được sử dụng!";
+                        echo <<<HTML
+<p class="text-white text-center fixed top-0 z-[9] w-full bg-black">Biệt hiệu này đã được sử dụng!</p>
+HTML;
+
                         $ym = 'game/cj.php';
                         break;
                     }
                 }
 
-                if (strlen($username) < 6 || strlen($username) > 12) {
-                    echo "Tên người dùng không được quá ngắn hoặc quá dài";
+                if (strlen($username) < 6 || strlen($username) > 16) {
+                    echo <<<HTML
+<p class="text-white text-center fixed top-0 z-[9] w-full bg-black">Tên người dùng không được quá ngắn hoặc quá dài!</p>
+HTML;
                     $ym = 'game/cj.php';
                     break;
                 }
@@ -134,9 +139,9 @@ if (isset($cmd)) {
                     $gameconfig = \player\getgameconfig($dblj);
                     $firstmid = $gameconfig->firstmid;
 
-                    $query = "insert into game1(token, sid, uname, ulv, uyxb, uczb, uexp, uhp, umaxhp, ugj, ufy, uwx, usex, vip, nowmid, endtime, sfzx) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                    $query = "insert into game1(token, sid, uname, ulv, uyxb, uczb, uexp, uhp, umaxhp, ugj, ufy, uwx, usex, vip, nowmid, endtime, sfzx, class) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                     $stmt = $dblj->prepare($query);
-                    $stmt->execute([$token, $sid, $username, '1', '2000', '100', '0', '35', '35', '12', '5', '0', $sex, '0', $firstmid, $nowdate, 1]) or die(print_r($dblj->errorInfo()));
+                    $stmt->execute([$token, $sid, $username, '1', '2000', '100', '0', '45', '35', '12', '5', '0', $sex, '0', $firstmid, $nowdate, 1, $class]) or die(print_r($dblj->errorInfo()));
 
                     $gonowmid = $encode->encode("cmd=gomid&newmid=$gameconfig->firstmid&sid=$sid");
 
@@ -366,7 +371,7 @@ if (isset($cmd)) {
     <!--    <link rel="stylesheet/scss" href="css/animation.scss">-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sora">
     <link rel="icon" href="images/logo.ico" type="image/x-icon">
-    <script src="https://cdn.tailwindcss.com"></script>
+<!--    <script src="https://cdn.tailwindcss.com"></script>-->
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
 
     <!-- Remember to include jQuery :) -->
@@ -374,15 +379,12 @@ if (isset($cmd)) {
     <!-- jQuery Modal -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"/>
-    <!--    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>-->
     <link rel="stylesheet" href="plugins/notify/notify.css"/>
     <script src="plugins/notify/notify.min.js"></script>
     <script src="plugins/notify/notify.setting.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.41/vue.global.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/4.1.6/vue-router.global.js"></script>
-
-    <!--    <script src="https://unpkg.com/vuex@4.0.0/dist/vuex.global.js"></script>-->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/4.1.6/vue-router.global.js"></script>-->
 
 </head>
 <body>

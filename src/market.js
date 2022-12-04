@@ -51,6 +51,7 @@ export const marketComponent = async () => {
 
             const handleShowBag = () => {
                 const $_Bag = document.getElementById("thebag")
+                if (!$_Bag) return;
                 $_Bag.addEventListener("click", function () {
                     show.value = true
                     $('#the-main').addClass('hidden')

@@ -171,9 +171,9 @@ HTML;
 
 
 $cwhtml = <<<HTML
-<div>
+<div class="h-[90vh] overflow-auto">
+    <div class="mt-2 flex items-center justify-center mb-4" onclick="handlePet('$sid', 'chouqu', '')"><span class="flex items-center pet-handle mr-2 h-[22px] bg-[#cf3917] text-xs">Triệu hồi</span>[50 Cực phẩm linh thạch]</div>
     $cwnamehtml
-    <div class="flex items-center justify-center mb-4" onclick="handlePet('$sid', 'chouqu', '')"><span class="flex items-center pet-handle mr-2 h-[22px] bg-[#cf3917] text-xs">Triệu hồi</span>[50 Cực phẩm linh thạch]</div>
 </div>
 <script>
 function handlePet(_sid, _canshu, _cwid) {

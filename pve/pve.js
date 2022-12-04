@@ -29,8 +29,10 @@ function refreshMonster(player) {
 
 $('#auto-attach').unbind('click').bind('click', function () {
     $(this).find('button').text('Đang treo máy')
+    $(this).attr('auto', 'true')
     console.log("click auto attach")
     // GANE_STATE.autoAttach = true
+    console.log('GANE_STATE.autoAttach', GANE_STATE.autoAttach)
     prevAttach()
 })
 

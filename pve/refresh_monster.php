@@ -23,6 +23,8 @@ for ($i = 0; $i < count($cxallguaiwu); $i++) {
     $top =  $ran_top . 'px';
     $left = $ran_left . 'px';
 
+    var_dump($monster_name);
+
     $gwhtml .= <<<HTML
     <div class="absolute monster flex flex-col items-center"
         style="top: $top; left: $left"

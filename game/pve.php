@@ -374,15 +374,15 @@ HTML;
             if (empty($ismanual)) {
                 $html = <<<HTML
 <script>
- $.notify('Bạn Công Kích Gây $pvebj Sát Thương Hồi ($ghurt) Sinh Lực', {
-                autoHideDelay: 2500,
+ $.notify('Bạn Công Kích Gây $ghurt Sát Thương Hồi $pvexx Sinh Lực', {
+                autoHideDelay: 3500,
                 style: 'pve-auto',
                 globalPosition: 'bottom left',
                 showDuration: 200,
             })
             
- $.notify('Bạn Bị Công Gây $phurt$pvexx Sát Thương', {
-    autoHideDelay: 2500,
+ $.notify('Bạn Bị Công Gây $phurt Sát Thương', {
+    autoHideDelay: 3500,
     style: 'pve-auto',
     globalPosition: 'bottom left',
     showDuration: 600,
@@ -543,18 +543,18 @@ HTML;
     if (empty($ismanual)) {
         $html = <<<HTML
 <script>
- $.notify('Bạn Công Kích Gây $pvebj Sát Thương Hút Lại ($ghurt) Sinh Lực', {
+ $.notify('Bạn Công Kích Gây $ghurt Sát Thương Hút Lại $pvexx Sinh Lực', {
                 autoHideDelay: 2500,
                 style: 'pve-auto',
                 globalPosition: 'bottom left',
                 showDuration: 200,
             })
             
- $.notify('Bạn Bị Công Gây $phurt$pvexx Sát Thương', {
-    autoHideDelay: 2000,
+ $.notify('Bạn Bị Công Gây $phurt Sát Thương', {
+    autoHideDelay: 3500,
     style: 'pve-auto',
     globalPosition: 'bottom left',
-    showDuration: 2500,
+    showDuration: 600,
 })
 </script>
 </script>

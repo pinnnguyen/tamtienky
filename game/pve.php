@@ -359,6 +359,24 @@ if (isset($zdjg)) {
             </script>
 HTML;
 
+                $huode .= <<<HTML
+<script>
+ $.notify('Bạn Công Kích Gây $gphurt Sát Thương Hồi $pvexx Sinh Lực', {
+                autoHideDelay: 4500,
+                style: 'pve-auto',
+                globalPosition: 'bottom left',
+                showDuration: 200,
+            })
+            
+ $.notify('Bạn Bị Công Gây (-$phurt) Sát Thương', {
+    autoHideDelay: 4500,
+    style: 'pve-auto',
+    globalPosition: 'bottom left',
+    showDuration: 600,
+})
+</script>
+HTML;
+
             $html = <<<HTML
             <div class="p-3 leading-6 text-white text-center">
                 <span>Đánh bại $guaiwu->gname</span> 
@@ -370,28 +388,6 @@ HTML;
             </div>
 
 HTML;
-
-            if (empty($ismanual)) {
-                $html = <<<HTML
-<script>
- $.notify('Bạn Công Kích Gây $ghurt Sát Thương Hồi $pvexx Sinh Lực', {
-                autoHideDelay: 3500,
-                style: 'pve-auto',
-                globalPosition: 'bottom left',
-                showDuration: 200,
-            })
-            
- $.notify('Bạn Bị Công Gây $phurt Sát Thương', {
-    autoHideDelay: 3500,
-    style: 'pve-auto',
-    globalPosition: 'bottom left',
-    showDuration: 600,
-})
-</script>
-</script>
-HTML;
-
-            }
 
             break;
         case 0:
@@ -550,7 +546,7 @@ HTML;
                 showDuration: 200,
             })
             
- $.notify('Bạn Bị Công Gây $phurt Sát Thương', {
+ $.notify('Bạn Bị Tấn Công Gây $phurt Sát Thương', {
     autoHideDelay: 3500,
     style: 'pve-auto',
     globalPosition: 'bottom left',

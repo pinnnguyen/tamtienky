@@ -16,12 +16,7 @@ $tpls = 0;
 $response = [];
 
 if ($player->uexp < $player->umaxexp) {
-    echo <<<HTML
-<div>
- Tu vi chưa đủ để đột phá<a >Trở về trò chơi</a>
-</div>
-HTML;
-    exit();
+    $response['notify'] = 'Tu vi chưa đủ để đột phá';
 }
 
 $tupo = \player\istupo($sid, $dblj);
@@ -32,10 +27,6 @@ if ($tupo == 1) {
 }
 
 if ($tupo != 0) {
-    $tplshtml = <<<HTML
-    <span>Đột phá cần linh thạch</span>: $tpls/$player->uyxb
-HTML;
-
     $upgj = 0;
     $upfy = 0;
     $uphp = 0;

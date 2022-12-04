@@ -362,14 +362,14 @@ HTML;
                 $huode .= <<<HTML
 <script>
  $.notify('Bạn Công Kích Gây $gphurt Sát Thương Hồi $pvexx Sinh Lực', {
-                autoHideDelay: 4500,
+                autoHideDelay: 3500,
                 style: 'pve-auto',
                 globalPosition: 'bottom left',
                 showDuration: 200,
             })
             
  $.notify('Bạn Bị Công Gây (-$phurt) Sát Thương', {
-    autoHideDelay: 4500,
+    autoHideDelay: 3500,
     style: 'pve-auto',
     globalPosition: 'bottom left',
     showDuration: 600,

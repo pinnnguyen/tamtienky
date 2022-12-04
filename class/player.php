@@ -114,7 +114,7 @@ function getplayer($sid, $dblj)
         $defensePlus = ($player->ufy * $perDefense) / 100;
         $player->ufy = $player->ufy + $defensePlus;
 
-        $vitalityPlus = ($player->ufy * $perVitality) / 100;
+        $vitalityPlus = ($player->umaxhp * $perVitality) / 100;
         $player->umaxhp = $player->umaxhp + $vitalityPlus;
 
         $player->perViolentDamage = \figure_constant\constant::$PER_VIOLENT_DAMAGE_DEFAULT + $perViolentDamage;
@@ -133,8 +133,8 @@ function getplayer($sid, $dblj)
         $defensePlus = ($player->ufy * $perDefense) / 100;
         $player->ufy = $player->ufy + $defensePlus;
 
-        $vitalityPlus = ($player->ufy * $perVitality) / 100;
-        $player->umaxhp = ($player->umaxhp + $vitalityPlus) / 100;
+        $vitalityPlus = ($player->ufumaxhpy * $perVitality) / 100;
+        $player->umaxhp = $player->umaxhp + $vitalityPlus;
 
         $player->perViolentDamage = \figure_constant\constant::$PER_VIOLENT_DAMAGE_DEFAULT + $perViolentDamage;
         $player->className = 'Nhân tộc';
@@ -152,8 +152,8 @@ function getplayer($sid, $dblj)
         $defensePlus = ($player->ufy * $perDefense) / 100;
         $player->ufy = $player->ufy + $defensePlus;
 
-        $vitalityPlus = ($player->ufy * $perVitality) / 100;
-        $player->umaxhp = ($player->umaxhp + $vitalityPlus) / 100;
+        $vitalityPlus = ($player->umaxhp * $perVitality) / 100;
+        $player->umaxhp = $player->umaxhp + $vitalityPlus;
 
         $player->perViolentDamage = \figure_constant\constant::$PER_VIOLENT_DAMAGE_DEFAULT + $perViolentDamage;
         $player->className = 'Tu tiên';
@@ -171,8 +171,8 @@ function getplayer($sid, $dblj)
         $defensePlus = ($player->ufy * $perDefense) / 100;
         $player->ufy = $player->ufy + $defensePlus;
 
-        $vitalityPlus = ($player->ufy * $perVitality) / 100;
-        $player->umaxhp = ($player->umaxhp + $vitalityPlus) / 100;
+        $vitalityPlus = ($player->umaxhp * $perVitality) / 100;
+        $player->umaxhp = $player->umaxhp + $vitalityPlus;
 
         $player->perViolentDamage = \figure_constant\constant::$PER_VIOLENT_DAMAGE_DEFAULT + $perViolentDamage;
         $player->className = 'Tu yêu';

@@ -2,25 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38b48ee1-61e9-457e-9f97-926f62136350" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/figure/constant.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/figure/images/fs_007_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/figure/images/fs_007_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/figure/images/fs_007_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/figure/images/fs_007_4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/figure/playerinfo.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/class/player.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/player.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game.box.js" beforeDir="false" afterPath="$PROJECT_DIR$/game.box.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game.php" beforeDir="false" afterPath="$PROJECT_DIR$/game.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/boss.php" beforeDir="false" afterPath="$PROJECT_DIR$/game/boss.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/cj.php" beforeDir="false" afterPath="$PROJECT_DIR$/game/cj.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/nowmid.php" beforeDir="false" afterPath="$PROJECT_DIR$/game/nowmid.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/pve.php" beforeDir="false" afterPath="$PROJECT_DIR$/game/pve.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/pvp.php" beforeDir="false" afterPath="$PROJECT_DIR$/game/pvp.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/zhuangtai.php" beforeDir="false" afterPath="$PROJECT_DIR$/game/zhuangtai.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/notify/notify.setting.js" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/notify/notify.setting.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pve/pve.js" beforeDir="false" afterPath="$PROJECT_DIR$/pve/pve.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/market.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/market.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rules/upgrade.php" beforeDir="false" afterPath="$PROJECT_DIR$/rules/upgrade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

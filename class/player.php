@@ -261,7 +261,7 @@ function getplayer($sid, $dblj)
 
             $player->jingjie = $rangesjj[$i];
             $player->cengci = ' Tầng ' . $jd;
-            $player->umaxexp = $playernextlv * ($playernextlv + round($playernextlv / 2)) * 12 * $rangesexp[$i] + $playernextlv;
+            $player->umaxexp = $playernextlv * ($playernextlv + round($playernextlv / 5)) * 12 * $rangesexp[$i] + $playernextlv;
             break;
         }
 

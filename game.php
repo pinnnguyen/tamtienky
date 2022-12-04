@@ -328,7 +328,7 @@ if (isset($cmd)) {
 
         if (\player\istupo($sid, $dblj) != 0 && $player->uexp >= $player->umaxexp) {
 //            $tupocmd = $encode->encode("cmd=tupo&sid=$sid");
-            $tupocmd = "<a id='upgrade-level' class='bg-[#d62700]' cmd='tupo' sid='$sid'>Đột phá</a>";
+            $tupocmd = "<a class='bg-[#d62700] upgrade-level' cmd='tupo' sid='$sid'>Đột phá</a>";
             $tpts = "<p class='p-2 text-white text-xs bg-[#161818] absolute z-[999]'><strong>Tip: </strong>Bạn cần đột phá, nếu không sẽ không thể tích lũy được kinh nghiệm:$tupocmd</p>";
         }
 
@@ -386,7 +386,7 @@ if (isset($cmd)) {
 
 </head>
 <body>
-<div id="app" class="bg-white"></div>
+<div id="app"></div>
     <div id="the-main" class="main h-[100vh] sm:w-[640px] md:w-[640px] lg:w-[640px] overflow-hidden">
         <div class="h-full relative bg-black the-game">
             <?php if (!$ym == '') {
@@ -400,7 +400,6 @@ if (isset($cmd)) {
             } ?>
         </div>
         <div class="the-bag h-full bg-[#e3e2d6] relative"></div>
-        <div class="teleport-full relative text-white bg-[#1d160e] p-0 w-[100%]"></div>
         <div class="teleport relative text-white bg-[#1d160e] p-0 border border-[#795548]"></div>
         <div class="alert relative p-0 bg-black hidden"></div>
     </div>
@@ -410,5 +409,6 @@ if (isset($cmd)) {
 <script src="game.box.js" async></script>
 <script src="upgrade/index.js" async></script>
 <script src="tailwind.config.js" async></script>
+<!--<script src="upgrade/bag.js"></script>-->
 
 </html>

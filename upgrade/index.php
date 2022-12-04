@@ -9,17 +9,16 @@ $canshu = $_GET['canshu'];
 $player = \player\getplayer($sid, $dblj);
 $encode = new \encode\encode();
 
-$tupocmd = $encode->encode("cmd=tupo&canshu=tupo&sid=$sid");
-$gonowmid = $encode->encode("cmd=gomid&newmid=$player->nowmid&sid=$sid");
 
 $tplshtml = "";
 $upgrade_success = '';
 $tpls = 0;
+$response = [];
 
 if ($player->uexp < $player->umaxexp) {
     echo <<<HTML
 <div>
- Tu vi chưa đủ để đột phá<a href="?cmd=$gonowmid">Trở về trò chơi</a>
+ Tu vi chưa đủ để đột phá<a >Trở về trò chơi</a>
 </div>
 HTML;
     exit();
@@ -47,14 +46,7 @@ HTML;
                 if ($ret) {
                     $sjs = mt_rand(1, 10);
                     if ($sjs <= 5) {
-                        echo <<<HTML
-<script>
-$.notify('Đột phá thất bại', {
-            style: 'normal',
-            globalPosition: 'bottom right',
-        })
-</script>
-HTML;
+                        $response['notify'] = 'Đột phá thất bại';
                         break;
                     }
 
@@ -64,14 +56,7 @@ HTML;
                         $upfy = 1 + round($player->ufy / 10);
                     } elseif ($tupo == 1) {
                         if ($sjs < 8) {
-                            echo <<<HTML
-<script>
-$.notify('Đột phá thất bại', {
-            style: 'normal',
-            globalPosition: 'bottom right',
-        })
-</script>
-HTML;
+                            $response['notify'] = 'Đột phá thất bại';
                             break;
                         }
 
@@ -86,59 +71,17 @@ HTML;
                     \player\addplayersx("ufy", $upfy, $sid, $dblj);
 
                     $player = \player\getplayer($sid, $dblj);
-                    $upgrade_success = <<<HTML
- <div class='text-white'>
-    <div>
-    Công kích +$upgj
-    </div> 
-    <div>
-    Phòng ngự +$upfy
-    </div> 
-    <div>
-    Khí huyết +$uphp
-    </div>
-</div>
-<script>
-$.notify('Đột phá thành công', {
-            style: 'normal',
-            globalPosition: 'bottom right',
-        })
-</script>
-HTML;
+                    $response['notify'] = 'Đột phá thành công';
+                    $response['attribute'] = array('attach'=> $upgj,'def' => $upfy,'hp' => $uphp);
+
+                        break;
                 } else {
-                    echo "<script>$.notify('Linh thạch của bạn không đủ', {
-    style: 'normal',
-    globalPosition: 'bottom right',
-})</script>";
+                    $response['notify'] = 'Linh thạch của bạn không đủ';
+                    break;
                 }
-                break;
         }
     }
 }
 
-$tupohtml = <<<HTML
-<div class="p-3 leading-6 h-[230px] relative">
-$upgrade_success
-<div>
-    <div class="text-white">
-    <div>
-    Trước mắt cảnh giới: $player->jingjie $player->cengci
-    </div>
-    $tplshtml
-    </div>
-</div>
-    <div class="flex justify-end absolute bottom-0 right-0 p-3" href='?cmd=$tupocmd'>
-    <button 
-        id="upgrade-now" 
-        cmd="tupo" 
-        canshu="tupo" 
-        sid="$sid" 
-        class="!text-white rounded-sm h-[30px] bg-[#009688] p-2 flex items-center">
-        Đột phá
-    </button>
-</div>
-<script src="upgrade/bag.js"></script>
-</div>
-HTML;
-
-echo $tupohtml;
+$response['playerLevelInfo'] = array('nextLevel' => $player->jingjie, 'levelNum' => $player->cengci, 'playerLinhThach' => $player->uyxb, 'useLinhThach' => $tpls);
+echo json_encode($response);

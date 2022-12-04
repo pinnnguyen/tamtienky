@@ -342,7 +342,7 @@ if ($clmid->mnpc != "") {
         //        }
         $npccmd = $encode->encode("cmd=npc&nid=$nid&sid=$player->sid");
         $npchtml .= <<<HTML
-        <a style="background: radial-gradient(black, transparent); color: white" href="?cmd=$npccmd">$nname</a>
+        <a class="m-2" style="background: radial-gradient(black, transparent); color: white" href="?cmd=$npccmd">$nname</a>
 HTML;
     }
 }
@@ -416,15 +416,15 @@ $nowhtml = <<<HTML
         </div>
     </div>
     <div></div>
-    <div class="p-2">
+    <div class="p-3 bg-[#36445a]">
         $npchtml
     </div>
     <div></div>
     <div class="absolute bottom-0 bg-[#36445a] w-full">
         <div id="auto-attach" class="relative">
-            <button class="absolute top-[-10px] w-[70px] h-[70px] left-[50%] rounded-full text-white" style="transform: translate(-50%, -39px); background: linear-gradient(to left, #58031e, #550370);">Tự động đánh</button>
+            <button class="absolute top-[-10px] w-[70px] h-[70px] left-[50%] rounded-full text-white" style="transform: translate(-50%, -39px); background: linear-gradient(to left, #009688, #36445a);">Tự động đánh</button>
         </div>
-        <div class="flex items-center justify-between font-semibold text-xs text-white p-2 h-[40px] text-center" style="background: linear-gradient(to left, #58031e, #550370);">
+        <div class="flex items-center justify-between font-semibold text-xs text-white p-2 h-[40px] text-center" style="background: linear-gradient(to left, #009688, #36445a);">
             $clmid->mname$pvphtml
             <a class="w-[110px] !flex justify-center items-center !text-white all-map h-[30px] w-[70px] bg-[#009688]" sid="$sid">Bản đồ</a>
         </div>

@@ -19,7 +19,7 @@ if (isset($newmid)) {
             $retqy = \player\getqy($retmid->mqy, $dblj);
             $gonowmid = $encode->encode("cmd=gomid&newmid=$retqy->mid&sid=$sid");
             if ($newmid != $retqy->mid) {
-                exit("Bạn đã bị thương nặng, xin vui lòng điều trị <br/>" . '<a href="?cmd=' . $gonowmid . '">Trở lại trò chơi</a>');
+                exit("<p class='bg-[#19465b] w-full text-center transform-center fixed text-white'>Bạn đã bị thương nặng, xin vui lòng điều trị <br/>" . '<a class="button_yes" href="?cmd=' . $gonowmid . '">Trở lại trò chơi</a></p>');
             }
         }
         \player\changeplayersx('nowmid', $newmid, $sid, $dblj);

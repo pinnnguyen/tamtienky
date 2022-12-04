@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" content="width=device-width,user-scalable=no" name="viewport" />
-    <title>寻仙纪修复日志</title>
+    <title>Tu tiên hội</title>
     <link rel="stylesheet" href="css/gamecss.css">
 </head>
 <body>

@@ -58,6 +58,23 @@ export const marketComponent = async () => {
                 });
             }
 
+            const loadBag = (fangshi, sid) => {
+                axios
+                    .get(`/market/market.php`, {
+                        params: {
+                            fangshi: fangshi,
+                            sid: sid,
+                        }
+                    })
+                    .then((response) => {
+                        console.log("response", response);
+                        items.value = response.data
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
+            }
+
             return {
                 show,
                 items,
@@ -71,22 +88,6 @@ export const marketComponent = async () => {
     };
 };
 
-const loadBag = (fangshi, sid) => {
-    axios
-        .get(`/market/market.php`, {
-            params: {
-                fangshi: fangshi,
-                sid: sid,
-            }
-        })
-        .then((response) => {
-            console.log("response", response);
-            items.value = response.data
-        })
-        .catch((error) => {
-            console.error(error);
-        });
-}
 
 const loadEquipment = (item) => {
     teleport.html(`

@@ -151,9 +151,9 @@ HTML;
         $cwinfo = $encode->encode("cmd=chongwu&cwid=$cwid&canshu=cwinfo&sid=$sid");
         $petname = $cw['cwname'];
         $cwnamehtml .= <<<HTML
-            <div class='p-4 flex border border-2 m-5 rounded-sm relative flex-col' onclick="handlePet('$sid', 'cwinfo', '$cwid')">
+            <div class='p-4 flex border border-2 m-5 rounded-sm relative flex-col'>
             <div class='flex items-center mt-3'>
-            <img src='images/gif/pet.gif' class='w-[120px]' />
+            <img onclick="handlePet('$sid', 'cwinfo', '$cwid')" src='images/gif/pet.gif' class='w-[120px]' />
             $current_pet_info
             <div class='absolute top-[6px] right-[6px] flex'>$gncmd</div>
             </div>

@@ -146,19 +146,10 @@ if ($cmd == 'pvegj' && $gid != 0) {
         $hurt = true;
     }
 
-    if ($phurt < $pvexx) {
-        $pvexx = $phurt - 7;
-
-        if ($pvexx < 0) {
-            $pvexx = 0;
-        }
-    }
-
     $sql = "update midguaiwu set ghp = ghp - {$gphurt} WHERE id='$gid'";
     $dblj->exec($sql);
     $guaiwu = player\getguaiwu($gid, $dblj);
 
-    var_dump($guaiwu->ghp);
     if ($guaiwu->ghp <= 0) {
         #quái vật chết
         $sql = "delete from midguaiwu where id = $gid AND sid='$player->sid'";
@@ -341,7 +332,6 @@ if ($player->jn3 != 0) {
     }
 }
 
-var_dump($zdjg);
 if (isset($zdjg)) {
     switch ($zdjg) {
         case 1:

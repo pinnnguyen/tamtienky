@@ -370,6 +370,29 @@ HTML;
             </div>
 
 HTML;
+
+            if (empty($ismanual)) {
+                $html = <<<HTML
+<script>
+ $.notify('Bạn Công Kích Gây $pvebj Sát Thương Hồi ($ghurt) Sinh Lực', {
+                autoHideDelay: 2500,
+                style: 'pve-auto',
+                globalPosition: 'bottom left',
+                showDuration: 200,
+            })
+            
+ $.notify('Bạn Bị Công Gây $phurt$pvexx Sát Thương', {
+    autoHideDelay: 2500,
+    style: 'pve-auto',
+    globalPosition: 'bottom left',
+    showDuration: 600,
+})
+</script>
+</script>
+HTML;
+
+            }
+
             break;
         case 0:
             $html = <<<HTML
@@ -520,8 +543,8 @@ HTML;
     if (empty($ismanual)) {
         $html = <<<HTML
 <script>
- $.notify('Bạn Công Kích Gây $pvebj Sát Thương Hồi ($ghurt) Sinh Lực', {
-                autoHideDelay: 2000,
+ $.notify('Bạn Công Kích Gây $pvebj Sát Thương Hút Lại ($ghurt) Sinh Lực', {
+                autoHideDelay: 2500,
                 style: 'pve-auto',
                 globalPosition: 'bottom left',
                 showDuration: 200,
@@ -531,7 +554,7 @@ HTML;
     autoHideDelay: 2000,
     style: 'pve-auto',
     globalPosition: 'bottom left',
-    showDuration: 600,
+    showDuration: 2500,
 })
 </script>
 </script>

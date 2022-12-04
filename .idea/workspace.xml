@@ -3,12 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="38b48ee1-61e9-457e-9f97-926f62136350" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game.php" beforeDir="false" afterPath="$PROJECT_DIR$/game.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/ginfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/game/ginfo.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game/nowmid.php" beforeDir="false" afterPath="$PROJECT_DIR$/game/nowmid.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game/pve.php" beforeDir="false" afterPath="$PROJECT_DIR$/game/pve.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/notify/notify.css" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/notify/notify.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/notify/notify.setting.js" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/notify/notify.setting.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -419,9 +419,10 @@ $nowhtml = <<<HTML
             </div>
         </div>
     </div>
-    <div></div>
-        $npchtml
-    <div></div>
+    <div>
+            $npchtml
+
+</div>
     <div class="absolute bottom-0 bg-[#36445a] w-full">
             $lthtml
             <span class="text-xs mb-2 text-[#ff9800] pb-2"> <span class="text-red-600 font-10">[Chú ý]</span>: <span class="text-white text-span">$clmid->playerinfo</span> </span>

@@ -6,7 +6,24 @@ $.notify.addStyle('pve', {
             "background-color": "transparent",
             "padding": "5px",
             "right": "-7px",
-            "bottom": "300px"
+            "bottom": "240px",
+            "font-size": "10px",
+            "font-weight": "600"
+        },
+    }
+});
+
+$.notify.addStyle('pve-auto', {
+    html: "<span data-notify-text/>",
+    classes: {
+        base: {
+            "background-color": "transparent",
+            "padding": "5px",
+            "right": "-7px",
+            "bottom": "240px",
+            "color": "white",
+            "font-size": "10px",
+            "font-weight": "600"
         },
     }
 });

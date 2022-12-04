@@ -362,9 +362,9 @@ if ($ltcxjg) {
         $uid = $ret[count($ret) - $i - 1]['uid'];
         $ucmd = $encode->encode("cmd=getplayerinfo&uid=$uid&sid=$player->sid");
         if ($uid) {
-            $lthtml .= "<div class='text-red-600'><a href='?cmd=$ucmd''>[$uname]: </a><span class='text-white text-span'>$umsg</span></div>";
+            $lthtml .= "<div class='text-red-600 font-10'><a href='?cmd=$ucmd''>[$uname]: </a><span class='text-white text-span'>$umsg</span></div>";
         } else {
-            $lthtml .= "<div class='text-red-600'><span>[$uname]: </span><span class='text-white text-span'>$umsg</span></div>";
+            $lthtml .= "<div class='text-red-600 font-10'><span>[$uname]: </span><span class='text-white text-span'>$umsg</span></div>";
         }
     }
 }
@@ -423,6 +423,8 @@ $nowhtml = <<<HTML
         $npchtml
     <div></div>
     <div class="absolute bottom-0 bg-[#36445a] w-full">
+            $lthtml
+            <span class="text-xs mb-2 text-[#ff9800] pb-2"> <span class="text-red-600 font-10">[Chú ý]</span>: <span class="text-white text-span">$clmid->playerinfo</span> </span>
         <div class="flex items-center justify-between font-semibold text-xs text-white p-2 h-[40px] text-center" style="background: linear-gradient(to left, #009688, #36445a);">
             $clmid->mname$pvphtml
              <a id="auto-attach" class="w-[110px] !flex justify-center items-center !text-white h-[30px] font-10 bg-[#009688]" sid="$sid">Tự động đánh</a>
@@ -436,9 +438,7 @@ $nowhtml = <<<HTML
                 $bosshtml
             </div>
         </div>
-        $lthtml
 
-        <span class="text-xs mb-2 text-[#ff9800] pb-2"> <span class="text-red-600">[Chú ý]</span>: <span class="text-white text-span">$clmid->playerinfo</span> </span>
         <div class="bg-[#ff5722] flex items-center justify-center text-white"></div>
 
      

@@ -9,6 +9,7 @@ $gid = $_GET['gid'];
 $gyid = $_GET['gyid'];
 $nowmid = $_GET['nowmid'];
 $cmd = $_GET['cmd'];
+$ismanual = $_GET['manual'];
 
 $encode = new \encode\encode();
 $player = \player\getplayer($sid, $dblj);
@@ -424,7 +425,7 @@ if (empty($zdjg)) {
     $remainingPlayerHp .= 'px';
 
     $html = <<<HTML
-<div class="h-full">
+<div class="h-full text-black">
     <div style="background: url('images/bg-pve.jpg');">
         <div class="flex justify-between p-2">
             <div>
@@ -507,7 +508,7 @@ if (empty($zdjg)) {
 <script>
 $('.on-attach').unbind('click').bind('click', function () {
     console.log("on-attach")
-    $.get(`game/pve.php?gid=$gid&cmd=pvegj&sid=$sid&nowmid=$nowmid`, (response) => {
+    $.get(`game/pve.php?gid=$gid&cmd=pvegj&sid=$sid&nowmid=$nowmid&manual=true`, (response) => {
         $('.teleport').html(response)
         // $(".teleport").modal({
         //     fadeDuration: 100
@@ -516,6 +517,27 @@ $('.on-attach').unbind('click').bind('click', function () {
 });
 </script>
 HTML;
+    if (empty($ismanual)) {
+        $html = <<<HTML
+<script>
+ $.notify('Bạn Công Kích Gây $pvebj Sát Thương Hồi ($ghurt) Sinh Lực', {
+                autoHideDelay: 2000,
+                style: 'pve-auto',
+                globalPosition: 'bottom left',
+                showDuration: 200,
+            })
+            
+ $.notify('Bạn Bị Công Gây $phurt$pvexx Sát Thương', {
+    autoHideDelay: 2000,
+    style: 'pve-auto',
+    globalPosition: 'bottom left',
+    showDuration: 600,
+})
+</script>
+</script>
+HTML;
+
+    }
 }
 
 echo $html;

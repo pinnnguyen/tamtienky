@@ -109,7 +109,7 @@ HTML;
 <script>
 $('.on-attach').unbind('click').bind('click', function () {
     console.log("on-attach")
-    $.get(`game/pve.php?gid=$gid&cmd=pvegj&sid=$sid&nowmid=$nowmid`, (response) => {
+    $.get(`game/pve.php?gid=$gid&cmd=pvegj&sid=$sid&nowmid=$nowmid&manual=true`, (response) => {
         // $.modal.close();
         $('.teleport').html(response)
         // $(".teleport").modal({

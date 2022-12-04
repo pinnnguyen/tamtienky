@@ -163,10 +163,10 @@ if ($cmd == 'pvegj' && $gid != 0) {
         $dblj->exec($sql);
 
         $yxb = round($guaiwu->glv * 3);
-        if (($hurt || $lvc >= 5) && !($guaiwu->glv >= 46 && $player->ulv >= 50)) {
-            //Không có sát thương hoặc nhân vật cao hơn quái vật 5 cấp, quái vật không lớn hơn 46, nhân vật lớn hơn 50, linh thạch sẽ không phát nổ
-            $yxb = 0;
-        }
+//        if (($hurt || $lvc >= 5) && !($guaiwu->glv >= 46 && $player->ulv >= 50)) {
+//            //Không có sát thương hoặc nhân vật cao hơn quái vật 5 cấp, quái vật không lớn hơn 46, nhân vật lớn hơn 50, linh thạch sẽ không phát nổ
+//            $yxb = 0;
+//        }
 
         $ret = \player\changeyxb(1, $yxb, $sid, $dblj);
         if ($ret) {

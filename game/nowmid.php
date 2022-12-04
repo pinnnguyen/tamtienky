@@ -92,32 +92,32 @@ HTML;
 
 if ($upmid->mname != '') {
     $lukouhtml .= <<<HTML
-<div>
-    Hướng Bắc:<a style="background: radial-gradient(black, transparent)" class="!text-white h-[34px] !flex items-center" href="?cmd=$upmidlj">$upmid->mname ↑</a>
+<div class="flex flex-col items-center">
+    <span>Hướng Bắc</span> <a style="background: radial-gradient(black, transparent)" class="!text-white h-[34px] !flex items-center" href="?cmd=$upmidlj">$upmid->mname ↑</a>
 </div>
 HTML;
 }
 
 if ($leftmid->mname != '') {
     $lukouhtml .= <<<HTML
-<div>
-    <span>Hướng Tây</span>:<a style="background: radial-gradient(black, transparent)" class="!text-white h-[34px] !flex items-center" href="?cmd=$leftmidlj">$leftmid->mname ←</a>
+<div class="flex flex-col items-center">
+    <span>Hướng Tây</span> <a style="background: radial-gradient(black, transparent)" class="!text-white h-[34px] !flex items-center" href="?cmd=$leftmidlj">$leftmid->mname ←</a>
 </div>
 HTML;
 }
 
 if ($rightmid->mname != '') {
     $lukouhtml .= <<<HTML
-<div>
-    <span>Hướng Đông</span>:<a style="background: radial-gradient(black, transparent)" class="!text-white h-[34px] !flex items-center" href="?cmd=$rightmidlj">$rightmid->mname →</a>
+<div class="flex flex-col items-center">
+    <span>Hướng Đông</span> <a style="background: radial-gradient(black, transparent)" class="!text-white h-[34px] !flex items-center" href="?cmd=$rightmidlj">$rightmid->mname →</a>
 </div>
 HTML;
 }
 
 if ($downmid->mname != '') {
     $lukouhtml .= <<<HTML
-<div>
-    <span>Hướng Nam</span>:<a style="background: radial-gradient(black, transparent)" class="bg-[#621e1f] !text-white h-[34px] !flex items-center" href="?cmd=$downmidlj">$downmid->mname ↓</a>
+<div class="flex flex-col items-center">
+    <span>Hướng Nam</span> <a style="background: radial-gradient(black, transparent)" class="bg-[#621e1f] !text-white h-[34px] !flex items-center" href="?cmd=$downmidlj">$downmid->mname ↓</a>
 </div>
 HTML;
 }
@@ -342,7 +342,10 @@ if ($clmid->mnpc != "") {
         //        }
         $npccmd = $encode->encode("cmd=npc&nid=$nid&sid=$player->sid");
         $npchtml .= <<<HTML
-        <a class="m-2" style="background: radial-gradient(black, transparent); color: white" href="?cmd=$npccmd">$nname</a>
+ <div class="p-3 bg-[#36445a]">
+                <a class="m-2" style="background: radial-gradient(black, transparent); color: white" href="?cmd=$npccmd">$nname</a>
+
+    </div>
 HTML;
     }
 }
@@ -416,31 +419,28 @@ $nowhtml = <<<HTML
         </div>
     </div>
     <div></div>
-    <div class="p-3 bg-[#36445a]">
         $npchtml
-    </div>
     <div></div>
     <div class="absolute bottom-0 bg-[#36445a] w-full">
-        <div id="auto-attach" class="relative">
-            <button class="absolute top-[-10px] w-[70px] h-[70px] left-[50%] rounded-full text-white" style="transform: translate(-50%, -39px); background: linear-gradient(to left, #009688, #36445a);">Tự động đánh</button>
-        </div>
         <div class="flex items-center justify-between font-semibold text-xs text-white p-2 h-[40px] text-center" style="background: linear-gradient(to left, #009688, #36445a);">
             $clmid->mname$pvphtml
-            <a class="w-[110px] !flex justify-center items-center !text-white all-map h-[30px] w-[70px] bg-[#009688]" sid="$sid">Bản đồ</a>
+             <a id="auto-attach" class="w-[110px] !flex justify-center items-center !text-white h-[30px] font-10 bg-[#009688]" sid="$sid">Tự động đánh</a>
+            <a class="!flex justify-center items-center !text-white all-map h-[30px] w-[70px] bg-[#009688] font-10" sid="$sid">Bản đồ</a>
         </div>
-        $lthtml
-
-        <span class="text-xs mb-2 text-[#ff9800] pb-2"> <span class="text-red-600">[Chú ý]</span>: <span class="text-white text-span">$clmid->playerinfo</span> </span>
-        <div class="bg-[#ff5722] flex items-center justify-center text-white"></div>
-
         <div class="p-2">
-            <div class="flex text-white text-xs">
+            <div class="justify-between flex text-white text-xs">
                 $lukouhtml
             </div>
             <div class="flex items-end">
                 $bosshtml
             </div>
         </div>
+        $lthtml
+
+        <span class="text-xs mb-2 text-[#ff9800] pb-2"> <span class="text-red-600">[Chú ý]</span>: <span class="text-white text-span">$clmid->playerinfo</span> </span>
+        <div class="bg-[#ff5722] flex items-center justify-center text-white"></div>
+
+     
 
         <div class="h-[54px] bg-[#36445a]">
             <div class="flex items-center justify-center bg-white pt-1 font-semibold" style="border-radius: 30px 30px 0 0;">

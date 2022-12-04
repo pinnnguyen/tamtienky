@@ -78,7 +78,7 @@ if (isset($canshu)){
             $dblj->exec($sql);
 
 
-            \player\addplayersx("uhp",$pvpxx,$sid,$dblj);
+            \player\addplayersx("uhp", $pvpxx, $sid, $dblj);
 
             $player =  player\getplayer($sid,$dblj);
             if ($player->uhp > $player->umaxhp){

@@ -18,8 +18,15 @@ $player = \player\getplayer($sid, $dblj);
 $payhtml = '';
 $pdjcount = 0;
 
-if ($player->ulv < "10") {
-    exit("<span>Bạn chưa đạt lv10</span><a>Trở về trò chơi</a>");
+if ($player->ulv < "20") {
+    $player_info = array('linhthach'=>$player->uyxb,
+        'cucphamlinhthach'=>$player->uczb,
+        'sid'=>$player->sid,
+        );
+
+    echo json_encode(['player' => $player_info, 'error' => ['look' => true,
+        'message' => 'Bạn chưa đạt cấp độ 20']]);
+    exit();
 }
 
 if (!isset($yeshu)) {

@@ -1,4 +1,4 @@
-<div id="market" v-show="show" class="bg-[#04528e] w-full h-[100vh] overflow-scroll">
+<div id="market" v-show="show" class="bg-[#04528e] w-full h-[100vh]">
     <div class="bg-[#083461] h-[70px] flex items-center justify-around">
         <img @click="closeMarket" src="bag/images/back.png" class="w-[35px] h-[35px] z-[99] top-[2px] left-0">
         <div class="rounded-[150px] h-[25px] bg-white w-[100px] flex items-center justify-center relative">
@@ -20,6 +20,7 @@
             </li>
         </ul>
     </div>
+    <p v-if="items.error?.look" class="text-center text-white">{{ items.error?.message }}</p>
     <div class="market px-2 py-2">
             <div v-for="item in itemsTab" class="li w-full bg-[url('/market/images/bg-item.png')]" @click="equipmentInfo(item)">
                 <div class="item">

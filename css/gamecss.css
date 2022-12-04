@@ -304,3 +304,8 @@ body .button_no {
     background-color: rgba(0,0,0,0.75) !important;
     text-align: center;
 }
+
+.market {
+    height: calc(100% - 200px);
+    overflow: auto;
+}

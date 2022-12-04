@@ -1,4 +1,4 @@
-<div id="market" v-show="show" class="bg-[#04528e] w-full h-[100vh]">
+<div id="market" v-show="show" class="bg-[#04528e] w-full h-[100vh] overflow-scroll">
     <div class="bg-[#083461] h-[70px] flex items-center justify-around">
         <img @click="closeMarket" src="bag/images/back.png" class="w-[35px] h-[35px] z-[99] top-[2px] left-0">
         <div class="rounded-[150px] h-[25px] bg-white w-[100px] flex items-center justify-center relative">
@@ -23,7 +23,7 @@
     <div class="market px-2 py-2">
             <div v-for="item in itemsTab" class="li w-full bg-[url('/market/images/bg-item.png')]" @click="equipmentInfo(item)">
                 <div class="item">
-                    <p class="text-xs absolute top-0 line-clamp-2 p-1">
+                    <p class="w-full text-xs absolute top-0 line-clamp-2 p-1">
                         {{ item.name }} {{ item?.zbqh }}
                     </p>
                     <div class="image flex items-center justify-center">
@@ -31,7 +31,7 @@
                     </div>
                     <p class="price absolute bottom-0 bg-[#e78f00] left-[2px] border-none rounded-b-lg flex items-center justify-center">
                         <img class="w-[15px]" src="bag/images/00578.png" alt="">
-                        {{ item?.pay }}
+                        {{ formatCurrency(Number(item?.pay)) }}
                     </p>
                 </div>
             </div>

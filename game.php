@@ -386,7 +386,7 @@ if (isset($cmd)) {
 
 </head>
 <body>
-<div id="app" class="sm:w-[640px] md:w-[640px] lg:w-[640px] overflow-hidden"></div>
+<div id="app" class="sm:w-[640px] md:w-[640px] lg:w-[640px] overflow-hidden m-auto"></div>
     <div id="the-main" class="main h-[100vh] sm:w-[640px] md:w-[640px] lg:w-[640px] overflow-hidden">
         <div class="h-full relative bg-black the-game">
             <?php if (!$ym == '') {

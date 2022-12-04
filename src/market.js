@@ -1,4 +1,6 @@
 import {formatCash} from "./helper.js";
+// const { formatCurrency } =  "./helper.js";
+
 const teleport = $('.teleport')
 
 export const marketComponent = async () => {
@@ -12,8 +14,21 @@ export const marketComponent = async () => {
             const items = Vue.ref({})
             const tab = Vue.ref('equipment')
 
+            const formatCurrency = (n , currency = '') => {
+                return currency + n.toFixed(1).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+            }
+
             const itemsTab = Vue.computed(() => {
-                return tab.value === 'equipment' ? items.value.equipments : items.value.tools;
+                if (tab.value === 'equipment') {
+                    return items.value?.equipments?.map(e => {
+                        return {
+                            ...e,
+                            // pay: formatCurrency(Number(e.pay), '')
+                        }
+                    })
+                }
+
+                return items.value.tools
             })
 
             const player = Vue.computed(() => {
@@ -23,6 +38,7 @@ export const marketComponent = async () => {
                     'cucphamlinhthach': formatCash(items.value.player?.cucphamlinhthach)
                 }
             })
+
 
             Vue.onMounted(() => {
                 handleShowBag()
@@ -48,9 +64,15 @@ export const marketComponent = async () => {
 
             const equipmentInfo = (item) => {
                 if (tab.value === 'equipment') {
-                    loadEquipment(item)
+                    loadEquipment({
+                        ...item,
+                        pay: formatCurrency(Number(item.pay))
+                    })
                 } else {
-                    loadTools(item)
+                    loadTools({
+                        ...item,
+                        pay: formatCurrency(Number(item.pay))
+                    })
                 }
 
                 teleport.modal({
@@ -83,6 +105,7 @@ export const marketComponent = async () => {
                 player,
                 closeMarket,
                 equipmentInfo,
+                formatCurrency
             };
         },
     };
@@ -170,7 +193,7 @@ const loadTools = (item) => {
                                 <p class="font-10 uppercase mb-1">Thành tiền</p>
                                 <div class="border border-[#dcc18d] bg-[#2d251d] rounded h-[35px] leading-[35px] text-center flex items-center justify-center">
                                     <img class="w-[20px] pb-[2px] pr-[2px]" src="bag/images/00578.png" alt="">
-                                    2
+                                    ${item.pay}
                                 </div>
                             </div>
                         </div>

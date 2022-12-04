@@ -5,3 +5,7 @@ export const formatCash = n => {
     if (n >= 1e9 && n < 1e12) return +(n / 1e9).toFixed(1) + "B";
     if (n >= 1e12) return +(n / 1e12).toFixed(1) + "T";
 };
+
+export const formatCurrency = (n , currency = '') => {
+    return currency + n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1.');
+}

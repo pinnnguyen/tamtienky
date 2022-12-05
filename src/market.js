@@ -98,23 +98,9 @@ export const marketComponent = async () => {
                     });
             }
 
-            return {
-                show,
-                items,
-                tab,
-                itemsTab,
-                player,
-                closeMarket,
-                equipmentInfo,
-                formatCurrency
-            };
-        },
-    };
-};
 
-
-const loadEquipment = (item) => {
-    teleport.html(`
+            const loadEquipment = (item) => {
+                teleport.html(`
                 <div class="p-3">
                     <div class="flex flex-col items-center justify-center mb-3">
                         <p class="text-center text-[#dcc18d] text-sm font-bold mb-2">${item.name} ${item.zbqh}</p>
@@ -151,35 +137,35 @@ const loadEquipment = (item) => {
                     <div class="text-center"><button id="buy-now" class="button_yes">Xác nhận</button></div>
                 </div>
         `)
-    teleport.find('#buy-now').unbind('click').bind('click', function () {
-        axios
-            .get(`/market/market.php`, {
-                params: {
-                    sid: player.value.sid,
-                    fangshi: 'zhuangbei',
-                    buycount: 1,
-                    payid: item.payid,
-                    canshu: 'buy'
-                }
-            })
-            .then((response) => {
-                $.modal.close()
+                teleport.find('#buy-now').unbind('click').bind('click', function () {
+                    axios
+                        .get(`/market/market.php`, {
+                            params: {
+                                sid: player.value.sid,
+                                fangshi: 'zhuangbei',
+                                buycount: 1,
+                                payid: item.payid,
+                                canshu: 'buy'
+                            }
+                        })
+                        .then((response) => {
+                            $.modal.close()
 
-                $.notify(response.data, {
-                    style: 'normal',
-                    globalPosition: 'bottom right',
+                            $.notify(response.data, {
+                                style: 'normal',
+                                globalPosition: 'bottom right',
 
+                            })
+                            loadBag('zhuangbei', player.value.sid)
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                        });
                 })
-                loadBag('zhuangbei', player.value.sid)
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-    })
-}
+            }
 
-const loadTools = (item) => {
-    teleport.html(`<div class="p-3">
+            const loadTools = (item) => {
+                teleport.html(`<div class="p-3">
                         <div class="flex flex-col items-center justify-center mb-3">
                             <p class="text-center text-[#dcc18d] text-sm font-bold mb-2">${item.name}</p>
                             <img class="w-[85px]" src="undefined" alt="">
@@ -207,29 +193,43 @@ const loadTools = (item) => {
                         <div class="text-center"><button id="buy-now" class="button_yes">Xác nhận</button></div>
                     </div>`)
 
-    teleport.find('#buy-now').unbind('click').bind('click', function () {
-        axios
-            .get(`/market/market.php`, {
-                params: {
-                    sid: player.value.sid,
-                    fangshi: 'daoju',
-                    buycount: item.count,
-                    payid: item.payid,
-                    canshu: 'buy'
-                }
-            })
-            .then((response) => {
-                $.modal.close()
+                teleport.find('#buy-now').unbind('click').bind('click', function () {
+                    axios
+                        .get(`/market/market.php`, {
+                            params: {
+                                sid: player.value.sid,
+                                fangshi: 'daoju',
+                                buycount: item.count,
+                                payid: item.payid,
+                                canshu: 'buy'
+                            }
+                        })
+                        .then((response) => {
+                            $.modal.close()
 
-                $.notify(response.data, {
-                    style: 'normal',
-                    globalPosition: 'bottom right',
+                            $.notify(response.data, {
+                                style: 'normal',
+                                globalPosition: 'bottom right',
 
+                            })
+                            loadBag('zhuangbei', player.value.sid)
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                        });
                 })
-                loadBag('zhuangbei', player.value.sid)
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-    })
-}
+            }
+
+            return {
+                show,
+                items,
+                tab,
+                itemsTab,
+                player,
+                closeMarket,
+                equipmentInfo,
+                formatCurrency
+            };
+        },
+    };
+};

@@ -1,22 +1,7 @@
-const GANE_STATE = {
-    autoAttach: false,
-    update() {
-        console.log("game", this.autoAttach)
-    },
-    get autoAttach() {
-        return this.upFinish;
-    },
-    set autoAttach(auto) {
-        this.autoAttach = auto;
-        this.update();
-    },
-};
-
-
 // variable holding your data
 const PVE_STATE = {
     speedUp: 5,
-    speedLeft: 10,
+    speedLeft: 5,
     upFinish: false,
     leftFinish: false,
     monsterCurrently: '',

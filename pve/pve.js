@@ -1,6 +1,6 @@
 function refreshMonster(player) {
     const boxMonsters = $(".monster")
-    const container = $('#monster-container');
+    // const container = $('#monster-container');
 
     if (boxMonsters.length === 0) {
         if (!player) return;
@@ -27,13 +27,11 @@ function refreshMonster(player) {
     }
 }
 
-
 $('#auto-attach').unbind('click').bind('click', function () {
     $(this).find('button').text('Đang treo máy')
     $(this).attr('auto', 'true')
     prevAttach()
 })
-
 
 function prevAttach() {
     const player = $("#box-player")

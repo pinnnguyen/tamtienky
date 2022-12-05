@@ -48,6 +48,8 @@ $jnname3 = 'Phù lục 3';
 
 $cwhurt = '';
 $tishihtml = '';
+$response = [];
+
 if ($nowmid != $player->nowmid) {
     $html = <<<HTML
         Mời bình thường chơi game!<br/>
@@ -359,39 +361,38 @@ if (isset($zdjg)) {
             </script>
 HTML;
 
-//                $huode .= <<<HTML
-//<script>
-// $.notify('Bạn Công Kích Gây $gphurt Sát Thương Hồi $pvexx Sinh Lực', {
-//                autoHideDelay: 3500,
-//                style: 'pve-auto',
-//                globalPosition: 'bottom left',
-//                showDuration: 200,
-//            })
-//
-// $.notify('Bạn Bị Công Gây (-$phurt) Sát Thương', {
-//    autoHideDelay: 3500,
-//    style: 'pve-auto',
-//    globalPosition: 'bottom left',
-//    showDuration: 600,
-//})
-//</script>
-//HTML;
+            $response['monitor'] = array(
+                'dealDamageToMonster' => $gphurt,
+                'bloodsucking' => $pvexx,
+                'dealDamageToPlayer' => $phurt
+            );
 
-            $html = <<<HTML
+            $response['monsterDie'] = true;
+            $response['youDie'] = false;
+            $response['player'] = array('uhp' => $player->uhp);
+            $response['monster'] = array('ghp' => $guaiwu->ghp);
+
+            $response['html'] = <<<HTML
             <div class="p-3 leading-6 text-white text-center">
                 <span>Đánh bại $guaiwu->gname</span> 
-<!--                <span>$guaiwu->gexp</span>-->
-                <div>
+                <span>$guaiwu->gexp</span>
+             <div>
                 $huode
                 $rwts
 </div>
             </div>
 
 HTML;
+            echo json_encode($response);
 
-            break;
+            exit();
+//            break;
         case 0:
-            $html = <<<HTML
+            $response['youDie'] = true;
+            $response['monsterDie'] = false;
+            $response['player'] = array('uhp' => $player->uhp);
+            $response['monster'] = array('ghp' => $guaiwu->ghp);
+            $response['html'] = <<<HTML
             <script>
             $.notify('Ngươi bị $guaiwu->gname đánh bại', {
                 autoHideDelay: 1500,
@@ -401,16 +402,24 @@ HTML;
             })
 </script>
 HTML;
-            break;
+            echo json_encode($response);
+            exit();
+//            break;
         case -1:
-            $html = <<<HTML
+            $response['monsterDie'] = false;
+            $response['youDie'] = true;
+            $response['player'] = array('uhp' => $player->uhp);
+            $response['monster'] = array('ghp' => $guaiwu->ghp);
+            $response['html'] = <<<HTML
             Kết quả:<br/>
             Ngươi đã trọng thương, không thể tiến hành chiến đấu!<br/>
             Mời Thiếu Hiệp khôi phục và làm lại<br/>
             <br/>
             <a href="?cmd=$gorehpmid">Trở về trò chơi</a>
 HTML;
-            break;
+            echo json_encode($response);
+            exit();
+//            break;
     }
 }
 
@@ -443,7 +452,7 @@ if (empty($zdjg)) {
     $remainingPlayerHp = ($player->uhp / $player->umaxhp) * 100;
     $remainingPlayerHp .= 'px';
 
-    $html = <<<HTML
+    $response['html'] = <<<HTML
 <div class="h-full text-black">
     <div style="background: url('images/bg-pve.jpg');">
         <div class="flex justify-between p-2">
@@ -526,18 +535,14 @@ if (empty($zdjg)) {
 
 <script>
 $('.on-attach').unbind('click').bind('click', function () {
-    console.log("on-attach")
-    $.get(`game/pve.php?gid=$gid&cmd=pvegj&sid=$sid&nowmid=$nowmid&manual=true`, (response) => {
-        $('.teleport').html(response)
-        // $(".teleport").modal({
-        //     fadeDuration: 100
-        // });
+    axios.get(`game/pve.php?gid=$gid&cmd=pvegj&sid=$sid&nowmid=$nowmid&manual=true`).then((res) => {
+        $('.teleport').html(res.data?.html)
     })
 });
 </script>
 HTML;
     if (empty($ismanual)) {
-        $html = <<<HTML
+        $response['html'] = <<<HTML
 <script>
  $.notify('Bạn Công Kích Gây $ghurt Sát Thương Hút Lại $pvexx Sinh Lực', {
                 autoHideDelay: 2500,
@@ -559,7 +564,18 @@ HTML;
     }
 }
 
-echo $html;
+$response['monitor'] = array(
+    'dealDamageToMonster' => $gphurt,
+    'bloodsucking' => $pvexx,
+    'dealDamageToPlayer' => $phurt
+);
+
+$response['youDie'] = false;
+$response['monsterDie'] = false;
+$response['player'] = array('uhp' => $player->uhp);
+$response['monster'] = array('ghp' => $guaiwu->ghp);
+
+echo json_encode($response);
 
 
 //<div class="p2">

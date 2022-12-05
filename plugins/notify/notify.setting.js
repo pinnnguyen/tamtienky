@@ -8,7 +8,8 @@ $.notify.addStyle('pve', {
             "right": "-7px",
             "bottom": "240px",
             "font-size": "10px",
-            "font-weight": "600"
+            "font-weight": "600",
+            "color": "white"
         },
     }
 });

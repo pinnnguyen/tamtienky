@@ -359,23 +359,23 @@ if (isset($zdjg)) {
             </script>
 HTML;
 
-                $huode .= <<<HTML
-<script>
- $.notify('Bạn Công Kích Gây $gphurt Sát Thương Hồi $pvexx Sinh Lực', {
-                autoHideDelay: 3500,
-                style: 'pve-auto',
-                globalPosition: 'bottom left',
-                showDuration: 200,
-            })
-            
- $.notify('Bạn Bị Công Gây (-$phurt) Sát Thương', {
-    autoHideDelay: 3500,
-    style: 'pve-auto',
-    globalPosition: 'bottom left',
-    showDuration: 600,
-})
-</script>
-HTML;
+//                $huode .= <<<HTML
+//<script>
+// $.notify('Bạn Công Kích Gây $gphurt Sát Thương Hồi $pvexx Sinh Lực', {
+//                autoHideDelay: 3500,
+//                style: 'pve-auto',
+//                globalPosition: 'bottom left',
+//                showDuration: 200,
+//            })
+//
+// $.notify('Bạn Bị Công Gây (-$phurt) Sát Thương', {
+//    autoHideDelay: 3500,
+//    style: 'pve-auto',
+//    globalPosition: 'bottom left',
+//    showDuration: 600,
+//})
+//</script>
+//HTML;
 
             $html = <<<HTML
             <div class="p-3 leading-6 text-white text-center">

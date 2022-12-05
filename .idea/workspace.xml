@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38b48ee1-61e9-457e-9f97-926f62136350" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/market.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/market.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pve/pve.js" beforeDir="false" afterPath="$PROJECT_DIR$/pve/pve.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,13 +29,14 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Applications/phpstudy/WWW/bag/images&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Applications/phpstudy/WWW/plugins/notify/modal&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/plugins/notify/modal" />
       <recent name="$PROJECT_DIR$/bag/images" />
       <recent name="$PROJECT_DIR$/images" />
       <recent name="$PROJECT_DIR$/market/images" />
@@ -49,6 +51,8 @@
       <option name="presentableId" value="Default" />
       <updated>1670057985250</updated>
       <workItem from="1670057986581" duration="36323000" />
+      <workItem from="1670204145706" duration="4834000" />
+      <workItem from="1670226348251" duration="135000" />
     </task>
     <servers />
   </component>

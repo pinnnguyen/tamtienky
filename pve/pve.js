@@ -1,6 +1,6 @@
 function refreshMonster(player) {
     const boxMonsters = $(".monster")
-    const container = $('#monster-container');
+    // const container = $('#monster-container');
 
     if (boxMonsters.length === 0) {
         if (!player) return;
@@ -27,16 +27,11 @@ function refreshMonster(player) {
     }
 }
 
-
 $('#auto-attach').unbind('click').bind('click', function () {
     $(this).find('button').text('Đang treo máy')
     $(this).attr('auto', 'true')
-    console.log("click auto attach")
-    // GANE_STATE.autoAttach = true
-    console.log('GANE_STATE.autoAttach', GANE_STATE.autoAttach)
     prevAttach()
 })
-
 
 function prevAttach() {
     const player = $("#box-player")
@@ -49,14 +44,13 @@ function prevAttach() {
     }
 
     const ranI = random(boxMonsters.length)
-
     const monster = boxMonsters[ranI]
+
     PVE_STATE.monsterCurrently = monster
     const monsterPosition = $(monster).position();
 
     if (monsterPosition.left === playerPosition.left
         && monsterPosition.top === playerPosition.top) {
-        // $('#auto-attach').trigger('click');
         return;
     }
 
@@ -94,63 +88,23 @@ async function moveLeft(monsterPosition, playerPosition, fn) {
         fn()
     }
 
-    let run = null
     let startInterval = null
-
     startInterval = setInterval(() => {
         timeSkip += 1
-        if (timeSkip == distance) {
+        if (timeSkip >= distance) {
             fn(distance)
-            // window.cancelAnimationFrame(run)
             clearInterval(startInterval)
         }
 
-        run = window.requestAnimationFrame(() => {
-            if (!isLeft) {
-                box2.right(1)
-            }
+        if (!isLeft) {
+            box2.right(1)
+        }
 
-            if (isLeft) {
-                box2.left(1)
-            }
-        })
+        if (isLeft) {
+            box2.left(1)
+        }
 
     }, 10)
-    // for (let i = 0; i < distance; i++) {
-    //     timeSkip += 1
-    //     if (timeSkip == distance) {
-    //         fn(distance)
-    //         window.cancelAnimationFrame(run)
-    //         // clearInterval(run)
-    //     }
-    //
-    //     run = window.requestAnimationFrame(() => {
-    //         if (!isLeft) {
-    //             box2.right(1)
-    //         }
-    //
-    //         if (isLeft) {
-    //             box2.left(1)
-    //         }
-    //     })
-    // }
-    // const run = requestAnimationFrame(() => {
-    //     timeSkip += 1
-    //
-    //     if (!isLeft) {
-    //         box2.right(1)
-    //     }
-    //
-    //     if (isLeft) {
-    //         box2.left(1)
-    //     }
-    //
-    //     if (timeSkip == distance) {
-    //         fn(distance)
-    //         cancelAnimationFrame(run)
-    //         // clearInterval(run)
-    //     }
-    // })
 }
 
 async function moveUp(monsterPosition, playerPosition, fn) {
@@ -174,91 +128,32 @@ async function moveUp(monsterPosition, playerPosition, fn) {
         isLeft = true
     }
 
-    let run = null
     let startInterval = null
-
     startInterval = setInterval(() => {
         timeSkip += 1
 
-        // if (!isLeft) {
-        //     box2.down(1)
-        // }
-        //
-        // if (isLeft) {
-        //     box2.up(1)
-        // }
-
-        if (timeSkip == distance) {
+        if (timeSkip >= distance) {
             fn(distance)
-            // window.cancelAnimationFrame(run)
             clearInterval(startInterval)
         }
 
-        run = window.requestAnimationFrame(() => {
-            if (!isLeft) {
-                box2.down(1)
-            }
+        if (!isLeft) {
+            box2.down(1)
+        }
 
-            if (isLeft) {
-                box2.up(1)
-            }
-        })
+        if (isLeft) {
+            box2.up(1)
+        }
+
     }, 10)
-
-    // for (let i = 0; i < distance; i++) {
-    //     timeSkip += 1
-    //
-    //     if (!isLeft) {
-    //         box2.down(1)
-    //     }
-    //
-    //     if (isLeft) {
-    //         box2.up(1)
-    //     }
-    //
-    //     if (timeSkip == distance) {
-    //         fn(distance)
-    //         // clearInterval(run)
-    //         window.cancelAnimationFrame(run)
-    //     }
-    //
-    //     run = window.requestAnimationFrame(() => {
-    //         if (!isLeft) {
-    //             box2.down(1)
-    //         }
-    //
-    //         if (isLeft) {
-    //             box2.up(1)
-    //         }
-    //     })
-    // }
-
-    // const run = requestAnimationFrame(() => {
-    //     timeSkip += 1
-    //
-    //     if (!isLeft) {
-    //         box2.down(1)
-    //     }
-    //
-    //     if (isLeft) {
-    //         box2.up(1)
-    //     }
-    //
-    //     if (timeSkip == distance) {
-    //         fn(distance)
-    //         // clearInterval(run)
-    //         cancelAnimationFrame(run)
-    //     }
-    // })
 }
 
 function random(number) {
-    return Math.floor(Math.random() * ((number - 1) - 0 + 1)) + 0
+    return Math.floor(Math.random() * ((number - 1) + 1))
 }
 
 function doAttach($this) {
     const gid = $this.attr('gid')
-    const gyid = $this.attr('gyid')
     const sid = $this.attr('sid')
     const nowmid = $this.attr('nowmid')
 

@@ -375,15 +375,23 @@ HTML;
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
 
     <!-- Remember to include jQuery :) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+
     <!-- jQuery Modal -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"/>
-    <link rel="stylesheet" href="plugins/notify/notify.css"/>
+<!--    <link rel="stylesheet" href="plugins/modal/modal.min.css"/>-->
+<!--    <link rel="stylesheet" href="plugins/modal/modal.min.js"/>-->
+
+    <!-- jQuery Notify -->
     <script src="plugins/notify/notify.min.js"></script>
     <script src="plugins/notify/notify.setting.js"></script>
+
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.41/vue.global.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/4.1.6/vue-router.global.js"></script>-->
 
 </head>

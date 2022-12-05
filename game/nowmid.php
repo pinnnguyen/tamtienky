@@ -175,6 +175,7 @@ for ($i = 0; $i < count($cxallguaiwu); $i++) {
             gyid="$gyid" 
             sid='$sid' 
             nowmid='$player->nowmid'>
+            <div class="monitor text-2xl font-bold text-[#f1440e] absolute top-[-14px]"></div>
             <a 
             gid="$monster_id" 
             gyid="$gyid" 

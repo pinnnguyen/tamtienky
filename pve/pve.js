@@ -1,23 +1,25 @@
-function refreshMonster(player) {
-    const boxMonsters = $(".monster")
-    // const container = $('#monster-container');
+window.countMonster = 0;
 
-    if (boxMonsters.length === 0) {
-        if (!player) return;
-        const sid = player.attr('sid')
+function refreshMonster($player) {
+    const monster = $(".monster")
+    const bMonster = $('#box-monster');
+
+    if (monster.length === 0) {
+        if (!$player) return;
+        const sid = $player.attr('sid')
         if (!sid) return
         $.get(`pve/refresh_monster.php?sid=${sid}`, (response) => {
-            $('#box-monster').append(response)
+            bMonster.append(response)
             prevAttach()
         })
     }
 
-    if (boxMonsters.length > 0) {
-        for (let i = 0; i < boxMonsters.length; i++) {
-            const topRandom = Math.floor(Math.random() * (400 - 20 + 1)) + 20;
-            const leftRandom = Math.floor(Math.random() * (400 - 20 + 1)) + 20;
+    if (monster.length > 0) {
+        for (let i = 0; i < monster.length; i++) {
+            const topRandom = Math.floor(Math.random() * (230 - 20 + 1)) + 20;
+            const leftRandom = Math.floor(Math.random() * (290 - 20 + 1)) + 20;
 
-            const el = $(boxMonsters[i])
+            const el = $(monster[i])
 
             el.css({
                 top: topRandom + 'px',
@@ -91,7 +93,7 @@ async function moveLeft(monsterPosition, playerPosition, fn) {
     let startInterval = null
     startInterval = setInterval(() => {
         timeSkip += 1
-        if (timeSkip >= distance) {
+        if (timeSkip >= distance - 15) {
             fn(distance)
             clearInterval(startInterval)
         }
@@ -132,7 +134,7 @@ async function moveUp(monsterPosition, playerPosition, fn) {
     startInterval = setInterval(() => {
         timeSkip += 1
 
-        if (timeSkip >= distance) {
+        if (timeSkip >= distance - 15) {
             fn(distance)
             clearInterval(startInterval)
         }
@@ -157,11 +159,16 @@ function doAttach($this) {
     const sid = $this.attr('sid')
     const nowmid = $this.attr('nowmid')
 
-    $.get(`game/pve.php?gid=${gid}&cmd=pvegj&sid=${sid}&nowmid=${nowmid}`, (response) => {
-        $(this).addClass('monster-hide')
-        $('.alert').html(response)
-        $this.remove();
-        prevAttach()
+    axios.get(`game/pve.php?gid=${gid}&cmd=pvegj&sid=${sid}&nowmid=${nowmid}`).then((res) => {
+        $this.addClass('monster-hide')
+        $this.find('.monitor').text('-' + res.data?.monitor?.dealDamageToMonster)
+        $('.alert').html(res.data?.html)
+
+        const delay = setTimeout(() => {
+            $this.remove();
+            prevAttach()
+            clearTimeout(delay)
+        }, 200)
     })
 }
 

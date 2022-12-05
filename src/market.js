@@ -1,12 +1,48 @@
 import {formatCash} from "./helper.js";
-// const { formatCurrency } =  "./helper.js";
-
 const teleport = $('.teleport')
 
-export const marketComponent = async () => {
-    let template = await fetch("src/themarket.html");
-    template = await template.text();
+const template = `<div id="market" v-show="show" class="bg-[#04528e] w-full h-[100vh]">
+    <div class="bg-[#083461] h-[70px] flex items-center justify-around">
+        <img @click="closeMarket" src="bag/images/back.png" class="w-[35px] h-[35px] z-[99] top-[2px] left-0">
+        <div class="rounded-[150px] h-[25px] bg-white w-[100px] flex items-center justify-center relative">
+            <p class="font-bold">{{ player.linhthach }}</p>
+            <img class="absolute right-0 w-[25px] right-[2px] top-[-1px]" src="bag/images/00578.png" alt="">
+        </div>
+        <div class="rounded-[150px] h-[25px] bg-white w-[100px] flex items-center justify-center relative">
+            <p class="font-bold">{{ player.cucphamlinhthach }}</p>
+            <img class="absolute right-0 w-[25px] right-[2px] top-[-1px]" src="bag/images/00725.png" alt="">
+        </div>
+    </div>
+    <div class="h-[35px] market-menu flex items-center justify-center h-[80px]">
+        <ul class="w-full flex justify-center">
+            <li :class="{ active: tab == 'equipment' }" @click="tab = 'equipment' ">
+                Trang bị
+            </li>
+            <li :class="{ active: tab == 'tools' }" @click="tab = 'tools' ">
+                Đạo cụ
+            </li>
+        </ul>
+    </div>
+    <p v-if="items.error?.look" class="text-center text-white">{{ items.error?.message }}</p>
+    <div class="market px-2 py-2">
+            <div v-for="item in itemsTab" class="li w-full bg-[url('/market/images/bg-item.png')]" @click="equipmentInfo(item)">
+                <div class="item">
+                    <p class="w-full text-xs absolute top-0 line-clamp-2 p-1">
+                        {{ item.name }} {{ item?.zbqh }}
+                    </p>
+                    <div class="image flex items-center justify-center">
+                        <img class="w-[50%]" :src="item.preview_url" alt="">
+                    </div>
+                    <p class="price absolute bottom-0 bg-[#e78f00] left-[2px] border-none rounded-b-lg flex items-center justify-center">
+                        <img class="w-[15px]" src="bag/images/00578.png" alt="">
+                        {{ formatCurrency(Number(item?.pay)) }}
+                    </p>
+                </div>
+            </div>
+    </div>
+</div>`
 
+export const marketComponent = async () => {
     return {
         template: template,
         setup() {

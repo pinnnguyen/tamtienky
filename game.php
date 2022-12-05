@@ -390,6 +390,7 @@ HTML;
 
 <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.41/vue.global.min.js"></script>
+    <script src="https://unpkg.com/vuex@4.0.0/dist/vuex.global.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/4.1.6/vue-router.global.js"></script>-->
@@ -398,7 +399,7 @@ HTML;
 <body>
 <div id="app" class="sm:w-[640px] md:w-[640px] lg:w-[640px] overflow-hidden m-auto"></div>
     <div id="the-main" class="main h-[100vh] sm:w-[640px] md:w-[640px] lg:w-[640px] overflow-hidden">
-        <div class="h-full relative bg-black the-game">
+        <div class="h-full relative bg-black the-game bg-[url('images/bg-home.webp')] bg-cover">
             <?php if (!$ym == '') {
                 echo $tpts;
 

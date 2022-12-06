@@ -169,7 +169,9 @@ if ($cmd == 'pvegj' && $gid != 0) {
         } else {
             $response['youDie'] = false;
             $response['monsterDie'] = true;
-            $response['html'] = 'Ban da vuot qua ai nay';
+            $response['html'] = <<<HTML
+<p class="text-center p-3">Đạo hữu đã vượt qua ải này</p>
+HTML;
 
             echo json_encode($response);
             exit();

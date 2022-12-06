@@ -111,7 +111,7 @@ HTML;
 if ($rightmid->mname != '') {
     $lukouhtml .= <<<HTML
 <div class="flex flex-col items-center">
-    <span>Hướng Đông</span> <a style="background: radial-gradient(black, transparent)" class="!text-white h-[34px] !flex items-center" href="?cmd=$rightmidlj">$rightmid->mname →</a>
+    <span>Ải tiếp theo</span> <a style="background: radial-gradient(#6e0d0d, transparent)" class="!text-white h-[34px] !flex items-center" href="?cmd=$rightmidlj">$rightmid->mname →</a>
 </div>
 HTML;
 }
@@ -465,7 +465,7 @@ $nowhtml = <<<HTML
                 $bosshtml
             </div>
         </div>
-        <div class="flex items-center justify-between font-semibold text-xs text-white p-2 h-[40px] text-center" style="background: linear-gradient(to left, #009688, #36445a);">
+        <div class="flex items-center justify-center font-semibold text-xs text-white p-2 h-[40px] text-center">
             <a id="auto-attach" class="w-[110px] !flex justify-center items-center !text-white h-[30px] font-10 bg-[#009688]" nowmid="$player->nowmid" gyid="$gyid" gid="$monster_id" sid="$sid">Chiến đấu</a>
         </div>
         $lthtml

@@ -24,7 +24,10 @@ export const setMap = async () => {
                     sid: sid,
                     nowmid: nowmid
                 }).then((res) => {
-                    response.value = res.data
+                    $.notify(res.data.message, {
+                        style: 'normal',
+                        globalPosition: 'bottom right'
+                    })
                 })
             }
 

@@ -104,7 +104,7 @@ HTML;
 if ($upmid->mname != '') {
     $lukouhtml .= <<<HTML
 <div class="flex flex-col items-center">
-    <span>Hướng Bắc</span> <a style="background: radial-gradient(black, transparent)" class="!text-white h-[34px] !flex items-center" href="?cmd=$upmidlj">$upmid->mname ↑</a>
+    <span>Hướng Bắc</span> <a mid="$clmid->upmid" style="background: radial-gradient(black, transparent)" class="!text-white h-[34px] !flex items-center" href="?cmd=$upmidlj">$upmid->mname ↑</a>
 </div>
 HTML;
 }
@@ -112,7 +112,7 @@ HTML;
 if ($leftmid->mname != '') {
     $lukouhtml .= <<<HTML
 <div class="flex flex-col items-center">
-    <span>Ải trước</span> <a style="background: radial-gradient(#6e0d0d, transparent)" class="!text-white h-[34px] !flex items-center" href="?cmd=$leftmidlj">$leftmid->mname ←</a>
+    <span>Ải trước</span> <a mid="$clmid->leftmid" style="background: radial-gradient(#6e0d0d, transparent)" class="!text-white h-[34px] !flex items-center" href="?cmd=$leftmidlj">$leftmid->mname ←</a>
 </div>
 HTML;
 }
@@ -120,7 +120,7 @@ HTML;
 if ($rightmid->mname != '') {
     $lukouhtml .= <<<HTML
 <div class="flex flex-col items-center">
-    <span>Ải tiếp theo</span> <a style="background: radial-gradient(#6e0d0d, transparent)" class="!text-white h-[34px] !flex items-center" href="?cmd=$rightmidlj">$rightmid->mname →</a>
+    <span>Ải tiếp theo</span> <a mid="$clmid->rightmid" style="background: radial-gradient(#6e0d0d, transparent)" class="!text-white h-[34px] !flex items-center" href="?cmd=$rightmidlj">$rightmid->mname →</a>
 </div>
 HTML;
 }

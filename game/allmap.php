@@ -22,7 +22,7 @@ for ($i = 0; $i < count($cxallmap); $i++) {
         $map .= <<<HTML
     <div class="flex flex-col">
         <img src="images/Img_Zhuxian_Fengyunbian.png" class="w-[120px]" alt="">
-        <a class="text-white p-2 line-clamp-1" style="background: radial-gradient(black, transparent); font-size: 7px" href="?cmd=$gomid" >[$qyame]$mname</a>
+        <a class="text-white p-2 line-clamp-1" mid="$mid" style="background: radial-gradient(black, transparent); font-size: 7px" href="?cmd=$gomid" >[$qyame]$mname</a>
     </div>
 HTML;
 

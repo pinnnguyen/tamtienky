@@ -16,6 +16,7 @@ if (isset($newmid)) {
             $sql = "update mid set playerinfo='$playerinfo' WHERE mid='$lastmid'";
             $dblj->exec($sql);
         }
+
         if ($player->uhp <= 0) {
             $retmid = \player\getmid($player->nowmid, $dblj);
             $retqy = \player\getqy($retmid->mqy, $dblj);
@@ -24,6 +25,7 @@ if (isset($newmid)) {
                 exit("<p class='bg-[#19465b] w-full text-center transform-center fixed text-white'>Bạn đã bị thương nặng, xin vui lòng điều trị <br/>" . '<a class="button_yes" href="?cmd=' . $gonowmid . '">Trở lại trò chơi</a></p>');
             }
         }
+
         \player\changeplayersx('nowmid', $newmid, $sid, $dblj);
         $player = player\getplayer($sid, $dblj); //Nhận hồ sơ thông tin người chơi
     }
@@ -48,8 +50,14 @@ if ($clmid->playerinfo != '') {
 }
 
 $pvphtml = "[Vùng an toàn]";
+$attach_action = '';
 if ($clmid->ispvp) {
     $pvphtml = "[PVP]";
+    $attach_action = <<<HTML
+   <div class="flex items-center justify-center font-semibold text-xs text-white p-2 h-[40px] text-center">
+            <a id="auto-attach" class="w-[110px] !flex justify-center items-center !text-white h-[30px] font-10 bg-[#009688]" nowmid="$player->nowmid" gyid="$gyid" gid="$monster_id" sid="$sid">Chiến đấu</a>
+        </div>
+HTML;
 }
 
 $ztcmd = $encode->encode("cmd=zhuangtai&sid=$sid");
@@ -438,7 +446,7 @@ $nowhtml = <<<HTML
         </div>
     </div>
     <div class="flex items-center justify-end">
-        <div class="bg-[#ffeb3b] font-bold all-map">$clmid->mname$pvphtml</div>
+        <div class="bg-[#ffeb3b] font-bold">$clmid->mname$pvphtml</div>
     </div>
     <div class="p-2 relative" id="monster-container">
         <div class="flex flex-wrap">
@@ -465,9 +473,7 @@ $nowhtml = <<<HTML
                 $bosshtml
             </div>
         </div>
-        <div class="flex items-center justify-center font-semibold text-xs text-white p-2 h-[40px] text-center">
-            <a id="auto-attach" class="w-[110px] !flex justify-center items-center !text-white h-[30px] font-10 bg-[#009688]" nowmid="$player->nowmid" gyid="$gyid" gid="$monster_id" sid="$sid">Chiến đấu</a>
-        </div>
+        $attach_action
         $lthtml
         <span class="text-xs mb-2 text-[#ff9800] pb-2"> <span class="text-red-600 font-10">[Chú ý]</span>: <span class="text-white text-span">$clmid->playerinfo</span> </span>
         <div class="relative">

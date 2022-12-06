@@ -7,7 +7,7 @@ function AFK_EXP ()
 
 function AFK_RESOURCE ()
 {
-    return mt_rand(1, 4) + 1;
+    return mt_rand(1, 2) + 1;
 }
 
 function monsterExp()

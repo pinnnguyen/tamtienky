@@ -111,7 +111,7 @@ HTML;
 if ($leftmid->mname != '') {
     $lukouhtml .= <<<HTML
 <div class="flex flex-col items-center">
-    <span>Hướng Tây</span> <a style="background: radial-gradient(black, transparent)" class="!text-white h-[34px] !flex items-center" href="?cmd=$leftmidlj">$leftmid->mname ←</a>
+    <span>Ải trước</span> <a style="background: radial-gradient(#6e0d0d, transparent)" class="!text-white h-[34px] !flex items-center" href="?cmd=$leftmidlj">$leftmid->mname ←</a>
 </div>
 HTML;
 }
@@ -400,7 +400,7 @@ if (\player\istupo($sid, $dblj) != 0 && $player->uexp >= $player->umaxexp) {
 //            $tupocmd = $encode->encode("cmd=tupo&sid=$sid");
 //    $tupocmd = "<a class='bg-[#d62700] upgrade-level' cmd='tupo' sid='$sid'>Đột phá</a>";
     $tpts = <<<HTML
-    <a class="upgrade-level !flex justify-center items-center !text-white h-[50px] w-[50px] rounded-full bg-[#eb7523] font-10 absolute transform-center text-center top-[calc(50%_-_30px)] left-[calc(50%_-_4px)]">Đột phá</a>
+    <a sid='$sid' class="upgrade-level !flex justify-center items-center !text-white h-[50px] w-[50px] rounded-full bg-[#eb7523] font-10 absolute transform-center text-center top-[calc(50%_-_30px)] left-[calc(50%_-_4px)]">Đột phá</a>
 <!--            <img cmd='tupo' sid='$sid' class="upgrade-level absolute transform-center w-[80px] top-[calc(50%_-_30px)] left-[calc(50%_-_4px)]" src="images/dotpha.png" alt="">-->
 HTML;
 }
@@ -445,9 +445,7 @@ $nowhtml = <<<HTML
             <span class="pb-[2px]">$player->uname [lv:$player->ulv]</span>
         </div>
     </div>
-    <div class="flex items-center justify-end">
-        <div class="bg-[#ffeb3b] font-bold">$clmid->mname$pvphtml</div>
-    </div>
+   
     <div class="p-2 relative" id="monster-container">
         <div class="flex flex-wrap">
             <div class="absolute" sid="$sid" id="box-player">
@@ -562,3 +560,8 @@ echo $nowhtml;
 //                <a class="w-[110px] !flex justify-center items-center !text-white all-map" sid="$sid">Bản đồ</a>
 //            </div>
 //        </div>
+
+//
+//<div class="flex items-center justify-end">
+//        <div class="bg-[#ffeb3b] font-bold">$clmid->mname$pvphtml</div>
+//    </div>

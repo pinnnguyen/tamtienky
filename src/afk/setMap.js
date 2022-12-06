@@ -1,4 +1,4 @@
-const template = `<div @click="pickMid" class="fixed top-[120px] bg-[#009688d6] right-[16px] w-[35px] text-center text-white z-[999] text-xs font-bold">
+const template = `<div @click="pickMid" class="fixed top-[30px] bg-[#009688d6] right-[16px] w-[35px] text-center text-white z-[999] text-xs font-bold">
 Uỷ thác tại đây
 </div>`
 

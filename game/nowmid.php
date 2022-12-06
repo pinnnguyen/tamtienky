@@ -393,10 +393,6 @@ $imcmd = $encode->encode("cmd=im&sid=$sid");
 $remainingplayerexp = ($player->uexp / $player->umaxexp) * 100;
 $remainingplayerexp .= 'px';
 
-var_dump($cxallguaiwu[0]);
-var_dump($cxallguaiwu[0]['id']);
-var_dump($cxallguaiwu[0]['gyid']);
-
 $monster_id = $cxallguaiwu[0]['id'];
 $gyid = $cxallguaiwu[0]['gyid'];
 

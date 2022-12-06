@@ -67,7 +67,8 @@ if (($guaiwu->sid != $player->sid && $guaiwu->sid != '') || $guaiwu->gid == '') 
         <br/>
         <a href="?cmd=$gonowmid">Trở về trò chơi</a>
 HTML;
-    exit($html);
+    echo $html;
+    exit();
 }
 
 $pvebj = '';
@@ -157,6 +158,22 @@ if ($cmd == 'pvegj' && $gid != 0) {
         #quái vật chết
         $sql = "delete from midguaiwu where id = $gid AND sid='$player->sid'";
         $dblj->exec($sql);
+
+        $sql = "select * from playermid where sid= '$sid' and midid = '$player->nowmid' ";
+        $query = $dblj->query($sql);
+        $ret = $query->fetch(\PDO::FETCH_NUM);
+
+        if (!$ret) {
+            $insert_playermid = "insert into `playermid` (`sid`, `midid`) VALUES ('$sid','$player->nowmid')";
+            $dblj->exec($insert_playermid);
+        } else {
+            $response['youDie'] = false;
+            $response['monsterDie'] = true;
+            $response['html'] = 'Ban da vuot qua ai nay';
+
+            echo json_encode($response);
+            exit();
+        }
 
         $yxb = round($guaiwu->glv * 3);
         //        if (($hurt || $lvc >= 5) && !($guaiwu->glv >= 46 && $player->ulv >= 50)) {
@@ -383,10 +400,9 @@ HTML;
             </div>
 
 HTML;
-            echo json_encode($response);
-
-            exit();
-//            break;
+//            echo json_encode($response);
+//            exit();
+            break;
         case 0:
             $response['youDie'] = true;
             $response['monsterDie'] = false;
@@ -402,9 +418,9 @@ HTML;
             })
 </script>
 HTML;
-            echo json_encode($response);
-            exit();
-//            break;
+//            echo json_encode($response);
+//            exit();
+            break;
         case -1:
             $response['monsterDie'] = false;
             $response['youDie'] = true;
@@ -417,9 +433,8 @@ HTML;
             <br/>
             <a href="?cmd=$gorehpmid">Trở về trò chơi</a>
 HTML;
-            echo json_encode($response);
-            exit();
-//            break;
+//            echo json_encode($response);
+            break;
     }
 }
 
@@ -541,27 +556,27 @@ $('.on-attach').unbind('click').bind('click', function () {
 });
 </script>
 HTML;
-    if (empty($ismanual)) {
-        $response['html'] = <<<HTML
-<script>
- $.notify('Bạn Công Kích Gây $ghurt Sát Thương Hút Lại $pvexx Sinh Lực', {
-                autoHideDelay: 2500,
-                style: 'pve-auto',
-                globalPosition: 'bottom left',
-                showDuration: 200,
-            })
-            
- $.notify('Bạn Bị Tấn Công Gây $phurt Sát Thương', {
-    autoHideDelay: 3500,
-    style: 'pve-auto',
-    globalPosition: 'bottom left',
-    showDuration: 600,
-})
-</script>
-</script>
-HTML;
-
-    }
+//    if (empty($ismanual)) {
+//        $response['html'] = <<<HTML
+//<script>
+// $.notify('Bạn Công Kích Gây $ghurt Sát Thương Hút Lại $pvexx Sinh Lực', {
+//                autoHideDelay: 2500,
+//                style: 'pve-auto',
+//                globalPosition: 'bottom left',
+//                showDuration: 200,
+//            })
+//
+// $.notify('Bạn Bị Tấn Công Gây $phurt Sát Thương', {
+//    autoHideDelay: 3500,
+//    style: 'pve-auto',
+//    globalPosition: 'bottom left',
+//    showDuration: 600,
+//})
+//</script>
+//</script>
+//HTML;
+//
+//    }
 }
 
 $response['monitor'] = array(

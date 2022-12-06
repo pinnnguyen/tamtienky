@@ -1,8 +1,13 @@
-import {marketComponent} from './market.js'
-import {levelComponent} from './lvup.js'
+import { marketComponent } from './market.js'
+import { levelComponent} from './lvup.js'
+import { takeResource } from './afk/takeResource.js'
+import { setMap } from './afk/setMap.js'
+
 const template = `
 <div :class="{'blocker': blocker}">
     <market />
+    <setmap />
+    <takeresource />
     <uplevel @overlayApp="onOverlayApp" />
 </div>
 `
@@ -24,7 +29,9 @@ const app = async () => {
         template: template,
         components: {
             'market': await marketComponent(),
-            'uplevel': await levelComponent()
+            'uplevel': await levelComponent(),
+            'takeresource': await takeResource(),
+            'setmap': await setMap()
         },
         setup() {
             const blocker = Vue.ref(false)

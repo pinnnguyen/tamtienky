@@ -139,7 +139,7 @@ export const marketComponent = async () => {
                 teleport.html(`
                 <div class="p-3">
                     <div class="flex flex-col items-center justify-center mb-3">
-                        <p class="text-center text-[#dcc18d] text-sm font-bold mb-2">${item.name} ${item.zbqh}</p>
+                        <p class="text-center text-[#dcc18d] text-sm font-bold mb-2 uppercase">${item.name} ${item.zbqh}</p>
                         <img class="w-[85px]" src="${item.preview_url}" alt="">
                     </div>
                     

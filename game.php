@@ -20,7 +20,7 @@ $npc = new \player\npc();
 
 $ym = 'game/nowmid.php';
 $Dcmd = $_SERVER['QUERY_STRING'];
-$tpts = '';
+//$tpts = '';
 $pvpts = '';
 session_start();
 //$allow_sep = "220";
@@ -331,11 +331,11 @@ HTML;
             $pvpts = "$pvper->uname Đang tấn công bạn: $pvpcmd<br/>";
         }
 
-        if (\player\istupo($sid, $dblj) != 0 && $player->uexp >= $player->umaxexp) {
-//            $tupocmd = $encode->encode("cmd=tupo&sid=$sid");
-            $tupocmd = "<a class='bg-[#d62700] upgrade-level' cmd='tupo' sid='$sid'>Đột phá</a>";
-            $tpts = "<p class='p-2 w-full text-white text-xs bg-[#36445a] absolute z-[999]'><strong>Tip: </strong>Bạn cần đột phá, nếu không sẽ không thể tích lũy được kinh nghiệm:$tupocmd</p>";
-        }
+//        if (\player\istupo($sid, $dblj) != 0 && $player->uexp >= $player->umaxexp) {
+////            $tupocmd = $encode->encode("cmd=tupo&sid=$sid");
+//            $tupocmd = "<a class='bg-[#d62700] upgrade-level' cmd='tupo' sid='$sid'>Đột phá</a>";
+//            $tpts = "<p class='p-2 w-full text-white text-xs bg-[#36445a] absolute z-[999]'><strong>Tip: </strong>Bạn cần đột phá, nếu không sẽ không thể tích lũy được kinh nghiệm:$tupocmd</p>";
+//        }
 
         $nowdate = date('Y-m-d H:i:s');
         $second = floor((strtotime($nowdate) - strtotime($player->endtime)) % 86400); //Nhận khoảng thời gian làm mới
@@ -399,9 +399,9 @@ HTML;
 <body>
 <div id="app" class="sm:w-[640px] md:w-[640px] lg:w-[640px] overflow-hidden m-auto"></div>
     <div id="the-main" class="main h-[100vh] sm:w-[640px] md:w-[640px] lg:w-[640px] overflow-hidden">
-        <div class="h-full relative bg-black the-game bg-[url('images/bg-home.webp')] bg-cover">
+        <div class="h-full relative bg-black the-game">
             <?php if (!$ym == '') {
-                echo $tpts;
+//                echo $tpts;
 
                 if ($ym != "game/pvp.php") {
                     echo $pvpts;
@@ -411,7 +411,7 @@ HTML;
             } ?>
         </div>
         <div class="the-bag h-full bg-[#e3e2d6] relative"></div>
-        <div class="teleport relative text-white bg-[#1d160e] p-0 border border-[#795548]"></div>
+        <div class="teleport relative !text-white !bg-[#1d160e] !p-0 border !border-[#795548]"></div>
         <div class="alert relative p-0 bg-black hidden"></div>
     </div>
 </body>

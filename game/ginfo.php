@@ -94,7 +94,20 @@ HTML;
         Cảnh giới: $guaiwu->jingjie
 </div>
 <div>
-        Thông tin: $yguaiwu->ginfo
+        <div class="mt-4">
+                        <div class="uppercase mb-1">Thông tin</div>
+                         <div class="border border-[#dcc18d] bg-[#2d251d] rounded text-center flex justify-between text-xs">
+                            <div class="p-2">
+                                <div class="flex items-center p-1"><div class="mr-1">Sát thương vật lý</div> <div>$guaiwu->ggj</div></div>
+                                <div class="flex items-center p-1"><div class="mr-1">Phòng thủ vật lý</div> <div>$guaiwu->gfy</div></div>
+                                <div class="flex items-center p-1"><div class="mr-1">Chí mạng</div> <div>$guaiwu->gdj</div></div>
+                            </div>
+                            <div class="p-2">
+                              <div class="flex items-center p-1"><div class="mr-1">Máu</div> <div>$guaiwu->gmaxhp</div></div>
+                              <div class="flex items-center p-1"><div class="mr-1">Hút máu</div> <div>$guaiwu->xxx</div></div>
+                            </div>
+                         </div>
+                    </div>
 </div>
         <br/>
         Rơi xuống:

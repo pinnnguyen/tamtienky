@@ -1,16 +1,18 @@
 <?php
+require_once($_SERVER['DOCUMENT_ROOT'] . "/exp/rule.php");
+
 $player = player\getplayer($sid, $dblj);
 $lastmid = $player->nowmid;
 $sid_str = $sid;
 
 if (isset($newmid)) {
     if ($player->nowmid != $newmid) {
-        $clmid = player\getmid($newmid, $dblj); //获取即将走的地图信息
+        $clmid = player\getmid($newmid, $dblj); //Nhận thông tin bản đồ sắp tới
         $ucmd = $encode->encode("cmd=getplayerinfo&uid=$uid&sid=$player->sid");
         //$playerinfo .="<a href='?cmd=$ucmd'>$player->uname</a>"." Hướng $clmid->mname đi đến";
-        $playerinfo = $player->uname . " Hướng $clmid->mname đi đến"; //当前位置更新最后一条行走记录
+        $playerinfo = $player->uname . " Hướng $clmid->mname đi đến"; // Vị trí hiện tại cập nhật kỷ lục đi bộ cuối cùng
         if ($playerinfo != $clmid->playerinfo) {
-            //更新自己走过的记录
+            //Cập nhật lịch sử của riêng bạn
             $sql = "update mid set playerinfo='$playerinfo' WHERE mid='$lastmid'";
             $dblj->exec($sql);
         }
@@ -23,12 +25,12 @@ if (isset($newmid)) {
             }
         }
         \player\changeplayersx('nowmid', $newmid, $sid, $dblj);
-        $player = player\getplayer($sid, $dblj); //获取玩家信息
+        $player = player\getplayer($sid, $dblj); //Nhận hồ sơ thông tin người chơi
     }
 }
 
 if ($player->nowmid == '' || $player->nowmid == 0) {
-    //判断角色是否出现在非法地图
+    // Xác định xem một ký tự có xuất hiện trên bản đồ bất hợp pháp không
     $gameconfig = \player\getgameconfig($dblj);
     $sql = "update game1 set nowmid='$gameconfig->firstmid' WHERE sid='$sid'";
     $dblj->exec($sql);
@@ -163,49 +165,49 @@ $cxjg = $dblj->query($sql);
 $cxallguaiwu = $cxjg->fetchAll(PDO::FETCH_ASSOC);
 $gwhtml = '';
 
-for ($i = 0; $i < count($cxallguaiwu); $i++) {
-    $monster_lv = $cxallguaiwu[$i]['glv'];
-    $monster_name = $cxallguaiwu[$i]['gname'];
-    $monster_id = $cxallguaiwu[$i]['id'];
-    $gyid = $cxallguaiwu[$i]['gyid'];
-
-    $gwhtml .= <<<HTML
-    <div class="absolute monster flex flex-col items-center"
-            gid="$monster_id" 
-            gyid="$gyid" 
-            sid='$sid' 
-            nowmid='$player->nowmid'>
-            <div class="monitor text-2xl font-bold text-[#f1440e] absolute top-[-14px]"></div>
-            <a 
-            gid="$monster_id" 
-            gyid="$gyid" 
-            sid='$sid' 
-            nowmid='$player->nowmid'
-            style="font-size: 9px"
-            class='relative rounded-full m-2 !flex flex-col bg-white !text-white font-medium text-center w-[50px] overflow-hidden h-[50px] overflow-hidden attach-monster'>
-             <img loading="lazy" class="absolute top-[50%] left-[50%] w-[45px] h-[45px]" src="pve/image/fs_007_421.png" style="transform: translate(-50%, -50%);">
-            </a> 
-              <span class="text-white" style="font-size: 6px">
-            [lv$monster_lv] $monster_name
-            </span>
-        </div>
-HTML;
-}
+//for ($i = 0; $i < count($cxallguaiwu); $i++) {
+//    $monster_lv = $cxallguaiwu[$i]['glv'];
+//    $monster_name = $cxallguaiwu[$i]['gname'];
+//    $monster_id = $cxallguaiwu[$i]['id'];
+//    $gyid = $cxallguaiwu[$i]['gyid'];
+//
+//    $gwhtml .= <<<HTML
+//    <div class="absolute monster flex flex-col items-center"
+//            gid="$monster_id"
+//            gyid="$gyid"
+//            sid='$sid'
+//            nowmid='$player->nowmid'>
+//            <div class="monitor text-2xl font-bold text-[#f1440e] absolute top-[-14px]"></div>
+//            <a
+//            gid="$monster_id"
+//            gyid="$gyid"
+//            sid='$sid'
+//            nowmid='$player->nowmid'
+//            style="font-size: 9px"
+//            class='relative rounded-full m-2 !flex flex-col bg-white !text-white font-medium text-center w-[50px] overflow-hidden h-[50px] overflow-hidden attach-monster'>
+//             <img loading="lazy" class="absolute top-[50%] left-[50%] w-[45px] h-[45px]" src="pve/image/fs_007_421.png" style="transform: translate(-50%, -50%);">
+//            </a>
+//              <span class="text-white" style="font-size: 6px">
+//            [lv$monster_lv] $monster_name
+//            </span>
+//        </div>
+//HTML;
+//}
 
 //$my_self_sql  = "select * from game1 where sid = '$sid' AND nowmid='$player->nowmid' AND sfzx = 1";
 //$my_self_sql_query = $dblj->query($my_self_sql);
 //$my_player = $my_self_sql_query->fetch(\PDO::FETCH_ASSOC);
 //var_dump($my_player['uname']);
-$player_html = <<<HTML
-                 <a style='font-size: 9px' 
-                 class='!flex flex-col bg-white !text-white font-medium relative w-[50px] h-[50px] rounded-full'>
-                 <img class="absolute top-[50%] left-[50%] w-[45px] h-[45px]" src="pve/image/fs_007.png" style="transform: translate(-50%, -50%);">
-                  <span class="text-white left-[50%] bottom-[-8px] absolute" style="transform: translate(-50%, 50%); font-size: 6px">
-                  $player->uname
-                </span>
-                </a>
-HTML;
-
+//$player_html = <<<HTML
+//                 <a style='font-size: 9px'
+//                 class='!flex flex-col bg-white !text-white font-medium relative w-[50px] h-[50px] rounded-full'>
+//                 <img class="absolute top-[50%] left-[50%] w-[45px] h-[45px]" src="pve/image/fs_007.png" style="transform: translate(-50%, -50%);">
+//                  <span class="text-white left-[50%] bottom-[-8px] absolute" style="transform: translate(-50%, 50%); font-size: 6px">
+//                  $player->uname
+//                </span>
+//                </a>
+//HTML;
+$player_html = '';
 $sql = "select * from game1 where sid != '$sid' AND nowmid='$player->nowmid' AND sfzx = 1"; //Tải trình phát bản đồ hiện tại
 $cxjg = $dblj->query($sql);
 $player_around = '';
@@ -382,6 +384,45 @@ $imcmd = $encode->encode("cmd=im&sid=$sid");
 $remainingplayerexp = ($player->uexp / $player->umaxexp) * 100;
 $remainingplayerexp .= 'px';
 
+$monster_id = $cxallguaiwu[0]['id'];
+$gyid = $cxallguaiwu[0]['gyid'];
+
+$tpts = '';
+if (\player\istupo($sid, $dblj) != 0 && $player->uexp >= $player->umaxexp) {
+//            $tupocmd = $encode->encode("cmd=tupo&sid=$sid");
+//    $tupocmd = "<a class='bg-[#d62700] upgrade-level' cmd='tupo' sid='$sid'>Đột phá</a>";
+    $tpts = <<<HTML
+    <a class="upgrade-level !flex justify-center items-center !text-white h-[50px] w-[50px] rounded-full bg-[#eb7523] font-10 absolute transform-center text-center top-[calc(50%_-_30px)] left-[calc(50%_-_4px)]">Đột phá</a>
+<!--            <img cmd='tupo' sid='$sid' class="upgrade-level absolute transform-center w-[80px] top-[calc(50%_-_30px)] left-[calc(50%_-_4px)]" src="images/dotpha.png" alt="">-->
+HTML;
+}
+
+$take_resource = '';
+if (isset($player->take_resource_mid)) {
+    $cal_exp = AFK_EXP();
+    $cal_resource = AFK_RESOURCE();
+
+    $mid_resource = \player\getMid($player->take_resource_mid, $dblj);
+    $exp = round($mid_resource->afk_rate_exp * $cal_exp, 0);
+    $yxb = round($mid_resource->afk_rate_resource * $cal_resource);
+
+    $take_resource = <<<HTML
+<div class="flex items-center justify-center">
+<div class="ml-8">
+ <p>Tu vi nhận được ~$exp/Phút </p>
+    <p class="flex items-center jsutify-center">Linh thạch nhận được ~<img src="bag/images/00578.png" class="w-[15px]">$yxb/Phút </p>
+</div>
+<div class="ml-2">
+    <a id="take-resource" sid="$sid" class="!flex justify-center items-center !text-white h-[50px] w-[50px] rounded-full bg-[#eb7523] font-10" sid="$sid">Nhận offline</a>
+</div>
+   
+
+</div>
+HTML;
+
+}
+
+$parse_player = json_encode($player);
 $nowhtml = <<<HTML
 <!--<div class="absolute top-0 left-0 w-full h-full opacity-80" style="background: url('images/Img_Zhuxian_Shichenxidong.png'); background-size: cover;"></div>-->
 <div class="h-full w-full absolute">
@@ -397,15 +438,7 @@ $nowhtml = <<<HTML
         </div>
     </div>
     <div class="flex items-center justify-end">
-        <a id="thebag" cmd="fangshi" fangshi="zhuangbei" sid="$sid" class="text-white inline-block flex items-center">
-            <img class="w-[30px]" src="images/menu/XJHomescreenButton_20.png" /><span class="text-span">Chợ</span>
-        </a>
-        <a style="background: radial-gradient(black, transparent);" class="text-white inline-block flex items-center" href="?cmd=$imcmd">
-            <img class="w-[30px]" src="images/menu/XJHomescreenButton_44.png" /><span class="text-span">H.Hữu</span>
-        </a>
-        <a style="background: radial-gradient(black, transparent);" class="text-white inline-block flex items-center" href="?cmd=$phcmd">
-            <img class="w-[30px]" src="images/menu/XJHomescreenButton_15.png" /><span class="text-span">X.hạng</span>
-        </a>
+        <div class="bg-[#ffeb3b] font-bold all-map">$clmid->mname$pvphtml</div>
     </div>
     <div class="p-2 relative" id="monster-container">
         <div class="flex flex-wrap">
@@ -421,17 +454,9 @@ $nowhtml = <<<HTML
         </div>
     </div>
     <div>
-            $npchtml
-
-</div>
-    <div class="absolute bottom-0 bg-[#36445a] w-full">
-            $lthtml
-            <span class="text-xs mb-2 text-[#ff9800] pb-2"> <span class="text-red-600 font-10">[Chú ý]</span>: <span class="text-white text-span">$clmid->playerinfo</span> </span>
-        <div class="flex items-center justify-between font-semibold text-xs text-white p-2 h-[40px] text-center" style="background: linear-gradient(to left, #009688, #36445a);">
-            $clmid->mname$pvphtml
-             <a id="auto-attach" class="w-[110px] !flex justify-center items-center !text-white h-[30px] font-10 bg-[#009688]" sid="$sid">Tự động đánh</a>
-            <a class="!flex justify-center items-center !text-white all-map h-[30px] w-[70px] bg-[#009688] font-10" sid="$sid">Bản đồ</a>
-        </div>
+        $npchtml
+    </div>
+    <div class="absolute bottom-0 w-full">
         <div class="p-2">
             <div class="justify-between flex text-white text-xs">
                 $lukouhtml
@@ -440,40 +465,59 @@ $nowhtml = <<<HTML
                 $bosshtml
             </div>
         </div>
-
-        <div class="bg-[#ff5722] flex items-center justify-center text-white"></div>
-
-     
-
-        <div class="h-[54px] bg-[#36445a]">
-            <div class="flex items-center justify-center bg-white pt-1 font-semibold" style="border-radius: 30px 30px 0 0;">
-                <a class="border-none p-0 flex flex-col items-center" href="?cmd=$ztcmd">
-                    <img class="w-[40px]" src="images/menu/XJHomescreenButton_29.png" />
+        <div class="flex items-center justify-between font-semibold text-xs text-white p-2 h-[40px] text-center" style="background: linear-gradient(to left, #009688, #36445a);">
+            <a id="auto-attach" class="w-[110px] !flex justify-center items-center !text-white h-[30px] font-10 bg-[#009688]" nowmid="$player->nowmid" gyid="$gyid" gid="$monster_id" sid="$sid">Chiến đấu</a>
+        </div>
+        $lthtml
+        <span class="text-xs mb-2 text-[#ff9800] pb-2"> <span class="text-red-600 font-10">[Chú ý]</span>: <span class="text-white text-span">$clmid->playerinfo</span> </span>
+        <div class="relative">
+            $tpts
+            <div class="absolute bottom-0 w-full text-center text-white mb-2">
+                $take_resource
+            </div>
+            <img src="images/bg-home.jpg" class="w-full h-[300px] object-cover" />
+            <div class="flex flex-col absolute top-[10px] text-white">
+                <a class="border-none p-0 flex flex-col items-center justify-center w-[50px]" href="?cmd=$ztcmd">
+                    <img class="w-[30px]" src="images/menu/XJHomescreenButton_29.png" />
                     <!--            <div>N.Vật</div>-->
+                    <span class="text-span ">Nhân vật</span>
                 </a>
-                <a sid="$sid" cmd="getbagzb" class="w-[20%] flex flex-col items-center" id="bag">
-                    <img class="w-[40px]" src="images/menu/XJDengxiandao_15.png" />
+                <a sid="$sid" cmd="getbagzb" class="items-center justify-center flex flex-col w-[50px]" id="bag">
+                    <img class="w-[30px]" src="images/menu/XJDengxiandao_15.png" />
+                    <span class="text-span">Ba lô</span>
                     <!--            <div>B.Lô</div>-->
                 </a>
-                <a class="w-[20%] flex flex-col items-center pet" sid="$sid">
-                    <img class="w-[40px]" src="images/menu/XJHomescreenTop_42.png" />
+                <a class="flex flex-col items-center justify-center w-[50px] pet" sid="$sid">
+                    <img class="w-[50px]" src="images/menu/XJHomescreenTop_42.png" />
                     <!--            <div>T.Cưng</div>-->
+                    <span class="text-span">Pet</span>
                 </a>
-                <a class="w-[20%] flex flex-col items-center" href="?cmd=$clubcmd">
-                    <img class="w-[40px]" src="images/menu/XJHomescreenButton_10.png" />
+                <a class="flex flex-col items-center justify-center w-[50px]" href="?cmd=$clubcmd">
+                    <img class="w-[30px]" src="images/menu/XJHomescreenButton_10.png" />
                     <!--            <div>T.Môn</div>-->
+                    <span class="text-span">T.môn</span>
                 </a>
-                <a class="w-[20%] flex flex-col items-center" href="?cmd=$mytask">
-                    <img class="w-[40px]" src="images/menu/XJDengxiandao_14.png" />
+                <a class="flex flex-col w-[50px] items-center justify-center" href="?cmd=$mytask">
+                    <img class="w-[30px]" src="images/menu/XJDengxiandao_14.png" />
                     <!--            <div>N.Vụ</div>-->
+                    <span class="text-span">N.vụ</span>
                 </a>
+            </div>
+            <div class="absolute top-[10px] right-0 flex flex-col">
+                <a id="thebag" cmd="fangshi" fangshi="zhuangbei" sid="$sid" class="text-white flex-col flex items-center"> <img class="w-[30px]" src="images/menu/XJHomescreenButton_20.png" /><span class="text-span">Chợ</span> </a>
+                <a class="text-white flex-col flex items-center" href="?cmd=$imcmd"> <img class="w-[30px]" src="images/menu/XJHomescreenButton_44.png" /><span class="text-span">H.Hữu</span> </a>
+                <a class="text-white flex-col flex items-center" href="?cmd=$phcmd"> <img class="w-[30px]" src="images/menu/XJHomescreenButton_15.png" /><span class="text-span">X.hạng</span> </a>
             </div>
         </div>
     </div>
 </div>
+
 <script src="map/map.js"></script>
 <script src="pve/pve.js"></script>
 <script src="bag/bag.js"></script>
+<script>
+window.player = $parse_player
+</script>
 
 HTML;
 

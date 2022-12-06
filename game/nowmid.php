@@ -394,10 +394,10 @@ $monster_img = '';
 $attach_action = '';
 if ($clmid->ispvp) {
     $attach_action = <<<HTML
-<div class="transform-center top-[155px] fixed">
+<div class="transform-center top-[30%] fixed w-full">
 
    <div class="relative flex items-center justify-center font-semibold text-xs text-white p-2 h-[40px] text-center">
-        <img class="w-[135px]" src="images/fs_007_504.png" alt="">
+        <img style="width: calc(100vw - 200px)" class="" src="images/fs_007_504.png" alt="">
             <a id="auto-attach" class="transform-center absolute top-[64px] font-bold w-[50px] !flex justify-center items-center !text-white h-[50px] font-10 bg-[#000000a8] rounded-full" 
 nowmid="$player->nowmid" gyid="$gyid" gid="$monster_id" sid="$sid">Tấn công</a>
         </div>

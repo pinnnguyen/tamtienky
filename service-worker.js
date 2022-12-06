@@ -14,7 +14,7 @@ self.addEventListener("fetch", function(event) {
     event.respondWith(
         caches.open("pwa").then(function(cache) {
             return cache.match(event.request).then(function(response) {
-                cache.addAll([event.request.url]);
+                // cache.addAll([event.request.url]);
 
                 if(response) {
                     return response;

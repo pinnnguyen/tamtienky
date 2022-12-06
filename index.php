@@ -55,10 +55,11 @@ if (isset($_POST['submit']) && $_POST['submit']) {
     <title>Tu Tiên Hội</title>
     <link rel="stylesheet" href="css/gamecss.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <link rel="manifest" href="manifest.json"/>
 </head>
 <body>
 <div class="main">
+    <script src="/script.js"></script>
     <div style="overflow: hidden; background: white; height: 100%; max-width: 678px; margin: auto">
         <img src="images/11.jpg" height="200" style="width: 100%"><br/>
         <div id="mainfont" style="padding: 8px">
@@ -81,24 +82,6 @@ if (isset($_POST['submit']) && $_POST['submit']) {
                                                                                                id="btn">Đăng
                         ký</a></p>
             </form>
-        </div>
-        <div class="footer">
-            <footer>
-                <script>
-                    function changetime() {
-                        var ary = Array("Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ bảy");
-                        var Timehtml = document.getElementById('CurrentTime');
-                        var date = new Date();
-                        Timehtml.innerHTML = '' + date.toLocaleString() + ' ' + ary[date.getDay()];
-                    }
-
-                    window.onload = function () {
-                        changetime();
-                        setInterval(changetime, 1000);
-                    }
-                </script>
-                <div id="CurrentTime"><?php echo date('Y-m-d H:i:s') ?></div>
-            </footer>
         </div>
     </div>
 </div>

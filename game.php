@@ -361,7 +361,7 @@ HTML;
     <meta charset="utf-8" content="width=device-width,user-scalable=no" name="viewport">
     <title>Tu Tiên Hội</title>
 
-    <link rel="manifest" href="manifest.json"/>
+<!--    <link rel="manifest" href="manifest.json"/>-->
     <!-- ios support -->
     <link rel="apple-touch-icon" href="images/logo.png"/>
     <meta name="apple-mobile-web-app-status-bar" content="#000"/>

@@ -55,7 +55,8 @@ if ($clmid->ispvp) {
     $pvphtml = "[PVP]";
     $attach_action = <<<HTML
    <div class="flex items-center justify-center font-semibold text-xs text-white p-2 h-[40px] text-center">
-            <a id="auto-attach" class="w-[110px] !flex justify-center items-center !text-white h-[30px] font-10 bg-[#009688]" nowmid="$player->nowmid" gyid="$gyid" gid="$monster_id" sid="$sid">Chiến đấu</a>
+            <a id="auto-attach" class="w-[110px] !flex justify-center items-center !text-white h-[30px] font-10 bg-[#009688]" 
+nowmid="$player->nowmid" gyid="$gyid" gid="$monster_id" sid="$sid">Chiến đấu</a>
         </div>
 HTML;
 }
@@ -392,8 +393,22 @@ $imcmd = $encode->encode("cmd=im&sid=$sid");
 $remainingplayerexp = ($player->uexp / $player->umaxexp) * 100;
 $remainingplayerexp .= 'px';
 
+var_dump($cxallguaiwu[0]);
+var_dump($cxallguaiwu[0]['id']);
+var_dump($cxallguaiwu[0]['gyid']);
+
 $monster_id = $cxallguaiwu[0]['id'];
 $gyid = $cxallguaiwu[0]['gyid'];
+
+$attach_action = '';
+if ($clmid->ispvp) {
+    $attach_action = <<<HTML
+   <div class="flex items-center justify-center font-semibold text-xs text-white p-2 h-[40px] text-center">
+            <a id="auto-attach" class="w-[110px] !flex justify-center items-center !text-white h-[30px] font-10 bg-[#009688]" 
+nowmid="$player->nowmid" gyid="$gyid" gid="$monster_id" sid="$sid">Chiến đấu</a>
+        </div>
+HTML;
+}
 
 $tpts = '';
 if (\player\istupo($sid, $dblj) != 0 && $player->uexp >= $player->umaxexp) {

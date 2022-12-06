@@ -1,9 +1,14 @@
 self.addEventListener("install", function(event) {
     event.waitUntil(
         caches.open("pwa").then(function(cache) {
+            console.log("cache", cache)
             return cache.addAll([
                 "/",
                 "css/gamecss.css",
+                "images/bg-home.jpg",
+                "images/bg-pve.jpg",
+                "images/fs_007_504.png",
+                "images/gif/pet.gif",
                 // "/script.js",
             ]);
         })

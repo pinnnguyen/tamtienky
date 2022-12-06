@@ -173,12 +173,13 @@ if ($cmd == 'pvegj' && $gid != 0) {
         } else {
             $response['youDie'] = false;
             $response['monsterDie'] = true;
-            $response['html'] = <<<HTML
-<p class="text-center p-3">Đạo hữu đã vượt qua ải này</p>
-HTML;
+//            $response['html'] = <<<HTML
+//<p class="text-center p-3">Đạo hữu đã vượt qua ải này</p>
+//HTML;
 
-            echo json_encode($response);
-            exit();
+//            echo json_encode($response);
+//            exit();
+
         }
 
         $yxb = round($guaiwu->glv * 3);

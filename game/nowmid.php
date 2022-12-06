@@ -50,15 +50,8 @@ if ($clmid->playerinfo != '') {
 }
 
 $pvphtml = "[Vùng an toàn]";
-$attach_action = '';
 if ($clmid->ispvp) {
     $pvphtml = "[PVP]";
-    $attach_action = <<<HTML
-   <div class="flex items-center justify-center font-semibold text-xs text-white p-2 h-[40px] text-center">
-            <a id="auto-attach" class="w-[110px] !flex justify-center items-center !text-white h-[30px] font-10 bg-[#009688]" 
-nowmid="$player->nowmid" gyid="$gyid" gid="$monster_id" sid="$sid">Chiến đấu</a>
-        </div>
-HTML;
 }
 
 $ztcmd = $encode->encode("cmd=zhuangtai&sid=$sid");
@@ -112,7 +105,7 @@ HTML;
 if ($leftmid->mname != '') {
     $lukouhtml .= <<<HTML
 <div class="flex flex-col items-center">
-    <span>Ải trước</span> <a mid="$clmid->leftmid" style="background: radial-gradient(#6e0d0d, transparent)" class="!text-white h-[34px] !flex items-center" href="?cmd=$leftmidlj">$leftmid->mname ←</a>
+    <span class="font-10">Ải trước</span> <a mid="$clmid->leftmid" style="background: radial-gradient(#6e0d0d, transparent)" class="m-0 !text-white h-[34px] !flex items-center" href="?cmd=$leftmidlj">$leftmid->mname ←</a>
 </div>
 HTML;
 }
@@ -120,7 +113,7 @@ HTML;
 if ($rightmid->mname != '') {
     $lukouhtml .= <<<HTML
 <div class="flex flex-col items-center">
-    <span>Ải tiếp theo</span> <a mid="$clmid->rightmid" style="background: radial-gradient(#6e0d0d, transparent)" class="!text-white h-[34px] !flex items-center" href="?cmd=$rightmidlj">$rightmid->mname →</a>
+    <span class="font-10">Ải tiếp theo</span> <a mid="$clmid->rightmid" style="background: radial-gradient(#6e0d0d, transparent)" class="m-0 !text-white h-[34px] !flex items-center" href="?cmd=$rightmidlj">$rightmid->mname →</a>
 </div>
 HTML;
 }
@@ -169,6 +162,7 @@ if ($second > $clmid->ms && $cxallguaiwu == 0 && $clmid->mgid != '') {
         }
     }
 }
+
 $sql = "select * from midguaiwu where mid='$player->nowmid' AND sid = ''"; //Nhận quái vật bản đồ hiện tại
 $cxjg = $dblj->query($sql);
 $cxallguaiwu = $cxjg->fetchAll(PDO::FETCH_ASSOC);
@@ -395,14 +389,20 @@ $remainingplayerexp .= 'px';
 
 $monster_id = $cxallguaiwu[0]['id'];
 $gyid = $cxallguaiwu[0]['gyid'];
+$monster_img = '';
 
 $attach_action = '';
 if ($clmid->ispvp) {
     $attach_action = <<<HTML
-   <div class="flex items-center justify-center font-semibold text-xs text-white p-2 h-[40px] text-center">
-            <a id="auto-attach" class="w-[110px] !flex justify-center items-center !text-white h-[30px] font-10 bg-[#009688]" 
-nowmid="$player->nowmid" gyid="$gyid" gid="$monster_id" sid="$sid">Chiến đấu</a>
+<div class="transform-center top-[155px] fixed">
+
+   <div class="relative flex items-center justify-center font-semibold text-xs text-white p-2 h-[40px] text-center">
+        <img class="w-[135px]" src="images/fs_007_504.png" alt="">
+            <a id="auto-attach" class="transform-center absolute top-[64px] font-bold w-[50px] !flex justify-center items-center !text-white h-[50px] font-10 bg-[#000000a8] rounded-full" 
+nowmid="$player->nowmid" gyid="$gyid" gid="$monster_id" sid="$sid">Tấn công</a>
         </div>
+</div>
+
 HTML;
 }
 

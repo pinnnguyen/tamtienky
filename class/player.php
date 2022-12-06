@@ -46,6 +46,8 @@ class player
     var $class;
     var $className;
     var $perViolentDamage;
+    var $take_resource_time;
+    var $take_resource_mid;
 }
 
 function getplayer($sid, $dblj)
@@ -89,6 +91,8 @@ function getplayer($sid, $dblj)
     $cxjg->bindColumn('sfzx', $player->sfzx);
     $cxjg->bindColumn('ispvp', $player->ispvp);
     $cxjg->bindColumn('class', $player->class);
+    $cxjg->bindColumn('take_resource_time', $player->take_resource_time);
+    $cxjg->bindColumn('take_resource_mid', $player->take_resource_mid);
     $cxjg->fetch(\PDO::FETCH_ASSOC);
 
 //    'perDamage' => 5,
@@ -391,9 +395,11 @@ class clmid
     var $mqy;
     var $playerinfo;
     var $ispvp;
+    var $afk_rate_exp;
+    var $afk_rate_resource;
 }
 
-function getmid($mid, $dblj)
+function getMid($mid, $dblj)
 {
     $clmid = new clmid();
     $sql = "select * from mid where mid='$mid'";
@@ -413,6 +419,8 @@ function getmid($mid, $dblj)
     $cxjg->bindColumn('mqy', $clmid->mqy);
     $cxjg->bindColumn('playerinfo', $clmid->playerinfo);
     $cxjg->bindColumn('ispvp', $clmid->ispvp);
+    $cxjg->bindColumn('afk_rate_exp', $clmid->afk_rate_exp);
+    $cxjg->bindColumn('afk_rate_resource', $clmid->afk_rate_resource);
     $cxjg->fetch(\PDO::FETCH_ASSOC);
     return $clmid;
 }
@@ -459,6 +467,19 @@ function changeexp($sid, $dblj, $exp)
     if (istupo($sid, $dblj) == 0) {
         upplayerlv($sid, $dblj);
     }
+}
+
+function changetakeresource($sid, $dblj)
+{
+    $nowdate = date('Y-m-d H:i:s');
+    $sql = "update game1 set take_resource_time='$nowdate' WHERE sid='$sid'";
+    $dblj->exec($sql);
+}
+
+function changemidresource($sid, $nowmid, $dblj)
+{
+    $sql = "update game1 set take_resource_mid ='$nowmid' WHERE sid='$sid'";
+    $dblj->exec($sql);
 }
 
 function upplayerlv($sid, $dblj)

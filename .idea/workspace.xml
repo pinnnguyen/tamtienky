@@ -2,20 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38b48ee1-61e9-457e-9f97-926f62136350" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/images/bg-home.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/afk/pickmid.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/afk/takeresource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/bg-home.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/afk/setMap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/afk/takeResource.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/player.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/player.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exp/rule.php" beforeDir="false" afterPath="$PROJECT_DIR$/exp/rule.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game.php" beforeDir="false" afterPath="$PROJECT_DIR$/game.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game/ginfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/game/ginfo.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game/nowmid.php" beforeDir="false" afterPath="$PROJECT_DIR$/game/nowmid.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game/pve.php" beforeDir="false" afterPath="$PROJECT_DIR$/game/pve.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/dotpha.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/dotpha.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pve/pve.js" beforeDir="false" afterPath="$PROJECT_DIR$/pve/pve.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pve/refresh_monster.php" beforeDir="false" afterPath="$PROJECT_DIR$/pve/refresh_monster.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lvup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/lvup.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/market.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/market.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/themarket.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uplevel.htm" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,20 +37,21 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2IOgKznScz3GjLwKUCm7uqByE4g" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Applications/phpstudy/WWW/images",
-    "nodejs_package_manager_path": "yarn",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Applications/phpstudy/WWW/images&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/images" />
@@ -64,7 +70,9 @@
       <updated>1670057985250</updated>
       <workItem from="1670057986581" duration="36323000" />
       <workItem from="1670204145706" duration="4834000" />
-      <workItem from="1670226348251" duration="7052000" />
+      <workItem from="1670226348251" duration="7432000" />
+      <workItem from="1670241031824" duration="21848000" />
+      <workItem from="1670312022462" duration="4998000" />
     </task>
     <servers />
   </component>
@@ -81,5 +89,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/class/player.php</url>
+          <line>5</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

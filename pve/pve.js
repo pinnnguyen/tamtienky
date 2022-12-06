@@ -1,5 +1,3 @@
-window.countMonster = 0;
-
 function refreshMonster($player) {
     const monster = $(".monster")
     const bMonster = $('#box-monster');
@@ -30,9 +28,8 @@ function refreshMonster($player) {
 }
 
 $('#auto-attach').unbind('click').bind('click', function () {
-    $(this).find('button').text('Đang treo máy')
-    $(this).attr('auto', 'true')
-    prevAttach()
+    console.log('doAttach')
+    doAttach($(this))
 })
 
 function prevAttach() {
@@ -158,18 +155,29 @@ function doAttach($this) {
     const gid = $this.attr('gid')
     const sid = $this.attr('sid')
     const nowmid = $this.attr('nowmid')
+    const gyid = $this.attr('gyid')
 
-    axios.get(`game/pve.php?gid=${gid}&cmd=pvegj&sid=${sid}&nowmid=${nowmid}`).then((res) => {
-        $this.addClass('monster-hide')
-        $this.find('.monitor').text('-' + res.data?.monitor?.dealDamageToMonster)
-        $('.alert').html(res.data?.html)
-
-        const delay = setTimeout(() => {
-            $this.remove();
-            prevAttach()
-            clearTimeout(delay)
-        }, 200)
+    axios.get(`/game/ginfo.php?gid=${gid}&gyid=${gyid}&sid=${sid}&nowmid=${nowmid}`).then((res) => {
+        $(".teleport").html(res.data)
+        $(".teleport").modal({
+            fadeDuration: 250,
+        });
     })
+
+    // axios.get(`game/pve.php?gid=${gid}&cmd=pvegj&sid=${sid}&nowmid=${nowmid}`).then((res) => {
+    //     $('.teleport').html(res.data?.html)
+    //     $('.teleport').modal({
+    //         fadeDuration: 200
+    //     })
+    //
+    //     console.log('res', res.data)
+    //
+    //     // const delay = setTimeout(() => {
+    //     //     $this.remove();
+    //     //     prevAttach()
+    //     //     clearTimeout(delay)
+    //     // }, 200)
+    // })
 }
 
 refreshMonster()

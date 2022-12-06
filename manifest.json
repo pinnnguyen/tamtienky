@@ -1,11 +1,11 @@
 {
-  "short_name": "PWA hêhhe Ex.",
+  "short_name": "Tu Tiên Hội",
   "name": "Progressive Web App Example",
   "start_url": "/?source=pwa",
   "background_color": "#3367D6",
   "display": "standalone",
   "scope": "/",
-  "theme_color": "#3367D6",
+  "theme_color": "#000",
   "icons": [
     {
       "src": "/images/logo.png",

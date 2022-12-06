@@ -163,6 +163,10 @@ if ($cmd == 'pvegj' && $gid != 0) {
         $query = $dblj->query($sql);
         $ret = $query->fetch(\PDO::FETCH_NUM);
 
+        if (!$player->take_resource_mid) {
+            \player\changemidresource($sid, $nowmid, $dblj);
+        }
+
         if (!$ret) {
             $insert_playermid = "insert into `playermid` (`sid`, `midid`) VALUES ('$sid','$player->nowmid')";
             $dblj->exec($insert_playermid);

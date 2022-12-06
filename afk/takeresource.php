@@ -15,6 +15,11 @@ if ($second < 60) {
     exit();
 }
 
+// Cho phép nhận thưởng tối đa 5h
+if ($second > 18000) {
+    $second = 18000;
+}
+
 $minute = round($second / 60);
 $quaiwu_mid = explode("|", $mid_resource->mgid);
 $guaiwu = \player\getyguaiwu($quaiwu_mid[0], $dblj);

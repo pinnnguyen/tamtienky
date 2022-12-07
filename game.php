@@ -399,6 +399,9 @@ HTML;
 
 </head>
 <body class="overflow-hidden">
+<audio id="autoplay" class="hidden" loop controls autoplay loop hidden>
+    <source src="/figure/source/76180931-42ba-4a4f-a837-940988b10b49.mp3" type="audio/mpeg">
+</audio>
 <div id="app" class="sm:w-[640px] md:w-[640px] lg:w-[640px] overflow-hidden m-auto"></div>
 <div id="the-main" class="main h-[100vh] sm:w-[640px] md:w-[640px] lg:w-[640px] overflow-hidden">
     <div class="h-full relative bg-black the-game">
@@ -422,6 +425,11 @@ HTML;
 <script src="game.box.js" async></script>
 <script src="upgrade/index.js" async></script>
 <script src="tailwind.config.js" async></script>
+<script>
+    setTimeout(() => {
+        document.getElementById('autoplay').play();
+    }, 1000)
+</script>
 <!--<script src="upgrade/bag.js"></script>-->
 
 </html>

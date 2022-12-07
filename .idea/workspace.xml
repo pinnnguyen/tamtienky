@@ -2,13 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38b48ee1-61e9-457e-9f97-926f62136350" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/bag/delete.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/figure/images/77a0aa54-37e4-475d-9901-d4ca68bc389d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/figure/images/f64e8b40-4e03-41d3-8b64-814f7547a72a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/figure/source/76180931-42ba-4a4f-a837-940988b10b49.mp3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bag/bag.js" beforeDir="false" afterPath="$PROJECT_DIR$/bag/bag.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bag/bagzb.php" beforeDir="false" afterPath="$PROJECT_DIR$/bag/bagzb.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bag/trangbiinfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/bag/trangbiinfo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/gamecss.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/gamecss.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game.php" beforeDir="false" afterPath="$PROJECT_DIR$/game.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/notify/notify.setting.js" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/notify/notify.setting.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game/nowmid.php" beforeDir="false" afterPath="$PROJECT_DIR$/game/nowmid.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,18 +36,18 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Applications/phpstudy/WWW/src/map",
+    "last_opened_file_path": "/Applications/phpstudy/WWW/figure/source",
     "nodejs_package_manager_path": "yarn",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/figure/source" />
+      <recent name="$PROJECT_DIR$/figure/images" />
       <recent name="$PROJECT_DIR$/src/map" />
       <recent name="$PROJECT_DIR$/images" />
       <recent name="$PROJECT_DIR$/plugins/notify/modal" />
-      <recent name="$PROJECT_DIR$/bag/images" />
-      <recent name="$PROJECT_DIR$/market/images" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -62,7 +63,7 @@
       <workItem from="1670226348251" duration="7432000" />
       <workItem from="1670241031824" duration="21848000" />
       <workItem from="1670312022462" duration="4998000" />
-      <workItem from="1670333168346" duration="31799000" />
+      <workItem from="1670333168346" duration="35104000" />
     </task>
     <servers />
   </component>

@@ -108,18 +108,18 @@ HTML;
 //HTML;
 //}
 
-if ($leftmid->mname != '') {
-    $lukouhtml .= <<<HTML
-<div class="flex flex-col items-center">
-    <span class="font-10">Ải trước</span> <a style="background: radial-gradient(#6e0d0d, transparent)" class="m-0 !text-white h-[34px] !flex items-center" href="?cmd=$leftmidlj">$leftmid->mname ←</a>
-</div>
-HTML;
-}
+//if ($leftmid->mname != '') {
+//    $lukouhtml .= <<<HTML
+//<div class="flex flex-col items-center">
+//    <span class="font-10">Ải trước</span> <a style="background: radial-gradient(#6e0d0d, transparent)" class="font-10 m-0 !text-white h-[34px] !flex items-center" href="?cmd=$leftmidlj">$leftmid->mname ←</a>
+//</div>
+//HTML;
+//}
 
 if ($rightmid->mname != '') {
     $lukouhtml .= <<<HTML
-<div class="flex flex-col items-center">
-    <span class="font-10">Ải tiếp theo</span> <a style="background: radial-gradient(#6e0d0d, transparent)" class="m-0 !text-white h-[34px] !flex items-center" href="?cmd=$rightmidlj">$rightmid->mname →</a>
+<div class="flex flex-col items-center absolute top-[87%] left-[50%] transform-center">
+    <a style="background: radial-gradient(#6e0d0d, transparent)" class="font-10 m-0 !text-white h-[34px] !flex items-center" href="?cmd=$rightmidlj">$rightmid->mname →</a>
 </div>
 HTML;
 }
@@ -374,9 +374,9 @@ if ($ltcxjg) {
         $uid = $ret[count($ret) - $i - 1]['uid'];
         $ucmd = $encode->encode("cmd=getplayerinfo&uid=$uid&sid=$player->sid");
         if ($uid) {
-            $lthtml .= "<div class='text-red-600 font-10'><a href='?cmd=$ucmd''>[$uname]: </a><span class='text-white text-span'>$umsg</span></div>";
+            $lthtml .= "<div class='text-red-600 font-10 flex'><a href='?cmd=$ucmd''>[$uname]: </a><span class='line-clamp-1 text-white text-span'>$umsg</span></div>";
         } else {
-            $lthtml .= "<div class='text-red-600 font-10'><span>[$uname]: </span><span class='text-white text-span'>$umsg</span></div>";
+            $lthtml .= "<div class='text-red-600 font-10 flex '><span>[$uname]: </span><span class='line-clamp-1 text-white text-span'>$umsg</span></div>";
         }
     }
 }
@@ -400,15 +400,11 @@ $monster_img = '';
 $attach_action = '';
 if ($clmid->ispvp) {
     $attach_action = <<<HTML
-<div class="transform-center top-[30%] fixed w-full">
-
-   <div class="relative flex items-center justify-center font-semibold text-xs text-white p-2 h-[40px] text-center">
-        <img style="width: calc(100vw - 200px)" class="" src="images/fs_007_504.png" alt="">
-            <a id="auto-attach" class="transform-center absolute top-[64px] font-bold w-[50px] !flex justify-center items-center !text-white h-[50px] font-10 bg-[#000000a8] rounded-full" 
-nowmid="$player->nowmid" gyid="$gyid" gid="$monster_id" sid="$sid">Tấn công</a>
-        </div>
+<div class="w-full relative h-[100px]" id="auto-attach" nowmid="$player->nowmid" gyid="$gyid" gid="$monster_id" sid="$sid">
+<img class="w-[100px] transform-center top-[55%] absolute" src="figure/images/f64e8b40-4e03-41d3-8b64-814f7547a72a.png" alt="">
+    <img class="h-[110px] w-full object-cover" src="figure/images/77a0aa54-37e4-475d-9901-d4ca68bc389d.png" alt="">
+$lukouhtml
 </div>
-
 HTML;
 }
 
@@ -432,7 +428,7 @@ if (isset($player->take_resource_mid)) {
     $yxb = round($mid_resource->afk_rate_resource * $cal_resource);
 
     $take_resource = <<<HTML
-<div class="flex items-center justify-center">
+<div class="flex items-center justify-center font-10">
 <div class="ml-8">
  <p>Tu vi nhận được ~$exp/Phút </p>
     <p class="flex items-center jsutify-center">Linh thạch nhận được ~<img src="bag/images/00578.png" class="w-[15px]">$yxb/Phút </p>
@@ -440,9 +436,17 @@ if (isset($player->take_resource_mid)) {
 <div class="ml-2">
     <a id="take-resource" sid="$sid" class="!flex justify-center items-center !text-white h-[50px] w-[50px] rounded-full bg-[#eb7523] font-10" sid="$sid">Nhận offline</a>
 </div>
-   
-
 </div>
+<div>
+
+        $lthtml
+        <span class="flex text-xs text-[#ff9800] items-center"> 
+        <span class="text-red-600 font-10">[Chú ý]</span>: 
+        <span class="text-white text-span line-clamp-1">$clmid->playerinfo</span>
+         </span>
+         </div>
+
+
 HTML;
 
 }
@@ -483,16 +487,11 @@ $nowhtml = <<<HTML
     </div>
     <div class="absolute bottom-0 w-full">
         <div class="p-2">
-            <div class="justify-between flex text-white text-xs">
-                $lukouhtml
-            </div>
             <div class="flex items-end">
                 $bosshtml
             </div>
         </div>
-        $attach_action
-        $lthtml
-        <span class="text-xs mb-2 text-[#ff9800] pb-2"> <span class="text-red-600 font-10">[Chú ý]</span>: <span class="text-white text-span">$clmid->playerinfo</span> </span>
+                $attach_action
         <div class="relative">
             $tpts
             <div class="absolute bottom-0 w-full text-center text-white mb-2">

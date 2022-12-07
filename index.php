@@ -100,6 +100,14 @@ if (isset($_POST['submit']) && $_POST['submit']) {
 </head>
 <body>
 <div class="main">
+    <audio id="autoplay" class="hidden" loop controls autoplay loop hidden>
+        <source src="/figure/source/76180931-42ba-4a4f-a837-940988b10b49.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+        setTimeout(() => {
+            document.getElementById('autoplay').play();
+        }, 1000)
+    </script>
         <script src="/script.js"></script>
     <section class="sign-in">
         <div class="main-page">

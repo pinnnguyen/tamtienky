@@ -90,13 +90,13 @@ if (isset($cmd)) {
             $ym = 'game/cj.php';
             break;
         case 'login':
-            $player = \player\getplayer($sid, $dblj);
-            $gonowmid = $encode->encode("cmd=gomid&newmid=$player->nowmid&sid=$sid");
-            $nowdate = date('Y-m-d H:i:s');
-            $sql = "update game1 set endtime='$nowdate',sfzx=1 WHERE sid='$sid'";
-            $cxjg = $dblj->exec($sql);
-            header("refresh:1;url=?cmd=$gonowmid");
-            exit();
+//            $player = \player\getplayer($sid, $dblj);
+//            $gonowmid = $encode->encode("cmd=gomid&newmid=$player->nowmid&sid=$sid");
+//            $nowdate = date('Y-m-d H:i:s');
+//            $sql = "update game1 set endtime='$nowdate',sfzx=1 WHERE sid='$sid'";
+//            $cxjg = $dblj->exec($sql);
+//            header("refresh:1;url=?cmd=$gonowmid");
+//            exit();
             break;
         case 'zhuangtai':
             $ym = 'game/zhuangtai.php';
@@ -386,6 +386,7 @@ HTML;
     <!--    <link rel="stylesheet" href="plugins/modal/modal.min.js"/>-->
 
     <!-- jQuery Notify -->
+    <link rel="stylesheet" href="plugins/notify/notify.css"/>
     <script src="plugins/notify/notify.min.js"></script>
     <script src="plugins/notify/notify.setting.js"></script>
 

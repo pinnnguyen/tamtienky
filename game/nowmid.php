@@ -5,6 +5,12 @@ $player = player\getplayer($sid, $dblj);
 $lastmid = $player->nowmid;
 $sid_str = $sid;
 
+$go = $_GET['go'];
+
+if (isset($go)) {
+    $newmid = $go;
+}
+
 if (isset($newmid)) {
     if ($player->nowmid != $newmid) {
         $clmid = player\getmid($newmid, $dblj); //Nhận thông tin bản đồ sắp tới
@@ -64,12 +70,12 @@ $bugreportcmd = $encode->encode("cmd=bugreport&canshu=info&sid=$sid");
 $buginfocmd = $encode->encode("cmd=buginfo&canshu=info&sid=$sid");
 $cxall = '';
 
-$upmidlj = $encode->encode("cmd=gomid&newmid=$clmid->upmid&sid=$sid"); //上地图
-$downmidlj = $encode->encode("cmd=gomid&newmid=$clmid->downmid&sid=$sid");
+//$upmidlj = $encode->encode("cmd=gomid&newmid=$clmid->upmid&sid=$sid"); //上地图
+//$downmidlj = $encode->encode("cmd=gomid&newmid=$clmid->downmid&sid=$sid");
 $leftmidlj = $encode->encode("cmd=gomid&newmid=$clmid->leftmid&sid=$sid");
 $rightmidlj = $encode->encode("cmd=gomid&newmid=$clmid->rightmid&sid=$sid");
-$upmid = player\getmid($clmid->upmid, $dblj);
-$downmid = player\getmid($clmid->downmid, $dblj);
+//$upmid = player\getmid($clmid->upmid, $dblj);
+//$downmid = player\getmid($clmid->downmid, $dblj);
 $leftmid = player\getmid($clmid->leftmid, $dblj);
 $rightmid = player\getmid($clmid->rightmid, $dblj);
 
@@ -93,19 +99,19 @@ if ($clmid->midboss != 0) {
     <span class="text-white">BOSS:</span>:<a class="bg-[#ff623e] !text-white" href="?cmd=$bossinfo">$boss->bossname [lv$boss->bosslv] [$bossTime]</a>
 HTML;
 }
-
-if ($upmid->mname != '') {
-    $lukouhtml .= <<<HTML
-<div class="flex flex-col items-center">
-    <span>Hướng Bắc</span> <a mid="$clmid->upmid" style="background: radial-gradient(black, transparent)" class="!text-white h-[34px] !flex items-center" href="?cmd=$upmidlj">$upmid->mname ↑</a>
-</div>
-HTML;
-}
+//
+//if ($upmid->mname != '') {
+//    $lukouhtml .= <<<HTML
+//<div class="flex flex-col items-center">
+//    <span>Hướng Bắc</span> <a mid="$clmid->upmid" style="background: radial-gradient(black, transparent)" class="!text-white h-[34px] !flex items-center" href="?cmd=$upmidlj">$upmid->mname ↑</a>
+//</div>
+//HTML;
+//}
 
 if ($leftmid->mname != '') {
     $lukouhtml .= <<<HTML
 <div class="flex flex-col items-center">
-    <span class="font-10">Ải trước</span> <a mid="$clmid->leftmid" style="background: radial-gradient(#6e0d0d, transparent)" class="m-0 !text-white h-[34px] !flex items-center" href="?cmd=$leftmidlj">$leftmid->mname ←</a>
+    <span class="font-10">Ải trước</span> <a style="background: radial-gradient(#6e0d0d, transparent)" class="m-0 !text-white h-[34px] !flex items-center" href="?cmd=$leftmidlj">$leftmid->mname ←</a>
 </div>
 HTML;
 }
@@ -113,18 +119,18 @@ HTML;
 if ($rightmid->mname != '') {
     $lukouhtml .= <<<HTML
 <div class="flex flex-col items-center">
-    <span class="font-10">Ải tiếp theo</span> <a mid="$clmid->rightmid" style="background: radial-gradient(#6e0d0d, transparent)" class="m-0 !text-white h-[34px] !flex items-center" href="?cmd=$rightmidlj">$rightmid->mname →</a>
+    <span class="font-10">Ải tiếp theo</span> <a style="background: radial-gradient(#6e0d0d, transparent)" class="m-0 !text-white h-[34px] !flex items-center" href="?cmd=$rightmidlj">$rightmid->mname →</a>
 </div>
 HTML;
 }
 
-if ($downmid->mname != '') {
-    $lukouhtml .= <<<HTML
-<div class="flex flex-col items-center">
-    <span>Hướng Nam</span> <a style="background: radial-gradient(black, transparent)" class="bg-[#621e1f] !text-white h-[34px] !flex items-center" href="?cmd=$downmidlj">$downmid->mname ↓</a>
-</div>
-HTML;
-}
+//if ($downmid->mname != '') {
+//    $lukouhtml .= <<<HTML
+//<div class="flex flex-col items-center">
+//    <span>Hướng Nam</span> <a style="background: radial-gradient(black, transparent)" class="bg-[#621e1f] !text-white h-[34px] !flex items-center" href="?cmd=$downmidlj">$downmid->mname ↓</a>
+//</div>
+//HTML;
+//}
 
 $sql = "select * from midguaiwu where mid='$player->nowmid' AND sid = ''"; //Nhận quái vật bản đồ hiện tại
 $cxjg = $dblj->query($sql);
@@ -254,7 +260,7 @@ HTML;
 }
 
 $npchtml = '';
-$task = \player\getplayerrenwu($sid, $dblj); //玩家任务数组
+$task = \player\getplayerrenwu($sid, $dblj);
 
 $sql = "select * from playerrenwu WHERE sid='$sid' AND rwlx = 2";
 $cxjg = $dblj->query($sql);
@@ -272,90 +278,90 @@ $cxjg = $dblj->query($sql);
 $wtjrw = $cxjg->fetchAll(PDO::FETCH_ASSOC);
 $taskcount = count($wtjrw);
 
-if ($clmid->mnpc != "") {
-    $sql = "select * from npc where id in ($clmid->mnpc)"; //获取npc
-    $cxjg = $dblj->query($sql);
-    $cxnpcall = $cxjg->fetchAll(PDO::FETCH_ASSOC);
-
-    for ($i = 0; $i < count($cxnpcall); $i++) {
-        $nname = $cxnpcall[$i]['nname'];
-        $nid = $cxnpcall[$i]['id'];
-        $taskid = $cxnpcall[$i]['taskid'];
-        $taskarr = explode(',', $taskid);
-        $yrw = false;
-        //        if ($taskid != '') {
-        //            for ($l = 0; $l < count($taskarr); $l++) {
-        //                $nowrw = \player\gettask($taskarr[$l], $dblj);
-        //                $rwret = \player\getplayerrenwuonce($sid, $taskarr[$l], $dblj);
-        //                $lastrwid = $nowrw->lastrwid;
-        //
-        //                if ($nowrw->rwlx == 1 || $nowrw->rwlx == 2) {
-        //                    if (!$rwret) {
-        //                        if ($nowrw->rwzl != 3) {
-        //                            $npchtml .= '<img src="images/wen.gif" />';
-        //                        } elseif ($nowrw->rwyq == $nid) {
-        //                            $npchtml .= '<img src="images/wen.gif" />';
-        //                        } else {
-        //                            continue;
-        //                        }
-        //                    } elseif ($rwret->rwzt == 2) {
-        //                        if ($nowrw->rwzl != 3) {
-        //                            $npchtml .= '<img src="images/tan.gif" />';
-        //                        } elseif ($nowrw->rwcount == $nid) {
-        //                            $npchtml .= '<img src="images/tan.gif" />';
-        //                        } else {
-        //                            continue;
-        //                        }
-        //
-        //                    }
-        //                }
-        //                if ($nowrw->rwlx == 3) {
-        //                    if ($rwret) {
-        //                        if ($rwret->rwzt == 2) {
-        //                            if ($nowrw->rwzl != 3) {
-        //                                $npchtml .= '<img src="images/tan.gif" />';
-        //                            } elseif ($nowrw->rwcount == $nid) {
-        //                                $npchtml .= '<img src="images/tan.gif" />';
-        //                            } else {
-        //                                continue;
-        //                            }
-        //                        }
-        //                    } else {
-        //                        if ($lastrwid <= 0) {
-        //                            if ($nowrw->rwzl != 3) {
-        //                                $npchtml .= '<img src="images/wen.gif" />';
-        //                            } elseif ($nowrw->rwyq == $nid) {
-        //                                $npchtml .= '<img src="images/wen.gif" />';
-        //                            } else {
-        //                                continue;
-        //                            }
-        //                        } else {
-        //                            $rwret = \player\getplayerrenwuonce($sid, $lastrwid, $dblj);
-        //                            if ($rwret) {
-        //                                if ($rwret->rwzt == 3) {
-        //                                    if ($nowrw->rwzl != 3) {
-        //                                        $npchtml .= '<img src="images/wen.gif" />';
-        //                                    } elseif ($nowrw->rwyq == $nid) {
-        //                                        $npchtml .= '<img src="images/wen.gif" />';
-        //                                    } else {
-        //                                        continue;
-        //                                    }
-        //                                }
-        //                            }
-        //                        }
-        //                    }
-        //                }
-        //            }
-        //        }
-        $npccmd = $encode->encode("cmd=npc&nid=$nid&sid=$player->sid");
-        $npchtml .= <<<HTML
- <div class="p-3 bg-[#36445a]">
-                <a class="m-2" style="background: radial-gradient(black, transparent); color: white" href="?cmd=$npccmd">$nname</a>
-
-    </div>
-HTML;
-    }
-}
+//if ($clmid->mnpc != "") {
+//    $sql = "select * from npc where id in ($clmid->mnpc)"; //获取npc
+//    $cxjg = $dblj->query($sql);
+//    $cxnpcall = $cxjg->fetchAll(PDO::FETCH_ASSOC);
+//
+//    for ($i = 0; $i < count($cxnpcall); $i++) {
+//        $nname = $cxnpcall[$i]['nname'];
+//        $nid = $cxnpcall[$i]['id'];
+//        $taskid = $cxnpcall[$i]['taskid'];
+//        $taskarr = explode(',', $taskid);
+//        $yrw = false;
+//        //        if ($taskid != '') {
+//        //            for ($l = 0; $l < count($taskarr); $l++) {
+//        //                $nowrw = \player\gettask($taskarr[$l], $dblj);
+//        //                $rwret = \player\getplayerrenwuonce($sid, $taskarr[$l], $dblj);
+//        //                $lastrwid = $nowrw->lastrwid;
+//        //
+//        //                if ($nowrw->rwlx == 1 || $nowrw->rwlx == 2) {
+//        //                    if (!$rwret) {
+//        //                        if ($nowrw->rwzl != 3) {
+//        //                            $npchtml .= '<img src="images/wen.gif" />';
+//        //                        } elseif ($nowrw->rwyq == $nid) {
+//        //                            $npchtml .= '<img src="images/wen.gif" />';
+//        //                        } else {
+//        //                            continue;
+//        //                        }
+//        //                    } elseif ($rwret->rwzt == 2) {
+//        //                        if ($nowrw->rwzl != 3) {
+//        //                            $npchtml .= '<img src="images/tan.gif" />';
+//        //                        } elseif ($nowrw->rwcount == $nid) {
+//        //                            $npchtml .= '<img src="images/tan.gif" />';
+//        //                        } else {
+//        //                            continue;
+//        //                        }
+//        //
+//        //                    }
+//        //                }
+//        //                if ($nowrw->rwlx == 3) {
+//        //                    if ($rwret) {
+//        //                        if ($rwret->rwzt == 2) {
+//        //                            if ($nowrw->rwzl != 3) {
+//        //                                $npchtml .= '<img src="images/tan.gif" />';
+//        //                            } elseif ($nowrw->rwcount == $nid) {
+//        //                                $npchtml .= '<img src="images/tan.gif" />';
+//        //                            } else {
+//        //                                continue;
+//        //                            }
+//        //                        }
+//        //                    } else {
+//        //                        if ($lastrwid <= 0) {
+//        //                            if ($nowrw->rwzl != 3) {
+//        //                                $npchtml .= '<img src="images/wen.gif" />';
+//        //                            } elseif ($nowrw->rwyq == $nid) {
+//        //                                $npchtml .= '<img src="images/wen.gif" />';
+//        //                            } else {
+//        //                                continue;
+//        //                            }
+//        //                        } else {
+//        //                            $rwret = \player\getplayerrenwuonce($sid, $lastrwid, $dblj);
+//        //                            if ($rwret) {
+//        //                                if ($rwret->rwzt == 3) {
+//        //                                    if ($nowrw->rwzl != 3) {
+//        //                                        $npchtml .= '<img src="images/wen.gif" />';
+//        //                                    } elseif ($nowrw->rwyq == $nid) {
+//        //                                        $npchtml .= '<img src="images/wen.gif" />';
+//        //                                    } else {
+//        //                                        continue;
+//        //                                    }
+//        //                                }
+//        //                            }
+//        //                        }
+//        //                    }
+//        //                }
+//        //            }
+//        //        }
+//        $npccmd = $encode->encode("cmd=npc&nid=$nid&sid=$player->sid");
+//        $npchtml .= <<<HTML
+// <div class="p-3 bg-[#36445a]">
+//                <a class="m-2" style="background: radial-gradient(black, transparent); color: white" href="?cmd=$npccmd">$nname</a>
+//
+//    </div>
+//HTML;
+//    }
+//}
 
 $sql = 'SELECT * FROM ggliaotian ORDER BY id DESC LIMIT 1'; //聊天列表获取
 $ltcxjg = $dblj->query($sql);
@@ -442,6 +448,8 @@ HTML;
 }
 
 $parse_player = json_encode($player);
+$parse_clmid = json_encode($clmid);
+
 $nowhtml = <<<HTML
 <!--<div class="absolute top-0 left-0 w-full h-full opacity-80" style="background: url('images/Img_Zhuxian_Shichenxidong.png'); background-size: cover;"></div>-->
 <div class="h-full w-full absolute">
@@ -528,6 +536,7 @@ $nowhtml = <<<HTML
 <script src="bag/bag.js"></script>
 <script>
 window.player = $parse_player
+window.currentMid = $parse_clmid
 </script>
 
 HTML;

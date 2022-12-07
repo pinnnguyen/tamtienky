@@ -1446,6 +1446,22 @@ function getqy_all($dblj)
     return $ret;
 }
 
+function get_mid_all($dblj)
+{
+    $sql = "select mid, mname from `mid`";
+    $cxjg = $dblj->query($sql);
+    $ret = $cxjg->fetchAll(\PDO::FETCH_ASSOC);
+    return $ret;
+}
+
+function get_playermid_all($sid, $dblj)
+{
+    $sql = "select * from `playermid` where sid='$sid'";
+    $cxjg = $dblj->query($sql);
+    $ret = $cxjg->fetchAll(\PDO::FETCH_ASSOC);
+    return $ret;
+}
+
 class gameconfig
 {
     var $firstmid;
@@ -1722,5 +1738,11 @@ function addim($imuid, $sid, $dblj)
 function updateMidBoss($mid, $midBoss, $dblj)
 {
     $sql = "update mid set midboss = $midBoss  WHERE mid = '$mid'";
+    $dblj->exec($sql);
+}
+
+function update_player_mid($sid, $mid, $dblj)
+{
+    $sql = "update game1 set nowmid = $mid  WHERE sid = '$sid'";
     $dblj->exec($sql);
 }

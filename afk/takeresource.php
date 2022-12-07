@@ -16,8 +16,9 @@ if ($second < 60) {
 }
 
 // Cho phép nhận thưởng tối đa 5h
-if ($second > 18000) {
-    $second = 18000;
+$limit_time = 18000 * 4;
+if ($second > $limit_time) {
+    $second = $limit_time;
 }
 
 $minute = round($second / 60);

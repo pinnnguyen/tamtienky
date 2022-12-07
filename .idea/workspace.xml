@@ -2,14 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38b48ee1-61e9-457e-9f97-926f62136350" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/map/allmap.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/map/fetchMap.vue.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/map/setplayermid.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/afk/takeresource.php" beforeDir="false" afterPath="$PROJECT_DIR$/afk/takeresource.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/class/player.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/player.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game.php" beforeDir="false" afterPath="$PROJECT_DIR$/game.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game/allmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/game/allmap.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game/nowmid.php" beforeDir="false" afterPath="$PROJECT_DIR$/game/nowmid.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/pve.php" beforeDir="false" afterPath="$PROJECT_DIR$/game/pve.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/service-worker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,13 +37,14 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Applications/phpstudy/WWW/images",
+    "last_opened_file_path": "/Applications/phpstudy/WWW/src/map",
     "nodejs_package_manager_path": "yarn",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/map" />
       <recent name="$PROJECT_DIR$/images" />
       <recent name="$PROJECT_DIR$/plugins/notify/modal" />
       <recent name="$PROJECT_DIR$/bag/images" />
@@ -62,7 +64,7 @@
       <workItem from="1670226348251" duration="7432000" />
       <workItem from="1670241031824" duration="21848000" />
       <workItem from="1670312022462" duration="4998000" />
-      <workItem from="1670333168346" duration="12427000" />
+      <workItem from="1670333168346" duration="21215000" />
     </task>
     <servers />
   </component>

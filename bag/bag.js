@@ -70,16 +70,35 @@ $('#for-sale').unbind('click').bind('click', function () {
     });
 })
 
-$('.delete-item').unbind('click').bind('click', function () {
+$('.cup-item').unbind('click').bind('click', function () {
     const sid = $(this).attr('sid')
     const zbnowid = $(this).attr('zbnowid')
+    const _this = $(".trangbi-defail[zbnowid='" + zbnowid + "']")
 
     $.get(`/bag/cuptrangbi.php?sid=${sid}&zbnowid=${zbnowid}`, function (response) {
         $.modal.close()
-        $('.teleport').html(response)
-        loadBag($(this), sid)
+        _this.remove()
 
-        return
+        $.notify(response, {
+            style: 'normal',
+            globalPosition: 'bottom right'
+        })
+    })
+})
+
+$('.delete-item').unbind('click').bind('click', function () {
+    const sid = $(this).attr('sid')
+    const zbnowid = $(this).attr('zbnowid')
+    const _this = $(".trangbi-defail[zbnowid='" + zbnowid + "']")
+
+    $.get(`/bag/delete.php?sid=${sid}&zbnowid=${zbnowid}`, function (response) {
+        $.modal.close()
+        _this.remove()
+
+        $.notify(response, {
+            style: 'normal',
+            globalPosition: 'bottom right'
+        })
     })
 })
 

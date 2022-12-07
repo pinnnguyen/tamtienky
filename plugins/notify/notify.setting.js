@@ -35,13 +35,13 @@ $.notify.addStyle('normal', {
     globalPosition: 'bottom right',
     classes: {
         base: {
-            "white-space": "nowrap",
             "background-color": "#573f36",
             "padding": "10px",
             "border": "2px solid white",
             "color": "white",
             "right": "-7px",
-            "bottom": "10px"
+            "bottom": "10px",
+            "width": "200px"
         },
     }
 });

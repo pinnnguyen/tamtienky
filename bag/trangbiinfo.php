@@ -34,14 +34,19 @@ $upls = round($zhuangbei->qianghua / 2) * round($zhuangbei->qianghua / 3) * 2 * 
 
 $equip = '';
 $cup_trang_bi = '';
+$delete_trang_bi = '';
 
 if (in_array($zhuangbei->zbnowid, $arr)) {
     $equip = <<<HTML
 <button class="h-[30px] flex items-center justify-center rounded-sm p-1 bg-button">Tháo trang bị</button>
 HTML;
 } else {
+    $delete_trang_bi = <<<HTML
+    <button zbnowid="$zhuangbei->zbnowid" sid="$sid" cmd="maichu" class="delete-item h-[30px] flex items-center justify-center rounded-sm p- bg-button">Bán</button>
+HTML;
+
     $cup_trang_bi = <<<HTML
-    <button zbnowid="$zhuangbei->zbnowid" sid="$sid" cmd="delezb" class="delete-item h-[30px] flex items-center justify-center rounded-sm p- bg-button">Phân giải</button>
+    <button zbnowid="$zhuangbei->zbnowid" sid="$sid" cmd="delezb" class="cup-item h-[30px] flex items-center justify-center rounded-sm p- bg-button">Phân giải</button>
 HTML;
 }
 
@@ -291,6 +296,7 @@ $upts
 </div>
 
 <div class="flex justify-end mt-2 gap-2">
+    $delete_trang_bi
     $cup_trang_bi
     $equip
     $use_trang_bi

@@ -11,54 +11,11 @@ $player = player\getplayer($sid, $dblj);
 $encode = new \encode\encode();
 $tishi = '';
 
-if (isset($canshu)) {
-    if ($canshu == 'maichu') {
-        $mczb = \player\getzb($zbnowid, $dblj);
-        $sxzz = $mczb->zbgj + $mczb->zbfy + $mczb->zbbj * 5 + $mczb->zbxx * 5 + $mczb->qianghua * 3;
-        $mcls = round($sxzz);
-        $sql = "delete from playerzhuangbei where zbnowid =$zbnowid AND sid='$sid'"; // xóa thiết bị
-        $mcret = $dblj->exec($sql);
-        if ($mcret) {
-            $ret = \player\changeyxb(1, $sxzz / 2, $sid, $dblj);
-            $tishi = "Bán $mczb->zbname thành công, lấy đá thần: $mcls<br/>";
-        }
-    }
-}
-
 if (!isset($limit)) {
     $limit = 0;
 }
 
-$limit_bag_slot = 25;
-//if ($cmd == 'delezb') {
-//    $zhuangbei = \player\getzb($zbnowid, $dblj);
-//    $fjls = $zhuangbei->qianghua * 20 + 20;
-//    $ret = \player\changeyxb(2, $fjls, $sid, $dblj);
-//    if ($ret) {
-//        $sql = "delete from playerzhuangbei where zbnowid =$zbnowid AND sid='$sid'"; //xóa thiết bị
-//        $dblj->exec($sql);
-//        $qhs = round($zhuangbei->qianghua * $zhuangbei->qianghua);
-//        $sjs = mt_rand(1, 100);
-//        if ($sjs <= 30) {
-//            $sjs = mt_rand(1, 100);
-//            if ($sjs > 90) {
-//                $qhs = $qhs + 3;
-//            } elseif ($sjs > 80) {
-//                $qhs = $qhs + 2;
-//            } elseif ($sjs > 70) {
-//                $qhs = $qhs + 1;
-//            }
-//        }
-//        \player\adddj($sid, 1, $qhs, $dblj);
-//        $tishi = 'Đã phân rã thành công!<br/>';
-//        if ($qhs > 0) {
-//            $tishi .= "Nhận được một viên đá cường hóa:" . $qhs . "!<br/>";
-//        }
-//    } else {
-//        $tishi = "Không đủ linh thạch!<br/>";
-//    }
-//}
-
+$limit_bag_slot = 15;
 $sql = "select * from playerzhuangbei  WHERE sid = '$sid' ORDER BY zbnowid in ($player->tool1, $player->tool2, $player->tool3, $player->tool4, $player->tool5, $player->tool6) DESC LIMIT $limit, $limit_bag_slot";
 $cxjg = $dblj->query($sql);
 $retzb = $cxjg->fetchAll(PDO::FETCH_ASSOC);

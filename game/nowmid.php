@@ -512,11 +512,7 @@ $nowhtml = <<<HTML
                     <!--            <div>T.Môn</div>-->
                     <span class="text-span">T.môn</span>
                 </a>
-                <a class="flex flex-col w-[50px] items-center justify-center" href="?cmd=$mytask">
-                    <img class="w-[30px]" src="images/menu/XJDengxiandao_14.png" />
-                    <!--            <div>N.Vụ</div>-->
-                    <span class="text-span">N.vụ</span>
-                </a>
+           
             </div>
             <div class="absolute top-[10px] right-0 flex flex-col">
                 <a id="thebag" cmd="fangshi" fangshi="zhuangbei" sid="$sid" class="text-white flex-col flex items-center"> <img class="w-[30px]" src="images/menu/XJHomescreenButton_20.png" /><span class="text-span">Chợ</span> </a>
@@ -537,6 +533,12 @@ window.player = $parse_player
 HTML;
 
 echo $nowhtml;
+
+//<a class="flex flex-col w-[50px] items-center justify-center" href="?cmd=$mytask">
+//                    <img class="w-[30px]" src="images/menu/XJDengxiandao_14.png" />
+//                    <!--            <div>N.Vụ</div>-->
+//                    <span class="text-span">N.vụ</span>
+//                </a>
 
 //<a href="?cmd=$getbagcmd" >B.lô</a>
 //    <a href="?cmd=$getbagjncmd" >Phù lục</a>

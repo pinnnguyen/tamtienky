@@ -9,6 +9,11 @@ self.addEventListener("install", function(event) {
                 "images/bg-pve.jpg",
                 "images/fs_007_504.png",
                 "images/gif/pet.gif",
+                "plugins/modal/modal.min.css",
+                "plugins/modal/modal.min.js",
+                "plugins/notify/notify.css",
+                "plugins/notify/notify.min.js",
+                "plugins/notify/notify.setting.js"
                 // "/script.js",
             ]);
         })

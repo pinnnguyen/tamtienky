@@ -361,7 +361,7 @@ HTML;
     <meta charset="utf-8" content="width=device-width,user-scalable=no" name="viewport">
     <title>Tu Tiên Hội</title>
 
-<!--    <link rel="manifest" href="manifest.json"/>-->
+    <!--    <link rel="manifest" href="manifest.json"/>-->
     <!-- ios support -->
     <link rel="apple-touch-icon" href="images/logo.png"/>
     <meta name="apple-mobile-web-app-status-bar" content="#000"/>
@@ -371,49 +371,50 @@ HTML;
     <!--    <link rel="stylesheet/scss" href="css/animation.scss">-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sora">
     <link rel="icon" href="images/logo.ico" type="image/x-icon">
-<!--    <script src="https://cdn.tailwindcss.com"></script>-->
+    <!--    <script src="https://cdn.tailwindcss.com"></script>-->
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
 
     <!-- Remember to include jQuery :) -->
-<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>-->
-    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+            integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 
     <!-- jQuery Modal -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"/>
-<!--    <link rel="stylesheet" href="plugins/modal/modal.min.css"/>-->
-<!--    <link rel="stylesheet" href="plugins/modal/modal.min.js"/>-->
+    <!--    <link rel="stylesheet" href="plugins/modal/modal.min.css"/>-->
+    <!--    <link rel="stylesheet" href="plugins/modal/modal.min.js"/>-->
 
     <!-- jQuery Notify -->
     <script src="plugins/notify/notify.min.js"></script>
     <script src="plugins/notify/notify.setting.js"></script>
 
-<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>-->
+    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.41/vue.global.min.js"></script>
     <script src="https://unpkg.com/vuex@4.0.0/dist/vuex.global.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/4.1.6/vue-router.global.js"></script>-->
+    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/4.1.6/vue-router.global.js"></script>-->
 
 </head>
 <body>
 <div id="app" class="sm:w-[640px] md:w-[640px] lg:w-[640px] overflow-hidden m-auto"></div>
-    <div id="the-main" class="main h-[100vh] sm:w-[640px] md:w-[640px] lg:w-[640px] overflow-hidden">
-        <div class="h-full relative bg-black the-game">
-            <?php if (!$ym == '') {
+<div id="the-main" class="main h-[100vh] sm:w-[640px] md:w-[640px] lg:w-[640px] overflow-hidden">
+    <div class="h-full relative bg-black the-game">
+        <?php if (!$ym == '') {
 //                echo $tpts;
 
-                if ($ym != "game/pvp.php") {
-                    echo $pvpts;
-                }
+            if ($ym != "game/pvp.php") {
+                echo $pvpts;
+            }
 
-                include "$ym";
-            } ?>
-        </div>
-        <div class="the-bag h-full bg-[#e3e2d6] relative"></div>
-        <div class="teleport relative !text-white !bg-[#1d160e] !p-0 border !border-[#795548]"></div>
-        <div class="alert relative p-0 bg-black hidden"></div>
+            include "$ym";
+        } ?>
     </div>
+    <div class="the-bag h-full bg-[#e3e2d6] relative"></div>
+    <div class="teleport relative !text-white !bg-[#1d160e] !p-0 border !border-[#795548]"></div>
+    <div class="alert relative p-0 bg-black hidden"></div>
+</div>
 </body>
 <script src="src/app.js" async type="module"></script>
 <script src="state.js" async></script>

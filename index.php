@@ -42,6 +42,7 @@ if (isset($_POST['submit']) && $_POST['submit']) {
             $stmt = $dblj->prepare($sql);
             $stmt->execute(array($sid));
         }
+
         $cmd = $encode->encode($cmd);
         $_SESSION['username'] = $username;
         $_SESSION['userpass'] = $userpass;
@@ -71,15 +72,15 @@ if (isset($_POST['submit']) && $_POST['submit']) {
         </div>
         <div class="login">
             <form action=<?php echo $_SERVER['PHP_SELF']; ?> method="post">
-
                 <input type="text" name="username" placeholder="Tài khoản" class="input"
                        value="<?php if (!empty($username)) echo $username; ?>"/><br/>
 
                 <input type="password" name="userpass" placeholder="Mật khẩu" class="input"
                        value="<?php if (!empty($userpass)) echo $userpass; ?>"/><br/>
                 <?php echo $a ?>
-                <p><input type="submit" name="submit" class="btn-login" value="Đăng nhập"/> <a href="reguser.php"
-                                                                                               id="btn">Đăng
+                <p><input type="submit" name="submit" class="btn-login" value="Đăng nhập"/>
+                    <a href="reguser.php"
+                       id="btn">Đăng
                         ký</a></p>
             </form>
         </div>

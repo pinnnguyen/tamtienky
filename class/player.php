@@ -1,4 +1,5 @@
 <?php
+
 namespace player;
 require_once $_SERVER['DOCUMENT_ROOT'] . "/rules/upgrade.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/figure/constant.php";
@@ -1653,7 +1654,8 @@ class playerUseCode
     var $code;
 }
 
-function getPlayerUseCode($sid, $code, $dblj) {
+function getPlayerUseCode($sid, $code, $dblj)
+{
     $playCode = new playerUseCode();
     $sql = "select * from player_use_code WHERE sid = '$sid' AND code = '$code'";
     $ret = $dblj->query($sql);
@@ -1719,6 +1721,6 @@ function addim($imuid, $sid, $dblj)
 
 function updateMidBoss($mid, $midBoss, $dblj)
 {
-        $sql = "update mid set midboss = $midBoss  WHERE mid = '$mid'";
-        $dblj->exec($sql);
+    $sql = "update mid set midboss = $midBoss  WHERE mid = '$mid'";
+    $dblj->exec($sql);
 }

@@ -173,6 +173,10 @@ if ($cmd == 'pvegj' && $gid != 0) {
         } else {
             $response['youDie'] = false;
             $response['monsterDie'] = true;
+
+            if ($player->take_resource_mid && $player->take_resource_mid < $nowmid) {
+                \player\changemidresource($sid, $nowmid, $dblj);
+            }
 //            $response['html'] = <<<HTML
 //<p class="text-center p-3">Đạo hữu đã vượt qua ải này</p>
 //HTML;
@@ -201,6 +205,7 @@ if ($cmd == 'pvegj' && $gid != 0) {
             </script>
 HTML;
         }
+
         $taskarr = \player\getplayerrenwu($sid, $dblj);
         \player\changerwyq1(2, $guaiwu->gyid, 1, $sid, $dblj);
         for ($i = 0; $i < count($taskarr); $i++) {

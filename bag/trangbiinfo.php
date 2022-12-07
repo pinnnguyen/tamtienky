@@ -42,11 +42,11 @@ if (in_array($zhuangbei->zbnowid, $arr)) {
 HTML;
 } else {
     $delete_trang_bi = <<<HTML
-    <button zbnowid="$zhuangbei->zbnowid" sid="$sid" cmd="maichu" class="delete-item h-[30px] flex items-center justify-center rounded-sm p- bg-button">Bán</button>
+    <button zbnowid="$zhuangbei->zbnowid" sid="$sid" cmd="maichu" class="bag-item_delete h-[30px] flex items-center justify-center rounded-sm p- bg-button">Bán</button>
 HTML;
 
     $cup_trang_bi = <<<HTML
-    <button zbnowid="$zhuangbei->zbnowid" sid="$sid" cmd="delezb" class="cup-item h-[30px] flex items-center justify-center rounded-sm p- bg-button">Phân giải</button>
+    <button zbnowid="$zhuangbei->zbnowid" sid="$sid" cmd="delezb" class="bag-item_cup h-[30px] flex items-center justify-center rounded-sm p- bg-button">Phân giải</button>
 HTML;
 }
 
@@ -142,7 +142,7 @@ HTML;
 
     $upgj = <<<HTML
     <button 
-    class="bg-button upgrade-trangbi" 
+    class="bg-button bag-item_upgrade" 
     cmd="upzb" 
     upsx="zbgj" 
     zbnowid="$zhuangbei->zbnowid" 
@@ -150,7 +150,7 @@ HTML;
 HTML;
     $upfy = <<<HTML
     <button 
-    class="bg-button upgrade-trangbi" 
+    class="bg-button bag-item_upgrade" 
     cmd="upzb" 
     upsx="zbfy" 
     zbnowid="$zhuangbei->zbnowid" 
@@ -158,7 +158,7 @@ HTML;
 HTML;
     $uphp = <<<HTML
     <button 
-    class="bg-button upgrade-trangbi" 
+    class="bg-button bag-item_upgrade" 
     cmd="upzb" 
     upsx="zbhp" 
     zbnowid="$zhuangbei->zbnowid" 

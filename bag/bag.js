@@ -70,10 +70,10 @@ $('#for-sale').unbind('click').bind('click', function () {
     });
 })
 
-$('.cup-item').unbind('click').bind('click', function () {
+$('.bag-item_cup').unbind('click').bind('click', function () {
     const sid = $(this).attr('sid')
     const zbnowid = $(this).attr('zbnowid')
-    const _this = $(".trangbi-defail[zbnowid='" + zbnowid + "']")
+    const _this = $(".bag-item_details[zbnowid='" + zbnowid + "']")
 
     $.get(`/bag/cuptrangbi.php?sid=${sid}&zbnowid=${zbnowid}`, function (response) {
         $.modal.close()
@@ -86,10 +86,10 @@ $('.cup-item').unbind('click').bind('click', function () {
     })
 })
 
-$('.delete-item').unbind('click').bind('click', function () {
+$('.bag-item_delete').unbind('click').bind('click', function () {
     const sid = $(this).attr('sid')
     const zbnowid = $(this).attr('zbnowid')
-    const _this = $(".trangbi-defail[zbnowid='" + zbnowid + "']")
+    const _this = $(".bag-item_details[zbnowid='" + zbnowid + "']")
 
     $.get(`/bag/delete.php?sid=${sid}&zbnowid=${zbnowid}`, function (response) {
         $.modal.close()
@@ -102,7 +102,7 @@ $('.delete-item').unbind('click').bind('click', function () {
     })
 })
 
-$('.upgrade-trangbi').unbind('click').bind('click', function () {
+$('.bag-item_upgrade').unbind('click').bind('click', function () {
     const sid = $(this).attr('sid')
     const zbnowid = $(this).attr('zbnowid')
     const upsx = $(this).attr('upsx')
@@ -123,7 +123,7 @@ $('.close-bag').unbind('click').bind('click', function () {
 })
 
 // Show detail item
-$('.trangbi-defail').unbind('click').bind('click', function () {
+$('.bag-item_details').unbind('click').bind('click', function () {
     const sid = $(this).attr('sid')
     const cmd = $(this).attr('cmd')
     const zbnowid = $(this).attr('zbnowid')

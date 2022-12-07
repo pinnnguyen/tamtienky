@@ -67,7 +67,7 @@ for ($i = 0; $i < count($retzb); $i++) {
 //        $mczb = $encode->encode("cmd=getbagzb&canshu=maichu&yeshu=$yeshu&zbnowid=$zbnowid&sid=$sid");
 //        $delezb = $encode->encode("cmd=delezb&zbnowid=$zbnowid&sid=$sid");
         $zbhtml .= <<<HTML
-        <div class="trangbi-defail flex flex-col max-h-[120px]" 
+        <div class="bag-item_details flex flex-col max-h-[120px]" 
         cmd="chakanzb"
         zbnowid="$zbnowid"
         uid="$player->uid"
@@ -84,7 +84,7 @@ HTML;
 
     } else {
         $zbhtml .= <<<HTML
-        <div class="trangbi-defail flex flex-col max-h-[120px]" 
+        <div class="bag-item_details flex flex-col max-h-[120px]" 
         cmd="chakanzb"
         zbnowid="$zbnowid"
         uid="$player->uid"
